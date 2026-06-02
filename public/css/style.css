@@ -1,0 +1,649 @@
+/* RESET */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+}
+
+.hidden {
+  display: none;
+  pointer-events: none;
+}
+
+body.modal-open {
+  overflow: hidden;
+}
+
+/* =========================
+   CENTRALIZA A PÁGINA
+========================= */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items:center;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.landing {
+  width: 90%;
+  max-width: 1400px;
+  display: flex;
+  flex-direction: row-reverse;
+  align-items: stretch; 
+  height: clamp(400px, 600px, 100vh); 
+}
+
+/* =========================
+   CAPA
+========================= */
+.landing-cover {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 24px 0 0 24px;          
+}
+
+.landing-cover img {
+  width: 80%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* =========================
+   LOGIN (BARRA CINZA)
+========================= */
+.landing-login {
+  width: 420px;
+  flex-shrink: 0;
+  background: #dbcafa;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  margin-left: 0px;         /* espaço real da capa */
+  margin-right: 60px;
+  border-radius: 24px;
+  justify-content: space-between;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.login-box {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  color: #7B2CFF;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+}
+
+.btn span {
+  font-size: 18px;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+}
+
+/* CRIADOR */
+.btn-creator {
+  background: #fff;
+  color: #7B2CFF;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.15);
+}
+
+/* MEMBRO */
+.btn-member {
+  background: #fff;
+  color: #7B2CFF;
+  box-shadow: 0 6px 18px rgba(37,99,235,0.15); 
+}
+
+/* =========================
+   INPUTS
+========================= */
+.login-input {
+  margin-top: 10px;
+}
+
+.login-input input {
+  width: 100%;
+  padding: 12px;
+  border-radius: 10px;
+  border: 1px solid;
+  margin-bottom: 10px;
+  font-size: 15px;   
+}
+
+/* =========================
+   FOOTER
+========================= */
+.footer-links {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.footer-links a {
+  font-size: 13px;
+  color: #4a0fb5;
+  text-decoration: none;
+  margin: 0 6px;
+   padding: 8px 4px; 
+  display: inline-block;
+}
+
+.footer-links a:hover {
+  text-decoration: underline;
+}
+
+.footer-linksC {
+  margin-top: 30px;
+  text-align: center;
+}
+
+.footer-linksC a {
+  font-size: 14px;
+  color: #4a0fb5;
+  flex-direction: column;
+  text-decoration: none;
+  margin: 0 10px;
+  padding: 8px 4px; 
+  display: inline-block; 
+}
+
+.footer-linksC a:hover {
+  text-decoration: underline;
+}
+.hidden {
+  display: none;
+}
+
+
+.landing-login {
+  text-align: center;
+  align-items: center;
+}
+
+.login-box,
+.login-input {
+  width: 100%;
+}
+
+.btn {
+  justify-content: center;
+  gap: 8px;
+}
+
+/* MODAL BASE */
+.modal.hidden {
+  display: none;
+}
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+  display: flex;          
+  align-items: center;       
+  justify-content: center; 
+  padding: 16px;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  background: rgba(0,0,0,0.5);
+}
+
+.modal-box h2 {
+  margin: 0 0 6px;
+  text-align: center;
+  color: #7B2CFF;
+  gap: 14px;
+}
+
+
+/* BOTÃO */
+.modal-box .btn-primary {
+  background: linear-gradient(135deg, #7B2CFF, #9B5CFF);
+  color: white;
+  font-size: 14px;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}
+
+/* FECHAR */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+.modal-switch {
+  text-align: center;
+  font-size: 14px;
+  opacity: 0.8;
+  margin-top: 8px;
+}
+
+.modal-switch span {
+  color: #7B2CFF;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.modal-hint {
+  margin-top: 12px;
+  font-size: 12px;
+  color: #666;
+  text-align: center;
+}
+
+/* MODAL LEGAL */
+.legal-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 999999;
+}
+.legal-overlay {
+  position: absolute;
+  inset: 0;
+}
+
+.legal-modal.hidden {
+  display: none;
+}
+
+.legal-box {
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  background: #fff;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.legal-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.legal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+.field {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.field.hidden {
+  display: none;
+}
+
+/* =========================
+   MODAL ESQUECI SENHA – VELVET
+========================= */
+
+.modal-box.velvet {
+  background: linear-gradient(180deg, #ffffff, #f4edff);
+}
+
+.modal-box.velvet h2 {
+  color: #7B2CFF;
+  font-weight: 600;
+}
+
+.modal-box.velvet input {
+  border-radius: 14px;
+  border: 1px solid #ddd;
+  margin-top: 16px;
+}
+
+.modal-box.velvet input:focus {
+  outline: none;
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 2px rgba(123,44,255,0.15);
+}
+
+.modal-box.velvet .btn-primary {
+  background: linear-gradient(135deg, #7B2CFF, #9B5CFF);
+  border-radius: 16px;
+  margin-top: 16px;
+}
+
+.modal-box.velvet .btn-primary:hover {
+  transform: translateY(-1px);
+}
+
+/* Uniformiza TODOS os inputs do modal */
+.modal-box input,
+.modal-box select {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  box-sizing: border-box;
+  background: #fff;
+  color: #333;
+  appearance: none;
+  -webkit-appearance: none;
+}
+
+.modal-box input:focus,
+.modal-box select:focus {
+  outline: none;
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 2px rgba(123,44,255,0.15);
+}
+
+
+/* =========================
+   MOBILE FIRST – TELEMÓVEL
+========================= */
+@media (max-width: 768px) {
+
+  html, body {
+    height: 100%;
+  }
+
+  body {
+    overflow-x: hidden;
+  }
+
+  .page-wrapper {
+    min-height: 100vh;
+    padding: 0;
+    align-items: stretch;
+  }
+
+  .landing {
+    width: 100%;
+    max-width: none;
+    height: 100vh;
+    flex-direction: column;
+  }
+
+  .landing-cover {
+    display: none;
+  }
+
+  .landing-login {
+    width: 100%;
+    height: 100svh;
+    min-height: -webkit-fill-available;
+    margin: 0;
+    padding: 48px 32px 36px;
+    border-radius: 0;
+    justify-content: space-between;
+  }
+
+  /* BOTÕES */
+  .login-box {
+    width: 100%;
+    margin: 0;
+  }
+
+  .footer-linksC {
+    margin-top: 0;
+  }
+
+  .footer-links {
+    margin-top: 0;
+  }
+
+  .gateway-selo {
+    margin-top: 0;
+    padding-top: 8px;
+  }
+
+  .btn {
+    padding: 16px;
+    font-size: 16px;
+    border-radius: 14px;
+  }
+
+  .footer-links a,
+  .footer-linksC a {
+    display: block;
+  }
+  /* inputs maiores (evita zoom iOS) */
+  .modal-box input,
+  .modal-box select {
+    font-size: 16px;
+    padding: 14px;
+  }
+
+  /* botão principal maior */
+  .modal-box .btn-primary {
+    padding: 14px;
+    font-size: 15px;
+    border-radius: 16px;
+  }
+
+  /* botão fechar mais acessível */
+  .modal-close {
+    top: 10px;
+    right: 16px;
+    font-size: 24px;
+  }
+
+  /* -------- MODAL LEGAL -------- */
+  .legal-box {
+    width: 100%;
+    height: 100vh;
+    max-width: none;
+    border-radius: 0;
+  }
+
+  .modal {
+    display: flex;
+    align-items: center;
+    justify-content: center;  
+    padding: 16px;
+  }
+
+  .modal-box {
+    width: 100%;
+    max-width: 420px;    
+    max-height: 90vh;        
+    border-radius: 18px;
+    padding: 24px 20px;
+    overflow-y: auto;
+    background: #fff;
+    gap: 14px;
+    
+  }
+}
+
+.language-switcher {
+  display: flex;
+  justify-content: flex-end;
+  margin-bottom: 12px;
+}
+
+.language-switcher select {
+  background: #f0f0f0;
+  color: #4a0fb5;
+  border: 1px solid rgba(255,255,255,0.2);
+  border-radius: 10px;
+  padding: 8px 8px;
+  font-family: inherit;
+  font-size: 12px;
+  cursor: pointer;
+}
+
+.btn {
+  white-space: normal;
+  text-align: center;
+}
+
+/* =========================
+   COMO FUNCIONA
+========================= */
+.how-section {
+  width: 80%;
+  text-align: center;
+}
+
+.how-title {
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 1.5px;
+  text-transform: uppercase;
+  color: #7B2CFF;
+  margin-bottom: 20px;
+}
+
+.how-steps {
+  display: flex;
+  justify-content: center;
+  gap: 18px;
+  flex-wrap: nowrap;
+  color:#f0f0f0;
+}
+
+.how-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  max-width: 90px;
+}
+
+.how-icon {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: rgba(123,44,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 20px;
+}
+
+.how-step span {
+  font-size: 10px;
+  color: #555;
+  line-height: 1.4;
+  text-align: center;
+}
+
+/* CAIXA DO MODAL */
+.modal-box {
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  max-width: 420px;
+  max-height: 90vh;
+  overflow-y: auto;
+  background: white;
+  border-radius: 18px;
+  padding: 24px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 14px;
+}
+
+#forgotStepEmail input,
+#forgotStepCode input {
+  width: 100%;
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+  box-sizing: border-box;
+  margin-bottom: 10px;
+}
+
+.field {
+  width: 100%;
+}
+
+.field input,
+.field select {
+  width: 100% !important;
+  padding: 12px 14px !important;
+  border-radius: 12px !important;
+  border: 1px solid #ddd !important;
+  font-size: 15px !important;
+  box-sizing: border-box !important;
+  background: #fff !important;
+  color: #333 !important;
+  align-items: center !important;
+}
+
+.field input:focus,
+.field select:focus {
+  outline: none;
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 2px rgba(123,44,255,0.15);
+}
+
+#fieldPerfil select {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='12' viewBox='0 0 12 12'%3E%3Cpath fill='%237B2CFF' d='M6 8L1 3h10z'/%3E%3C/svg%3E") !important;
+  background-repeat: no-repeat !important;
+  background-position: right 14px center !important;
+  padding-right: 36px !important;
+  cursor: pointer !important;
+}
+#field label {
+  text-align: center;
+}
+
+.btn-secondary {
+  background: linear-gradient(135deg, #ebebeb, #c7c7c7);
+  color: #555;
+  font-size: 14px;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  margin-top: 10px;
+}

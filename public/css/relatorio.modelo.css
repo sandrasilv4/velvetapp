@@ -1,0 +1,35 @@
+:root {
+  --primary: #7b3fe4;
+  --primary-soft: #f2ebff;
+  --text-dark: #1f1f1f;
+  --text-light: #777;
+  --bg: #f8f7fb;
+  --card-bg: #ffffff;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text-dark);
+}
+
+/* HEADER */
+.top-bar {
+  height: 64px;
+  background: #fff;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 0 20px;
+  border-bottom: 1px solid #eee;
+}
+
+.logo {
+  height: 28px;
+}
+

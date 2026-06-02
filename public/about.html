@@ -1,0 +1,598 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Sobre Nós | Velvet</title>
+  
+  <script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Velvet",
+  "description": "Plataforma social para criadores de conteúdo",
+  "applicationCategory": "SocialNetworkingApplication",
+  "url": "https://www.velvet.lat"
+}
+</script>
+
+  <style>
+    :root {
+      --primary: #6f3cff;
+      --primary-dark: #5a2fe0;
+      --primary-light: #ede8ff;
+      --text: #1e1b2e;
+      --text-soft: #5e5873;
+      --bg: #f7f7fb;
+      --card: #f1eef4;
+      --line: #ddd8e6;
+      --white: #ffffff;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    /* ── Lang Switcher ── */
+    .lang-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      max-width: 980px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+    .lang-switcher button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+    .lang-switcher button:hover,
+    .lang-switcher button.active {
+      background: var(--card);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    /* ── Hero ── */
+    .hero {
+      background: none;
+      text-align: center;
+      padding: 72px 24px 80px;
+      position: relative;
+      overflow: hidden;
+    }
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: radial-gradient(ellipse at 70% 30%, rgba(255,255,255,0.12) 0%, transparent 60%);
+      pointer-events: none;
+    }
+    .hero-logo {
+      font-size: 2.6rem;
+      font-weight: 800;
+      letter-spacing: -1px;
+      margin-bottom: 12px;
+    }
+    .hero-tagline {
+      font-size: 1.18rem;
+      font-weight: 400;
+      opacity: 0.92;
+      max-width: 520px;
+      margin: 0 auto;
+      line-height: 1.7;
+    }
+
+    /* ── Container ── */
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 52px 20px 80px;
+    }
+
+    /* ── Section Titles ── */
+    .section-title {
+      font-size: 1.9rem;
+      font-weight: 700;
+      color: var(--primary);
+      margin: 0 0 18px;
+      line-height: 1.25;
+    }
+    .section-subtitle {
+      font-size: 1.06rem;
+      color: var(--text-soft);
+      margin: -10px 0 28px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 48px 0;
+    }
+
+    /* ── Mission Card ── */
+    .mission-card {
+      background: linear-gradient(135deg, var(--primary-light) 0%, #f9f6ff 100%);
+      border: 1.5px solid #d6caff;
+      border-radius: 20px;
+      padding: 36px 36px;
+      margin-bottom: 48px;
+      position: relative;
+    }
+    .mission-card .quote-mark {
+      font-size: 5rem;
+      line-height: 1;
+      color: var(--primary);
+      opacity: 0.18;
+      font-family: Georgia, serif;
+      position: absolute;
+      top: 12px;
+      left: 24px;
+    }
+    .mission-text {
+      font-size: 1.22rem;
+      font-weight: 600;
+      color: var(--primary-dark);
+      line-height: 1.7;
+      margin: 0;
+    }
+
+    /* ── Values Grid ── */
+    .values-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+      gap: 20px;
+      margin-bottom: 48px;
+    }
+    .value-card {
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 16px;
+      padding: 26px 24px;
+      transition: box-shadow 0.2s ease, transform 0.2s ease;
+    }
+    .value-card:hover {
+      box-shadow: 0 6px 24px rgba(111, 60, 255, 0.10);
+      transform: translateY(-2px);
+    }
+    .value-icon {
+      font-size: 2rem;
+      margin-bottom: 12px;
+      display: block;
+    }
+    .value-title {
+      font-size: 1.08rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 0 0 8px;
+    }
+    .value-desc {
+      font-size: 0.97rem;
+      color: var(--text-soft);
+      line-height: 1.65;
+      margin: 0;
+    }
+
+    /* ── Stats Strip ── */
+    .stats-strip {
+      background: var(--card);
+      border-radius: 18px;
+      display: flex;
+      justify-content: space-around;
+      flex-wrap: wrap;
+      gap: 24px;
+      padding: 32px 24px;
+      margin-bottom: 48px;
+      text-align: center;
+    }
+    .stat-item .stat-number {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      display: block;
+      line-height: 1.1;
+    }
+    .stat-item .stat-label {
+      font-size: 0.92rem;
+      color: var(--text-soft);
+      margin-top: 4px;
+    }
+
+    /* ── Contact Box ── */
+    .contact-box {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 30px 32px;
+    }
+    .contact-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 14px;
+      margin-bottom: 18px;
+    }
+    .contact-row:last-child { margin-bottom: 0; }
+    .contact-icon {
+      font-size: 1.4rem;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .contact-label {
+      font-weight: 600;
+      font-size: 0.95rem;
+      color: var(--text-soft);
+      margin-bottom: 2px;
+    }
+    .contact-value {
+      font-size: 1.03rem;
+      color: var(--text);
+      margin: 0;
+    }
+    a.inline-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+    a.inline-link:hover { text-decoration: underline; }
+
+    /* ── Social Pills ── */
+    .social-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 8px;
+    }
+    .social-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 7px;
+      background: var(--white);
+      border: 1px solid var(--line);
+      border-radius: 30px;
+      padding: 7px 16px;
+      font-size: 0.94rem;
+      font-weight: 600;
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+    .social-pill:hover {
+      background: var(--primary-light);
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    /* ── Footer ── */
+    .footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: none;
+      color: #1E1E26;
+      text-align: center;
+      font-size: 14px;
+    }
+    .footer-links { margin-bottom: 10px; }
+    .footer-links a {
+      color: #1E1E26;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+    .footer-links a:hover {
+      color: #C9C9C9;
+      text-decoration: underline;
+    }
+    .footer-copy {
+      font-size: 12px;
+      color: #1E1E26;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 768px) {
+      .lang-switcher { justify-content: center; padding: 0 16px; }
+      .container { padding: 32px 16px 60px; }
+      .hero { padding: 52px 20px 60px; }
+      .hero-logo { font-size: 2rem; }
+      .section-title { font-size: 1.6rem; }
+      .mission-card { padding: 28px 22px; }
+      .mission-text { font-size: 1.08rem; }
+      .contact-box { padding: 22px 18px; }
+      .stats-strip { padding: 24px 16px; }
+    }
+
+.logo {
+  width: 250px; 
+}
+  </style>
+</head>
+<body>
+
+  <div class="lang-switcher">
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ESP</button>
+  </div>
+
+  <!-- Hero -->
+  <div class="hero">
+   <img src="assets/velvet.png" class="logo" alt="Velvet">
+    <p class="hero-tagline" id="heroTagline"></p>
+  </div>
+
+  <!-- Main Content -->
+  <div class="container">
+
+    <!-- Mission -->
+    <section id="sec-mission">
+      <h2 class="section-title" id="missionTitle"></h2>
+      <div class="mission-card">
+        <span class="quote-mark">"</span>
+        <p class="mission-text" id="missionQuote"></p>
+      </div>
+      <p id="missionBody1"></p>
+      <p id="missionBody2"></p>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Values -->
+    <section id="sec-values">
+      <h2 class="section-title" id="valuesTitle"></h2>
+      <p class="section-subtitle" id="valuesSubtitle"></p>
+      <div class="values-grid" id="valuesGrid"></div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Stats -->
+    <section id="sec-stats">
+      <h2 class="section-title" id="statsTitle"></h2>
+      <div class="stats-strip" id="statsStrip"></div>
+    </section>
+
+    <hr class="divider">
+
+    <!-- Contact -->
+    <section id="sec-contact">
+      <h2 class="section-title" id="contactTitle"></h2>
+      <p id="contactIntro"></p>
+      <div class="contact-box">
+        <div class="contact-row">
+          <span class="contact-icon">📍</span>
+          <div>
+            <div class="contact-label" id="labelAddress"></div>
+            <p class="contact-value">R Cel José Eusébio, 95 casa 13 – Higienópolis – São Paulo – SP – CEP 01.239-030</p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">✉️</span>
+          <div>
+            <div class="contact-label" id="labelEmail"></div>
+            <p class="contact-value"><a href="mailto:contato@velvet.lat" class="inline-link">contato@velvet.lat</a></p>
+          </div>
+        </div>
+        <div class="contact-row">
+          <span class="contact-icon">🌐</span>
+          <div>
+            <div class="contact-label" id="labelSocial"></div>
+            <div class="social-pills">
+              <a href="https://instagram.com/velvet.oficialbr" target="_blank" rel="noopener" class="social-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"/><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg>
+                @velvet.oficialbr
+              </a>
+              <a href="" target="_blank" rel="noopener" class="social-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"/></svg>
+                EM BREVE
+              </a>
+              <a href="" target="_blank" rel="noopener" class="social-pill">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M19.59 6.69a4.83 4.83 0 0 1-3.77-4.25V2h-3.45v13.67a2.89 2.89 0 0 1-2.88 2.5 2.89 2.89 0 0 1-2.89-2.89 2.89 2.89 0 0 1 2.89-2.89c.28 0 .54.04.79.1V9.01a6.33 6.33 0 0 0-.79-.05 6.34 6.34 0 0 0-6.34 6.34 6.34 6.34 0 0 0 6.34 6.34 6.34 6.34 0 0 0 6.33-6.34V8.69a8.28 8.28 0 0 0 4.84 1.55V6.79a4.85 4.85 0 0 1-1.07-.1z"/></svg>
+                EM BREVE
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="terms.html" id="footerTerms"></a>
+      <a href="privacy.html" id="footerPrivacy"></a>
+      <a href="policies.html" id="footerPolicies"></a>
+    </div>
+    <div class="footer-copy" id="footerCopy"></div>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        htmlLang: "pt",
+        title: "Sobre Nós | Velvet",
+        heroTagline: "A plataforma que liga criadores ao seu público.",
+        missionTitle: "A nossa missão",
+        missionQuote: "Conectar criadores com os seus fãs, de forma autêntica, segura e sustentável.",
+        missionBody1: "A Velvet nasceu da convicção de que os criadores de conteúdo merecem uma plataforma construída a pensar neles — onde possam partilhar o seu trabalho, crescer a sua comunidade e monetizar o seu talento com total autonomia.",
+        missionBody2: "Acreditamos numa internet onde a relação entre criadores e fãs é direta, próxima e genuína. Por isso construímos ferramentas que colocam os criadores no controlo da sua presença digital e da sua carreira.",
+        valuesTitle: "Os nossos valores",
+        valuesSubtitle: "O que nos guia todos os dias.",
+        values: [
+          { icon: "🤝", title: "Comunidade", desc: "Criadores e fãs no centro de tudo o que construímos. As relações humanas são a essência da Velvet." },
+          { icon: "🔒", title: "Segurança", desc: "Privacidade e proteção dos dados são prioridades inegociáveis. A confiança constrói-se com ação, não com palavras." },
+          { icon: "✨", title: "Autonomia", desc: "Cada criador é único. Damos-lhe as ferramentas para crescer ao seu ritmo, segundo as suas regras." },
+          { icon: "🌍", title: "Inclusão", desc: "A Velvet é para todos. Independentemente da língua, país ou tipo de conteúdo, há espaço para cada voz." },
+          { icon: "📈", title: "Crescimento", desc: "Investimos continuamente na plataforma para que os criadores tenham sempre os melhores recursos à disposição." },
+          { icon: "💬", title: "Transparência", desc: "Comunicamos de forma clara sobre como a plataforma funciona, as nossas políticas e as nossas decisões." }
+        ],
+        statsTitle: "Velvet em números",
+        stats: [
+          { number: "50 000+", label: "Criadores ativos" },
+          { number: "2 M+", label: "Fãs registados" },
+          { number: "120+", label: "Países" },
+          { number: "2020", label: "Ano de fundação" }
+        ],
+        contactTitle: "Contacto",
+        contactIntro: "Tem alguma questão ou sugestão? A nossa equipa está disponível para o ajudar.",
+        labelAddress: "Sede",
+        labelEmail: "E-mail",
+        labelSocial: "Redes sociais",
+        footerTerms: "Termos de Uso",
+        footerPrivacy: "Política de Privacidade",
+        footerPolicies: "Política de Utilização",
+        footerCopy: "© 2026 Velvet. Todos os direitos reservados."
+      },
+      en: {
+        htmlLang: "en",
+        title: "About Us | Velvet",
+        heroTagline: "The platform that connects creators with their audience.",
+        missionTitle: "Our mission",
+        missionQuote: "Connecting creators with their fans, in an authentic, safe and sustainable way.",
+        missionBody1: "Velvet was born from the belief that content creators deserve a platform built with them in mind — where they can share their work, grow their community and monetize their talent with full autonomy.",
+        missionBody2: "We believe in an internet where the relationship between creators and fans is direct, close and genuine. That's why we build tools that put creators in control of their digital presence and career.",
+        valuesTitle: "Our values",
+        valuesSubtitle: "What guides us every day.",
+        values: [
+          { icon: "🤝", title: "Community", desc: "Creators and fans at the center of everything we build. Human connections are the essence of Velvet." },
+          { icon: "🔒", title: "Safety", desc: "Privacy and data protection are non-negotiable priorities. Trust is built through action, not words." },
+          { icon: "✨", title: "Autonomy", desc: "Every creator is unique. We give you the tools to grow at your own pace, on your own terms." },
+          { icon: "🌍", title: "Inclusion", desc: "Velvet is for everyone. Regardless of language, country or content type, there's space for every voice." },
+          { icon: "📈", title: "Growth", desc: "We continuously invest in the platform so creators always have the best resources at their disposal." },
+          { icon: "💬", title: "Transparency", desc: "We communicate clearly about how the platform works, our policies and our decisions." }
+        ],
+        statsTitle: "Velvet by the numbers",
+        stats: [
+          { number: "50 000+", label: "Active creators" },
+          { number: "2 M+", label: "Registered fans" },
+          { number: "120+", label: "Countries" },
+          { number: "2020", label: "Founded" }
+        ],
+        contactTitle: "Contact",
+        contactIntro: "Have a question or suggestion? Our team is available to help you.",
+        labelAddress: "Head Office",
+        labelEmail: "Email",
+        labelSocial: "Social media",
+        footerTerms: "Terms of Use",
+        footerPrivacy: "Privacy Policy",
+        footerPolicies: "Usage Policy",
+        footerCopy: "© 2026 Velvet. All rights reserved."
+      },
+      es: {
+        htmlLang: "es",
+        title: "Sobre Nosotros | Velvet",
+        heroTagline: "La plataforma que conecta a los creadores con su audiencia.",
+        missionTitle: "Nuestra misión",
+        missionQuote: "Conectar a los creadores con sus fans de forma auténtica, segura y sostenible.",
+        missionBody1: "Velvet nació de la convicción de que los creadores de contenido merecen una plataforma construida pensando en ellos — donde puedan compartir su trabajo, hacer crecer su comunidad y monetizar su talento con total autonomía.",
+        missionBody2: "Creemos en una internet donde la relación entre creadores y fans sea directa, cercana y genuina. Por eso construimos herramientas que ponen a los creadores en control de su presencia digital y de su carrera.",
+        valuesTitle: "Nuestros valores",
+        valuesSubtitle: "Lo que nos guía cada día.",
+        values: [
+          { icon: "🤝", title: "Comunidad", desc: "Creadores y fans en el centro de todo lo que construimos. Las relaciones humanas son la esencia de Velvet." },
+          { icon: "🔒", title: "Seguridad", desc: "La privacidad y la protección de datos son prioridades innegociables. La confianza se construye con acciones." },
+          { icon: "✨", title: "Autonomía", desc: "Cada creador es único. Le damos las herramientas para crecer a su ritmo, según sus propias reglas." },
+          { icon: "🌍", title: "Inclusión", desc: "Velvet es para todos. Sin importar el idioma, país o tipo de contenido, hay espacio para cada voz." },
+          { icon: "📈", title: "Crecimiento", desc: "Invertimos continuamente en la plataforma para que los creadores siempre tengan los mejores recursos." },
+          { icon: "💬", title: "Transparencia", desc: "Comunicamos con claridad sobre cómo funciona la plataforma, nuestras políticas y nuestras decisiones." }
+        ],
+        statsTitle: "Velvet en números",
+        stats: [
+          { number: "50 000+", label: "Creadores activos" },
+          { number: "2 M+", label: "Fans registrados" },
+          { number: "120+", label: "Países" },
+          { number: "2020", label: "Año de fundación" }
+        ],
+        contactTitle: "Contacto",
+        contactIntro: "¿Tiene alguna pregunta o sugerencia? Nuestro equipo está disponible para ayudarle.",
+        labelAddress: "Dirección",
+        labelEmail: "Correo electrónico",
+        labelSocial: "Redes sociales",
+        footerTerms: "Términos de Uso",
+        footerPrivacy: "Política de Privacidad",
+        footerPolicies: "Política de Utilización",
+        footerCopy: "© 2026 Velvet. Todos los derechos reservados."
+      }
+    };
+
+    function renderPage(lang) {
+      const t = translations[lang] || translations.pt;
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+
+      document.getElementById("heroTagline").textContent = t.heroTagline;
+      document.getElementById("missionTitle").textContent = t.missionTitle;
+      document.getElementById("missionQuote").textContent = t.missionQuote;
+      document.getElementById("missionBody1").textContent = t.missionBody1;
+      document.getElementById("missionBody2").textContent = t.missionBody2;
+      document.getElementById("valuesTitle").textContent = t.valuesTitle;
+      document.getElementById("valuesSubtitle").textContent = t.valuesSubtitle;
+
+      const grid = document.getElementById("valuesGrid");
+      grid.innerHTML = "";
+      t.values.forEach(v => {
+        grid.innerHTML += `
+          <div class="value-card">
+            <span class="value-icon">${v.icon}</span>
+            <div class="value-title">${v.title}</div>
+            <p class="value-desc">${v.desc}</p>
+          </div>`;
+      });
+
+      document.getElementById("statsTitle").textContent = t.statsTitle;
+      const strip = document.getElementById("statsStrip");
+      strip.innerHTML = "";
+      t.stats.forEach(s => {
+        strip.innerHTML += `
+          <div class="stat-item">
+            <span class="stat-number">${s.number}</span>
+            <div class="stat-label">${s.label}</div>
+          </div>`;
+      });
+
+      document.getElementById("contactTitle").textContent = t.contactTitle;
+      document.getElementById("contactIntro").textContent = t.contactIntro;
+      document.getElementById("labelAddress").textContent = t.labelAddress;
+      document.getElementById("labelEmail").textContent = t.labelEmail;
+      document.getElementById("labelSocial").textContent = t.labelSocial;
+
+      document.getElementById("footerTerms").textContent = t.footerTerms;
+      document.getElementById("footerPrivacy").textContent = t.footerPrivacy;
+      document.getElementById("footerPolicies").textContent = t.footerPolicies;
+      document.getElementById("footerCopy").textContent = t.footerCopy;
+
+      document.querySelectorAll("[data-lang]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem("velvet_lang", lang);
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => renderPage(button.dataset.lang));
+    });
+
+    const savedLang = localStorage.getItem("velvet_lang") || "pt";
+    renderPage(savedLang);
+  </script>
+</body>
+</html>

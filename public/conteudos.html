@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mídias Privadas</title>
+
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/conteudos.css">
+  <link rel="stylesheet" href="/css/footer.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+
+ <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="conteudos.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="conteudos.titulo">Meus Exclusivos</h3>
+
+    <button id="btnNovoConteudo" class="btn-principal" data-i18n="conteudos.btn_novo">
+      Adicionar nova mídia
+    </button>
+
+    <div id="conteudosGrid" class="grid-conteudos"></div>
+
+    <div id="conteudosVazio" class="estado-vazio hidden">
+      <p data-i18n="conteudos.vazio">Você ainda não tem conteúdos à venda.</p>
+    </div>
+
+    <div class="paginacao">
+      <button id="btnAnterior" disabled data-i18n="conteudos.btn_anterior">Anterior</button>
+      <span id="paginaInfo">1 / 1</span>
+      <button id="btnProxima" data-i18n="conteudos.btn_proxima">Próxima</button>
+    </div>
+
+  </section>
+
+<div id="footer-container"></div>
+
+  <!-- MODAL NOVO CONTEÚDO -->
+  <div id="modalNovoConteudo" class="modal modal-upload hidden">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box">
+      <h2 data-i18n="conteudos.modal_titulo">Novo conteúdo</h2>
+
+      <div class="file-upload">
+        <input type="file" id="fileConteudo" multiple accept="image/*,video/*" hidden>
+        <label for="fileConteudo" class="btn-file" data-i18n="conteudos.btn_escolher">
+          📁 Escolher mídia
+        </label>
+      </div>
+
+      <div class="file-upload">
+        <span id="fileName" data-i18n="conteudos.nenhum_arquivo">
+          Nenhuma mídia selecionada
+        </span>
+      </div>
+
+      <button id="btnEnviarConteudo" class="btn-principal" data-i18n="conteudos.btn_enviar">
+        Enviar
+      </button>
+
+      <div id="uploadProgressContainer" class="hidden">
+        <div class="progress-bar">
+          <div id="uploadProgressBar"></div>
+        </div>
+        <span id="uploadPercent">0%</span>
+      </div>
+
+      <button id="btnFecharModal" data-i18n="conteudos.btn_cancelar">
+        Cancelar
+      </button>
+    </div>
+  </div>
+
+  <!-- MODAL VISUALIZAR -->
+  <div id="modalVisualizarConteudo" class="modal modal-midia hidden">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box modal-viewer">
+      <button class="modal-close" id="btnFecharViewer">×</button>
+      <div id="viewerConteudo"></div>
+    </div>
+  </div>
+
+<input type="file" id="inputUploadMidia" accept="image/*,video/*" hidden>
+
+<!-- POPUP UPLOAD FEED -->
+<div id="popupUploadFeed" class="velvet-modal hidden">
+
+<div class="velvet-backdrop" id="uploadBackdrop"></div>
+
+  <div class="velvet-box">
+
+<button class="velvet-close" id="uploadClose">×</button>
+
+<h2 class="velvet-title" data-i18n="perfil.upload_feed_titulo">Postar no Feed</h2>
+
+<div class="upload-area" id="uploadArea">
+<input type="file" id="fileFeed" accept="image/*,video/*" hidden>
+<div class="upload-placeholder" id="uploadPlaceholder" data-i18n="perfil.upload_feed_placeholder">
+  Arraste uma mídia ou clique para selecionar
+</div>
+
+<div id="previewContainer"></div>
+</div>
+
+<div class="upload-progress hidden" id="uploadProgressBox">
+<div class="progress-bar">
+<div class="progress-fill" id="uploadProgress"></div>
+</div>
+<span id="progressText">0%</span>
+</div>
+<button id="btnEnviarFeed" class="btn-principal" data-i18n="perfil.upload_feed_btn">
+  Publicar no Feed
+</button>
+</div>
+</div>
+
+<!-- POPUP UPLOAD PREMIUM -->
+<div id="popupUploadPremium" class="velvet-modal hidden">
+<div class="velvet-backdrop" id="premiumBackdrop"></div>
+<div class="velvet-box">
+<button class="velvet-close" id="premiumClose">×</button>
+<h2 class="velvet-title" data-i18n="perfil.upload_premium_titulo">Postar no Premium</h2>
+
+<textarea id="premiumTexto" data-i18n-placeholder="perfil.upload_premium_texto_placeholder"
+  placeholder="Escreva algo sobre esta mídia..."
+  style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-bottom:10px;">
+</textarea>
+
+<input type="number" id="premiumPreco" data-i18n-placeholder="perfil.upload_premium_preco_placeholder"
+  placeholder="Preço da mídia (R$)"
+  style="width:100%;padding:10px;border-radius:8px;border:1px solid #ddd;margin-bottom:15px;">
+
+<div class="upload-area" id="uploadAreaPremium">
+<input type="file" id="filePremium" accept="image/*,video/*" multiple hidden>
+
+<div class="upload-placeholder" data-i18n="perfil.upload_premium_placeholder">
+  Clique para selecionar mídia
+</div>
+<div id="previewPremium"></div>
+</div>
+
+<div class="upload-progress hidden" id="premiumProgressBox">
+<div class="progress-bar">
+<div class="progress-fill" id="premiumProgress"></div>
+</div>
+<span id="premiumProgressText">0%</span>
+</div>
+
+<button id="btnEnviarPremium" class="btn-principal" data-i18n="perfil.upload_premium_btn">
+  Publicar Premium
+</button>
+</div>
+</div>
+
+<div id="footerSubMenu"></div>
+
+<div id="footerModelo">
+<button class="footer-btn" id="btnAvatar">
+  <img
+    id="footerAvatar"
+    class="footer-avatar"
+    src="/assets/avatar.png"
+    alt="Avatar"
+  >
+</button>
+
+  <button class="footer-btn" id="btnPost">
+    <img src="/assets/post.png">
+  </button>
+
+  <button class="footer-btn" id="btnConteudos">
+    <img src="/assets/conteudos.png">
+  </button>
+
+  <button class="footer-btn" id="btnVip">
+    <img src="/assets/vip.png">
+  </button>
+
+  <button class="footer-btn" id="btnLinks">
+    <img src="/assets/links.png">
+  </button>
+
+</div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/conteudos.js"></script>
+  <script src="/js/footer.js"></script>
+  <script src="/js/footer-shared.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,11 @@
+{
+  "watch": ["server.js", "routes", "sockets"],
+  "ignore": [
+    "uploads/*",
+    "uploads/**",
+    "*.json",
+    "unread.json",
+    "subscriptions.json",
+    "modelos.json"
+  ]
+}

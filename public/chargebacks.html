@@ -1,0 +1,49 @@
+<section class="relatorio-container">
+
+  <h1 class="titulo-relatorio">Relatório de Chargebacks</h1>
+
+  <!-- CARDS -->
+  <div class="cards-grid">
+    <div class="card danger">
+      <span>Total de Chargebacks</span>
+      <strong id="cbTotal">0</strong>
+    </div>
+
+    <div class="card danger">
+      <span>Valor Envolvido</span>
+      <strong id="cbValor">$0.00</strong>
+    </div>
+
+    <div class="card warning">
+      <span>Chargebacks LOST</span>
+      <strong id="cbLost">0</strong>
+    </div>
+
+    <div class="card success">
+      <span>Chargebacks WON</span>
+      <strong id="cbWon">0</strong>
+    </div>
+  </div>
+
+  <!-- TABELA -->
+  <div class="tabela-box">
+    <table>
+      <thead>
+        <tr>
+          <th>Código</th>
+          <th>Tipo</th>
+          <th>Cliente</th>
+          <th>Modelo</th>
+          <th>Valor</th>
+          <th>Resultado</th>
+          <th>Origem</th>
+          <th>Data</th>
+        </tr>
+      </thead>
+      <tbody id="tabelaChargebacks">
+        <!-- JS injeta aqui -->
+      </tbody>
+    </table>
+  </div>
+
+</section>

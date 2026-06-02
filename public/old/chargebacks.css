@@ -1,0 +1,74 @@
+.relatorio-container {
+  padding: 30px;
+}
+
+.titulo-relatorio {
+  font-size: 26px;
+  font-weight: 600;
+  color: #7B2CFF;
+  margin-bottom: 25px;
+}
+
+.cards-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.card span {
+  font-size: 13px;
+  color: #777;
+}
+
+.card strong {
+  font-size: 26px;
+  display: block;
+  margin-top: 6px;
+}
+
+.card.danger strong { color: #E53935; }
+.card.warning strong { color: #FB8C00; }
+.card.success strong { color: #43A047; }
+
+.tabela-box {
+  background: #fff;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+th, td {
+  padding: 14px;
+  font-size: 14px;
+  text-align: left;
+}
+
+thead {
+  background: #F5F3FF;
+}
+
+th {
+  color: #7B2CFF;
+  font-weight: 600;
+}
+
+tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+tbody tr:hover {
+  background: #FAF9FF;
+}

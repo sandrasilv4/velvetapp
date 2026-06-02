@@ -1,0 +1,459 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-primary: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+
+  /* Pesos */
+  --fw-regular: 400;
+  --fw-medium: 500;
+  --fw-semibold: 600;
+  --fw-bold: 700;
+
+  /* Tamanhos */
+  --fs-h1: 44px;
+  --fs-h2: 32px;
+  --fs-body: 16px;
+}
+
+/* =====================================================
+   🔥 PAINEL = CONTATO (MATCH 1:1)
+===================================================== */
+
+/* fundo igual contato */
+body.role-modelo {
+  background: linear-gradient(
+    180deg,
+    #f7f7fc 0%,
+    #ededf4 100%
+  );
+}
+
+/* centralização igual <main class="container"> */
+.container-dados {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 0 20px;
+
+  /* remove visual antigo */
+  background: none !important;
+  box-shadow: none !important;
+  border: none !important;
+}
+
+/* CARD igual .form do contato */
+.container-dados form {
+  background: #fff;
+  padding: 28px;
+  border-radius: 16px;
+
+  backdrop-filter: blur(12px);
+  box-shadow: 0 10px 30px rgba(0,0,0,0.4);
+}
+
+/* título igual */
+.container-dados h1 {
+  text-align: center;
+  color: #7B2CFF;
+  font-size: 32px;
+  font-weight: 600;
+  margin-bottom: 8px;
+}
+
+/* subtítulo igual */
+.container-dados .sub {
+  text-align: center;
+  color: #1E1E26;
+  font-size: 16px;
+  margin-bottom: 30px;
+}
+
+/* labels */
+.container-dados label {
+  font-size: 14px;
+  color: #1E1E26;
+}
+
+/* inputs iguais contato */
+.container-dados input,
+.container-dados textarea {
+  width: 95%;
+  padding: 12px 14px;
+  margin-top: 6px;
+
+  font-size: 14px;
+  color: #1E1E26;
+
+  border-radius: 10px;
+  border: 1.5px solid rgba(124, 58, 237, 0.5);
+  background: #fff;
+}
+
+/* foco */
+.container-dados input:focus,
+.container-dados textarea:focus {
+  border-color: #7c3aed;
+  box-shadow: 0 0 0 2px rgba(124, 58, 237, 0.25);
+}
+
+/* botão igual */
+.container-dados button {
+  width: 100%;
+  margin-top: 10px;
+  padding: 14px;
+
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+
+  background: linear-gradient(135deg, #7B2CFF, #9E6BFF);
+  color: #fff;
+
+  font-weight: 600;
+  font-size: 15px;
+}
+
+
+/* STATUS */
+.status {
+  margin-top: 14px;
+  font-size: 13px;
+  text-align: center;
+}
+
+
+.footer {
+  margin-top: 60px;
+  padding: 20px;
+  background:none;
+  color: #aaa;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #C9C9C9;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #C9C9C9;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #C9C9C9;
+}
+
+
+.container-dados .label {
+  margin-top: 10px;
+  font-size: 13px;          /* 🔥 pequeno igual labels */
+  color: #1E1E26;
+  opacity: 0.75;            /* mais discreto */
+  line-height: 1.4;
+}
+
+/* =====================================================
+   🔒 FIX DEFINITIVO DE FONTE – PAINEL
+===================================================== */
+
+/* força fonte base da aplicação */
+html, body {
+  font-family: "Poppins", system-ui, -apple-system,
+               BlinkMacSystemFont, "Segoe UI",
+               Roboto, Arial, sans-serif !important;
+}
+
+/* garante herança correta */
+* {
+  font-family: inherit;
+}
+
+
+.avatar-cliente {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.avatar-cliente img {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid #7B2CFF;
+  background: #f2eaff;
+}
+
+.btn-avatar {
+  background: linear-gradient(135deg, #7B2CFF, #9b6dff);
+  color: #fff !important;
+  padding: 8px 18px;
+  border-radius: 20px;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .25s ease;
+  box-shadow: 0 4px 10px rgba(123,44,255,.25);
+}
+
+.btn-avatar:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 6px 14px rgba(123,44,255,.35);
+}
+
+/* ===============================
+ LINKS DO MEU PERFIL — VELVET
+=============================== */
+
+.container-dados h2 {
+  text-align: center !important;
+  margin-top: 30px;
+  font-size: 20px;
+  font-weight: 600;
+  color:#7B2CFF;
+}
+.copy-field {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 12px;
+}
+
+.copy-field input {
+  flex: 1;
+  padding: 12px 14px;
+  font-size: 12px;
+  color: #111;
+  background: #f7f7f7;
+  border: 1px solid #e3e3e3;
+  border-radius: 10px;
+  outline: none;
+}
+
+/* botão copiar */
+.copy-field button {
+  padding: 8px 12px !important;   
+  font-size: 12px !important;
+  border-radius: 8px !important;
+  font-weight: 500;
+  background: linear-gradient(135deg, #7B2CFF, #9b6dff);
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.copy-field button:hover {
+  background: #9b6dff;
+  transform: translateY(-1px);
+}
+
+.copy-field button:active {
+  transform: scale(0.96);
+}
+
+/* labels */
+.container-dados label {
+  display: block;
+  text-align: center;
+  font-size: 14px;
+  font-weight: 500;
+  color: #444;
+  margin-bottom: 6px;
+}
+
+/* mobile first */
+@media (max-width: 600px) {
+  .copy-field {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  @media (max-width: 600px) {
+  .copy-field button {
+    padding: 10px;
+    font-size: 12px;
+  }
+}
+}
+
+
+.copy-field button {
+  width: auto !important;        /* 🔑 CHAVE */
+  min-width: unset !important;
+  padding: 8px 12px !important;
+  font-size: 12px !important;
+  border-radius: 8px !important;
+}
+
+.copy-field {
+  display: flex;
+  align-items: center;
+}
+
+/* ===============================
+ FIX GLOBAL DE FONTE — PAINEL
+=============================== */
+
+/* texto padrão do painel */
+.container-dados {
+  font-size: 15px;
+}
+
+
+/* ===============================
+ DANGER ZONE
+=============================== */
+
+.danger-zone {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.btn-danger {
+  background: none;
+  color: #d93025;
+  border: 1.5px solid #d93025;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 12px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn-danger:hover {
+  background: #d93025;
+  color: #fff;
+}
+
+/* ===============================
+ MODAL EXCLUIR CONTA
+=============================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.modal-box {
+  position: relative;
+  max-width: 420px;
+  margin: 15vh auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.modal-box h3 {
+  color: #d93025;
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-cancelar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+.btn-confirmar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #d93025;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===============================
+ CONFIRMAÇÃO POR SENHA
+=============================== */
+
+.label-danger {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #d93025;
+}
+
+.input-danger {
+  display: block;
+  width: 100%;
+  max-width: 320px;      /* 🔑 limita largura */
+  margin: 0 auto;        /* 🔑 centraliza */
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #d93025;
+  font-size: 13px;
+}
+
+.input-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(217,48,37,.25);
+}
+
+.erro-danger {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #d93025;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================================
+   SEPARADOR
+============================================ */
+.separator {
+    border: none;
+    border-top: 1px solid #aaa8a8;
+    margin: 30px 0;
+}
+
+
+
+
+
+

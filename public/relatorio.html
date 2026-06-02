@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus Ganhos</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/relatorio.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+
+  <div id="header-container"></div>
+
+   <section class="area-card">
+    <button
+      type="button"
+      class="btn-voltar"
+      onclick="history.back()"
+      data-i18n-title="relatorio.voltar">
+      <img src="/assets/voltar.png" alt="Voltar" data-i18n-alt="relatorio.voltar">
+    </button>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="ganhos" data-i18n="relatorio.tab_ganhos">Ganhos</button>
+      <button class="tab-btn" data-tab="pagamentos" data-i18n="relatorio.tab_pagamentos">Pagamentos</button>
+      <button class="tab-btn" data-tab="transacoes" data-i18n="relatorio.tab_transacoes">Transações</button>
+      <button class="tab-btn" data-tab="dados-bancarios" data-i18n="relatorio.tab_dados_bancarios">Dados Bancários</button>
+    </div>
+
+    <section id="tab-ganhos" class="tab-content active">
+      <h3 class="page-title" data-i18n="relatorio.titulo_ganhos">Meus Ganhos</h3>
+
+      <!-- Bloco: Hoje -->
+      <div class="cards-lista">
+        <div class="card highlight">
+          <span data-i18n="relatorio.hoje_midias">Hoje · Mídias</span>
+          <strong id="hojeMidias">R$0.00</strong>
+        </div>
+        <div class="card">
+          <span data-i18n="relatorio.hoje_assinaturas">Hoje · Assinaturas</span>
+          <strong id="hojeAssinaturas">R$0.00</strong>
+        </div>
+        <div class="card highlight">
+          <span data-i18n="relatorio.assinantes_hoje">Assinantes · Hoje</span>
+          <strong id="assinantesHoje">0</strong>
+        </div>
+      </div>
+
+      <hr class="separator">
+
+      <!-- Bloco: Mês atual -->
+      <div class="cards-lista">
+        <div class="card">
+          <span data-i18n="relatorio.mes_midias">Mês atual · Mídias</span>
+          <strong id="mesMidias">R$0.00</strong>
+        </div>
+        <div class="card highlight">
+          <span data-i18n="relatorio.mes_assinaturas">Mês atual · Assinaturas</span>
+          <strong id="mesAssinaturas">R$0.00</strong>
+        </div>
+        <div class="card">
+          <span data-i18n="relatorio.mes_assinantes">Mês Atual · Assinantes</span>
+          <strong id="totalAssinantes">0</strong>
+        </div>
+        <div class="card highlight">
+          <span data-i18n="relatorio.total_mes_atual">Total do mês atual</span>
+          <strong id="totalMesAtual">R$0.00</strong>
+        </div>
+
+        <div class="card">
+          <span data-i18n="relatorio.total_mes_anterior">Total do mês Anterior</span>
+          <strong id="totalMesAnterior">R$0.00</strong>
+        </div>
+      </div>
+
+       <hr class="separator">
+
+      <!-- Bloco: Total anual -->
+      <div class="cards-lista">
+        <div class="card highlight">
+          <span data-i18n="relatorio.total_ano">Total de 2026</span>
+          <strong id="acumuladoAnterior">R$0.00</strong>
+        </div>
+      </div>
+
+    </section>
+
+    <section id="tab-pagamentos" class="tab-content">
+      <h3 class="page-title" data-i18n="relatorio.titulo_pagamentos">Pagamentos</h3>
+      <div id="listaPagamentos" data-i18n="relatorio.carregando_pagamentos">Carregando pagamentos...</div>
+    </section>
+
+    <section id="tab-transacoes" class="tab-content">
+      <h3 class="page-title" data-i18n="relatorio.titulo_transacoes">Transações</h3>
+      <div id="listaTransacoes" data-i18n="relatorio.carregando_transacoes">Carregando transações...</div>
+      <div id="paginacaoTransacoes" class="paginacao"></div>
+    </section>
+
+    <div id="tab-dados-bancarios" class="tab-content">
+      <h3 class="page-title" data-i18n="relatorio.titulo_dados_bancarios">Dados Bancários para Pagamento</h3>
+      <div id="statusDadosBancarios" class="status-box" style="display:none;"></div>
+
+      <form id="formDadosBancarios" class="cardbank">
+
+        <div class="linha">
+          <strong data-i18n="relatorio.tipo_recebimento">Tipo de recebimento</strong>
+        </div>
+
+        <select id="tipoRecebimento" required>
+          <option value="" data-i18n="relatorio.selecione">Selecione</option>
+          <option value="pix" data-i18n="relatorio.pix">PIX</option>
+          <option value="transferencia" data-i18n="relatorio.transferencia_bancaria">Transferência bancária</option>
+        </select>
+
+        <div id="pixCampos" style="display:none;">
+          <label for="pixTipo" data-i18n="relatorio.pix_tipo">Tipo de chave PIX</label>
+          <select id="pixTipo">
+            <option value="cpf" data-i18n="relatorio.pix_cpf">CPF</option>
+            <option value="email" data-i18n="relatorio.pix_email">E-mail</option>
+            <option value="telefone" data-i18n="relatorio.pix_telefone">Telefone</option>
+            <option value="aleatoria" data-i18n="relatorio.pix_aleatoria">Chave aleatória</option>
+          </select>
+
+          <label for="pixChave" data-i18n="relatorio.pix_chave">Chave PIX</label>
+          <input type="text" id="pixChave">
+        </div>
+
+        <div id="transferenciaCampos" style="display:none;">
+          <label for="banco" data-i18n="relatorio.banco">Banco</label>
+          <input type="text" id="banco">
+
+          <label for="agencia" data-i18n="relatorio.agencia">Agência</label>
+          <input type="text" id="agencia">
+
+          <label for="conta" data-i18n="relatorio.conta">Conta</label>
+          <input type="text" id="conta">
+
+          <label for="contaTipo" data-i18n="relatorio.tipo_conta">Tipo de conta</label>
+          <select id="contaTipo">
+            <option value="corrente" data-i18n="relatorio.conta_corrente">Corrente</option>
+            <option value="poupanca" data-i18n="relatorio.conta_poupanca">Poupança</option>
+          </select>
+        </div>
+
+        <label for="titularNome" data-i18n="relatorio.titular_nome">Nome do titular</label>
+        <input type="text" id="titularNome" required>
+
+        <label for="titularDocumento" data-i18n="relatorio.titular_documento">Documento do titular (CPF)</label>
+        <input type="text" id="titularDocumento" required>
+
+        <div class="confirmacao-box">
+          <label class="confirmacao-label">
+            <input type="checkbox" id="confirmarTitular">
+            <span data-i18n="relatorio.confirmar_titular">Confirmo que sou titular da conta informada</span>
+          </label>
+        </div>
+
+        <div id="justificativaBox" style="display:none;">
+          <label for="justificativa" data-i18n="relatorio.justificativa_alteracao">Justificativa da alteração</label>
+          <textarea id="justificativa"></textarea>
+        </div>
+
+        <div class="acoes-form">
+          <button type="submit" class="btn-principal" data-i18n="relatorio.salvar_dados">Salvar dados</button>
+          <button type="button" id="btnAlterarDados" class="btn-principal" data-i18n="relatorio.alterar_dados">
+            Alterar dados
+          </button>
+        </div>
+
+      </form>
+    </div>
+  </section>
+  
+  <div id="footer-container"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="/js/relatorio.modelo.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/footer-shared.js"></script>
+
+</body>
+</html>

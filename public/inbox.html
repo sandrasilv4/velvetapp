@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#0f0f14">
+   <title>Conversas</title>
+  <link rel="apple-touch-icon" href="/assets/icon-192.png">
+  <link rel="manifest" href="/manifest.json">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/inbox.css">
+
+  <script src="/i18n.js"></script> 
+</head>
+
+<body>
+ <div id="header-container"></div>
+
+ <section class="area-card">
+    <button type="button" class="btn-voltar" id="btnVoltarPerfil">
+      <img src="/assets/voltar.png" alt="Voltar" data-i18n-alt="inbox.back">
+    </button>
+
+    <a href="/instalar.html" style="
+      display:flex;align-items:center;justify-content:space-between;
+      background:linear-gradient(135deg,#7B2CFF,#9B5CFF);
+      color:#fff;text-decoration:none;
+      padding:10px 16px;font-size:13px;font-weight:600;gap:10px;
+      border-radius:14px;margin:8px 0 4px;
+    ">
+      <span>📲 Instalar app Velvet</span>
+      <span style="background:rgba(255,255,255,0.2);padding:5px 12px;border-radius:20px;font-size:12px;">iOS & Android</span>
+    </a>
+
+ <h3 data-i18n="inbox.title">Conversas</h3>
+
+  <div class="content">
+    <main id="inbox" class="inbox">
+      <!-- ITEM DO CHAT -->
+      <!--
+      Estados esperados (JS controla classes/labels):
+
+      1) Cliente recebeu mensagem:
+         <span class="status status-sent">✓</span>
+
+      2) Cliente leu e não respondeu:
+         <span class="status status-read">✓✓</span>
+
+      3) Modelo entrou no chat, leu e não respondeu:
+         <span class="status status-reply">Necessita de resposta</span>
+
+      4) Modelo ainda não visualizou:
+         <span class="status status-unseen">Não visto</span>
+      -->
+
+      <!-- EXEMPLO ESTRUTURAL -->
+      <!--
+      <div class="chat-item">
+        <div class="avatar">
+          <img src="avatar.jpg" />
+        </div>
+
+        <div class="chat-body">
+          <div class="chat-top">
+            <span class="chat-name">Cliente</span>
+            <span class="chat-time">14:32</span>
+          </div>
+
+          <div class="chat-bottom">
+            <span class="chat-last">Última mensagem aqui…</span>
+
+            <div class="chat-status">
+              <span class="status status-read">✓✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+    </main>
+    
+  </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/inbox.js" defer></script>
+
+</body>
+</html>

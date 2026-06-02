@@ -1,0 +1,287 @@
+/* =========================
+   RESET
+========================= */
+* {
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body {
+  margin: 0;
+  background: #f6f7fb;
+}
+
+.hidden {
+  display: none !important;
+  pointer-events: none !important;
+}
+
+/* =========================
+   CENTRALIZA A PÁGINA
+========================= */
+.page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* =========================
+   LAYOUT PRINCIPAL
+========================= */
+.landing {
+  width: 1400px;
+  max-width: 95%;
+  display: flex;
+  gap: 60px;
+}
+
+/* =========================
+   CAPA
+========================= */
+.landing-cover {
+  flex: 1;
+  overflow: hidden;
+  border-radius: 24px;
+}
+
+.landing-cover img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* =========================
+   LOGIN CARD
+========================= */
+.landing-login {
+  width: 420px;
+  background: #dbcafa;
+  padding: 48px 40px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  border-radius: 24px;
+}
+
+/* LOGO */
+.logo {
+  width: 240px;
+  margin: 0 auto 32px;
+}
+
+/* =========================
+   BOTÕES
+========================= */
+.login-box {
+  width: 100%;
+}
+
+.btn {
+  width: 100%;
+  padding: 14px 18px;
+  border-radius: 12px;
+  background: #ffffff;
+  color: #7B2CFF;
+  border: none;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  margin-bottom: 16px;
+  transition: all 0.25s ease;
+}
+
+.btn:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(37,99,235,0.15);
+}
+
+/* =========================
+   FOOTER LINKS
+========================= */
+.footer-links,
+.footer-linksC {
+  margin-top: 28px;
+  text-align: center;
+}
+
+.footer-links a,
+.footer-linksC a {
+  font-size: 13px;
+  color: #7B2CFF;
+  text-decoration: none;
+  margin: 0 8px;
+}
+
+.footer-links a:hover,
+.footer-linksC a:hover {
+  text-decoration: underline;
+}
+
+/* =========================
+   MODAL BASE
+========================= */
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+  backdrop-filter: blur(4px);
+}
+
+/* CAIXA */
+.modal-box {
+  position: relative;
+  width: 360px;
+  max-width: 90%;
+  margin: auto;
+  top: 50%;
+  transform: translateY(-50%);
+  background: #ffffff;
+  border-radius: 18px;
+  padding: 28px;
+  box-shadow: 0 20px 60px rgba(0,0,0,0.25);
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  animation: modalIn 0.25s ease;
+  text-align: center;
+}
+
+.modal-box h2 {
+  margin: 0 0 6px;
+  color: #7B2CFF;
+}
+
+/* INPUTS */
+.modal-box input,
+.modal-box select {
+  padding: 12px 14px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  font-size: 15px;
+}
+
+/* BOTÃO PRINCIPAL */
+.modal-box .btn-primary {
+  background: linear-gradient(135deg, #7B2CFF, #9B5CFF);
+  color: white;
+  border: none;
+  padding: 12px;
+  border-radius: 14px;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+/* FECHAR */
+.modal-close {
+  position: absolute;
+  top: 12px;
+  right: 12px;
+  background: none;
+  border: none;
+  font-size: 20px;
+  cursor: pointer;
+  opacity: 0.6;
+}
+
+/* SWITCH LOGIN */
+.modal-switch {
+  font-size: 14px;
+  opacity: 0.8;
+}
+
+.modal-switch span {
+  color: #7B2CFF;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+/* =========================
+   MODAL LEGAL
+========================= */
+.legal-modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 99999;
+}
+
+.legal-modal.hidden {
+  display: none;
+}
+
+.legal-box {
+  width: 90%;
+  max-width: 900px;
+  height: 80%;
+  background: #ffffff;
+  border-radius: 18px;
+  position: relative;
+  overflow: hidden;
+}
+
+.legal-box iframe {
+  width: 100%;
+  height: 100%;
+  border: none;
+}
+
+.legal-close {
+  position: absolute;
+  top: 10px;
+  right: 14px;
+  font-size: 26px;
+  background: none;
+  border: none;
+  cursor: pointer;
+}
+
+/* =========================
+   ANIMAÇÃO
+========================= */
+@keyframes modalIn {
+  from {
+    opacity: 0;
+    transform: translateY(-45%) scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(-50%) scale(1);
+  }
+}
+
+/* =========================
+   RESPONSIVO
+========================= */
+@media (max-width: 900px) {
+  .landing {
+    flex-direction: column;
+    gap: 0;
+  }
+
+  .landing-cover {
+    display: none;
+  }
+
+  .landing-login {
+    width: 100%;
+    padding: 40px 24px;
+  }
+}
+
+/* =========================
+   APP / PWA
+========================= */
+body.is-app {
+  overscroll-behavior: none;
+}

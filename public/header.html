@@ -1,0 +1,109 @@
+<header class="app-header">
+  <div class="header-inner">
+    <img
+      src="assets/velvet.png"
+      alt="Velvet"
+      class="velvet-logo"
+    >
+
+    <a
+      href="/perfil.html"
+      id="linkPerfil"
+      title="Perfil"
+      data-i18n-title="header.profile"
+    >
+      <img
+        id="headerAvatar"
+        src="assets/avatar.png"
+        width="30"
+        height="30"
+        alt="Perfil"
+        data-i18n-alt="header.profile"
+        class="header-avatar"
+      >
+    </a>
+
+    <a
+      href="/feed.html"
+      title="Feed"
+      data-i18n-title="header.feed"
+    >
+      <img
+        src="assets/feed.png"
+        width="30"
+        height="30"
+        alt="Feed"
+        data-i18n-alt="header.feed"
+      >
+    </a>
+
+    <a
+      href="/areaUsuario.html"
+      title="Área de Usuário"
+      data-i18n-title="header.userArea"
+    >
+      <img
+        src="assets/perfil.png"
+        width="30"
+        height="30"
+        alt="Área de Usuário"
+        data-i18n-alt="header.userArea"
+      >
+    </a>
+
+    <a href="#"
+  onclick="irParaInbox()"
+  title="Chat"
+  data-i18n-title="header.chat"
+  style="position: relative;"
+>
+  <img
+    src="assets/chat.png"
+    width="30"
+    height="30"
+    alt="Chat"
+    data-i18n-alt="header.chat"
+  >
+  <span id="badgeUnread" class="badge-unread hidden">0</span>
+</a>
+
+    <a
+      href="#"
+      id="btnNotificacoes"
+      title="Ativar/desativar notificações"
+      data-i18n-title="header.notifications"
+    >
+      <img
+        id="iconNotificacoes"
+        src="assets/notoff.png"
+        width="30"
+        height="30"
+        alt="Notificações"
+        data-i18n-alt="header.notifications"
+      >
+    </a>
+
+    <div class="language-switcher">
+      <select id="languageSwitcher" aria-label="Selecionar idioma">
+        <option value="pt">PT</option>
+        <option value="en">EN</option>
+        <option value="es">ES</option>
+      </select>
+    </div>
+
+    <a
+      href="#"
+      id="btnLogout"
+      title="Sair"
+      data-i18n-title="header.logout"
+    >
+      <img
+        src="assets/logout.png"
+        width="30"
+        height="30"
+        alt="Sair"
+        data-i18n-alt="header.logout"
+      >
+    </a>
+  </div>
+</header>

@@ -1,0 +1,361 @@
+.lista-transacoes {
+  margin-top: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  font-size: 14px;
+  color: #333;
+}
+
+.transacao-card {
+  background: #f1f1f1;
+  border-radius: 16px;
+  padding: 16px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.transacao-info {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.transacao-tipo {
+  font-weight: 600;
+  color: #1E1E26;
+}
+
+.transacao-data {
+  font-size: 13px;
+  color: #777;
+}
+
+.transacao-valor {
+  font-weight: 700;
+  color: #7B2CFF;
+}
+
+.transacao-status {
+  font-size: 13px;
+  padding: 4px 8px;
+  border-radius: 8px;
+}
+
+.status-pago {
+  background: #E6F8ED;
+  color: #7B2CFF;
+}
+
+.btn-reclamar {
+  margin-top: 8px;
+  background: transparent;
+  border: 1px solid #7B2CFF;
+  color: #7B2CFF;
+  padding: 6px 12px;
+  border-radius: 10px;
+  cursor: pointer;
+  font-size: 13px;
+}
+
+
+.area-card h3 {
+  font-size: 22px;
+  margin-bottom: 10px;
+  text-align: center;
+  color: #7B2CFF;
+}
+
+/* ===============================
+   BOTÃO VOLTAR
+================================ */
+.btn-voltar {
+  position:relative;
+  margin-top: 30px;
+  left: 30px;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-voltar img {
+  width: 30px;
+}
+
+.btn-voltar:hover {
+  transform: scale(1.08);
+}
+
+.transacoes-descricao {
+  margin-top: 8px;
+  margin-bottom: 20px;
+  font-size: 14px;
+  color: #6f6f6f;
+  text-align: center;
+}
+
+/* ===============================
+   FILTROS - ESTILO VELVET
+================================ */
+
+.filtros {
+  display: flex;
+  gap: 12px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+.filtros select {
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+
+  padding: 10px 36px 10px 14px;
+  border-radius: 12px;
+  border: 1px solid #E2D8FF;
+
+  background: #F8F5FF;
+  color: #1E1E26;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: start;
+
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  background-image: url("data:image/svg+xml,%3Csvg fill='%237B2CFF' height='20' viewBox='0 0 24 24' width='20' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M7 10l5 5 5-5z'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-position: right 10px center;
+  background-size: 18px;
+}
+
+.filtros select:hover {
+  border-color: #7B2CFF;
+  background-color: #EFE8FF;
+}
+
+.filtros select:focus {
+  outline: none;
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.15);
+}
+
+@media (max-width: 768px) {
+  .filtros {
+    flex-direction: column;
+  }
+
+  .filtros select {
+    width: 100%;
+  }
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  margin-top: 30px;
+}
+
+.paginacao button {
+  width: 38px;
+  height: 38px;
+  border-radius: 10px;
+  border: 1px solid #7B2CFF;
+  background: white;
+  color: #7B2CFF;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.paginacao button:hover {
+  background: #EFE8FF;
+}
+
+.paginacao button.ativa {
+  background: #7B2CFF;
+  color: white;
+}
+
+.erro-transacoes {
+  text-align: center;
+  padding: 40px 20px;
+  color: #6f6f6f;
+  font-size: 15px;
+  line-height: 1.6;
+}
+
+.tabs {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-bottom: 25px;
+}
+
+.tab-btn {
+  padding: 10px 22px;
+  border-radius: 12px;
+  border: 1px solid #7B2CFF;
+  background: white;
+  color: #7B2CFF;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.tab-btn.ativa {
+  background: #7B2CFF;
+  color: white;
+}
+
+.tab-content {
+  display: none;
+}
+
+.tab-content.ativa {
+  display: block;
+}
+
+/* ===============================
+   SUBSCRIÇÕES VIP
+================================ */
+
+.sub-vip-card {
+  background: #F8F5FF;
+  border: 1px solid #E2D8FF;
+  border-radius: 18px;
+  padding: 18px;
+  box-shadow: 0 8px 25px rgba(123, 44, 255, 0.08);
+  display: flex;
+  justify-content: space-around;
+  gap: 20px;
+  transition: 0.2s ease;
+}
+
+.sub-vip-card:hover {
+  transform: translateY(-2px);
+}
+
+.sub-vip-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  font-size: 14px;
+}
+
+.sub-vip-info strong {
+  color: #1E1E26;
+}
+
+/* ===============================
+   BADGES
+================================ */
+
+.badge-status {
+  font-size: 16px;
+  padding: 5px 10px;
+  border-radius: 20px;
+  font-weight: 600;
+  display: inline-block;
+  margin-bottom: 8px;
+}
+
+.badge-ativa {
+  background: #E6F8ED;
+  color: #1E1E26;
+}
+
+.badge-expirada {
+  background: #FFEAEA;
+  color: #C62828;
+}
+
+/* ===============================
+   BOTÕES VIP
+================================ */
+
+.btn-cancelar {
+  background:rgba(123, 44, 255, 0.08);
+  color: #1E1E26;
+  border: 1px solid #7B2CFF;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-cancelar:hover {
+  background: #955df7;
+  color: white;
+}
+
+.btn-renovar {
+ background: rgba(123, 44, 255, 0.08);
+  color: #1E1E26;
+  border: 1px solid #7B2CFF;
+  padding: 8px 16px;
+  border-radius: 12px;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-renovar:hover {
+  opacity: 0.9;
+}
+
+.msg-feedback {
+  padding: 12px 18px;
+  border-radius: 12px;
+  margin-bottom: 15px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.msg-feedback.sucesso {
+  background: #E6F8ED;
+  color: #1E1E26;
+}
+
+.msg-feedback.erro {
+  background: #FFEAEA;
+  color: #C62828;
+}
+
+
+/* ===============================
+   FOOTER
+================================ */
+.footer {
+max-width: 900px;
+ margin: 40px auto 30px;
+text-align: center;
+opacity: .6;
+font-size: 10px;
+ margin-bottom: 8px;
+}
+
+.footer-links {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 8px;
+}
+
+.footer-links a:hover {
+  color: #9e6bff;
+}
+.footer-copy {
+  font-size: 11px;
+}

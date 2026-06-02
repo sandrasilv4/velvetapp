@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>Meu Perfil</title>
+  <meta name="description" content="Agora pode se sentir mais proximo da sua influencer favorita!">
+  <meta property="og:title" content="Biografia e Midias: Mais sobre mim!">
+  <meta property="og:description" content="Aceda a biografia e midias desta influencer.">
+  <meta property="og:type" content="profile">
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #fff;
+      color: #0d0d0d;
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    body::before {
+      content: '';
+      position: fixed;
+      inset: 0;
+      background: radial-gradient(ellipse at 50% 0%, rgba(123,44,255,0.25) 0%, transparent 70%);
+      pointer-events: none;
+    }
+
+    .card {
+      text-align: center;
+      padding: 40px 30px;
+      max-width: 380px;
+      width: 90%;
+      animation: fadeIn .6s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .avatar-wrap {
+      position: relative;
+      width: 110px;
+      height: 110px;
+      margin: 0 auto 20px;
+    }
+
+    .avatar-wrap::before {
+      content: '';
+      position: absolute;
+      inset: -3px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #7B2CFF, #ff6ec7);
+      z-index: 0;
+    }
+
+    .avatar-wrap img {
+      width: 100%;
+      height: 100%;
+      border-radius: 50%;
+      object-fit: cover;
+      position: relative;
+      z-index: 1;
+      border: 3px solid #0d0d0d;
+    }
+
+    .nome {
+      font-size: 22px;
+      font-weight: 600;
+      margin-bottom: 8px;
+    }
+
+    .bio {
+      font-size: 13.5px;
+      color: #0d0d0d;
+      line-height: 1.6;
+      margin-bottom: 10px;
+      min-height: 40px;
+    }
+
+    .local {
+      font-size: 12px;
+      color: #888;
+      margin-bottom: 28px;
+    }
+
+    .progress-wrap {
+      background: rgba(255,255,255,0.1);
+      border-radius: 99px;
+      height: 4px;
+      margin-bottom: 14px;
+      overflow: hidden;
+    }
+
+    .progress-bar {
+      height: 100%;
+      width: 0%;
+      background: linear-gradient(90deg, #7B2CFF, #ff6ec7);
+      border-radius: 99px;
+      transition: width 0.1s linear;
+    }
+
+    .redirect-msg {
+      font-size: 12px;
+      color: #7B2CFF;
+      margin-bottom: 24px;
+    }
+
+    .redirect-msg span {
+      color: #7B2CFF;
+      font-weight: 600;
+    }
+
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #7B2CFF, #ff6ec7);
+      color: #fff;
+      font-family: 'Poppins', sans-serif;
+      font-size: 14px;
+      font-weight: 600;
+      padding: 14px 36px;
+      border-radius: 99px;
+      border: none;
+      cursor: pointer;
+      text-decoration: none;
+      transition: opacity .2s, transform .2s;
+      width: 100%;
+    }
+
+    .btn:hover { opacity: .85; transform: scale(1.02); }
+
+    .loading {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .spinner {
+      width: 42px;
+      height: 42px;
+      border: 3px solid rgba(123,44,255,0.2);
+      border-top-color: #7B2CFF;
+      border-radius: 50%;
+      animation: spin .8s linear infinite;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    .loading p { font-size: 13px; color: #888; }
+
+    .erro { color: #ff6b6b; font-size: 13px; }
+  </style>
+</head>
+<body>
+
+<div class="card" id="card">
+  <div class="loading" id="loading">
+    <div class="spinner"></div>
+    <p>A carregar perfil…</p>
+  </div>
+</div>
+
+<script>
+  const API_BASE = "https://www.velvet.lat";
+  const REDIRECT_SECS = 3;
+
+  const params = new URLSearchParams(window.location.search);
+
+  const modeloId = params.get("id");
+  const src = params.get("src") || "direto";
+  const utmSource = params.get("utm_source") || src;
+  const utmMedium = params.get("utm_medium") || "social";
+  const utmCampaign = params.get("utm_campaign") || "";
+
+  function montarDestino() {
+    return `${API_BASE}/perfil.html?modelo_id=${encodeURIComponent(modeloId)}` +
+      `&src=${encodeURIComponent(src)}` +
+      `&utm_source=${encodeURIComponent(utmSource)}` +
+      `&utm_medium=${encodeURIComponent(utmMedium)}` +
+      `&utm_campaign=${encodeURIComponent(utmCampaign)}`;
+  }
+
+  async function init() {
+    const card = document.getElementById("card");
+
+    if (!modeloId) {
+      card.innerHTML = `<p class="erro">Link inválido. Nenhuma modelo especificada.</p>`;
+      return;
+    }
+
+    try {
+      const res = await fetch(`${API_BASE}/api/modelo/publico/${modeloId}`);
+
+      if (!res.ok) {
+        throw new Error("not found");
+      }
+
+      const m = await res.json();
+      renderPerfil(m);
+    } catch {
+      renderFallback();
+    }
+  }
+
+  function renderPerfil(m) {
+    const card = document.getElementById("card");
+
+    const nome = m.nome || m.nome_exibicao || "Influencer";
+    const bio = m.bio || "Bio e midias disponíveis de mim para você.";
+    const avatar = m.avatar || "https://www.velvet.lat/assets/avatar.png";
+    const local = [m.cidade, m.estado].filter(Boolean).join(" • ");
+    const destino = montarDestino();
+
+    card.innerHTML = `
+      <div class="avatar-wrap">
+        <img src="${avatar}" onerror="this.src='https://www.velvet.lat/assets/avatar.png'" alt="Avatar">
+      </div>
+
+      <div class="nome">${esc(nome)}</div>
+      <div class="bio">${esc(bio)}</div>
+
+      ${local ? `<div class="local">📍 ${esc(local)}</div>` : ""}
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="bar"></div>
+      </div>
+
+      <div class="redirect-msg">
+        A entrar em <span id="count">${REDIRECT_SECS}</span>s…
+      </div>
+
+      <a class="btn" href="${destino}" id="btn">Ver mais →</a>
+    `;
+
+    iniciarContagem(destino);
+  }
+
+  function renderFallback() {
+    const card = document.getElementById("card");
+    const destino = montarDestino();
+
+    card.innerHTML = `
+      <div class="nome">Conteúdo Exclusivo</div>
+      <div class="bio" style="margin-top:12px">Clica para aceder ao perfil.</div>
+      <br>
+
+      <div class="progress-wrap">
+        <div class="progress-bar" id="bar"></div>
+      </div>
+
+      <div class="redirect-msg">
+        A entrar em <span id="count">${REDIRECT_SECS}</span>s…
+      </div>
+
+      <a class="btn" href="${destino}" id="btn">Ver mais →</a>
+    `;
+
+    iniciarContagem(destino);
+  }
+
+  function iniciarContagem(destino) {
+    const total = REDIRECT_SECS * 1000;
+    const start = Date.now();
+
+    const iv = setInterval(() => {
+      const elapsed = Date.now() - start;
+      const pct = Math.min((elapsed / total) * 100, 100);
+
+      const bar = document.getElementById("bar");
+      const count = document.getElementById("count");
+
+      if (bar) {
+        bar.style.width = pct + "%";
+      }
+
+      if (count) {
+        count.textContent = Math.max(0, Math.ceil((total - elapsed) / 1000));
+      }
+
+      if (elapsed >= total) {
+        clearInterval(iv);
+        window.location.href = destino;
+      }
+    }, 50);
+  }
+
+  function esc(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;");
+  }
+
+  init();
+</script>
+
+</body>
+</html>

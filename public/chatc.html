@@ -1,0 +1,244 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, viewport-fit=cover, interactive-widget=resizes-content">
+  <title>Chat</title>
+
+  <link rel="stylesheet" href="/css/chat2.css">
+  <link rel="stylesheet" href="/css/chatmodelo.css">
+  <link rel="stylesheet" href="/css/chat.css">
+  <link rel="stylesheet" href="/css/pag.css">
+  <link rel="stylesheet" href="/css/header.css">
+  
+<script src="/i18n.js"></script>
+  <script src="https://js.stripe.com/v3/"></script>
+</head>
+
+<body class="role-cliente">
+
+  <div id="header-container"></div>
+<header class="chat-topo">
+<button type="button" class="btn-voltar" onclick="window.location.href='/inboxc.html'">
+  <img src="/assets/voltar.png" data-i18n-alt="chatc.back_alt" alt="Voltar">
+</button>
+
+  <div class="chat-cliente-info">
+    <img id="chatModeloAvatar" class="chat-avatar" src="/assets/avatar.png" data-i18n-alt="chatc.model_avatar_alt" alt="Avatar Modelo" />
+    <div class="chat-modelo-texto">
+      <div id="chatModeloNome" class="chat-nome" data-i18n="chatc.model_name_placeholder">Criadora</div>
+      <div id="chatModeloStatus" class="chat-status" data-i18n="chatc.status_loading">carregando status…</div>
+    </div>
+  </div>
+</header>
+
+<!-- ÁREA DE MENSAGENS -->
+<main id="chatBox" class="chat-box"></main>
+
+<!-- INPUT FIXO -->
+<footer class="chat-input">
+
+ <input
+    id="msgInput"
+    type="text"
+    data-i18n-placeholder="chatc.input_placeholder"
+    placeholder="Digite uma mensagem..."
+    autocomplete="off"/>
+
+      <button
+    class="btn-enviar1"
+    onclick="enviarMensagem()"
+    data-i18n-aria-label="chatc.btn_send_label"
+    aria-label="Enviar mensagem"
+  >
+    <img src="/assets/enviar.png" data-i18n-alt="chatc.btn_send_label" alt="Enviar" />
+  </button>
+
+</footer>
+
+<!-- ================= POPUPS ================= -->
+
+<div id="popupPagamentoVelvet" class="velvet-modal hidden">
+  <div class="velvet-backdrop" onclick="fecharPopupPagamento()"></div>
+
+  <div class="velvet-box">
+    <button class="velvet-close" type="button" onclick="fecharPopupPagamento()">×</button>
+
+    <h2 class="velvet-title" data-i18n="chatc.popup_unlock_title">Desbloquear mídias</h2>
+
+    <!-- ETAPA INICIAL -->
+    <div id="etapaPagamentoInicial">
+      <div class="midia-detalhes hidden">
+        <div class="midia-valores">
+          <div class="linha">
+            <span>Valor Mídia</span>
+            <span>R$ <span id="midiaValorBase">0,00</span></span>
+          </div>
+          <div class="linha desconto">
+            <span>Desconto</span>
+            <span>− R$ <span id="midiaDesconto">0,00</span></span>
+          </div>
+          <div class="linha taxa">
+            <span>Taxa de transação</span>
+            <span>R$ <span id="midiaTaxa">0,00</span></span>
+          </div>
+          <div class="linha total">
+            <span>Total</span>
+            <span>R$ <span id="midiaTotal">0,00</span></span>
+          </div>
+        </div>
+
+        <div class="midia-beneficios"></div>
+      </div>
+
+      <div id="blocoCpfTelefone">
+        <div class="campo-cpf" id="campoCpf">
+          <label for="cpfPagamento" data-i18n="chatc.label_cpf">CPF</label>
+          <input id="cpfPagamento" type="text" maxlength="14">
+        </div>
+        <div class="campo-cpf" id="campoTelefone">
+          <label for="phonePagamento" data-i18n="chatc.label_phone">Telefone</label>
+          <input id="phonePagamento" type="text" maxlength="16">
+        </div>
+      </div>
+
+      <div class="termos-pagamento">
+        <p class="termos-aviso">
+          <span data-i18n="chatc.terms_intro">Ao efetuar o pagamento, você confirma que está de acordo com os</span>
+          <a href="/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="chatc.terms_link1">Termos de Uso</a>
+          <span data-i18n="chatc.terms_and">e com a</span>
+          <a href="/policies.html" target="_blank" rel="noopener noreferrer" data-i18n="chatc.terms_link2">Política de Privacidade</a>.
+        </p>
+
+        <label class="termos-check-linha" for="aceiteTermosPagamento">
+          <input type="checkbox" id="aceiteTermosPagamento" required />
+          <span data-i18n="chatc.terms_accept">Li e aceito os Termos de Uso e a Política de Privacidade da plataforma.</span>
+        </label>
+
+        <label class="termos-check-linha" for="aceiteExecucaoImediata">
+          <input type="checkbox" id="aceiteExecucaoImediata" required />
+          <span data-i18n="chatc.terms_immediate">Declaro ciência de que o acesso à mídia ou serviço digital é imediato após o pagamento e que, com isso, posso perder o direito de arrependimento.</span>
+        </label>
+      </div>
+
+
+<button type="button" id="btnEscolherPix" class="btn-principal" onclick="mostrarMetodo('pix')" data-i18n="chatc.btn_pay_pix">
+  Pagar com Pix
+</button>
+
+      <button type="button" class="btn-principal" onclick="mostrarMetodo('cartao')" data-i18n="chatc.btn_pay_card">
+        Pagar com Cartão
+      </button>
+
+    </div> <!-- FECHAMENTO CORRETO DA ETAPA INICIAL -->
+
+    <!-- ETAPA PIX -->
+    <div id="etapaPagamentoPix" class="etapa-pagamento hidden">
+
+      <button type="button" class="btn-voltar-modal" onclick="voltarEtapaPagamento()">
+        <img src="/assets/voltar.png" alt="Voltar">
+      </button>
+
+      <div id="pixLoading" class="pix-loading hidden">
+        <strong data-i18n="chatc.pix_loading">⏳ Aguarde…</strong>
+      </div>
+
+      <div id="pixAguardando" class="pix-aguardando hidden">
+        <strong data-i18n="chatc.pix_waiting">⌛ Aguardando confirmação do pagamento...</strong>
+        <p data-i18n="chatc.pix_dont_close">Não feche esta janela nem atualize a página até a confirmação.</p>
+      </div>
+
+      <div id="pixSucesso" class="pix-sucesso hidden">
+        <strong data-i18n="chatc.pix_success">✅ Pagamento confirmado!</strong>
+      </div>
+
+      <img id="pixQr" class="hidden" alt="QR Code Pix">
+      <input type="text" id="pixCodigo" readonly class="hidden">
+
+      <button id="btnGerarPix" type="button" class="btn-principal" style="display:none;"
+        onclick="pagarComPix({ tipo: 'midia', conteudo_id: window.MIDIA_VENDA_ATUAL?.conteudo_id })"
+        data-i18n="chatc.btn_generate_pix">
+        Gerar QR Code Pix
+      </button>
+
+      <button id="btnCopiarPix" type="button" class="btn-copiar hidden" onclick="copiarPix()" data-i18n="chatc.btn_copy_pix">
+        Copiar código
+      </button>
+
+    </div>
+
+    <!-- ETAPA CARTÃO -->
+    <div id="etapaPagamentoCartao" class="hidden">
+
+      <button type="button" class="btn-voltar-modal" onclick="voltarEtapaPagamento()">
+        <img src="/assets/voltar.png" alt="Voltar">
+      </button>
+
+      <div id="cartaoResumoValor" class="hidden" style="text-align:center;margin-bottom:12px;font-size:0.95rem;">
+        <span data-i18n="pagamento.voce_sera_cobrado">Você será cobrado:</span>
+        <strong id="cartaoResumoTotal" style="font-size:1.1rem;margin-left:6px;"></strong>
+      </div>
+
+      <div id="cartaoLoading" class="cartao-loading hidden">
+        <strong data-i18n="chatc.card_processing">⏳ Processando pagamento…</strong>
+        <p data-i18n="chatc.pix_dont_close">Não feche esta janela nem atualize a página até a confirmação.</p>
+      </div>
+
+      <div id="cartaoSucesso" class="cartao-sucesso hidden">
+        <strong data-i18n="chatc.card_success">✅ Pagamento confirmado!</strong>
+      </div>
+
+      <form id="formStripePagamento" class="form-cartao-vip">
+        <input type="hidden" id="stripeCpfHidden">
+
+        <div class="linha">
+          <div class="form-group full">
+            <div id="stripe-card-form"></div>
+          </div>
+        </div>
+
+        <button type="submit" id="btnConfirmarStripe" class="btn-principal" data-i18n="chatc.btn_confirm">
+          Confirmar
+        </button>
+      </form>
+
+      <div class="gateway-selo">
+        <span style="display:flex;align-items:center;gap:6px;opacity:0.7;font-size:0.72rem;color:#888;">
+          <img src="/assets/stripe.png" alt="Stripe" style="height:18px;width:auto;display:inline-block;vertical-align:middle;">
+          Pagamento processado com segurança pela Stripe
+        </span>
+      </div>
+    </div>
+  </div>
+</div>
+
+<div id="modalMidia" class="modal-midia hidden">
+
+  <div class="modal-backdrop" onclick="fecharModalMidia()"></div>
+
+  <div class="modal-conteudo">
+
+    <button class="modal-close" onclick="fecharModalMidia()">✕</button>
+
+    <img id="modalImg">
+
+    <video id="modalVideo" controls playsinline preload="metadata"></video>
+
+    <iframe
+      id="modalIframe"
+      allow="autoplay; fullscreen; picture-in-picture"
+      allowfullscreen>
+    </iframe>
+
+  </div>
+
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/qrcode/build/qrcode.min.js"></script>
+<script src="/js/pag.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/chatc.js" defer></script>
+
+
+</body>
+</html>

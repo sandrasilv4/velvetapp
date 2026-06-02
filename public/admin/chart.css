@@ -1,0 +1,373 @@
+* {
+  box-sizing: border-box;
+  font-family: 'Poppins', system-ui, -apple-system, BlinkMacSystemFont,
+               'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell,
+               'Helvetica Neue', Arial, sans-serif;
+}
+
+.title h3 {
+  font-size: 20px;
+  color: #7B2CFF;
+  font-weight: 600;
+  align-items: center;
+}
+.graficos-container {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 16px;
+  margin-top: 30px;
+}
+
+.grafico-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 14px;     
+  border-radius: 14px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.grafico-card h3 {
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #7B2CFF;
+  font-weight: 600;
+}
+
+
+.acoes-relatorio {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 20px;
+}
+
+.btn {
+  padding: 10px 16px;
+  border-radius: 10px;
+  border: none;
+  font-size: 14px;
+  cursor: pointer;
+  font-weight: 500;
+}
+
+.btn.velvet {
+  background: #7B2CFF;
+  color: #fff;
+}
+
+.btn.velvet:hover {
+  background: #6922e6;
+}
+
+.btn.velvet-outline {
+  background: #fff;
+  color: #7B2CFF;
+  border: 1.5px solid #7B2CFF;
+}
+
+.btn.velvet-outline:hover {
+  background: #F5F1FF;
+}
+
+.btn.danger {
+  background: #E53935;
+  color: #fff;
+}
+
+
+.grafico-anual-container {
+  margin-top: 30px;
+}
+
+.grafico-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.grafico-header h2 {
+  font-size: 20px;
+  color: #7B2CFF;
+  font-weight: 600;
+}
+
+.grafico-header select {
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: 'Poppins', sans-serif;
+}
+
+.grafico-card {
+  background: #fff;
+  padding: 20px;
+  border-radius: 16px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+
+.filtros-dashboard {
+  display: flex;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.filtros-dashboard select {
+  padding: 8px 14px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  font-family: 'Poppins', sans-serif;
+}
+
+.dashboard-mensal {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+  gap: 24px;
+  margin-top: 20px;
+}
+
+.grafico-card {
+  background: #fff;
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.grafico-card h3 {
+  color: #7B2CFF;
+  font-size: 15px;
+  font-weight: 600;
+  margin-bottom: 10px;
+}
+
+.grafico-card.danger h3 {
+  color: #E53935;
+}
+
+.cards-anual {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  margin-top: 30px;
+}
+
+.card {
+  background: #fff;
+  border-radius: 14px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.card span {
+  font-size: 13px;
+  color: #777;
+}
+
+.card strong {
+  font-size: 26px;
+  color: #7B2CFF;
+}
+
+.card.destaque {
+  border: 2px solid #E6DBFF;
+}
+
+.alertas-container {
+  padding: 30px;
+}
+
+.titulo-alertas {
+  font-size: 26px;
+  font-weight: 600;
+  color: #7B2CFF;
+  margin-bottom: 25px;
+}
+
+/* CARDS */
+.cards-alertas {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px,1fr));
+  gap: 20px;
+  margin-bottom: 30px;
+}
+
+.card-alerta {
+  background: #fff;
+  border-radius: 16px;
+  padding: 18px;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.card-alerta span {
+  font-size: 13px;
+  color: #777;
+}
+
+.card-alerta strong {
+  font-size: 28px;
+  display: block;
+  margin-top: 6px;
+}
+
+/* CORES */
+.card-alerta.critico strong { color: #E53935; }
+.card-alerta.alto strong { color: #FB8C00; }
+.card-alerta.medio strong { color: #FBC02D; }
+.card-alerta.total strong { color: #7B2CFF; }
+
+/* TABELA */
+.tabela-alertas-box {
+  background: #fff;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 10px 25px rgba(0,0,0,.06);
+}
+
+.tabela-alertas {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.tabela-alertas th,
+.tabela-alertas td {
+  padding: 14px;
+  font-size: 14px;
+  text-align: left;
+}
+
+.tabela-alertas thead {
+  background: #F5F3FF;
+}
+
+.tabela-alertas th {
+  color: #7B2CFF;
+  font-weight: 600;
+}
+
+.tabela-alertas tbody tr {
+  border-bottom: 1px solid #eee;
+}
+
+.tabela-alertas tbody tr:hover {
+  background: #FAF9FF;
+}
+
+/* BADGES */
+.badge {
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 12px;
+  font-weight: 600;
+}
+
+.badge.critico { background:#FDECEA; color:#E53935; }
+.badge.alto { background:#FFF3E0; color:#FB8C00; }
+.badge.medio { background:#FFFDE7; color:#FBC02D; }
+
+/* BOTÕES */
+.btn-acao {
+  padding: 6px 10px;
+  border-radius: 8px;
+  font-size: 12px;
+  border: none;
+  cursor: pointer;
+}
+
+.btn-ver {
+  background: #7B2CFF;
+  color: #fff;
+}
+
+.btn-bloquear {
+  background: #E53935;
+  color: #fff;
+  margin-left: 6px;
+}
+
+/* ============================= */
+/* AJUSTE DE TAMANHO DOS GRÁFICOS */
+/* ============================= */
+
+.grafico-card canvas {
+  max-height: 260px !important;
+}
+
+/* Gráfico anual ainda menor */
+.grafico-anual-container canvas {
+  max-height: 220px !important;
+}
+
+/* container específico do donut */
+.grafico-card.donut {
+  height: 300px;
+}
+
+#graficoAnual,
+#graficoResumoAnual {
+  max-height: 240px !important;
+}
+
+.btn {
+  padding: 8px 14px;
+  font-size: 13px;
+}
+
+.filtros-dashboard select {
+  padding: 6px 12px;
+  font-size: 13px;
+}
+
+
+/*MODELO HTML*/
+.modelo-dashboard {
+  max-width: 1100px;
+  margin: 40px auto;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+}
+
+.modelo-dashboard .card {
+  text-align: center;
+  padding: 24px;
+}
+
+.modelo-dashboard .card span {
+  font-size: 14px;
+  color: #888;
+}
+
+.modelo-dashboard .card strong {
+  font-size: 32px;
+  margin-top: 8px;
+  display: block;
+}
+
+.modelo-dashboard .card.destaque {
+  background: linear-gradient(135deg, #7B2CFF, #9E6BFF);
+  color: #fff;
+}
+
+.modelo-dashboard .card.destaque span {
+  color: #EDE7FF;
+}
+
+.modelo-dashboard .card.destaque strong {
+  color: #fff;
+}
+
+
+canvas {
+  width: 100% !important;
+  height: 260px !important;
+}
+
+
+
+
+
+
+
+
+
+
+

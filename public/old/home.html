@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Velvet</title>
+</head>
+<body>
+
+<h1>Velvet</h1>
+<p>Escolha um canal para assinar</p>
+
+<script>
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.href = "./app/index.html";
+  }
+</script>
+
+</body>
+</html>

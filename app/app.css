@@ -1,0 +1,9 @@
+.view {
+  display: none;
+  height: calc(100vh - 56px);
+  overflow-y: auto;
+}
+
+.view.active {
+  display: block;
+}

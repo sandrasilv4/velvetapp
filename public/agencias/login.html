@@ -1,0 +1,544 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Agências - Login</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    :root {
+      --purple: #7B2CFF;
+      --purple-light: #9E6BFF;
+      --purple-soft: #F0EAFF;
+      --bg: #F8F7FB;
+      --card: #FFFFFF;
+      --text: #1F1F2E;
+      --text-muted: #6B7280;
+      --border: #E5E7EB;
+      --shadow: 0 4px 20px rgba(123, 44, 255, 0.06);
+      --shadow-hover: 0 8px 30px rgba(123, 44, 255, 0.12);
+      --transition: 0.2s ease;
+    }
+
+    body {
+      font-family: 'Inter', system-ui, -apple-system, sans-serif;
+      background: linear-gradient(135deg, #F0EAFF 0%, #612db4e7 100%);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 100vh;
+      padding: 20px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    /* Elementos decorativos de fundo */
+    .bg-decoration {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      animation: float 6s ease-in-out infinite;
+    }
+
+    .bg-decoration-1 {
+      width: 300px;
+      height: 300px;
+      background: #fff;
+      top: -50px;
+      left: -50px;
+    }
+
+    .bg-decoration-2 {
+      width: 200px;
+      height: 200px;
+      background: #fff;
+      bottom: -30px;
+      right: -30px;
+      animation-delay: 2s;
+    }
+
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(20px); }
+    }
+
+    /* Container principal */
+    .login-container {
+      width: 100%;
+      max-width: 420px;
+      z-index: 1;
+      animation: slideUp 0.6s ease;
+    }
+
+    @keyframes slideUp {
+      from {
+        opacity: 0;
+        transform: translateY(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    /* Logo */
+    .logo-section {
+      text-align: center;
+      margin-bottom: 40px;
+    }
+
+    .logo-icon {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      width: 60px;
+      height: 60px;
+      background: rgba(255, 255, 255, 0.15);
+      border-radius: 14px;
+      margin-bottom: 16px;
+      backdrop-filter: blur(10px);
+      border: 1px solid rgba(255, 255, 255, 0.2);
+      font-weight: 700;
+      font-size: 28px;
+      color: #fff;
+    }
+
+    .logo-section img {
+      max-width: 180px;
+      height: auto;
+      margin-bottom: 12px;
+    }
+
+    .logo-text {
+      font-size: 18px;
+      font-weight: 700;
+      color: #7B2CFF;
+      margin-bottom: 8px;
+    }
+
+    .logo-subtitle {
+      font-size: 13px;
+      color: rgba(255, 255, 255, 0.7);
+      letter-spacing: 0.5px;
+    }
+
+    /* Card */
+    .card {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 40px;
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      backdrop-filter: blur(10px);
+    }
+
+    /* Cabeçalho do card */
+    .card-header {
+      margin-bottom: 32px;
+    }
+
+    .card-header h2 {
+      font-size: 24px;
+      font-weight: 700;
+      color: var(--text);
+      margin-bottom: 8px;
+    }
+
+    .card-header p {
+      font-size: 14px;
+      color: var(--text-muted);
+      line-height: 1.5;
+    }
+
+    /* Formulário */
+    .form-group {
+      margin-bottom: 20px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 13px;
+      font-weight: 600;
+      color: var(--text-muted);
+      margin-bottom: 8px;
+      text-transform: uppercase;
+      letter-spacing: 0.3px;
+    }
+
+    .input-wrapper {
+      position: relative;
+      display: flex;
+      align-items: center;
+    }
+
+    .input-wrapper svg {
+      position: absolute;
+      left: 12px;
+      width: 18px;
+      height: 18px;
+      fill: var(--text-muted);
+      pointer-events: none;
+      transition: fill var(--transition);
+    }
+
+    input {
+      width: 100%;
+      padding: 12px 12px 12px 40px;
+      border: 1px solid var(--border);
+      border-radius: 10px;
+      background: var(--bg);
+      color: var(--text);
+      font-size: 14px;
+      font-family: inherit;
+      transition: all var(--transition);
+      outline: none;
+    }
+
+    input:focus {
+      border-color: var(--purple);
+      background: #fff;
+      box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.08);
+    }
+
+    input::placeholder {
+      color: var(--text-muted);
+    }
+
+    /* Checkbox Lembrar senha */
+    .remember-forgot {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      margin-bottom: 24px;
+      font-size: 13px;
+    }
+
+    .remember-me {
+      display: flex;
+      align-items: center;
+      gap: 6px;
+      cursor: pointer;
+    }
+
+    .remember-me input[type="checkbox"] {
+      width: 16px;
+      height: 16px;
+      padding: 0;
+      margin: 0;
+      cursor: pointer;
+      accent-color: var(--purple);
+    }
+
+    .remember-me label {
+      margin: 0;
+      cursor: pointer;
+      color: var(--text-muted);
+      text-transform: none;
+      font-weight: 400;
+      letter-spacing: normal;
+    }
+
+    .forgot-password {
+      color: var(--purple);
+      text-decoration: none;
+      font-weight: 500;
+      transition: color var(--transition);
+    }
+
+    .forgot-password:hover {
+      color: var(--purple-light);
+    }
+
+    /* Botões */
+    .button-group {
+      display: flex;
+      gap: 12px;
+      margin-top: 24px;
+    }
+
+    button {
+      flex: 1;
+      padding: 12px 16px;
+      border: none;
+      border-radius: 10px;
+      font-size: 14px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all var(--transition);
+      font-family: inherit;
+      text-transform: uppercase;
+      letter-spacing: 0.5px;
+    }
+
+    .btn-primary {
+      background: var(--purple);
+      color: #fff;
+      box-shadow: var(--shadow);
+      width: 100%;
+    }
+
+    .btn-primary:hover {
+      background: #6922E6;
+      box-shadow: var(--shadow-hover);
+      transform: translateY(-2px);
+    }
+
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-primary.loading {
+      opacity: 0.7;
+      pointer-events: none;
+    }
+
+    /* Mensagem de erro */
+    .error-message {
+      display: none;
+      padding: 12px 14px;
+      background: #FEE2E2;
+      border: 1px solid #FECACA;
+      border-radius: 8px;
+      color: #991B1B;
+      font-size: 13px;
+      margin-bottom: 20px;
+      animation: shake 0.3s ease;
+    }
+
+    .error-message.show {
+      display: block;
+    }
+
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-5px); }
+      75% { transform: translateX(5px); }
+    }
+
+    /* Rodapé */
+    .card-footer {
+      margin-top: 24px;
+      padding-top: 20px;
+      border-top: 1px solid var(--border);
+      text-align: center;
+      font-size: 13px;
+      color: var(--text-muted);
+    }
+
+    /* Responsivo */
+    @media (max-width: 480px) {
+      .card {
+        padding: 24px;
+      }
+
+      .card-header h2 {
+        font-size: 20px;
+      }
+
+      .logo-section {
+        margin-bottom: 24px;
+      }
+
+      .logo-section img {
+        max-width: 140px;
+      }
+
+      .logo-icon {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorações de fundo -->
+  <div class="bg-decoration bg-decoration-1"></div>
+  <div class="bg-decoration bg-decoration-2"></div>
+
+  <!-- Container de login -->
+  <div class="login-container">
+    <!-- Logo -->
+    <div class="logo-section">
+      <img src="/./assets/velvet.webp" class="logo" alt="Velvet" width="250" height="75">
+      <div class="logo-text">PAINEL AGÊNCIAS</div>
+    </div>
+
+    <!-- Card de login -->
+    <div class="card">
+      <div class="card-header">
+        <h2>Bem-vindo</h2>
+        <p>Faça login para acessar o painel de agências</p>
+      </div>
+
+      <div class="error-message" id="errorMessage"></div>
+
+      <form id="loginForm" onsubmit="handleLogin(event)">
+        <div class="form-group">
+          <label for="email">Email</label>
+          <div class="input-wrapper">
+            <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+            <input
+              type="email"
+              id="email"
+              placeholder="seu@email.com"
+              required
+              autocomplete="email"
+            >
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="senha">Senha</label>
+          <div class="input-wrapper">
+            <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5s-5 2.24-5 5v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zM9 6c0-1.66 1.34-3 3-3s3 1.34 3 3v2H9V6zm9 14H6V10h12v10zm-6-3c1.1 0 2-.9 2-2s-.9-2-2-2-2 .9-2 2 .9 2 2 2z"/></svg>
+            <input
+              type="password"
+              id="senha"
+              placeholder="Digite sua senha"
+              required
+              autocomplete="current-password"
+            >
+          </div>
+        </div>
+
+        <div class="remember-forgot">
+          <label class="remember-me">
+            <input type="checkbox" id="remember">
+            <label for="remember">Lembrar-me</label>
+          </label>
+          <a href="#" class="forgot-password" onclick="alert('Entre em contato com o administrador')">Esqueceu a senha?</a>
+        </div>
+
+        <button type="submit" class="btn-primary" id="submitBtn">
+          <span id="btnText">Entrar</span>
+        </button>
+      </form>
+
+      <div class="card-footer">
+        © 2026 Velvet Admin. Todos os direitos reservados.
+      </div>
+    </div>
+  </div>
+
+ <script>
+  const form = document.getElementById('loginForm');
+  const emailInput = document.getElementById('email');
+  const senhaInput = document.getElementById('senha');
+  const submitBtn = document.getElementById('submitBtn');
+  const btnText = document.getElementById('btnText');
+  const errorMessage = document.getElementById('errorMessage');
+  const rememberCheckbox = document.getElementById('remember');
+
+  // Carregar email salvo se houver
+  window.addEventListener('load', () => {
+    const savedEmail = localStorage.getItem('agency_email_saved');
+    if (savedEmail) {
+      emailInput.value = savedEmail;
+      rememberCheckbox.checked = true;
+    }
+  });
+
+  async function handleLogin(e) {
+    e.preventDefault();
+
+    const email = emailInput.value.trim();
+    const senha = senhaInput.value;
+
+    // Validar campos
+    if (!email || !senha) {
+      showError('Por favor, preencha todos os campos');
+      return;
+    }
+
+    // Desabilitar botão
+    submitBtn.disabled = true;
+    submitBtn.classList.add('loading');
+    btnText.textContent = 'Autenticando...';
+
+    try {
+      const res = await fetch('/api/agencia/login', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify({ email, senha })
+      });
+
+      // Verificar se resposta é JSON
+      const contentType = res.headers.get('content-type');
+      if (!contentType || !contentType.includes('application/json')) {
+        throw new Error('Resposta inválida do servidor');
+      }
+
+      const data = await res.json();
+
+      if (res.ok && data.token) {
+        // Salvar email se lembrar-me
+        if (rememberCheckbox.checked) {
+          localStorage.setItem('agency_email_saved', email);
+        } else {
+          localStorage.removeItem('agency_email_saved');
+        }
+
+        // Salvar token - NOME CORRETO
+        localStorage.setItem('token_agency', data.token);
+        localStorage.setItem('userRole', 'agencia');
+
+        console.log('✅ Token salvo:', localStorage.getItem('token_agency')); // Debug
+
+        // TESTE DO TOKEN (antes de redirecionar)
+        const tokenSalvo = localStorage.getItem('token_agency');
+        console.log('🔍 Token salvo:', tokenSalvo);
+        
+        if (tokenSalvo) {
+          try {
+            const parts = tokenSalvo.split('.');
+            const payload = JSON.parse(atob(parts[1]));
+            console.log('📦 Payload:', payload);
+          } catch (decodeErr) {
+            console.error('Erro ao decodificar token:', decodeErr);
+          }
+        }
+
+        // Redirecionar
+        window.location.href = '/agencias/agency-dashboard.html';
+
+      } else {
+        showError(data.error || data.erro || data.message || 'Credenciais inválidas');
+        senhaInput.value = '';
+        senhaInput.focus();
+      }
+    } catch (err) {
+      console.error('Login error:', err);
+      showError('Erro ao conectar: ' + err.message);
+    } finally {
+      submitBtn.disabled = false;
+      submitBtn.classList.remove('loading');
+      btnText.textContent = 'Entrar';
+    }
+  }
+
+  function showError(msg) {
+    errorMessage.textContent = msg;
+    errorMessage.classList.add('show');
+    setTimeout(() => {
+      errorMessage.classList.remove('show');
+    }, 5000);
+  }
+
+  // Enter para enviar
+  senhaInput.addEventListener('keypress', (e) => {
+    if (e.key === 'Enter') {
+      e.preventDefault();
+      form.requestSubmit();
+    }
+  });
+</script>
+
+</body>
+</html>

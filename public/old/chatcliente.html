@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Chat Cliente</title>
+
+<link rel="stylesheet" href="/chatcliente.css">
+  <link rel="stylesheet" href="/header.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+</head>
+
+<body class="role-cliente">
+
+<!-- ================= HEADER GLOBAL ================= -->
+<header class="app-header">
+  <div class="header-inner">
+
+    <img src="assets/velvet.png" class="logo-app" alt="Logo">
+
+    <div class="profile-menu-top">
+      <button id="btnMensagem">
+        <img src="assets/chat.png" alt="Chat">
+        <span id="badgeUnread" class="badge-unread hidden">0</span>
+      </button>
+
+      <button id="menuBtn" class="menu-btn">☰</button>
+      <div id="userMenu" class="menu-superior"></div>
+    </div>
+
+  </div>
+</header>
+
+<!-- ================= PÁGINA CHAT ================= -->
+<div class="pagina-chat">
+
+  <!-- TÍTULO -->
+  <h2 id="tituloConversas">
+    <span id="clienteNomeTitulo"></span>
+  </h2>
+
+  <div class="chat-layout">
+
+    <!-- ===== LISTA DE MODELOS ===== -->
+    <div class="lista-modelos painel">
+      <div class="painel-header">
+        <strong>Modelos</strong>
+      </div>
+      <ul id="listaModelos"></ul>
+    </div>
+
+    <!-- ===== ÁREA DO CHAT ===== -->
+    <div class="chat-area painel">
+
+      <!-- TOPO DO CHAT -->
+      <div class="chat-header chat-topo">
+        <strong>Conversando com:</strong>
+
+        <div class="chat-identidade">
+          <img
+            id="chatAvatar"
+            class="chat-avatar"
+            src="https://velvet-app-production.up.railway.app/assets/avatarDefault.png"
+            alt="Avatar"
+          />
+          <span id="chatNome"></span>
+        </div>
+      </div>
+
+      <!-- MENSAGENS -->
+      <div id="chatBox"></div>
+
+      <!-- INPUT -->
+      <div class="chat-input">
+        <textarea
+          id="messageInput"
+          placeholder="Digite sua mensagem..."
+        ></textarea>
+        <button id="sendBtn">Enviar</button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<!-- ================= POPUPS ================= -->
+
+<div id="popupPix" class="modal hidden">
+  <div class="modal-box pix-box">
+
+    <button class="modal-close" onclick="fecharPopupPix()">×</button>
+
+    <h2 class="pix-title">Desbloquear Conteúdo</h2>
+
+    <!-- 🔥 PREÇO -->
+<div class="pix-preco">
+  <div class="pix-total">
+    Total para Desbloquear:
+    <strong id="pixValorTotal">R$ 0,00</strong>
+  </div>
+
+  <div class="pix-detalhes">
+    <div>Conteúdo: <span id="pixValorBase">R$ 0,00</span></div>
+    <div>Taxa de transação: <span id="pixTaxaTransacao">R$ 0,00</span></div>
+    <div>Taxa da plataforma: <span id="pixTaxaPlataforma">R$ 0,00</span></div>
+  </div>
+</div>
+
+    <!-- QR CODE -->
+    <img id="pixQr" class="pix-qr" />
+
+    <!-- COPIA E COLA -->
+    <textarea
+      id="pixCopia"
+      class="pix-copia"
+      readonly
+    ></textarea>
+
+    <button class="pix-copiar"
+      onclick="copiarPix()">
+      Copiar código Pix
+    </button>
+
+  </div>
+</div>
+
+
+
+<!-- ================= STRIPE ================= -->
+ <!-- ESCOLHA DO MÉTODO -->
+<div id="escolhaPagamento" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-box escolha-box">
+    <button class="modal-close" onclick="fecharEscolha()">×</button>
+
+    <h2 class="titulo-roxo">Escolha a forma de desbloqueio do conteúdo</h2>
+
+    <button class="btn-pagamento pix" onclick="pagarComPix()">
+      ⚡ Desboquear com Pix
+    </button>
+
+    <button class="btn-pagamento cartao" onclick="pagarComCartao()">
+      💳 Desbloquear com Cartão
+    </button>
+  </div>
+</div>
+
+<div id="paymentModal" class="modal hidden">
+  <div class="modal-backdrop"></div>
+
+  <div class="modal-box">
+    <button
+  class="modal-close"
+  id="fecharPagamento"
+  onclick="fecharPagamento()"
+>×</button>
+
+    <h2 class="desbloq"> Desbloquear conteúdo</h2>
+   <div class="cartao-preco">
+  <div class="cartao-total">
+    Total para Desbloquear:
+    <strong id="cartaoValorTotal">R$ 0,00</strong>
+  </div>
+
+  <div class="cartao-detalhes">
+    <div>Conteúdo: <span id="cartaoValorConteudo">R$ 0,00</span></div>
+    <div>Taxa de transação: <span id="cartaoTaxaTransacao">R$ 0,00</span></div>
+    <div>Taxa da plataforma: <span id="cartaoTaxaPlataforma">R$ 0,00</span></div>
+  </div>
+</div>
+
+    <div id="payment-element-container">
+      <div id="payment-element"></div>
+    </div>
+
+    <button id="confirmarPagamento" class="btn-confirmar-desbloqueio">
+      Confirmar desbloqueio
+    </button>
+  </div>
+</div>
+
+<!-- MODAL CONTEÚDO LIBERADO -->
+<div id="modalConteudo" class="hidden">
+  <button class="modal-close" onclick="fecharConteudo()">×</button>
+  <div id="modalMidia"></div>
+
+<!-- ================= SCRIPTS ================= -->
+<script src="/socket.io/socket.io.js"></script>
+<script src="/header.js"></script>
+<script src="https://js.stripe.com/v3/"></script>
+<script src="/chatcliente.js"></script>
+
+
+</body>
+</html>

@@ -1,0 +1,263 @@
+body {
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background:#f1f1f1;
+  color: #1E1E26;
+   margin: 0;
+  padding: 0;
+  width: 100%;
+}
+/* ===============================
+   TABELA ASSINANTES VIP
+================================ */
+
+.table-wrapper {
+  overflow-x: auto;
+}
+
+.table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 16px;
+  font-size: 14px;
+}
+
+.table thead {
+  background: #fafafa;
+  border-bottom: 1px solid #e8e8e8;
+}
+
+.table th {
+  text-align: left;
+  padding: 10px 10px;
+  font-weight: 500;
+  color: #888;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.table td {
+  padding: 14px 10px;
+  border-bottom: 1px solid #eee;
+  vertical-align: middle;
+}
+
+/* hover suave */
+.table tbody tr:hover {
+  background: #faf9ff;
+}
+
+/* nome do assinante */
+.assinante-nome {
+  font-weight: 600;
+  color: #333;
+}
+
+/* ===============================
+   BADGES
+================================ */
+
+.badge {
+  padding: 4px 10px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 600;
+  display: inline-block;
+}
+
+.badge-ativo {
+  background: #e7f9ef;
+  color: #1e8e5a;
+}
+
+.badge-inativo {
+  background: #fdecea;
+  color: #c5221f;
+}
+
+/* ===============================
+   VALORES
+================================ */
+
+.table td {
+  color: #444;
+}
+
+.table td:nth-child(5),
+.table td:nth-child(6) {
+  font-size: 13px;
+  color: #666;
+}
+
+.total-geral {
+  font-weight: 700;
+  color: #6b3dff;
+  font-size: 12px;
+}
+
+.paginacao {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.paginacao button {
+  padding: 6px 14px;
+  border-radius: 8px;
+  border: 1px solid #ddd;
+  background: #fff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.paginacao button:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+#paginaAtual {
+  font-weight: 600;
+  color: #7B2CFF;
+}
+
+/* ===============================
+   BOTÃO VOLTAR
+================================ */
+.btn-voltar {
+  position:relative;
+  left: 30px;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-voltar img {
+  width: 30px;
+}
+
+.btn-voltar:hover {
+  transform: scale(1.08);
+}
+
+.paginacao{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-top:25px;
+}
+
+.paginacao button{
+  border:none;
+  background:#7B2CFF;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+
+.paginacao{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:10px;
+  padding:12px;
+  border-top:1px solid #eee;
+  font-size: 15px;
+}
+
+.paginacao button{
+  border:none;
+  background:#7B2CFF;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.area-card h3 {
+ background:none;
+ font-size: 16px; 
+ text-align: center;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+
+@media (max-width: 768px) {
+  .table-wrapper {
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .table {
+    min-width: 700px;
+    font-size: 13px;
+  }
+
+  .table th,
+  .table td {
+    padding: 10px 8px;
+    white-space: nowrap;
+  }
+
+  .total-geral {
+    font-size: 14px;
+  }
+
+  .paginacao {
+    flex-wrap: wrap;
+    gap: 8px;
+    padding: 10px;
+  }
+
+  .paginacao button {
+    font-size: 13px;
+    padding: 8px 10px;
+  }
+
+  .btn-voltar {
+    left: 10px;
+    width: 38px;
+    height: 38px;
+  }
+
+  .btn-voltar img {
+    width: 24px;
+  }
+
+  .area-card h3 {
+    font-size: 15px;
+    padding: 0 10px;
+  }
+}
+
+@media (max-width: 480px) {
+  .table {
+    min-width: 620px;
+    font-size: 12px;
+  }
+
+  .table th,
+  .table td {
+    padding: 8px 6px;
+  }
+
+  .paginacao button {
+    padding: 7px 9px;
+    font-size: 12px;
+  }
+}
+
+

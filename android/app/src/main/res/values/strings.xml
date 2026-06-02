@@ -1,0 +1,7 @@
+<?xml version='1.0' encoding='utf-8'?>
+<resources>
+    <string name="app_name">Velvet</string>
+    <string name="title_activity_main">Velvet</string>
+    <string name="package_name">lat.velvet.app</string>
+    <string name="custom_url_scheme">lat.velvet.app</string>
+</resources>

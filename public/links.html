@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Links do meu Perfil</title>
+
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+ <div id="header-container"></div>
+
+  <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="links.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="links.titulo">Links do meu perfil</h3>
+
+    <p class="page-subtitle" data-i18n="links.sub">
+      Use estes links para divulgar seu perfil. Eles são gerados automaticamente para você.
+    </p>
+
+    <label data-i18n="links.instagram">Instagram</label>
+    <div class="copy-field">
+      <input type="text" id="linkInstagram" readonly />
+      <button type="button" onclick="copiarLink('linkInstagram')" data-i18n="links.copiar">Copiar</button>
+    </div>
+
+    <label data-i18n="links.tiktok">TikTok</label>
+    <div class="copy-field">
+      <input type="text" id="linkTiktok" readonly />
+      <button type="button" onclick="copiarLink('linkTiktok')" data-i18n="links.copiar">Copiar</button>
+    </div>
+
+    <label data-i18n="links.link_direto">Link de Acesso Direto</label>
+    <div class="copy-field">
+      <input type="text" id="linkDireto" readonly />
+      <button type="button" onclick="copiarLink('linkDireto')" data-i18n="links.copiar">Copiar</button>
+    </div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/header.js" defer></script>
+<script src="/js/areaUsuario.js"></script>
+<script src="/js/footer-shared.js" defer></script>
+
+</body>
+</html>

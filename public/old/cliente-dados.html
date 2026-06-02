@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Meus Dados | Velvet</title>
+  <link rel="stylesheet" href="/painel.css">
+  <link rel="stylesheet" href="/header.css">
+</head>
+
+<body>
+    <header class="app-header">
+  <div class="header-inner">
+
+    <img src="assets/velvet.png" class="logo-app" alt="Logo">
+
+    <div class="profile-menu-top">
+      <button id="btnMensagem">
+        <img src="assets/chat.png" alt="Chat">
+        <span id="badgeUnread" class="badge-unread hidden">0</span>
+      </button>
+
+      <button id="menuBtn" class="menu-btn">☰</button>
+      <div id="userMenu" class="menu-superior"></div>
+    </div>
+
+  </div>
+</header>
+
+
+<style>
+/* ===== HEADER GLOBAL ===== */
+.app-header {
+    position: fixed;
+    top: 0;
+    left: 0;
+
+    width: 100%;
+    height: 64px;
+
+    background: linear-gradient(
+        to right,
+        #ffffff 0%,
+        #f2eaff 35%,
+        #7B2CFF 100%
+    );
+
+    display: flex;
+    align-items: center;
+
+    z-index: 100000; /* acima de tudo */
+    box-shadow: 0 2px 10px rgba(0,0,0,0.15);
+}
+
+/* CONTEÚDO INTERNO */
+.header-inner {
+    width: 100%;
+    padding: 0 16px;
+    display: flex;
+    align-items: center;
+}
+
+/* LOGO */
+.logo-app {
+    height: 120px;
+    cursor: pointer;
+}
+
+/* ESPAÇO PARA O HEADER FIXO */
+body {
+    margin: 0;
+    padding-top: 64px;
+    background: #fff;
+}
+</style>
+
+<div class="container-dados">
+
+  <h1>Suas Informações</h1>
+  <p class="sub">Complete suas informações para personalizar sua experiência.</p>
+
+  <!-- AVATAR CLIENTE -->
+  <div class="avatar-cliente">
+    <img id="avatarPreview" src="/assets/avatarDefault.png" alt="Avatar">
+    <label for="inputAvatar" class="btn-avatar">Alterar foto</label>
+    <input type="file" id="inputAvatar" accept="image/*" hidden>
+  </div>
+
+  <form id="dadosForm">
+    <label>Nome de usuário</label>
+    <input type="text" id="username" required>
+
+    <label>Nome completo</label>
+    <input type="text" id="nomeCompleto" required>
+
+    <label>Data de nascimento</label>
+    <input type="date" id="dataNascimento" required>
+
+    <label>País</label>
+    <input type="text" id="pais" required>
+
+    <button type="submit">Salvar dados</button>
+    <div id="status" class="status"></div>
+  </form>
+
+</div>
+<hr class="separator">
+<div class="danger-zone">
+  <button class="btn-danger" onclick="abrirConfirmacaoExclusao()">
+    Excluir conta permanentemente
+  </button>
+</div>
+
+<div id="modalExcluirConta" class="modal hidden">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-box">
+    <h3>Excluir conta permanentemente</h3>
+
+    <p>
+      Esta ação é <strong>irreversível</strong>.<br>
+      Todos os seus dados, conteúdos, mensagens e histórico
+      serão apagados permanentemente.
+    </p>
+
+    <label class="label-danger">
+      Digite sua senha para confirmar
+    </label>
+
+    <input
+      type="password"
+      id="senhaConfirmacao"
+      placeholder="Digite sua senha"
+      class="input-danger"
+    />
+
+    <p id="erroExclusao" class="erro-danger hidden">
+      Senha incorreta.
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-cancelar" onclick="fecharModalExclusao()">
+        Cancelar
+      </button>
+
+      <button class="btn-confirmar" onclick="confirmarExclusaoConta()">
+        Sim, excluir minha conta
+      </button>
+    </div>
+  </div>
+</div>
+
+
+    <footer class="footer">
+  <div class="footer-links">
+    <a href="/terms.html">Termos de Uso</a>
+    <a href="/privacy.html">Política de Privacidade</a>
+    <a href="/policies.html">Política de Utilização</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 Velvet. Todos os direitos reservados.
+  </div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/header.js"></script>
+<script src="/cliente-dados.js"></script>
+</body>
+</html>

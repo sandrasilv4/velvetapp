@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Assinatura e Ofertas</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/ofertas.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+
+  <div id="header-container"></div>
+
+  <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="ofertas.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="ofertas.titulo_plano">💎 Plano de Assinatura</h3>
+
+    <div class="form-group">
+      <label data-i18n="ofertas.label_escolha_valor">Escolha o valor mensal da sua assinatura</label>
+    </div>
+
+    <div class="form-grid">
+      <div class="form-group">
+        <label for="assinaturaMensal" data-i18n="ofertas.label_valor_mensal">Valor Mensal</label>
+        <div class="input-preco">
+          <span>R$</span>
+          <input type="number" id="assinaturaMensal" min="20" step="0.01">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="descontoTrimestral" data-i18n="ofertas.label_desconto_trimestral">Desconto Trimestral (%)</label>
+        <div class="input-preco">
+          <input type="number" id="descontoTrimestral" min="0" max="30">
+        </div>
+      </div>
+
+      <div class="form-group">
+        <label for="assinaturaTrimestral" data-i18n="ofertas.label_valor_trimestral_final">Valor Trimestral Final</label>
+        <div class="input-preco">
+          <span>R$</span>
+          <input type="text" id="assinaturaTrimestral" readonly>
+        </div>
+      </div>
+    </div>
+
+    <button id="salvarPlanos" class="btn-salvar" data-i18n="ofertas.btn_salvar_plano">Salvar Plano</button>
+
+  </section>
+
+  <section class="area-card">
+
+    <h3 data-i18n="ofertas.titulo_descontos">Descontos na Assinatura</h3>
+
+    <div class="tabs">
+      <button class="tab-btn active" data-tab="ativas" data-i18n="ofertas.tab_ativas">Ativas</button>
+      <button class="tab-btn" data-tab="inativas" data-i18n="ofertas.tab_inativas">Inativas</button>
+    </div>
+
+    <button class="btn-principal" id="btnCriarOferta" data-i18n="ofertas.btn_criar_oferta">
+      + Criar oferta
+    </button>
+
+    <div class="ofertas-lista" id="ofertasLista"></div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/header.js" defer></script>
+  <script src="/js/ofertas.js" defer></script>
+  <script src="/js/footer-shared.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,1579 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Admin</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="logo">
+      <span class="logo-icon">V</span>
+      <span class="logo-text">Velvet Admin</span>
+    </div>
+    <button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-item active" data-page="overview">
+      <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+      <span>Visão Geral</span>
+    </a>
+    <a class="nav-item" data-page="acessos">
+      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+      <span>Acessos</span>
+    </a>
+    <a class="nav-item" data-page="admins">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      <span>Admins</span>
+    </a>
+    <a class="nav-item" data-page="seguranca">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm-2 15l-5-5 1.41-1.41L10 14.17l7.59-7.59L19 8l-9 9z"/></svg>
+      <span>Segurança</span>
+    </a>
+    <a class="nav-item" data-page="bloqueios">
+      <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zM4 12c0-4.42 3.58-8 8-8 1.85 0 3.55.63 4.9 1.69L5.69 16.9C4.63 15.55 4 13.85 4 12zm8 8c-1.85 0-3.55-.63-4.9-1.69L18.31 7.1C19.37 8.45 20 10.15 20 12c0 4.42-3.58 8-8 8z"/></svg>
+      <span>Bloqueios</span>
+    </a>
+    <a class="nav-item" data-page="verificacoes">
+      <svg viewBox="0 0 24 24"><path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z"/></svg>
+      <span>Verificações</span>
+    </a>
+    <a class="nav-item" data-page="fechamento">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      <span>Fechamento</span>
+    </a>
+    <a class="nav-item" data-page="bancarios">
+      <svg viewBox="0 0 24 24"><path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg>
+      <span>Dados Bancários</span>
+    </a>
+    <a class="nav-item" data-page="modelos">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <span>Modelos</span>
+    </a>
+    <a class="nav-item" data-page="ranking">
+      <svg viewBox="0 0 24 24"><path d="M7.5 21H2V9h5.5v12zm7.25-18h-5.5v18h5.5V3zM22 11h-5.5v10H22V11z"/></svg>
+      <span>Ranking</span>
+    </a>
+    <a class="nav-item" data-page="financeiro">
+      <svg viewBox="0 0 24 24"><path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/></svg>
+      <span>Financeiro</span>
+    </a>
+    <a class="nav-item" data-page="transacoes">
+      <svg viewBox="0 0 24 24"><path d="M4 6H2v14c0 1.1.9 2 2 2h14v-2H4V6zm16-4H8c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-1 9H9V9h10v2zm-4 4H9v-2h6v2zm4-8H9V5h10v2z"/></svg>
+      <span>Transações</span>
+    </a>
+    <a class="nav-item" data-page="password">
+      <svg viewBox="0 0 24 24"><path d="M18 8h-1V6c0-2.76-2.24-5-5-5S7 3.24 7 6v2H6c-1.1 0-2 .9-2 2v10c0 1.1.9 2 2 2h12c1.1 0 2-.9 2-2V10c0-1.1-.9-2-2-2zm-6 9c-1.1 0-2-.9-2-2s.9-2 2-2 2 .9 2 2-.9 2-2 2zm3.1-9H8.9V6c0-1.71 1.39-3.1 3.1-3.1 1.71 0 3.1 1.39 3.1 3.1v2z"/></svg>
+      <span>Senhas</span>
+    </a>
+    <a class="nav-item" data-page="vip">
+      <svg viewBox="0 0 24 24"><path d="M12 17.27L18.18 21l-1.64-7.03L22 9.24l-7.19-.61L12 2 9.19 8.63 2 9.24l5.46 4.73L5.82 21z"/></svg>
+      <span>VIP Subs</span>
+    </a>
+    <a class="nav-item" data-page="pagamentos-modelo">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+      <span>Pgto Modelos</span>
+    </a>
+    <a class="nav-item" data-page="agencias">
+      <svg viewBox="0 0 24 24"><path d="M12 7V3H2v18h20V7H12zM6 19H4v-2h2v2zm0-4H4v-2h2v2zm0-4H4V9h2v2zm0-4H4V5h2v2zm4 12H8v-2h2v2zm0-4H8v-2h2v2zm0-4H8V9h2v2zm0-4H8V5h2v2zm10 12h-8v-2h2v-2h-2v-2h2v-2h-2V9h8v10zm-2-8h-2v2h2v-2zm0 4h-2v2h2v-2z"/></svg>
+      <span>Agências</span>
+    </a>
+ 
+<a class="nav-item" data-page="chargebacks">
+  <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 9.5c0 .83-.67 1.5-1.5 1.5S11 13.33 11 12.5s.67-1.5 1.5-1.5 1.5.67 1.5 1.5zM19 18H5v-1h14v1zm0-3H5v-3h14v3zm0-5H5V7h14v3z"/></svg>
+  <span>Chargebacks</span>
+</a>
+ 
+<a class="nav-item" data-page="faturamento">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S15.33 8 14.5 8 13 8.67 13 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S8.33 8 7.5 8 6 8.67 6 9.5 6.67 11 7.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+  <span>Faturamentos</span>
+</a>
+ 
+<a class="nav-item" data-page="despesas">
+  <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 18c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm3.5-9c.83 0 1.5-.67 1.5-1.5S15.33 8 14.5 8 13 8.67 13 9.5s.67 1.5 1.5 1.5zm-7 0c.83 0 1.5-.67 1.5-1.5S8.33 8 7.5 8 6 8.67 6 9.5 6.67 11 7.5 11zm3.5 6.5c2.33 0 4.31-1.46 5.11-3.5H6.89c.8 2.04 2.78 3.5 5.11 3.5z"/></svg>
+  <span>Despesas</span>
+</a>
+
+<a class="nav-item" data-page="emails">
+  <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-1.99.9-1.99 2L2 18c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  <span>Emails</span>
+</a>
+<a class="nav-item" data-page="suporte">
+  <svg viewBox="0 0 24 24"><path d="M20 2H4c-1.1 0-2 .9-2 2v18l4-4h14c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2z"/></svg>
+  <span>Suporte</span>
+</a>
+<a class="nav-item" data-page="newsletter">
+  <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+  <span>Newsletter</span>
+</a>
+<a class="nav-item" data-page="midias">
+  <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+  <span>Mídias</span>
+</a>
+</nav>
+
+  <div class="sidebar-bottom">
+    <button class="btn-logout" onclick="logout()">
+      <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+      <span>Sair</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Overlay mobile sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="main">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="topbar-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
+    <h2 id="pageTitle">Visão Geral</h2>
+    <div class="topbar-right">
+      <span class="admin-badge">Admin</span>
+    </div>
+  </header>
+
+  <!-- ==================== PAGES ==================== -->
+
+  <!-- OVERVIEW -->
+  <section class="page active" id="page-overview">
+    <div class="kpi-row">
+      <div class="kpi-card purple"><span>Modelos</span><strong id="kpi-modelos">--</strong></div>
+      <div class="kpi-card blue"><span>Clientes</span><strong id="kpi-clientes">--</strong></div>
+      <div class="kpi-card green"><span>Assinaturas Ativas</span><strong id="kpi-vips">--</strong></div>
+      <div class="kpi-card orange"><span>Faturamento Dia</span><strong id="kpi-fatd">--</strong></div>
+      <div class="kpi-card red"><span>Faturamento Gateway (Dia)</span><strong id="kpi-fatm">--</strong></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Faturamento (últimos 12 meses)</h3>
+        <canvas id="chartOverviewFat"></canvas>
+      </div>
+      <div class="card">
+        <h3>Acessos por Origem</h3>
+        <canvas id="chartOverviewAcessos"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Top 5 Modelos do Mês</h3>
+      <table class="table" id="tableTopModelos">
+        <thead><tr><th>#</th><th>Modelo</th><th>Ganhos</th><th>Assinantes</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACESSOS -->
+  <section class="page" id="page-acessos">
+    <div class="page-actions">
+      <select id="acessosMes" class="input-select"></select>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-card purple"><span>Instagram</span><strong id="kpi-insta">--</strong></div>
+      <div class="kpi-card blue"><span>TikTok</span><strong id="kpi-tiktok">--</strong></div>
+      <div class="kpi-card green"><span>Acesso Direto</span><strong id="kpi-direto">--</strong></div>
+      <div class="kpi-card orange"><span>Total Mês</span><strong id="kpi-totalAcessos">--</strong></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Comparativo Mensal</h3>
+        <canvas id="chartAcessosBar"></canvas>
+      </div>
+      <div class="card">
+        <h3>Distribuição por Origem</h3>
+        <canvas id="chartAcessosPie"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Top 5 Modelos com Mais Acessos</h3>
+      <table class="table" id="tableAcessosTop">
+        <thead><tr><th>#</th><th>Modelo</th><th>Instagram</th><th>TikTok</th><th>Direto</th><th>Total</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ADMINS -->
+  <section class="page" id="page-admins">
+    <div class="page-actions">
+      <button class="btn btn-primary" onclick="openModal('modalAdmin')">+ Novo Admin</button>
+    </div>
+    <div class="card">
+      <h3>Administradores</h3>
+      <table class="table" id="tableAdmins">
+        <thead><tr><th>ID</th><th>Email</th><th>Criado em</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- SEGURANÇA -->
+  <section class="page" id="page-seguranca">
+    <div class="page-actions">
+      <select id="segurancaMes" class="input-select"></select>
+    </div>
+    <div class="card">
+      <h3>Histórico de Segurança (Mês Atual)</h3>
+      <table class="table" id="tableSeguranca">
+        <thead><tr><th>ID</th><th>Tipo User</th><th>Admin</th><th>Ação</th><th>Data</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationSeguranca"></div>
+    </div>
+  </section>
+
+  <!-- BLOQUEIOS -->
+  <section class="page" id="page-bloqueios">
+    <div class="tabs" id="bloqueiosTabs">
+      <button class="tab active" data-tab="risco">Cliente Risco</button>
+      <button class="tab" data-tab="bloqueados">Clientes Bloqueados</button>
+      <button class="tab" data-tab="logsRisco">Logs Cliente Risco</button>
+      <button class="tab" data-tab="bloqs">Logs Clientes Bloqueados</button>
+    </div>
+
+    <!-- CLIENTE RISCO -->
+<div class="tab-content active" id="tab-risco">
+  <div class="page-actions">
+   <button class="btn btn-primary" onclick="resetModalRisco()">+ Adicionar</button>
+  </div>
+
+  <div class="card">
+    <table class="table" id="tableRisco">
+<thead><tr>
+  <th>Cliente ID</th>
+  <th>Nível</th>
+  <th>Bloqueio IP</th>
+  <th>Bloqueio CPF</th>
+  <th>Bloqueio Finger</th>
+  <th>Motivo</th>
+  <th>Expira em</th>
+  <th>Criado em</th>
+  <th>Admin</th>
+  <th>Ações</th>
+</tr></thead>
+  <tbody></tbody>
+    </table>
+
+    <div class="pagination" id="paginationRisco"></div>
+  </div>
+</div>
+
+    <!-- CLIENTES BLOQUEADOS -->
+
+<div class="tab-content" id="tab-bloqueados">
+  <div class="page-actions">
+    <button class="btn btn-primary" onclick="resetModalBloqueado()">+ Adicionar</button>
+  </div>
+
+  <div class="card">
+    <table class="table" id="tableBloqueados">
+      <thead>
+        <tr>
+          <th>Cliente ID</th>
+          <th>Email</th>
+          <th>Nome</th>
+          <th>Nascimento</th>
+          <th>Nível</th>
+          <th>Bloqueio IP</th>
+          <th>Bloqueio CPF</th>
+          <th>Bloqueio Finger</th>
+          <th>Motivo</th>
+          <th>Desativado em</th>
+          <th>Admin</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="pagination" id="paginationBloqueados"></div>
+  </div>
+</div>
+
+    <!-- LOGS cliente risco -->
+<div class="tab-content" id="tab-logsRisco">
+  <div class="card">
+    <h3>Logs Cliente Risco</h3>
+<table class="table" id="tableLogsRisco">
+  <thead>
+    <tr>
+      <th>Cliente ID</th>
+      <th>CPF</th>
+      <th>IP</th>
+      <th>Fingerprint</th>
+      <th>Motivo</th>
+      <th>Em Vigor</th>
+      <th>Criado em</th>
+      <th>Admin</th>
+    </tr>
+  </thead>
+  <tbody></tbody>
+</table>
+
+<div class="pagination" id="paginationLogsRisco"></div>
+  </div>
+</div>
+
+    <!-- LOGS clientes bloqueados -->
+
+<div class="tab-content" id="tab-bloqs">
+  <div class="card">
+    <h3>Logs Clientes Bloqueados</h3>
+
+    <table class="table" id="tableBloqs">
+      <thead>
+        <tr>
+          <th> User ID</th>
+          <th>CPF</th>
+          <th>IP</th>
+          <th>Fingerprint</th>
+          <th>Email</th>
+          <th>Motivo</th>
+          <th>Bloqueado</th>
+          <th>Criado em</th>
+          <th>Admin</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+
+    <div class="pagination" id="paginationBloqs"></div>
+  </div>
+</div>
+</section>
+
+
+  <!-- VERIFICAÇÕES -->
+<section class="page" id="page-verificacoes">
+  <div class="tab-content active" id="tab-ver-modelos">
+    <div class="card">
+      <h3>Verificações de Modelos</h3>
+      <table class="table" id="tableVerModelos">
+        <thead>
+          <tr>
+            <th>ID</th>
+            <th>Modelo</th>
+            <th>Tipo Doc</th>
+            <th>Status</th>
+            <th>Criado</th>
+            <th>Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationVerModelos"></div>
+    </div>
+  </div>
+</section>
+
+  <!-- FECHAMENTO MENSAL -->
+  <section class="page" id="page-fechamento">
+    <div class="page-actions">
+      <button class="btn btn-primary" onclick="criarFechamento()">+ Criar Fechamento</button>
+    </div>
+    <div class="card">
+      <h3>Fechamentos Mensais</h3>
+      <table class="table" id="tableFechamento">
+        <thead><tr><th>Ano</th><th>Mês</th><th>Bruto</th><th>Taxas</th><th>Velvet</th><th>Modelos</th><th>Subs</th><th>Mídias</th><th>Fechado em</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DADOS BANCÁRIOS -->
+  <section class="page" id="page-bancarios">
+    <div class="page-actions">
+      <select id="bancariosFiltro" class="input-select">
+        <option value="">Todos</option>
+        <option value="pendente">Pendente</option>
+        <option value="aprovado">Aprovado</option>
+        <option value="rejeitado">Rejeitado</option>
+      </select>
+    </div>
+    <div class="card">
+      <h3>Dados Bancários das Modelos</h3>
+      <table class="table" id="tableBancarios">
+        <thead><tr><th>ID</th><th>Modelo</th><th>Tipo</th><th>Chave PIX</th><th>Titular</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationBancarios"></div>
+    </div>
+  </section>
+
+  <!-- MODELOS -->
+  <section class="page" id="page-modelos">
+    <div class="page-actions">
+      <input type="text" class="input-search" id="modelosBusca" placeholder="Buscar modelo por nome ou ID...">
+    </div>
+    <div class="card">
+      <h3>Modelos</h3>
+      <table class="table" id="tableModelos">
+        <thead><tr><th>Modelo ID</th><th>Nome</th><th>Email</th><th>Verificada</th><th>Feed</th><th>Agência</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationModelos"></div>
+    </div>
+  </section>
+
+  <!-- RANKING -->
+<section class="page" id="page-ranking">
+  <div class="page-actions">
+    <select id="rankingMes" class="input-select"></select>
+  </div>
+
+  <div class="card">
+    <h3>Ranking de Modelos por Ganhos no Mês</h3>
+    <canvas id="chartRanking" style="max-height:300px"></canvas>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <table class="table" id="tableRanking">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Modelo</th>
+          <th>Ganhos do Mês</th>
+          <th>Última Transação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+  <!-- FINANCEIRO (rastreio geral) -->
+  <section class="page" id="page-financeiro">
+
+    <div class="card" style="margin-bottom:16px;">
+  <div class="table-search">
+    <label for="selectMesFinanceiro"><strong>Mês:</strong></label>
+    <select id="selectMesFinanceiro" class="input-search" style="max-width:220px;"></select>
+  </div>
+</div>
+
+    <div class="tabs" id="financeiroTabs">
+      <button class="tab active" data-tab="fin-cartao">Pagamentos Cartão</button>
+      <button class="tab" data-tab="fin-pix">Pagamentos PIX</button>
+      <button class="tab" data-tab="fin-tentativas">Todas Tentativas</button>
+      <button class="tab" data-tab="fin-pagarme">Logs Pagar.me</button>
+      <button class="tab" data-tab="fin-stripe">Logs Stripe</button>
+      <button class="tab" data-tab="fin-pacotes">Pacotes Chat</button>
+      <button class="tab" data-tab="fin-premium">Mídias Premium</button>
+      <button class="tab" data-tab="fin-vips">Assinaturas VIP</button>
+    </div>
+
+    <div class="tab-content active" id="tab-fin-cartao">
+      <div class="card">
+        <table class="table" id="tableCartao">
+          <thead><tr><th>ID</th><th>Cliente</th><th>Modelo</th><th>Valor</th><th>Tipo</th><th>Gateway</th><th>Status</th><th>Data</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationCartao"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-pix">
+      <div class="card">
+        <div class="table-search"><input type="text" class="input-search" id="buscaPix" placeholder="Buscar..."></div>
+        <table class="table" id="tablePix">
+          <thead><tr><th>ID</th><th>Cliente</th><th>Modelo</th><th>Valor</th><th>Status</th><th>Gateway</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationPix"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-tentativas">
+      <div class="card">
+        <table class="table" id="tableTentativas">
+          <thead><tr><th>ID</th><th>Cliente</th><th>Método</th><th>Status</th><th>Gateway</th><th>CPF</th><th>IP</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationTentativas"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-pagarme">
+      <div class="card">
+        <table class="table" id="tablePagarme">
+          <thead><tr><th>ID</th><th>Tipo</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationPagarme"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-stripe">
+      <div class="card">
+        <table class="table" id="tableStripe">
+          <thead><tr><th>ID</th><th>Tipo</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationStripe"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-pacotes">
+      <div class="card">
+        <table class="table" id="tablePacotes">
+          <thead><tr><th>ID</th><th>Modelo</th><th>Cliente</th><th>Preço</th><th>Status</th><th>Método</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationPacotes"></div>
+      </div>
+    </div>
+
+    <div class="tab-content" id="tab-fin-premium">
+      <div class="card">
+        <table class="table" id="tablePremium">
+          <thead><tr><th>ID</th><th>Post</th><th>Cliente</th><th>Modelo</th><th>Valor</th><th>Status</th><th>Método</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationPremium"></div>
+      </div>
+    </div>
+
+        <div class="tab-content" id="tab-fin-vips">
+      <div class="card">
+        <table class="table" id="tableVips">
+          <thead><tr><th>ID</th><th>Modelo</th><th>Cliente</th><th>Preço</th><th>Status</th><th>Método</th><th>Criado</th></tr></thead>
+          <tbody></tbody>
+        </table>
+        <div class="pagination" id="paginationVips"></div>
+      </div>
+    </div>
+  </section>
+  
+
+  <!-- TRANSAÇÕES (por modelo) -->
+  <section class="page" id="page-transacoes">
+    <div class="page-actions">
+      <select id="transacoesModelo" class="input-select"><option value="">Todas as modelos</option></select>
+      <select id="transacoesMes" class="input-select"></select>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-card purple"><span>Total Bruto</span><strong id="kpi-bruto">--</strong></div>
+      <div class="kpi-card blue"><span>Modelo</span><strong id="kpi-modelo">--</strong></div>
+      <div class="kpi-card green"><span>Velvet </span><strong id="kpi-velvet">--</strong></div>
+      <div class="kpi-card orange"><span>Agencias</span><strong id="kpi-agency">--</strong></div>
+      <div class="kpi-card red"><span>Gateway</span><strong id="kpi-gateway">--</strong></div>
+    </div>
+    <div class="card">
+      <table class="table" id="tableTransacoes">
+        <thead><tr><th>ID</th><th>Modelo</th><th>Cliente</th><th>Tipo</th><th>Bruto</th><th>Modelo</th><th>Velvet</th><th>Agencia</th><th>Gateway</th><th>Data</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationTransacoes"></div>
+    </div>
+  </section>
+
+  <!-- PASSWORD RESETS -->
+
+  <section class="page" id="page-password">
+  <div class="page-actions">
+    <button class="btn btn-primary" onclick="openModal('modalResetSenha')">Resetar Senha de Usuário</button>
+  </div>
+  <div class="card">
+    <h3>Histórico de Resets de Senha</h3>
+    <table class="table" id="tablePassword">
+      <thead><tr><th>ID</th><th>User ID</th><th>Código</th><th>Expira em</th><th>Usado</th><th>Criado</th></tr></thead>
+      <tbody></tbody>
+    </table>
+    <div class="pagination" id="paginationPassword"></div>
+  </div>
+</section>
+
+<div class="modal" id="modalResetSenha">
+  <div class="modal-content">
+    <div class="modal-header">
+      <h3>Resetar Senha de Usuário</h3>
+      <button class="modal-close" onclick="closeModal('modalResetSenha')">&times;</button>
+    </div>
+    <div class="modal-body">
+      <div class="form-group">
+        <label>User ID ou E-mail</label>
+        <input type="text" id="resetUserIdentifier" class="input-search" placeholder="Ex: 123 ou usuario@email.com">
+      </div>
+      <div class="form-group">
+        <label>Nova Senha</label>
+        <input type="password" id="resetNovaSenha" class="input-search" placeholder="Mínimo 6 caracteres">
+      </div>
+      <p id="resetSenhaMensagem" style="color:red;margin-top:8px;"></p>
+    </div>
+    <div class="modal-footer">
+      <button class="btn btn-secondary" onclick="closeModal('modalResetSenha')">Cancelar</button>
+      <button class="btn btn-primary" onclick="submitResetSenha()">Confirmar Reset</button>
+    </div>
+  </div>
+</div>
+
+  <!-- VIP SUBSCRIPTIONS -->
+  <section class="page" id="page-vip">
+    <div class="page-actions">
+      <input type="text" class="input-search" id="vipBusca" placeholder="Buscar por cliente ID...">
+    </div>
+    <div class="card">
+      <h3>Assinaturas VIP</h3>
+      <table class="table" id="tableVip">
+        <thead><tr><th>ID</th><th>Cliente</th><th>Modelo</th><th>Valor</th><th>Ativo</th><th>Expira</th><th>Recorrente</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationVip"></div>
+    </div>
+  </section>
+
+  <!-- PAGAMENTOS MODELO -->
+  <section class="page" id="page-pagamentos-modelo">
+    <div class="page-actions">
+      <button class="btn btn-primary" onclick="abrirModalPagModelo()">+ Registrar Pagamento</button>
+      <select id="pgtoModeloFiltro" class="input-select"><option value="">Todas as modelos</option></select>
+    </div>
+    <div class="card">
+      <h3>Pagamentos Realizados</h3>
+      <table class="table" id="tablePgtoModelo">
+        <thead><tr><th>ID</th><th>Modelo</th><th>Mês</th><th>Mídias</th><th>Assinaturas</th><th>Total</th><th>Status</th><th>Pago em</th><th>Recibo</th><th>Comprovativo</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationPgtoModelo"></div>
+    </div>
+  </section>
+
+ <!-- AGÊNCIAS -->
+<section class="page" id="page-agencias">
+  <div style="display: flex; gap: 10px; margin-bottom: 20px;">
+    <button class="btn btn-primary" onclick="abrirAdicionarAgencia()">+ Adicionar Agência</button>
+  </div>
+
+  <div class="card">
+    <h3>Agências</h3>
+    <table class="table" id="tableAgencias">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Nome</th>
+          <th>Email</th>
+          <th>% Agência</th>
+          <th>% Modelo</th>
+          <th>% Plataforma</th>
+          <th>Criado</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <h3>Modelos por Agência</h3>
+    <div class="page-actions">
+      <select id="agenciaFiltro" class="input-select">
+        <option value="">Selecione a agência</option>
+      </select>
+    </div>
+
+    <table class="table" id="tableModelosAgencia">
+      <thead>
+        <tr>
+          <th>Modelo ID</th>
+          <th>Nome</th>
+          <th>Agência Desde</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ===== CHARGEBACKS ===== -->
+<section class="page" id="page-chargebacks">
+  <div class="page-actions">
+    <button class="btn btn-primary" onclick="openModal('modalChargeback')">+ Novo Chargeback</button>
+  </div>
+  <div class="card">
+    <h3>Registros de Chargebacks</h3>
+    <table class="table" id="tableChargebacks">
+      <thead><tr><th>#</th><th>Plataforma</th><th>Valor</th><th>Data</th><th>Status</th><th>Comprovante</th><th>Ações</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+ 
+<!-- ===== FATURAMENTOS ===== -->
+<section class="page" id="page-faturamento">
+  <div class="page-actions">
+    <button class="btn btn-primary" onclick="openModal('modalFaturamento')">+ Novo Faturamento</button>
+  </div>
+  <div class="card">
+    <h3>Faturamentos Pagarme & Stripe</h3>
+    <table class="table" id="tableFaturamento">
+      <thead>
+        <tr>
+          <th>#</th>
+          <th>Plataforma</th>
+          <th>Mês</th>
+          <th>Valor Total</th>
+          <th>Taxas</th>
+          <th>Chargeback</th>
+          <th>Estornos</th>
+          <th>Líquido</th>
+          <th>Arquivo</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- MODAL FATURAMENTO -->
+<div class="modal" id="modalFaturamento">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeAllModals()">×</span>
+    <h2>Novo Faturamento</h2>
+    <form id="formFaturamento" onsubmit="salvarFaturamento(event)">
+      <label>Plataforma *</label>
+      <select name="plataforma" required>
+        <option value="">Selecione a plataforma</option>
+        <option value="pagarme">Pagarme</option>
+        <option value="stripe">Stripe</option>
+      </select>
+
+      <label>Mês *</label>
+      <input type="month" name="mes" required>
+
+      <label>Valor Total *</label>
+      <input type="number" name="valor_total" placeholder="Ex: 1000.00" step="0.01" required oninput="atualizarLiquido()">
+      
+      <label>Taxas</label>
+      <input type="number" name="taxas" placeholder="Ex: 50.00" step="0.01" value="0" oninput="atualizarLiquido()">
+      
+      <label>Chargeback</label>
+      <input type="number" name="chargeback" placeholder="Ex: 30.00" step="0.01" value="0" oninput="atualizarLiquido()">
+      
+      <label>Estornos</label>
+      <input type="number" name="estornos" placeholder="Ex: 20.00" step="0.01" value="0" oninput="atualizarLiquido()">
+      
+      <div style="background: #f0f0f0; padding: 10px; border-radius: 4px; margin: 10px 0;">
+        <strong>Valor Líquido: R$ <span id="previewLiquido">0,00</span></strong>
+      </div>
+
+      <label>Arquivo *</label>
+      <input type="file" name="arquivo" required accept=".pdf,.xlsx,.xls,.csv">
+
+      <button type="submit" class="btn btn-primary">Salvar Faturamento</button>
+    </form>
+  </div>
+</div>
+
+
+<!-- ===== DESPESAS ===== -->
+<section class="page" id="page-despesas">
+  <div class="page-actions">
+    <button class="btn btn-primary" onclick="openModal('modalDespesa')">+ Nova Despesa</button>
+  </div>
+  <div class="card">
+    <h3>Despesas Operacionais da Plataforma</h3>
+    <table class="table" id="tableDespesas">
+      <thead><tr><th>#</th><th>Categoria</th><th>Descrição</th><th>Valor</th><th>Data</th><th>Comprovante</th><th>Ações</th></tr></thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+<!-- ==================== MODALS ==================== -->
+
+<div class="modal" id="modalAlterarAgenciaModelo">
+  <h3>Alterar Agência da Modelo</h3>
+
+  <form id="formAlterarAgenciaModelo" onsubmit="salvarAlteracaoAgenciaModelo(event)">
+    <input type="hidden" id="alterarAgenciaModeloId">
+
+    <label>
+      Modelo
+      <input type="text" id="alterarAgenciaModeloNome" disabled>
+    </label>
+
+    <label>
+      Agência
+      <select id="alterarAgenciaSelect">
+        <option value="">Sem agência</option>
+      </select>
+    </label>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-light" onclick="closeModal('modalAlterarAgenciaModelo')">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal genérico -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
+
+<!-- Admin -->
+<div class="modal" id="modalAdmin">
+  <h3>Novo Admin</h3>
+  <form id="formAdmin" onsubmit="salvarAdmin(event)">
+    <label>Email<input type="email" name="email" required></label>
+    <label>Senha<input type="password" name="senha" required></label>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Cliente Risco -->
+<div class="modal" id="modalRisco">
+  <h3>Adicionar Cliente Risco</h3>
+
+  <form id="formRisco" onsubmit="salvarRisco(event)">
+    <label>
+      Cliente ID
+      <input
+        type="number"
+        name="cliente_id"
+        id="risco_cliente_id"
+        required
+        placeholder="Digite o ID do cliente"
+      >
+    </label>
+
+    <button type="button" class="btn btn-sm btn-primary" onclick="buscarDadosClienteRisco()">
+      Buscar dados
+    </button>
+
+    <div id="risco_lookup_info" style="display:none; font-size:13px; margin:10px 0; padding:8px 12px; background:#f3f0ff; border-radius:6px;"></div>
+
+    <input type="hidden" name="cpf" id="risco_cpf">
+    <input type="hidden" name="ip" id="risco_ip">
+    <input type="hidden" name="fingerprint" id="risco_fingerprint">
+
+    <label>
+      Nível de risco
+      <select name="nivel" required>
+        <option value="">Selecionar...</option>
+        <option value="baixo">Baixo</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto</option>
+        <option value="critico">Crítico</option>
+      </select>
+    </label>
+
+    <label>
+      Expira em
+      <input type="datetime-local" name="expira_em">
+    </label>
+
+    <label>
+      Motivo
+      <textarea name="motivo" rows="2" placeholder="Descreva o motivo..."></textarea>
+    </label>
+
+    <label>
+      <input type="checkbox" name="bloqueio_ip">
+      Bloquear IP
+    </label>
+
+    <label>
+      <input type="checkbox" name="bloqueio_cpf">
+      Bloquear CPF
+    </label>
+
+    <label>
+      <input type="checkbox" name="bloqueio_fingerprint">
+      Bloquear Fingerprint
+    </label>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Editar Cliente Risco -->
+<div class="modal" id="modalEditarRisco">
+  <h3>Editar Cliente Risco</h3>
+
+  <form id="formEditarRisco" onsubmit="salvarEdicaoRisco(event)">
+    <input type="hidden" id="editar_risco_cliente_id" name="cliente_id">
+
+    <label>
+      Cliente ID
+      <input type="number" id="editar_risco_cliente_id_view" disabled>
+    </label>
+
+    <label>
+      Nível de risco
+      <select id="editar_risco_nivel" name="nivel" required>
+        <option value="baixo">Baixo</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto</option>
+        <option value="critico">Crítico</option>
+      </select>
+    </label>
+
+    <label>
+      Expira em
+      <input type="datetime-local" id="editar_risco_expira_em" name="expira_em">
+    </label>
+
+    <label>
+      Motivo
+      <textarea id="editar_risco_motivo" name="motivo" rows="2"></textarea>
+    </label>
+
+<div style="display:flex; flex-direction:column; gap:10px; margin-bottom:16px;">
+  <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:normal;">
+    <input type="checkbox" id="editar_risco_bloqueio_ip" name="bloqueio_ip">
+    <span>Bloqueio IP</span>
+  </label>
+
+  <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:normal;">
+    <input type="checkbox" id="editar_risco_bloqueio_cpf" name="bloqueio_cpf">
+    <span>Bloqueio CPF</span>
+  </label>
+
+  <label style="display:flex; align-items:center; gap:8px; cursor:pointer; font-weight:normal;">
+    <input type="checkbox" id="editar_risco_bloqueio_fingerprint" name="bloqueio_fingerprint">
+    <span>Bloqueio Fingerprint</span>
+  </label>
+</div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Cliente Bloqueado -->
+
+<div class="modal" id="modalBloqueado">
+  <h3>Adicionar Cliente Bloqueado</h3>
+
+  <form id="formBloqueado" onsubmit="salvarBloqueado(event)">
+    <label>
+      Cliente ID
+      <input type="number" id="bloqueado_cliente_id" name="cliente_id" required>
+    </label>
+
+    <button type="button" class="btn btn-sm btn-primary" onclick="buscarDadosClienteBloqueado()">
+      Buscar dados
+    </button>
+
+    <div id="bloqueado_lookup_info" style="display:none; font-size:13px; margin:10px 0; padding:8px 12px; background:#f3f0ff; border-radius:6px;"></div>
+
+    <input type="hidden" id="bloqueado_user_id" name="user_id">
+    <input type="hidden" id="bloqueado_email" name="email">
+    <input type="hidden" id="bloqueado_nome" name="nome_completo">
+    <input type="hidden" id="bloqueado_nascimento" name="data_nascimento">
+    <input type="hidden" id="bloqueado_ativo" name="ativo">
+    <input type="hidden" id="bloqueado_desativado_em" name="desativado_em">
+    <input type="hidden" id="bloqueado_bloqueado" name="bloqueado">
+    <input type="hidden" id="bloqueado_ip" name="ip">
+    <input type="hidden" id="bloqueado_fingerprint" name="fingerprint">
+    <input type="hidden" id="bloqueado_cpf" name="cpf">
+
+    <label>
+      Nível de risco
+      <select name="nivel" required>
+        <option value="">Selecionar...</option>
+        <option value="baixo">Baixo</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto</option>
+        <option value="critico">Crítico</option>
+      </select>
+    </label>
+
+    <label>
+      Motivo
+      <textarea name="motivo" rows="2" required></textarea>
+    </label>
+<div class="risco-checks">
+  <label class="risco-check">
+    <input type="checkbox" id="editar_risco_bloqueio_ip" name="bloqueio_ip">
+    <span>Bloqueio IP</span>
+  </label>
+
+  <label class="risco-check">
+    <input type="checkbox" id="editar_risco_bloqueio_cpf" name="bloqueio_cpf">
+    <span>Bloqueio CPF</span>
+  </label>
+
+  <label class="risco-check">
+    <input type="checkbox" id="editar_risco_bloqueio_fingerprint" name="bloqueio_fingerprint">
+    <span>Bloqueio Fingerprint</span>
+  </label>
+</div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- EDITAR Cliente Bloqueado -->
+
+<div class="modal" id="modalEditarBloqueado">
+  <h3>Editar Cliente Bloqueado</h3>
+
+  <form id="formEditarBloqueado" onsubmit="salvarEdicaoBloqueado(event)">
+    <input type="hidden" id="editar_bloqueado_cliente_id" name="cliente_id">
+
+    <label>
+      Cliente ID
+      <input type="number" id="editar_bloqueado_cliente_id_view" disabled>
+    </label>
+
+    <label>
+      Nível de risco
+      <select id="editar_bloqueado_nivel" name="nivel" required>
+        <option value="baixo">Baixo</option>
+        <option value="medio">Médio</option>
+        <option value="alto">Alto</option>
+        <option value="critico">Crítico</option>
+      </select>
+    </label>
+
+    <label>
+      Motivo
+      <textarea id="editar_bloqueado_motivo" name="motivo" rows="2"></textarea>
+    </label>
+
+<div class="risco-checks">
+  <label class="risco-check">
+    <input type="checkbox" id="editar_bloqueado_bloqueio_ip" name="bloqueio_ip">
+    <span>Bloqueio IP</span>
+  </label>
+
+  <label class="risco-check">
+    <input type="checkbox" id="editar_bloqueado_bloqueio_cpf" name="bloqueio_cpf">
+    <span>Bloqueio CPF</span>
+  </label>
+
+  <label class="risco-check">
+    <input type="checkbox" id="editar_bloqueado_bloqueio_fingerprint" name="bloqueio_fingerprint">
+    <span>Bloqueio Fingerprint</span>
+  </label>
+</div>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Pagamento Modelo -->
+<div class="modal" id="modalPagModelo">
+  <h3>Registrar Pagamento</h3>
+
+  <form id="formPagModelo" onsubmit="salvarPagModelo(event)">
+    <label>
+      Modelo
+      <select name="modelo_id" id="pagModeloId" required onchange="carregarSaldoPagModelo()">
+        <option value="">Selecione</option>
+      </select>
+    </label>
+
+    <div class="card" style="padding:12px; margin:10px 0;">
+      <strong>Saldo disponível:</strong>
+      <span id="saldoDisponivelPgModelo">—</span>
+    </div>
+
+    <label>
+      Mês referência
+      <input type="month" name="mes" required>
+    </label>
+
+    <label>
+      Total Mídias
+      <input
+        type="number"
+        id="pagamentoTotalMidias"
+        name="total_midias"
+        step="0.01"
+        value="0"
+        oninput="atualizarTotalPagModelo()"
+      >
+    </label>
+
+    <label>
+      Total Assinaturas
+      <input
+        type="number"
+        id="pagamentoTotalAssinaturas"
+        name="total_assinaturas"
+        step="0.01"
+        value="0"
+        oninput="atualizarTotalPagModelo()"
+      >
+    </label>
+
+    <label>
+      Total Geral
+      <input
+        type="number"
+        id="pagamentoTotalGeral"
+        name="total_geral"
+        step="0.01"
+        value="0"
+        readonly
+      >
+    </label>
+
+    <label>
+      Chargebacks / estornos a deduzir
+      <input
+        type="number"
+        name="chargebacks"
+        step="0.01"
+        value="0"
+        min="0"
+        placeholder="0.00"
+        title="Valor de chargebacks a deduzir do pagamento. Deixar 0 se não houver."
+      >
+      <small style="color:#888;font-size:11px;">Deduzido do valor líquido final. As taxas da plataforma e agência são calculadas automaticamente ao marcar como pago.</small>
+    </label>
+
+    <label>
+      Comprovativo da transferência
+      <input type="file" name="recibo" accept=".jpg,.jpeg,.png,.pdf,.webp">
+    </label>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Pré-visualização Recibo + Confirmação de Pagamento -->
+<div class="modal" id="modalPreviewRecibo" style="max-width:880px;width:95vw;padding:0;overflow:hidden;">
+  <div style="display:flex;justify-content:space-between;align-items:center;padding:16px 24px;border-bottom:1px solid #e0d4ff;background:#f9f5ff;">
+    <div>
+      <h3 style="margin:0;color:#7B2CFF;font-size:16px;">Pré-visualização do Recibo</h3>
+      <small style="color:#888;">Confirme os valores antes de enviar o email à modelo</small>
+    </div>
+    <button type="button" class="btn btn-ghost btn-sm" onclick="fecharPreviewRecibo()">✕ Fechar</button>
+  </div>
+
+  <div style="height:60vh;overflow:auto;background:#f0f0f0;">
+    <iframe
+      id="iframePreviewRecibo"
+      src=""
+      style="width:100%;height:100%;border:none;min-height:500px;"
+      title="Pré-visualização do Recibo"
+    ></iframe>
+  </div>
+
+  <div style="padding:16px 24px;border-top:1px solid #e0d4ff;display:flex;justify-content:flex-end;gap:12px;background:#fff;">
+    <button type="button" class="btn btn-ghost" onclick="fecharPreviewRecibo()">Cancelar</button>
+    <button type="button" class="btn btn-primary" id="btnConfirmarPagamento" onclick="confirmarPagamentoComEmail()">
+      ✅ Confirmar e enviar email à modelo
+    </button>
+  </div>
+</div>
+
+<!-- Modal Edição Genérica -->
+<div class="modal modal-lg" id="modalEdit">
+  <h3 id="modalEditTitle">Editar</h3>
+  <form id="formEdit" onsubmit="salvarEdicao(event)">
+    <div id="modalEditFields"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Verificação -->
+<div class="modal modal-lg" id="modalVerificacao">
+  <h3 id="modalVerTitle">Verificação</h3>
+  <div id="modalVerContent"></div>
+  <div class="modal-actions">
+    <button class="btn btn-ghost" onclick="closeAllModals()">Fechar</button>
+    <button class="btn btn-danger" id="btnRejeitar" onclick="rejeitarVerificacao()">Rejeitar</button>
+    <button class="btn btn-success" id="btnAprovar" onclick="aprovarVerificacao()">Aprovar</button>
+  </div>
+</div>
+
+<!-- ===== MODAL CHARGEBACK ===== -->
+<div class="modal" id="modalChargeback">
+  <h3>Registrar Chargeback</h3>
+  <form id="formChargeback" onsubmit="salvarChargeback(event)">
+    <label>
+      Plataforma
+      <select name="plataforma" required>
+        <option value="">Selecionar...</option>
+        <option value="pagarme">Pagarme</option>
+        <option value="stripe">Stripe</option>
+      </select>
+    </label>
+    <label>
+      Valor (R$)
+      <input type="number" name="valor" step="0.01" min="0" required>
+    </label>
+    <label>
+      Data
+      <input type="date" name="data" required>
+    </label>
+    <label>
+      Motivo
+      <textarea name="motivo" rows="3" placeholder="Descreva o motivo do chargeback"></textarea>
+    </label>
+    <label>
+      Comprovante (obrigatório)
+      <input type="file" name="comprovante" accept=".jpg,.jpeg,.png,.pdf,.webp" required>
+    </label>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+ 
+ 
+<!-- ===== MODAL DESPESA ===== -->
+<div class="modal" id="modalDespesa">
+  <h3>Registrar Despesa Operacional</h3>
+  <form id="formDespesa" onsubmit="salvarDespesa(event)">
+    <label>
+      Categoria
+      <select name="categoria" required>
+        <option value="">Selecionar...</option>
+        <option value="banco_dados">Banco de Dados</option>
+        <option value="render">Render</option>
+        <option value="cloudflare">Cloudflare</option>
+        <option value="hostinger">Hostinger</option>
+        <option value="claude">Claude API</option>
+        <option value="email">Email/Envio</option>
+        <option value="salario">Salário Equipe</option>
+        <option value="outro">Outro</option>
+      </select>
+    </label>
+    <label>
+      Descrição
+      <input type="text" name="descricao" placeholder="Ex: Pagamento mensal Render" required>
+    </label>
+    <label>
+      Valor (R$)
+      <input type="number" name="valor" step="0.01" min="0" required>
+    </label>
+    <label>
+      Data
+      <input type="date" name="data" required>
+    </label>
+    <label>
+      Comprovante de Pagamento
+      <input type="file" name="comprovante" accept=".jpg,.jpeg,.png,.pdf,.webp" required>
+    </label>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- EMAILS HOSTINGER -->
+<section class="page" id="page-emails">
+  <div class="tabs" id="emailsTabs">
+    <button class="tab active" data-tab="config-email">Configuração</button>
+    <button class="tab" data-tab="inbox-email">Caixa de Entrada</button>
+    <button class="tab" data-tab="enviados-email">Enviados</button>
+  </div>
+
+  <!-- ABA CONFIGURAÇÃO -->
+  <div class="tab-content active" id="tab-config-email">
+    <div class="card">
+      <h3>Configurar Email Hostinger</h3>
+      <p style="color: #666; margin-bottom: 20px; font-size: 14px;">Configure suas credenciais de email IMAP/SMTP da Hostinger. As credenciais serão armazenadas de forma segura.</p>
+
+      <form id="formConfigEmail" onsubmit="salvarConfigEmail(event)">
+        <div class="form-group">
+          <label>Email Hostinger *</label>
+          <input type="email" id="configEmail" name="email" placeholder="seu.email@seudominio.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Senha da Caixa Postal *</label>
+          <input type="password" id="configSenha" name="senha" placeholder="Senha do email" required>
+        </div>
+
+        <div class="form-group">
+          <label>Servidor IMAP *</label>
+          <input type="text" id="configImap" name="imap_host" placeholder="imap.seudominio.com" value="mail.seudominio.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Porta IMAP *</label>
+          <input type="number" id="configImapPort" name="imap_port" placeholder="993" value="993" required>
+        </div>
+
+        <div class="form-group">
+          <label>Servidor SMTP *</label>
+          <input type="text" id="configSmtp" name="smtp_host" placeholder="smtp.seudominio.com" value="mail.seudominio.com" required>
+        </div>
+
+        <div class="form-group">
+          <label>Porta SMTP *</label>
+          <input type="number" id="configSmtpPort" name="smtp_port" placeholder="587" value="587" required>
+        </div>
+
+        <div class="form-group">
+          <label style="display:flex; gap:8px; cursor:pointer;">
+            <input type="checkbox" id="configTLS" name="use_tls" checked>
+            <span>Usar TLS/SSL</span>
+          </label>
+        </div>
+
+        <p style="color: #666; font-size: 13px; margin: 15px 0;">
+          <strong>Dica Hostinger:</strong> Para emails na Hostinger, use o servidor <code>mail.seudominio.com</code> (substitua seudominio.com pelo seu domínio)
+        </p>
+
+        <button type="submit" class="btn btn-primary">Conectar Email</button>
+      </form>
+
+      <div id="configStatus" style="margin-top:20px; display:none;"></div>
+    </div>
+
+    <!-- Email Conectado -->
+    <div class="card" style="margin-top:20px; display:none;" id="emailConectado">
+      <h3>Email Conectado ✓</h3>
+      <p id="emailConectadoInfo"></p>
+      <button class="btn btn-danger" onclick="desconectarEmail()">Desconectar</button>
+    </div>
+  </div>
+
+  <!-- ABA CAIXA DE ENTRADA -->
+  <div class="tab-content" id="tab-inbox-email">
+    <div class="page-actions">
+      <button class="btn btn-primary" onclick="sincronizarEmails()" id="btnSincronizar">🔄 Sincronizar</button>
+      <input type="text" class="input-search" id="buscaEmails" placeholder="Buscar emails...">
+    </div>
+
+    <div class="card">
+      <h3>Caixa de Entrada</h3>
+      <div id="emailsLoading" style="text-align:center; padding:20px; display:none;">
+        <p>Carregando emails...</p>
+      </div>
+      <table class="table" id="tableEmails" style="display:none;">
+        <thead>
+          <tr>
+            <th>De</th>
+            <th>Assunto</th>
+            <th>Data</th>
+            <th style="width:150px;">Ações</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="emailsVazio" style="text-align:center; padding:40px; color:#999;">
+        <p>Configure seu email para ver a caixa de entrada</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ABA ENVIADOS -->
+  <div class="tab-content" id="tab-enviados-email">
+    <div class="page-actions">
+      <button class="btn btn-primary" onclick="abrirComposer()">✏️ Novo Email</button>
+      <input type="text" class="input-search" id="buscaEnviados" placeholder="Buscar enviados...">
+    </div>
+
+    <div class="card">
+      <h3>Emails Enviados</h3>
+      <table class="table" id="tableEnviados">
+        <thead>
+          <tr>
+            <th>Para</th>
+            <th>Assunto</th>
+            <th>Data</th>
+            <th>Status</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+      <div id="enviadosVazio" style="text-align:center; padding:40px; color:#999; display:none;">
+        <p>Nenhum email enviado</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL VISUALIZAR EMAIL -->
+<div class="modal modal-lg" id="modalVerEmail">
+  <div class="modal-header">
+    <h3 id="emailAssunto">Email</h3>
+    <button class="modal-close" onclick="closeModal('modalVerEmail')">&times;</button>
+  </div>
+  <div class="modal-body">
+    <div style="margin-bottom:15px;">
+      <p><strong>De:</strong> <span id="emailDe"></span></p>
+      <p><strong>Para:</strong> <span id="emailPara"></span></p>
+      <p><strong>Data:</strong> <span id="emailData"></span></p>
+    </div>
+    <div id="emailCorpo" style="border-top:1px solid #ddd; padding-top:15px; line-height:1.6; max-height:400px; overflow-y:auto;"></div>
+  </div>
+  <div class="modal-footer">
+    <button class="btn btn-secondary" onclick="closeModal('modalVerEmail')">Fechar</button>
+    <button class="btn btn-primary" id="btnResponderEmail" onclick="responderEmail()">💬 Responder</button>
+  </div>
+</div>
+
+<!-- MODAL COMPOSER -->
+<div class="modal modal-lg" id="modalComposer">
+  <div class="modal-header">
+    <h3>Novo Email</h3>
+    <button class="modal-close" onclick="closeModal('modalComposer')">&times;</button>
+  </div>
+  <div class="modal-body">
+    <form id="formEnviarEmail" onsubmit="enviarEmail(event)">
+      <div class="form-group">
+        <label>Para *</label>
+        <input type="email" id="emailPara2" name="para" placeholder="destinatario@example.com" required>
+      </div>
+
+      <div class="form-group">
+        <label>Assunto *</label>
+        <input type="text" id="emailAssunto2" name="assunto" placeholder="Assunto do email" required>
+      </div>
+
+      <div class="form-group">
+        <label>Mensagem *</label>
+        <textarea id="emailMsg" name="corpo" rows="8" placeholder="Escreva sua mensagem..." required style="width:100%; padding:10px; border:1px solid #ddd; border-radius:4px; font-family:sans-serif;"></textarea>
+      </div>
+
+      <div style="display:flex; gap:10px;">
+        <button type="submit" class="btn btn-primary">Enviar</button>
+        <button type="button" class="btn btn-secondary" onclick="closeModal('modalComposer')">Cancelar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Newsletter -->
+<section class="page" id="page-newsletter">
+  <div class="card" style="max-width:700px;">
+    <h2 style="margin:0 0 6px;">Newsletter — Modelos</h2>
+    <p style="margin:0 0 24px; color:#888; font-size:14px;">Envie um email para todas as modelos verificadas ou selecione destinatárias específicas.</p>
+
+    <div id="newsletter-resumo" style="background:#f8f4ff; border-radius:8px; padding:12px 16px; margin-bottom:20px; font-size:14px; color:#4b2a7b;">
+      A carregar total de destinatárias…
+    </div>
+
+    <form id="formNewsletter" onsubmit="enviarNewsletter(event)">
+
+      <!-- Destinatárias -->
+      <div class="form-group" style="margin-bottom:20px;">
+        <label style="display:block; font-weight:600; margin-bottom:10px;">Destinatárias *</label>
+        <div style="display:flex; gap:12px; flex-wrap:wrap;">
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:14px;">
+            <input type="radio" name="nlDestinatarias" value="todas" checked onchange="alternarDestinatarias('todas')">
+            Todas as modelos verificadas
+          </label>
+          <label style="display:flex; align-items:center; gap:6px; cursor:pointer; font-size:14px;">
+            <input type="radio" name="nlDestinatarias" value="especificas" onchange="alternarDestinatarias('especificas')">
+            Selecionar específicas
+          </label>
+        </div>
+
+        <!-- Painel de seleção -->
+        <div id="nl-selecao-painel" style="display:none; margin-top:14px; border:1px solid #ddd; border-radius:8px; overflow:hidden;">
+          <div style="padding:10px 12px; background:#f9f9f9; border-bottom:1px solid #eee; display:flex; gap:8px; align-items:center;">
+            <input type="text" id="nl-busca-modelo" placeholder="Pesquisar por nome ou email…"
+              oninput="filtrarModelosNewsletter()"
+              style="flex:1; padding:7px 10px; border:1px solid #ddd; border-radius:6px; font-size:13px;">
+            <button type="button" onclick="selecionarTodasVisiveis()" style="font-size:12px; padding:6px 10px; background:#6f42c1; color:#fff; border:none; border-radius:6px; cursor:pointer; white-space:nowrap;">Selec. todas</button>
+            <button type="button" onclick="limparSelecaoModelos()" style="font-size:12px; padding:6px 10px; background:#eee; color:#555; border:none; border-radius:6px; cursor:pointer;">Limpar</button>
+          </div>
+          <div id="nl-lista-modelos" style="max-height:220px; overflow-y:auto; padding:8px 0; font-size:13px;">
+            <div style="padding:12px; color:#aaa; text-align:center;">A carregar modelos…</div>
+          </div>
+          <div id="nl-selecionadas-chips" style="padding:8px 12px; border-top:1px solid #eee; min-height:36px; display:flex; flex-wrap:wrap; gap:6px; align-items:center;">
+            <span style="font-size:12px; color:#aaa;" id="nl-chips-vazio">Nenhuma selecionada</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="form-group" style="margin-bottom:16px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">Assunto *</label>
+        <input type="text" id="nlAssunto" required maxlength="150"
+          style="width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:14px; box-sizing:border-box;"
+          placeholder="Ex: Novidades da plataforma — Maio 2026">
+      </div>
+
+      <div class="form-group" style="margin-bottom:16px;">
+        <label style="display:block; font-weight:600; margin-bottom:6px;">Mensagem *</label>
+        <textarea id="nlMensagem" required rows="10"
+          style="width:100%; padding:10px 12px; border:1px solid #ddd; border-radius:8px; font-size:14px; font-family:sans-serif; resize:vertical; box-sizing:border-box;"
+          placeholder="Escreva o conteúdo do email. Pode usar HTML básico (negrito, links, parágrafos)."></textarea>
+      </div>
+
+      <div style="display:flex; align-items:center; gap:12px; flex-wrap:wrap;">
+        <button type="button" class="btn btn-secondary" onclick="preVisualizarNewsletter()">👁 Pré-visualizar</button>
+        <button type="submit" class="btn btn-primary" id="btnEnviarNewsletter">Enviar para todas</button>
+        <span id="newsletter-status" style="font-size:13px; color:#888;"></span>
+      </div>
+    </form>
+
+    <div id="newsletter-historico" style="margin-top:32px;">
+      <h3 style="font-size:15px; margin:0 0 12px;">Últimos envios</h3>
+      <div id="newsletter-historico-lista" style="font-size:13px; color:#888;">A carregar…</div>
+    </div>
+  </div>
+</section>
+
+<!-- MODAL PRÉ-VISUALIZAÇÃO NEWSLETTER -->
+<div id="modalPreviewNewsletter" style="display:none; position:fixed; inset:0; background:rgba(0,0,0,0.6); z-index:9999; align-items:center; justify-content:center;">
+  <div style="background:#fff; border-radius:12px; width:90%; max-width:680px; max-height:90vh; display:flex; flex-direction:column; overflow:hidden; box-shadow:0 8px 32px rgba(0,0,0,0.25);">
+    <div style="display:flex; align-items:center; justify-content:space-between; padding:16px 20px; border-bottom:1px solid #eee;">
+      <div>
+        <strong style="font-size:15px;">Pré-visualização</strong>
+        <div id="nlPreviewAssunto" style="font-size:12px; color:#888; margin-top:2px;"></div>
+      </div>
+      <button onclick="fecharPreviewNewsletter()" style="background:none; border:none; font-size:22px; cursor:pointer; color:#888; line-height:1;">&times;</button>
+    </div>
+    <div style="flex:1; overflow:auto; padding:0;">
+      <iframe id="nlPreviewFrame" style="width:100%; height:600px; border:none; display:block;" srcdoc=""></iframe>
+    </div>
+    <div style="padding:12px 20px; border-top:1px solid #eee; text-align:right;">
+      <button onclick="fecharPreviewNewsletter()" class="btn btn-secondary">Fechar</button>
+    </div>
+  </div>
+</div>
+
+<!-- Suporte -->
+<section class="page" id="page-suporte" style="padding:0;">
+  <iframe id="suporte-iframe" src="" style="width:100%;height:calc(100vh - 60px);border:none;display:block;"></iframe>
+</section>
+
+<!-- Mídias -->
+<section class="page" id="page-midias" style="padding:0;">
+  <iframe id="midias-iframe" src="" style="width:100%;height:calc(100vh - 60px);border:none;display:block;"></iframe>
+</section>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="admin-dashboard.js"></script>
+</body>
+</html>

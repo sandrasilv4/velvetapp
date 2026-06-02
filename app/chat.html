@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <link rel="stylesheet" href="./css/chat.css" />
+  <link rel="stylesheet" href="/chatmodelo.css">
+</head>
+
+<body>
+ <header class="chat-header">
+    <img src="/assets/velvet.png" alt="Velvet" class="velvet-logo">
+    <button class= "btn-voltar" onclick="history.back()"><img src="./assets/voltar.png" alt="Voltar"></a>
+    </div>
+  </header>
+
+<!-- ÁREA DE MENSAGENS -->
+<main id="chatBox" class="chat-box"></main>
+
+<!-- INPUT FIXO -->
+<footer class="chat-input">
+
+  <!-- BOTÃO MÍDIA -->
+  <button
+    id="btnEnviarConteudo1"
+    class="btn-midia"
+    onclick="abrirPopupConteudos()"
+    aria-label="Enviar mídia"
+  >
+    <img src="./assets/midia.png" alt="Mídia" />
+  </button>
+
+  <input
+    id="msgInput"
+    type="text"
+    placeholder="Digite uma mensagem..."
+    autocomplete="off"/>
+
+  <!-- BOTÃO ENVIAR -->
+  <button
+    class="btn-enviar1"
+    onclick="enviarMensagem()"
+    aria-label="Enviar mensagem"
+  >
+    <img src="./assets/enviar.png" alt="Enviar" />
+  </button>
+</footer>
+
+<!-- POPUP DE CONTEÚDOS -->
+<div id="popupConteudos" class="hidden">
+  
+  <div class="popup-backdrop" onclick="fecharPopupConteudos()"></div>
+
+  <div class="popup-box">
+    <h3>Enviar conteúdo</h3>
+
+    <div class="preview-scroll">
+      <div id="previewConteudos" class="preview-grid"></div>
+    </div>
+
+    <div class="popup-preco">
+      <label>Preço (R$)</label>
+      <input type="number" id="precoConteudo" value="0" min="0" />
+    </div>
+
+    <div class="popup-actions">
+      <button class="btn-cancelar" onclick="fecharPopupConteudos()">Cancelar</button>
+      <button class="btn-enviar" onclick="confirmarEnvioConteudo()">Enviar</button>
+    </div>
+  </div>
+
+</div>
+
+<!-- POPUP EDITAR / EXCLUIR MENSAGEM -->
+<div id="menuMensagem" class="hidden">
+  <div class="popup-backdrop" onclick="fecharMenuMensagem()"></div>
+
+  <div class="popup-box">
+    <h3>Mensagem</h3>
+
+    <!-- 🔥 ESSE TEXTAREA É O QUE ESTAVA FALTANDO -->
+    <textarea id="editarTexto" placeholder="Editar mensagem..."></textarea>
+
+    <div class="popup-actions">
+      <button onclick="salvarEdicao()">Salvar</button>
+      <button onclick="excluirMensagem()" style="color:red">Excluir</button>
+      <button onclick="fecharMenuMensagem()">Cancelar</button>
+    </div>
+  </div>
+</div>
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="./js/chat.js"></script>
+</body>
+</html>

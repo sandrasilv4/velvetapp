@@ -1,0 +1,426 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Velvet Agências</title>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="agency-dashboard.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- SIDEBAR -->
+<aside class="sidebar" id="sidebar">
+  <div class="sidebar-top">
+    <div class="logo">
+      <span class="logo-icon">VA</span>
+      <span class="logo-text">Velvet Agências</span>
+    </div>
+    <button class="sidebar-toggle" id="sidebarToggle">&#9776;</button>
+  </div>
+
+  <nav class="nav">
+    <a class="nav-item active" data-page="overview">
+      <svg viewBox="0 0 24 24"><path d="M3 13h8V3H3v10zm0 8h8v-6H3v6zm10 0h8V11h-8v10zm0-18v6h8V3h-8z"/></svg>
+      <span>Visão Geral</span>
+    </a>
+    <a class="nav-item" data-page="acessos">
+      <svg viewBox="0 0 24 24"><path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/></svg>
+      <span>Acessos</span>
+    </a>
+    <a class="nav-item" data-page="agency">
+      <svg viewBox="0 0 24 24"><path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4z"/></svg>
+      <span>Agência</span>
+    </a>
+    <a class="nav-item" data-page="fechamento">
+      <svg viewBox="0 0 24 24"><path d="M19 3H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2V5c0-1.1-.9-2-2-2zm-5 14H7v-2h7v2zm3-4H7v-2h10v2zm0-4H7V7h10v2z"/></svg>
+      <span>Fechamentos</span>
+    </a>
+    <a class="nav-item" data-page="bancarios">
+      <svg viewBox="0 0 24 24"><path d="M4 10v7h3v-7H4zm6 0v7h3v-7h-3zM2 22h19v-3H2v3zm14-12v7h3v-7h-3zm-4.5-9L2 6v2h19V6l-9.5-5z"/></svg>
+      <span>Dados Bancários</span>
+    </a>
+    <a class="nav-item" data-page="modelos">
+      <svg viewBox="0 0 24 24"><path d="M12 12c2.21 0 4-1.79 4-4s-1.79-4-4-4-4 1.79-4 4 1.79 4 4 4zm0 2c-2.67 0-8 1.34-8 4v2h16v-2c0-2.66-5.33-4-8-4z"/></svg>
+      <span>Modelos</span>
+    </a>
+    <a class="nav-item" data-page="ranking">
+      <svg viewBox="0 0 24 24"><path d="M7.5 21H2V9h5.5v12zm7.25-18h-5.5v18h5.5V3zM22 11h-5.5v10H22V11z"/></svg>
+      <span>Ranking</span>
+    </a>
+    <a class="nav-item" data-page="pagamentos-agencia">
+      <svg viewBox="0 0 24 24"><path d="M20 4H4c-1.11 0-1.99.89-1.99 2L2 18c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V6c0-1.11-.89-2-2-2zm0 14H4v-6h16v6zm0-10H4V6h16v2z"/></svg>
+      <span>Pagamentos</span>
+    </a>
+</nav>
+
+  <div class="sidebar-bottom">
+    <button class="btn-logout" onclick="logout()">
+      <svg viewBox="0 0 24 24"><path d="M17 7l-1.41 1.41L18.17 11H8v2h10.17l-2.58 2.58L17 17l5-5zM4 5h8V3H4c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h8v-2H4V5z"/></svg>
+      <span>Sair</span>
+    </button>
+  </div>
+</aside>
+
+<!-- Overlay mobile sidebar -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- MAIN CONTENT -->
+<main class="main" id="main">
+
+  <!-- TOP BAR -->
+  <header class="topbar">
+    <button class="topbar-menu-btn" aria-label="Menu">
+      <svg viewBox="0 0 24 24"><path d="M3 18h18v-2H3v2zm0-5h18v-2H3v2zm0-7v2h18V6H3z"/></svg>
+    </button>
+    <h2 id="pageTitle">Visão Geral</h2>
+    <div class="topbar-right">
+      <span class="agency-badge">agência</span>
+    </div>
+  </header>
+
+  <!-- ==================== PAGES ==================== -->
+
+  <!-- OVERVIEW -->
+  <section class="page active" id="page-overview">
+    <div class="kpi-row">
+      <div class="kpi-card purple"><span>Modelos</span><strong id="kpi-modelos">--</strong></div>
+      <div class="kpi-card green"><span>Assinaturas Ativas</span><strong id="kpi-vips">--</strong></div>
+      <div class="kpi-card orange"><span>Faturamento Dia</span><strong id="kpi-fatd">--</strong></div>
+      <div class="kpi-card red"><span>Faturamento Mês</span><strong id="kpi-fatm">--</strong></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Faturamento (últimos 12 meses)</h3>
+        <canvas id="chartOverviewFat"></canvas>
+      </div>
+      <div class="card">
+        <h3>Acessos por Origem</h3>
+        <canvas id="chartOverviewAcessos"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Top 5 Modelos do Mês</h3>
+      <table class="table" id="tableTopModelos">
+        <thead><tr><th>#</th><th>Modelo</th><th>Ganhos Modelo</th><th>Ganhos Agência</th><th>Assinantes</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- ACESSOS -->
+  <section class="page" id="page-acessos">
+    <div class="page-actions">
+      <select id="acessosMes" class="input-select"></select>
+    </div>
+    <div class="kpi-row">
+      <div class="kpi-card purple"><span>Instagram</span><strong id="kpi-insta">--</strong></div>
+      <div class="kpi-card blue"><span>TikTok</span><strong id="kpi-tiktok">--</strong></div>
+      <div class="kpi-card green"><span>Acesso Direto</span><strong id="kpi-direto">--</strong></div>
+      <div class="kpi-card orange"><span>Total Mês</span><strong id="kpi-totalAcessos">--</strong></div>
+    </div>
+    <div class="grid-2">
+      <div class="card">
+        <h3>Comparativo Mensal</h3>
+        <canvas id="chartAcessosBar"></canvas>
+      </div>
+      <div class="card">
+        <h3>Distribuição por Origem</h3>
+        <canvas id="chartAcessosPie"></canvas>
+      </div>
+    </div>
+    <div class="card">
+      <h3>Top 5 Modelos com mais Acessos</h3>
+      <table class="table" id="tableAcessosTop">
+        <thead><tr><th>#</th><th>Modelo</th><th>Instagram</th><th>TikTok</th><th>Direto</th><th>Total</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- agency -->
+  <section class="page" id="page-agency">
+    <div class="card">
+      <h3>Infos Agência</h3>
+      <table class="table" id="tableAgency">
+        <thead><tr><th>ID</th><th>Nome</th><th>Email</th><th>Criado em</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+    <div class="card" style="margin-top:20px">
+      <h3>Distribuição de Percentuais</h3>
+      <p style="font-size:13px;color:var(--text-muted);margin-bottom:16px;">
+        O percentual da Velvet é fixo em <strong>20%</strong> e não pode ser alterado.
+        A soma de Agência + Modelo não pode ultrapassar 80%.
+      </p>
+     <form id="formPercentuais" onsubmit="salvarPercentuais(event)" style="display:grid;gap:14px;max-width:400px;">
+
+  <!-- Velvet fixo -->
+  <label style="font-size:13px;font-weight:500;color:var(--text-muted);">
+    Velvet (fixo)
+    <input type="number" value="20" disabled
+      style="background:var(--bg);margin-top:4px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;width:100%;font-size:13px;">
+  </label>
+
+  <!-- Agência -->
+  <label style="font-size:13px;font-weight:500;color:var(--text-muted);">
+    % Agência
+    <input type="number"
+      id="inputPercentualAgencia"
+      name="percentual_agencia"
+      min="0"
+      max="80"
+      step="0.01"
+      required
+      oninput="atualizarSoma()"
+      style="margin-top:4px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;width:100%;font-size:13px;outline:none;">
+  </label>
+
+  <!-- Modelo -->
+  <label style="font-size:13px;font-weight:500;color:var(--text-muted);">
+    % Modelo
+    <input type="number"
+      id="inputPercentualModelo"
+      name="percentual_modelo"
+      min="0"
+      max="80"
+      step="0.01"
+      required
+      oninput="atualizarSoma()"
+      style="margin-top:4px;padding:9px 12px;border:1px solid var(--border);border-radius:8px;width:100%;font-size:13px;outline:none;">
+  </label>
+
+  <!-- Info soma -->
+  <div id="percentualSomaInfo" style="font-size:12px;color:var(--text-muted);"></div>
+
+  <button type="submit" class="btn btn-primary" style="width:fit-content;">
+    Salvar Percentuais
+  </button>
+</form>
+    </div>
+  </section>
+
+  <!-- FECHAMENTO MENSAL -->
+  <section class="page" id="page-fechamento">
+    <div class="card">
+      <h3>Fechamentos Mensais</h3>
+      <table class="table" id="tableFechamento">
+        <thead><tr><th>Ano</th><th>Mês</th><th>Total</th><th>Agência</th><th>Modelos</th><th>Midias</th><th>Assinaturas</th><th>Data</th></tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- DADOS BANCÁRIOS -->
+  <section class="page" id="page-bancarios">
+    <div class="page-actions">
+      <select id="bancariosFiltro" class="input-select">
+        <option value="">Todos</option>
+        <option value="pendente">Pendente</option>
+        <option value="aprovado">Aprovado</option>
+        <option value="rejeitado">Rejeitado</option>
+      </select>
+    </div>
+    <div class="card">
+      <h3>Dados Bancários das Modelos</h3>
+      <table class="table" id="tableBancarios">
+        <thead><tr><th>ID</th><th>Modelo</th><th>Tipo</th><th>Chave PIX</th><th>Titular</th><th>Status</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationBancarios"></div>
+    </div>
+  </section>
+
+  <!-- MODELOS -->
+  <section class="page" id="page-modelos">
+    <div class="page-actions">
+      <input type="text" class="input-search" id="modelosBusca" placeholder="Buscar modelo por nome ou ID...">
+    </div>
+    <div class="card">
+      <h3>Modelos</h3>
+      <table class="table" id="tableModelos">
+        <thead><tr><th>Modelo ID</th><th>Nome</th><th>Email</th><th>Verificada</th><th>Feed</th><th>Agência</th><th>Ações</th></tr></thead>
+        <tbody></tbody>
+      </table>
+      <div class="pagination" id="paginationModelos"></div>
+    </div>
+  </section>
+
+  <!-- RANKING -->
+<section class="page" id="page-ranking">
+  <div class="page-actions">
+    <select id="rankingMes" class="input-select"></select>
+  </div>
+
+  <div class="card">
+    <h3>Ranking de Modelos por Ganhos no Mês</h3>
+    <canvas id="chartRanking" style="max-height:300px"></canvas>
+  </div>
+
+  <div class="card" style="margin-top:20px">
+    <table class="table" id="tableRanking">
+      <thead>
+        <tr>
+          <th>Posição</th>
+          <th>Modelo</th>
+          <th>Ganhos do Mês</th>
+          <th>Ganhos Agência</th>
+          <th>Última Transação</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+  </div>
+</section>
+
+ <!-- PAGAMENTOS AGÊNCIA -->
+<section class="page" id="page-pagamentos-agencia">
+  <div class="card">
+    <h3>Saldo a Receber:</h3>
+    <span class="stat-value" id="saldoAgenciaGeral">—</span>
+    <table class="table" id="tablePagAgencia">
+      <thead>
+        <tr>
+          <th>ID</th>
+          <th>Mês</th>
+          <th>Total Bruto</th>
+          <th>Agência</th>
+          <th>Modelos</th>
+          <th>Status</th>
+          <th>Recebido em</th>
+          <th>Ações</th>
+        </tr>
+      </thead>
+      <tbody></tbody>
+    </table>
+    <div class="pagination" id="paginationPagAgencia"></div>
+  </div>
+</section>
+
+<!-- ==================== MODALS ==================== -->
+
+<div class="modal" id="modalAgency">
+  <h3>Resetar Senha</h3>
+  <input type="password" id="novaSenha" placeholder="Nova senha" />
+  <button class="btn btn-primary" onclick="resetSenha()">Salvar</button>
+  <button class="btn" onclick="closeModal('modalAgency')">Cancelar</button>
+</div>
+
+<div class="modal" id="modalAlterarAgenciaModelo">
+  <h3>Alterar Agência da Modelo</h3>
+
+  <form id="formAlterarAgenciaModelo" onsubmit="salvarAlteracaoAgenciaModelo(event)">
+    <input type="hidden" id="alterarAgenciaModeloId">
+
+    <label>
+      Modelo
+      <input type="text" id="alterarAgenciaModeloNome" disabled>
+    </label>
+
+    <label>
+      Agência
+      <select id="alterarAgenciaSelect">
+        <option value="">Sem agência</option>
+      </select>
+    </label>
+
+    <div class="modal-actions">
+      <button type="button" class="btn btn-light" onclick="closeModal('modalAlterarAgenciaModelo')">
+        Cancelar
+      </button>
+      <button type="submit" class="btn btn-primary">
+        Salvar
+      </button>
+    </div>
+  </form>
+</div>
+
+<!-- Modal Registrar Pagamento Agência -->
+<div id="modalPagAgencia" class="modal">
+  <div class="modal-content">
+    <span class="modal-close" onclick="closeModal('modalPagAgencia')">&times;</span>
+    <h3>Registrar Recebimento</h3>
+    <form id="formPagAgencia" onsubmit="salvarPagAgencia(event)">
+      <div class="form-group">
+        <label>Mês (YYYY-MM)</label>
+        <input type="month" name="mes" id="pagAgenciaMes" class="input" required />
+      </div>
+
+      <div class="form-group">
+        <label>Total Bruto</label>
+        <input 
+          type="number" 
+          step="0.01" 
+          name="total_bruto" 
+          id="pagamentoTotalBruto" 
+          class="input" 
+          oninput="atualizarTotalPagAgencia()"
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Comissão Agência</label>
+        <input 
+          type="number" 
+          step="0.01" 
+          name="total_agencia" 
+          id="pagamentoTotalAgencia" 
+          class="input"
+          oninput="atualizarTotalPagAgencia()"
+          required 
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Total Modelos</label>
+        <input 
+          type="number" 
+          step="0.01" 
+          name="total_modelos" 
+          id="pagamentoTotalModelos" 
+          class="input"
+          readonly
+        />
+      </div>
+
+      <div class="form-group">
+        <label>Comprovativo (opcional)</label>
+        <input type="file" name="recibo" class="input" accept=".pdf,.jpg,.jpeg,.png" />
+      </div>
+
+      <div class="stat-box">
+        <span>Saldo Disponível: </span>
+        <strong id="saldoDisponivelPagAgencia">—</strong>
+      </div>
+
+      <div class="modal-actions">
+        <button type="button" class="btn btn-ghost" onclick="closeModal('modalPagAgencia')">Cancelar</button>
+        <button type="submit" class="btn btn-primary">Registrar</button>
+      </div>
+    </form>
+  </div>
+</div>
+
+<!-- Modal genérico -->
+<div class="modal-overlay" id="modalOverlay" onclick="closeAllModals()"></div>
+
+<!-- Modal Edição Genérica -->
+<div class="modal modal-lg" id="modalEdit">
+  <h3 id="modalEditTitle">Editar</h3>
+  <form id="formEdit" onsubmit="salvarEdicao(event)">
+    <div id="modalEditFields"></div>
+    <div class="modal-actions">
+      <button type="button" class="btn btn-ghost" onclick="closeAllModals()">Cancelar</button>
+      <button type="submit" class="btn btn-primary">Salvar</button>
+    </div>
+  </form>
+</div>
+
+<!-- Toast -->
+<div class="toast" id="toast"></div>
+
+<script src="agency-dashboard.js"></script>
+</body>
+</html>

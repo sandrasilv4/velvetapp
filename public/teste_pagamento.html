@@ -1,0 +1,402 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Teste de Pagamentos — Ambiente de Homologação</title>
+  <link rel="stylesheet" href="/css/pag.css" />
+  <script src="/i18n.js"></script>
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      background: #f4f4f8;
+      margin: 0;
+      padding: 24px;
+    }
+
+    .teste-header {
+      background: #fff3cd;
+      border: 2px solid #ffc107;
+      border-radius: 10px;
+      padding: 16px 20px;
+      margin-bottom: 28px;
+      text-align: center;
+    }
+
+    .teste-header h1 {
+      margin: 0 0 6px;
+      font-size: 1.2rem;
+      color: #7d5000;
+    }
+
+    .teste-header p {
+      margin: 0;
+      font-size: 0.85rem;
+      color: #856404;
+    }
+
+    .cenarios {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 16px;
+      max-width: 900px;
+      margin: 0 auto 32px;
+    }
+
+    .card-cenario {
+      background: #fff;
+      border-radius: 12px;
+      padding: 20px;
+      box-shadow: 0 2px 8px rgba(0,0,0,.08);
+    }
+
+    .card-cenario h3 {
+      margin: 0 0 6px;
+      font-size: 1rem;
+      color: #333;
+    }
+
+    .card-cenario p {
+      margin: 0 0 14px;
+      font-size: 0.82rem;
+      color: #777;
+    }
+
+    .badge-tipo {
+      display: inline-block;
+      font-size: 0.72rem;
+      font-weight: 600;
+      padding: 2px 8px;
+      border-radius: 20px;
+      margin-bottom: 10px;
+    }
+
+    .badge-vip   { background: #e8f5e9; color: #2e7d32; }
+    .badge-midia { background: #e3f2fd; color: #1565c0; }
+    .badge-premium { background: #fce4ec; color: #880e4f; }
+
+    .btn-teste {
+      display: block;
+      width: 100%;
+      padding: 10px;
+      border: none;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      margin-bottom: 8px;
+      transition: opacity .15s;
+    }
+
+    .btn-teste:hover { opacity: 0.85; }
+    .btn-teste.pix  { background: #32bcad; color: #fff; }
+    .btn-teste.cartao { background: #5c4db1; color: #fff; }
+
+    .log-area {
+      max-width: 900px;
+      margin: 0 auto;
+      background: #1e1e2e;
+      border-radius: 12px;
+      padding: 20px;
+      color: #cdd6f4;
+      font-family: monospace;
+      font-size: 0.82rem;
+      max-height: 300px;
+      overflow-y: auto;
+    }
+
+    .log-area h4 {
+      margin: 0 0 12px;
+      color: #89b4fa;
+      font-size: 0.85rem;
+    }
+
+    .log-line { margin: 2px 0; }
+    .log-ok   { color: #a6e3a1; }
+    .log-erro { color: #f38ba8; }
+    .log-info { color: #89dceb; }
+
+    .status-indicator {
+      display: inline-block;
+      width: 10px;
+      height: 10px;
+      border-radius: 50%;
+      background: #f38ba8;
+      margin-right: 6px;
+      vertical-align: middle;
+    }
+
+    .status-indicator.ok { background: #a6e3a1; }
+  </style>
+</head>
+<body>
+
+<!-- AVISO DE AMBIENTE DE TESTE -->
+<div class="teste-header">
+  <h1>⚠️ Ambiente de Homologação — Pagamentos</h1>
+  <p>Esta página é exclusiva para testes. Nenhuma cobrança real será efetuada.</p>
+</div>
+
+<!-- CENÁRIOS DE TESTE -->
+<div class="cenarios">
+
+  <!-- VIP PIX -->
+  <div class="card-cenario">
+    <span class="badge-tipo badge-vip">VIP</span>
+    <h3>Assinatura VIP</h3>
+    <p>Testa o fluxo completo de assinatura com renovação automática de 30 dias.</p>
+    <button class="btn-teste pix" onclick="testar('vip', 'pix')">⚡ Testar VIP — Pix</button>
+    <button class="btn-teste cartao" onclick="testar('vip', 'cartao')">💳 Testar VIP — Cartão</button>
+  </div>
+
+  <!-- MÍDIA PIX -->
+  <div class="card-cenario">
+    <span class="badge-tipo badge-midia">MÍDIA</span>
+    <h3>Desbloqueio de Mídia</h3>
+    <p>Testa compra avulsa de uma mídia premium (acesso permanente).</p>
+    <button class="btn-teste pix" onclick="testar('midia', 'pix')">⚡ Testar Mídia — Pix</button>
+    <button class="btn-teste cartao" onclick="testar('midia', 'cartao')">💳 Testar Mídia — Cartão</button>
+  </div>
+
+  <!-- PREMIUM PIX -->
+  <div class="card-cenario">
+    <span class="badge-tipo badge-premium">PREMIUM</span>
+    <h3>Post Premium</h3>
+    <p>Testa desbloqueio de post premium individual.</p>
+    <button class="btn-teste pix" onclick="testar('premium', 'pix')">⚡ Testar Premium — Pix</button>
+    <button class="btn-teste cartao" onclick="testar('premium', 'cartao')">💳 Testar Premium — Cartão</button>
+  </div>
+
+</div>
+
+<!-- LOG DE REQUISIÇÕES -->
+<div class="log-area">
+  <h4>📋 Log de Requisições <span class="status-indicator" id="statusDot"></span><span id="statusTxt">aguardando...</span></h4>
+  <div id="logContainer">
+    <div class="log-line log-info">// Clique em um cenário acima para iniciar o teste.</div>
+  </div>
+</div>
+
+<!-- POPUP DE PAGAMENTO (reutiliza a estrutura real de perfil.html) -->
+<div id="popupPagamentoVelvet" class="velvet-modal hidden">
+  <div class="velvet-backdrop" onclick="fecharPopupPagamento()"></div>
+  <div class="velvet-box">
+    <button class="velvet-close" onclick="fecharPopupPagamento()">×</button>
+
+    <!-- ETAPA INICIAL -->
+    <div id="etapaPagamentoInicial" class="etapa-pagamento">
+
+      <div class="vip-detalhes hidden">
+        <div class="vip-beneficios">
+          <h2 class="velvet-title">ATIVAÇÃO VIP — TESTE</h2>
+        </div>
+        <div class="vip-valores">
+          <div class="linha"><span>Valor:</span><span id="vipValorBase">0,00</span></div>
+          <div class="linha desconto"><span>Desconto:</span><span id="vipDesconto">0,00</span></div>
+          <div class="linha"><span>Taxa:</span><span id="vipTaxa">0,00</span></div>
+          <div class="linha total"><span>Total:</span><span id="vipTotal">0,00</span></div>
+        </div>
+      </div>
+
+      <div class="midia-detalhes hidden">
+        <div class="midia-valores">
+          <div class="linha"><span>Valor:</span><span id="midiaValorBase">0,00</span></div>
+          <div class="linha desconto"><span>Desconto:</span><span id="midiaDesconto">0,00</span></div>
+          <div class="linha"><span>Taxa de transação:</span><span id="midiaTaxa">0,00</span></div>
+          <div class="linha total"><span>Total:</span><strong><span id="midiaTotal">0,00</span></strong></div>
+        </div>
+      </div>
+
+      <div id="campoCpf">
+        <label><strong>CPF</strong></label>
+        <input type="text" id="cpfPagamento" class="campo-input" placeholder="000.000.000-00" maxlength="14" value="123.456.789-09" />
+      </div>
+
+      <div id="campoTelefone">
+        <label><strong>Telefone</strong></label>
+        <input type="text" id="phonePagamento" class="campo-input" placeholder="(11) 99999-9999" value="(11) 99999-9999" />
+      </div>
+
+      <div class="termos-pagamento">
+        <label class="termos-check-linha">
+          <input type="checkbox" id="aceiteTermosPagamento" checked />
+          <span>Li e aceito os Termos de Uso e as Políticas da plataforma.</span>
+        </label>
+        <label class="termos-check-linha">
+          <input type="checkbox" id="aceiteExecucaoImediata" checked />
+          <span>Declaro ciência de que o acesso é imediato após o pagamento.</span>
+        </label>
+      </div>
+
+
+      <div class="acoes-metodo">
+        <button id="btnEscolherPix" type="button" class="btn-principal" onclick="mostrarMetodo('pix')">⚡ Pagar com Pix</button>
+        <button id="btnEscolherCartao" type="button" class="btn-principal" onclick="mostrarMetodo('cartao')">💳 Pagar com Cartão</button>
+      </div>
+
+    </div>
+
+    <!-- ETAPA PIX -->
+    <div id="etapaPagamentoPix" class="etapa-pagamento hidden">
+      <button type="button" class="btn-voltar" onclick="voltarEtapaPagamento()">← Voltar</button>
+      <div id="pixLoading" class="pix-loading hidden"><strong>⏳ Aguarde…</strong></div>
+      <div id="pixAguardando" class="pix-aguardando hidden">
+        <strong>⌛ Aguardando confirmação do pagamento...</strong>
+        <p>Não feche esta janela nem atualize a página.</p>
+      </div>
+      <div id="pixSucesso" class="pix-sucesso hidden"><strong>✅ Pagamento confirmado!</strong></div>
+      <img id="pixQr" class="hidden" alt="QR Code Pix" />
+      <input type="text" id="pixCodigo" readonly class="hidden" />
+      <button id="btnCopiarPix" class="btn-copiar hidden" onclick="copiarPix()">Copiar código</button>
+
+    </div>
+
+    <!-- ETAPA CARTÃO -->
+    <div id="etapaPagamentoCartao" class="etapa-pagamento hidden">
+      <button type="button" class="btn-voltar" onclick="voltarEtapaPagamento()">← Voltar</button>
+      <div id="cartaoResumoValor" class="hidden" style="text-align:center;margin-bottom:12px;">
+        <span>Você será cobrado:</span>
+        <strong id="cartaoResumoTotal" style="font-size:1.1rem;margin-left:6px;"></strong>
+      </div>
+      <div id="cartaoLoading" class="cartao-loading hidden"><strong>⏳ Processando pagamento…</strong></div>
+      <div id="cartaoSucesso" class="cartao-sucesso hidden"><strong>✅ Pagamento confirmado!</strong></div>
+      <form id="formStripePagamento" class="form-cartao-vip">
+        <div class="linha">
+          <div class="form-group full">
+            <label>Dados do pagamento</label>
+            <div id="stripe-card-form"></div>
+          </div>
+        </div>
+        <button type="submit" id="btnConfirmarStripe" class="btn-principal">Confirmar pagamento</button>
+      </form>
+
+    </div>
+
+  </div>
+</div>
+
+<script>
+  // ── Intercepta fetch para logar todas as requisições de pagamento ───────────
+  const _fetchOriginal = window.fetch;
+  window.fetch = async function(url, opts = {}) {
+    if (String(url).includes('/api/pagamento')) {
+      log('info', `→ ${opts.method || 'GET'} ${url}`);
+      try {
+        const body = opts.body ? JSON.parse(opts.body) : null;
+        if (body) log('info', `   payload: ${JSON.stringify(body)}`);
+      } catch {}
+    }
+
+    const res = await _fetchOriginal(url, opts);
+
+    if (String(url).includes('/api/pagamento')) {
+      const clone = res.clone();
+      clone.json().then(data => {
+        const ok = res.ok;
+        log(ok ? 'ok' : 'erro', `← ${res.status} ${url.split('/').pop()}: ${JSON.stringify(data).slice(0, 180)}`);
+        setStatus(ok);
+      }).catch(() => {});
+    }
+
+    return res;
+  };
+
+  function log(tipo, msg) {
+    const el = document.getElementById('logContainer');
+    const line = document.createElement('div');
+    line.className = `log-line log-${tipo}`;
+    line.textContent = `[${new Date().toLocaleTimeString()}] ${msg}`;
+    el.appendChild(line);
+    el.scrollTop = el.scrollHeight;
+  }
+
+  function setStatus(ok) {
+    const dot = document.getElementById('statusDot');
+    const txt = document.getElementById('statusTxt');
+    dot.className = 'status-indicator' + (ok ? ' ok' : '');
+    txt.textContent = ok ? 'última requisição: OK' : 'última requisição: ERRO';
+  }
+
+  // ── Configura cenário de teste e abre o popup ──────────────────────────────
+  function testar(tipo, metodo) {
+    log('info', `── Iniciando teste: tipo=${tipo} método=${metodo} ──`);
+
+    // Valores de teste por tipo
+    // IMPORTANTE: modelo_id, conteudo_id e premium_post_id devem ser IDs
+    // numéricos reais do banco sandbox. Use 1 ou ajuste conforme seu banco.
+    const config = {
+      vip:     { valor: 49.90, modelo_id: 1 },
+      midia:   { valor: 19.90, conteudo_id: 1, modelo_id: 1 },
+      premium: { valor: 29.90, premium_post_id: 1, modelo_id: 1 },
+    };
+
+    // ─── Globals que pag.js usa para despachar o pagamento ───────────────────
+    window.PAGAMENTO_TIPO_ATUAL = tipo;   // ← ESSENCIAL: confirmarPix() lê isso
+    window.MODELO_ID_ATUAL      = config[tipo].modelo_id;
+
+    if (tipo === 'midia') {
+      window.MIDIA_VENDA_ATUAL = {
+        conteudo_id: config.midia.conteudo_id,
+        preco: config.midia.valor,
+        descricao: 'Mídia de teste'
+      };
+    } else {
+      window.MIDIA_VENDA_ATUAL = null;
+    }
+
+    if (tipo === 'premium') {
+      window.PREMIUM_ATUAL = {
+        premium_post_id: config.premium.premium_post_id,
+        preco: config.premium.valor,
+        descricao: 'Post premium de teste'
+      };
+    } else {
+      window.PREMIUM_ATUAL = null;
+    }
+
+    if (tipo === 'vip') {
+      window.OFERTA_ATUAL     = null;
+      window.PLANO_VIP_ATUAL  = { valor: config.vip.valor };
+    }
+
+    window.pagamentoAtual = { tipo, ...config[tipo] };
+
+    log('info', `   PAGAMENTO_TIPO_ATUAL=${window.PAGAMENTO_TIPO_ATUAL}  MODELO_ID_ATUAL=${window.MODELO_ID_ATUAL}`);
+
+    // Exibe o bloco de detalhes correto
+    document.querySelectorAll('.vip-detalhes, .midia-detalhes').forEach(el => el.classList.add('hidden'));
+    // Cálculo da taxa: R$ 1,99 + 10% do valor (igual ao servidor)
+    const v = config[tipo].valor;
+    const taxa  = Number((1.99 + v * 0.10).toFixed(2));
+    const total = Number((v + taxa).toFixed(2));
+
+    if (tipo === 'vip') {
+      document.querySelector('.vip-detalhes')?.classList.remove('hidden');
+      document.getElementById('vipValorBase').textContent = v.toFixed(2);
+      document.getElementById('vipDesconto').textContent  = '0,00';
+      document.getElementById('vipTaxa').textContent      = taxa.toFixed(2);
+      document.getElementById('vipTotal').textContent     = total.toFixed(2);
+    } else {
+      document.querySelector('.midia-detalhes')?.classList.remove('hidden');
+      document.getElementById('midiaValorBase').textContent = v.toFixed(2);
+      document.getElementById('midiaDesconto').textContent  = '0,00';
+      document.getElementById('midiaTaxa').textContent      = taxa.toFixed(2);
+      document.getElementById('midiaTotal').textContent     = total.toFixed(2);
+    }
+
+    // Abre popup e navega direto para o método escolhido se especificado
+    document.getElementById('popupPagamentoVelvet').classList.remove('hidden');
+
+    if (metodo === 'pix') {
+      setTimeout(() => mostrarMetodo('pix'), 100);
+    } else if (metodo === 'cartao') {
+      setTimeout(() => mostrarMetodo('cartao'), 100);
+    }
+  }
+</script>
+
+<!-- pag.js com toda a lógica real de pagamento -->
+<script src="/js/pag.js"></script>
+
+</body>
+</html>

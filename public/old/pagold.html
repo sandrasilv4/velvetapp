@@ -1,0 +1,133 @@
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+   <title>Perfil </title>
+  <link rel="stylesheet" href="/pag.css">
+
+</head>
+
+<body>
+
+<div id="popupPagamentoVelvet" class="velvet-modal hidden">
+
+  <div class="velvet-backdrop" onclick="fecharPopupPagamento()"></div>
+
+  <div class="velvet-box">
+    <button class="velvet-close" onclick="fecharPopupPagamento()">×</button>
+
+    <h2 class="velvet-title">Finalizar pagamento</h2>
+
+    <!-- Abas -->
+    <div class="velvet-tabs">
+      <button class="tab active" onclick="mostrarMetodo('pix')">
+        ⚡ Pix
+      </button>
+      <button class="tab" onclick="mostrarMetodo('cartao')">
+        💳 Cartão
+      </button>
+    </div>
+
+    <!-- Conteúdo -->
+    <div class="velvet-content">
+
+      <!-- PIX -->
+      <div id="conteudoPix" class="metodo">
+        <p class="info">
+          Escaneie o QR Code ou copie o código Pix
+        </p>
+
+        <img
+          id="pixQr"
+          src=""
+          alt="QR Code Pix"
+          class="pix-qr"
+        />
+
+        <input
+          id="pixCodigo"
+          type="text"
+          readonly
+        />
+
+        <button class="btn-secundario" onclick="copiarPix()">
+          Copiar código Pix
+        </button>
+      </div>
+
+      <!-- CARTÃO -->
+      <div id="conteudoCartao" class="metodo hidden">
+        <p class="info">
+          Pague com cartão de crédito ou débito
+        </p>
+
+        <!-- Exemplo: iframe Stripe / Mercado Pago -->
+        <div id="cartaoContainer">
+          <!-- SDK de pagamento entra aqui -->
+        </div>
+
+        <button class="btn-principal">
+          Confirmar pagamento
+        </button>
+      </div>
+
+    </div>
+  </div>
+</div>
+
+<div class="pix-status">
+
+  <!-- loading -->
+  <div id="pixLoading" class="pix-loading">
+    <div class="spinner"></div>
+    <span>Aguarde...</span>
+  </div>
+
+  <!-- aguardando -->
+  <div id="pixAguardando" class="pix-aguardando hidden">
+    ⏳ Aguardando pagamento Pix
+  </div>
+
+  <!-- sucesso -->
+  <div id="pixSucesso" class="pix-sucesso hidden">
+    ✅ Pagamento confirmado!
+  </div>
+
+</div>
+<!-- CARTÃO -->
+<div id="conteudoCartao" class="metodo hidden">
+
+  <div class="cartao-status">
+
+    <!-- loading -->
+    <div id="cartaoLoading" class="cartao-loading hidden">
+      <div class="spinner"></div>
+      <span>Preparando pagamento…</span>
+    </div>
+
+    <!-- formulário -->
+    <form id="formCartao" class="hidden">
+      <div id="card-element"></div>
+
+      <button type="submit" class="btn-principal">
+        Confirmar pagamento
+      </button>
+    </form>
+
+    <!-- sucesso -->
+    <div id="cartaoSucesso" class="cartao-sucesso hidden">
+      ✅ Pagamento confirmado!
+    </div>
+
+  </div>
+</div>
+
+</main>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/pag.js" defer></script>
+</body>
+</html>
+

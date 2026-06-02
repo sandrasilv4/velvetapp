@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Chat</title>
+
+  <link rel="stylesheet" href="/chatmodelo.css">
+  <link rel="stylesheet" href="/chat-app.css">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+</head>
+
+<body class="role-modelo">
+
+<div class="pagina-chat">
+
+  <!-- TOPO -->
+  <div class="chat-header chat-topo">
+    <button id="btnVoltar">←</button>
+
+    <div class="chat-identidade">
+      <img id="chatAvatar" src="/assets/avatarDefault.png" class="chat-avatar avatar-clicavel" />
+      <span id="clienteNome">Cliente</span>
+    </div>
+  </div>
+
+  <!-- MENSAGENS -->
+  <main id="chatBox" class="chat-mensagens"></main>
+
+  <!-- INPUT -->
+  <footer class="chat-input">
+
+    <button id="btnEnviarConteudo">📦</button>
+
+    <textarea
+      id="messageInput"
+      placeholder="Digite sua mensagem..."
+    ></textarea>
+
+    <button id="sendBtn">Enviar</button>
+
+  </footer>
+
+</div>
+
+<!-- POPUP CONTEÚDOS -->
+<div id="popupConteudos" class="hidden">
+  <div class="popup-box">
+    <h3>Enviar conteúdo</h3>
+
+    <div class="preview-scroll">
+      <div id="previewConteudos" class="preview-grid"></div>
+    </div>
+
+    <div class="popup-preco">
+      <label>Preço (R$)</label>
+      <input type="number" id="precoConteudo" value="0" min="0" />
+    </div>
+
+    <div class="popup-actions">
+      <button onclick="fecharPopupConteudos()">Cancelar</button>
+      <button onclick="confirmarEnvioConteudo()">Enviar</button>
+    </div>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+ <script src="/app.js"></script>
+<script src="/paginaChat.js"></script>
+</body>
+</html>

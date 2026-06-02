@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+   <title>Subscrições e Transações</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/header.css">
+  <!-- <link rel="stylesheet" href="/transacoes.css"> -->
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/pag.css">
+
+   <script src="/i18n.js"></script>
+</head>
+
+<body>
+ <div id="header-container"></div>
+
+ <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="transacoes.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <div class="tabs">
+      <button class="tab-btn ativa" data-tab="subscricoes" data-i18n="transacoes.tab_subscricoes">Subscrições</button>
+      <button class="tab-btn" data-tab="transacoes" data-i18n="transacoes.tab_transacoes">Transações</button>
+    </div>
+
+    <div id="tab-subscricoes" class="tab-content ativa">
+      <h3 data-i18n="transacoes.titulo_subscricoes">Subscrições VIP</h3>
+      <p class="transacoes-descricao" data-i18n="transacoes.desc_subscricoes">
+        Aqui você pode gerir suas assinaturas VIP ativas.
+      </p>
+      <div id="listaSubscricoes" class="lista-transacoes" data-i18n="transacoes.carregando_subscricoes">
+        Carregando subscrições...
+      </div>
+    </div>
+
+    <div id="tab-transacoes" class="tab-content">
+      <h3 data-i18n="transacoes.titulo_transacoes">Transações</h3>
+      <p class="transacoes-descricao" data-i18n="transacoes.desc_transacoes">
+        Aqui você pode conferir todos os pagamentos que já fez na plataforma.
+      </p>
+
+      <div class="filtros">
+        <select id="filtroTipo">
+          <option value="" data-i18n="transacoes.filtro_todos">Todos</option>
+          <option value="conteudo" data-i18n="transacoes.filtro_conteudos">Conteúdos</option>
+          <option value="assinatura" data-i18n="transacoes.filtro_assinaturas">Assinaturas VIP</option>
+        </select>
+      </div>
+
+      <div id="listaTransacoes" class="lista-transacoes" data-i18n="transacoes.carregando_transacoes">
+        Carregando transações...
+      </div>
+      <div id="paginacao" class="paginacao"></div>
+    </div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+
+<script src="/js/transacoes.js"></script>
+<script src="/js/header.js"></script>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/footer-shared.js"></script>
+<script src="/app/js/suporte-widget.js"></script>
+
+</body>
+</html>

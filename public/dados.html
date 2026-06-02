@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+   <title>Meus Dados de Usuário</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+  <script src="/i18n.js"></script>
+
+</head>
+
+<body>
+ <div id="header-container"></div>
+
+ <section class="area-card">
+
+    <div class="perfil-capa">
+      <img id="profileCapa" src="/assets/capa.png" data-i18n-alt="dados.alt_capa">
+      <button class="btn-camera capa" id="btnCapa" data-i18n-title="dados.title_capa">📷</button>
+      <input type="file" id="inputCapa" accept="image/*" hidden>
+    </div>
+
+    <div class="perfil-avatar">
+      <img id="profileAvatar" src="/assets/avatar.png" data-i18n-alt="dados.alt_avatar">
+      <button class="btn-camera avatar" id="btnAvatar" data-i18n-title="dados.title_avatar">📷</button>
+      <input type="file" id="inputAvatar" accept="image/*" hidden>
+    </div>
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="dados.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="dados.titulo">Meus Dados de Usuário</h3>
+
+    <div class="perfil-completo-wrapper">
+      <a href="#" class="btn-perfil-completo" data-i18n="dados.ver_perfil">✨ Ver Perfil Completo</a>
+    </div>
+    
+    <form id="formDadosUsuario" class="form-area">
+      <div class="form-grid">
+        <div class="form-group">
+          <label data-i18n="dados.label_nome_exibicao">Como quer ser chamado*</label>
+          <input type="text" name="nome_exibicao" data-i18n-placeholder="dados.placeholder_nome_exibicao" placeholder="Como quer ser chamado(a) na plataforma" required>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="dados.label_instagram">Instagram</label>
+          <input type="text" name="instagram" data-i18n-placeholder="dados.placeholder_instagram" placeholder="@seuinstagram">
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="dados.label_tiktok">TikTok</label>
+          <input type="text" name="tiktok" data-i18n-placeholder="dados.placeholder_tiktok" placeholder="@seutiktok">
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="dados.label_local">Localização*</label>
+          <input type="text" name="local" data-i18n-placeholder="dados.placeholder_local" placeholder="Estado - Cidade">
+        </div>
+
+        <div class="form-group full">
+          <label data-i18n="dados.label_bio">Sua Bio*</label>
+          <textarea name="bio" rows="4" data-i18n-placeholder="dados.placeholder_bio" placeholder="Escreva sua biografia aqui!"></textarea>
+          <small data-i18n="dados.obrigatorios">*Informações obrigatórias</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-salvar" data-i18n="dados.btn_salvar">Salvar</button>
+    </form>
+  </section>
+
+  <div id="footer-container"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/dados.js"></script>
+<script src="/js/areaUsuario.js"></script>
+<script src="/js/footer-shared.js"></script>
+
+</body>
+</html>

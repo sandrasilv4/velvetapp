@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Velvet • Chats</title>
+
+  <!-- Fonte -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- CSS do App (vamos criar no próximo passo) -->
+  <link rel="stylesheet" href="/chat-app.css">
+</head>
+<script>
+  const token = localStorage.getItem("token");
+  if (!token) {
+    window.location.replace("/index.html");
+  }
+</script>
+
+<body class="modo-lista">
+
+  <!-- 🔝 TOPO FIXO -->
+  <header class="app-topo">
+    <h1>Chats</h1>
+  </header>
+
+  <!-- 📱 LISTA DE CONVERSAS -->
+  <main class="lista-conversas">
+
+    <!-- ITEM -->
+    <div class="chat-item" data-status="nao-visto">
+      <img class="avatar" src="/assets/avatarDefault.png" />
+
+      <div class="info">
+        <div class="linha-topo">
+          <strong>Ana</strong>
+          <span class="hora">18:40</span>
+        </div>
+
+        <div class="preview">
+          Você viu o conteúdo que te enviei?
+        </div>
+      </div>
+
+      <span class="badge">2</span>
+    </div>
+
+    <!-- ITEM -->
+    <div class="chat-item" data-status="por-responder">
+      <img class="avatar" src="/assets/avatarDefault.png" />
+
+      <div class="info">
+        <div class="linha-topo">
+          <strong>Bia</strong>
+          <span class="hora">ontem</span>
+        </div>
+
+        <div class="preview">
+          Obrigada 😍
+        </div>
+      </div>
+
+      <span class="badge">Por responder</span>
+    </div>
+
+    <!-- ITEM NORMAL -->
+    <div class="chat-item">
+      <img class="avatar" src="/assets/avatarDefault.png" />
+
+      <div class="info">
+        <div class="linha-topo">
+          <strong>Carla</strong>
+          <span class="hora">2 dias</span>
+        </div>
+
+        <div class="preview">
+          Conversa encerrada
+        </div>
+      </div>
+    </div>
+    <section class="chat-tela hidden" id="chatTela">
+
+  <!-- TOPO DO CHAT -->
+  <header class="chat-topo">
+    <button id="btnVoltar">←</button>
+
+    <img id="chatAvatar" class="chat-avatar" />
+    <strong id="chatNome"></strong>
+  </header>
+
+  <!-- MENSAGENS -->
+  <div id="chatMensagens" class="chat-mensagens"></div>
+
+  <!-- INPUT -->
+  <footer class="chat-input">
+    <input id="chatInput" placeholder="Mensagem..." />
+    <button id="chatEnviar">Enviar</button>
+  </footer>
+
+</section>
+
+
+  </main>
+   <script src="/app.js"></script>
+<script src="/chat-app.js"></script>
+</body>
+</html>

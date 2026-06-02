@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Velvet</title>
+  <button id="btnInstallPWA" class="btn-install-pwa" hidden>
+  Baixar app
+</button>
+
+  <!-- VIEWPORT -->
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- FONTS -->
+  <link
+    href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap"
+    rel="stylesheet"
+  />
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="/app/css/index.css" />
+
+  <!-- ICONS -->
+  <link rel="icon" href="/favicon.ico" sizes="any" />
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png" />
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png" />
+  <link rel="icon" href="/icons/icon-512.png">
+  <link rel="apple-touch-icon" href="/icons/icon-512.png">
+
+  <!-- PWA -->
+<link rel="manifest" href="/manifest.json">
+
+<meta name="theme-color" content="#7B2CFF">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+
+</head>
+
+<body>
+
+  <!-- =========================
+       PAGE WRAPPER
+  ========================== -->
+  <div class="page-wrapper">
+    <div class="landing">
+
+      <!-- CAPA -->
+      <div class="landing-cover">
+        <img src="./assets/cap.png" alt="Capa Velvet" />
+      </div>
+
+      <!-- LOGIN CARD -->
+      <div class="landing-login">
+
+        <img src="./assets/velvet.png" class="logo" alt="Velvet" />
+
+        <div class="login-box">
+          <button class="btn" onclick="selectRole()">
+            Faça seu login
+          </button>
+
+          <button class="btn" onclick="startRegister()">
+            Cadastre-se
+          </button>
+        </div>
+
+        <!-- FOOTER LINKS -->
+        <div class="footer-links">
+          <a href="contato.html">Contato</a>
+          <a href="#" onclick="openLegalModal(event, '/terms.html')">Termos</a>
+          <a href="#" onclick="openLegalModal(event, '/policies.html')">Políticas</a>
+          <a href="#" onclick="openLegalModal(event, '/privacy.html')">Privacidade</a>
+        </div>
+
+        <div class="footer-linksC">
+          <a href="#" onclick="startRegister()">Criar conta</a>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       LOGIN / REGISTER MODAL
+  ========================== -->
+  <div id="loginModal" class="modal hidden">
+    <div class="modal-overlay" onclick="closeLoginModal()"></div>
+
+    <div class="modal-box">
+      <h2 id="modalTitle">Entrar</h2>
+
+      <input id="loginEmail" type="email" placeholder="Email" />
+      <input id="loginSenha" type="password" placeholder="Senha" />
+
+      <select id="registerRole" class="hidden">
+        <option value="">Escolha o tipo de conta</option>
+        <option value="cliente">Quero ser Membro</option>
+        <option value="modelo">Quero criar Conteúdo</option>
+      </select>
+
+      <button id="modalSubmit" class="btn btn-primary">
+        Entrar
+      </button>
+
+      <p class="modal-switch">
+        Não tem conta?
+        <span onclick="startRegister()">Criar conta</span>
+      </p>
+
+      <p class="modal-switch hidden" id="switchToLogin">
+        Já tem conta?
+        <span onclick="switchToLogin()">Entrar</span>
+      </p>
+
+      <button class="modal-close" onclick="closeLoginModal()">✕</button>
+    </div>
+  </div>
+
+  <!-- =========================
+       MODAL LEGAL
+  ========================== -->
+  <div id="legalModal" class="legal-modal hidden">
+    <div class="legal-overlay" onclick="closeLegalModal()"></div>
+    <div class="legal-box">
+      <button class="legal-close" onclick="closeLegalModal()">×</button>
+      <iframe id="modalFrame"></iframe>
+    </div>
+  </div>
+
+  <!-- =========================
+       AGE GATE (+18)
+  ========================== -->
+  <div id="ageModal" class="modal hidden">
+    <div class="modal-overlay"></div>
+
+    <div class="modal-box">
+      <h2>Conteúdo exclusivo para maiores de 18 anos</h2>
+
+      <p>
+        Ao continuar, você declara que possui <strong>18 anos ou mais</strong>
+        e concorda com os Termos e Políticas da Velvet.
+      </p>
+
+      <div style="display:flex; gap:12px; margin-top:20px;">
+        <button class="btn btn-primary" onclick="confirmAge(true)">
+          Sou maior de 18
+        </button>
+
+        <button class="btn" onclick="confirmAge(false)">
+          Sou menor
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- =========================
+       TRACKING ORIGEM
+  ========================== -->
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    const ref = params.get("ref");
+    const src = params.get("src");
+
+    if (ref) localStorage.setItem("ref_modelo", ref);
+    if (src) localStorage.setItem("origem_trafego", src);
+
+    if (ref || src) {
+      fetch("/api/track-acesso", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ ref, src })
+      });
+    }
+  </script>
+
+  <!-- =========================
+       SERVICE WORKER
+  ========================== -->
+  <script>
+    if ("serviceWorker" in navigator) {
+      navigator.serviceWorker.register("/sw.js")
+        .then(() => console.log("✅ Service Worker registrado"))
+        .catch(err => console.error("❌ Erro no SW:", err));
+    }
+  </script>
+
+  <!-- =========================
+       SCRIPT
+  ========================== -->
+  <script src="/app/js/index.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app/js/suporte-widget.js" defer></script>
+
+</body>
+</html>

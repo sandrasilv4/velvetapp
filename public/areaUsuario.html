@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Área de Usuário</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/area.css"> 
+
+  <script src="/i18n.js"></script>
+
+</head>
+
+<body>
+ <div id="header-container"></div>
+ <main class="page-container">
+
+<section class="area-card">
+<div class="perfil-capa">
+  <img id="profileCapa" src="assets/capa.png" data-i18n-alt="areaUsuario.profile_cover_alt" alt="Capa do perfil">
+  <button class="btn-camera capa" id="btnCapa" data-i18n-title="areaUsuario.change_cover_title" title="Alterar capa">📷</button>
+  <input type="file" id="inputCapa" accept="image/*" hidden>
+  </div>
+
+  <div class="perfil-avatar">
+   <img id="profileAvatar" src="assets/avatar.png" data-i18n-alt="areaUsuario.profile_avatar_alt" alt="Foto de Perfil">
+  <button class="btn-camera avatar" id="btnAvatar" data-i18n-title="areaUsuario.change_avatar_title" title="Alterar avatar">📷 </button>
+  <input type="file" id="inputAvatar" accept="image/*" hidden>
+  </div>
+
+  <div class="perfil-nome" id="profileName"></div>
+
+<div class="area-assinantes only-modelo" id="perfil-assinantes">
+<span id="vip-total">0</span>
+ <span data-i18n="areaUsuario.vip_subscribers">Assinantes VIP</span>
+</div>
+
+ <div class="area-saldos">
+  <!-- visível só para modelo -->
+  <div class="saldo-box only-modelo">
+    <span class="saldo-titulo" data-i18n="areaUsuario.earnings_today">Ganhos de Hoje</span>
+    <strong class="saldo-valor" id="areaUsuarioGanhosHoje">R$ 0,00</strong>
+  </div>
+
+  <!-- visível só para modelo (mensal) -->
+  <div class="saldo-box only-modelo only-mes">
+    <span class="saldo-titulo" data-i18n="areaUsuario.earnings_month">Ganhos do Mês</span>
+    <strong class="saldo-valor" id="areaUsuarioGanhosMes">R$ 0,00</strong>
+  </div>
+  </div>
+
+</section>
+
+<section class="area-section">
+<h3 class="area-titulo" data-i18n="areaUsuario.user_area">Área de Usuário</h3>
+
+<div class="area-banner" id="areaBanner">
+  <a href="/conta.html">
+    <img 
+      src="assets/banner.png" 
+      data-i18n-alt="areaUsuario.banner_validate_account"
+      alt="Valide sua conta para começar a ganhar dinheiro com suas assinaturas VIP!">
+  </a>
+</div>
+
+<div class="area-grid-usuario">
+<a class="area-item" href="/dados.html">
+  <strong data-i18n="areaUsuario.my_profile">Meu Perfil</strong>
+  <span data-i18n="areaUsuario.my_profile_desc">Atualize suas informações de usuario</span>
+</a>
+
+<a class="area-item" href="/conta.html">
+  <strong data-i18n="areaUsuario.account">Conta</strong>
+  <span data-i18n="areaUsuario.account_desc">Valide sua conta para começar ganhar e atualize dados pessoais</span>
+</a>
+
+<a class="area-item" href="#" onclick="irParaInbox()">
+  <strong data-i18n="areaUsuario.chat">Chat</strong>
+  <span data-i18n="areaUsuario.chat_desc">Aceda seu chat inbox</span>
+</a>
+
+<a class="area-item" href="/transacoes.html">
+  <strong data-i18n="areaUsuario.subscriptions_payments">Assinaturas e Pagamentos</strong>
+  <span data-i18n="areaUsuario.subscriptions_payments_desc">Verifique suas assinaturas e transações financeiras</span>
+</a>
+
+<a class="area-item" href="/contato.html">
+  <strong data-i18n="areaUsuario.help">Ajuda</strong>
+  <span data-i18n="areaUsuario.help_desc">Entre em contato com o suporte</span>
+</a>
+</div>
+</section>
+
+<section class="area-section only-modelo">
+<h3 class="area-titulo" data-i18n="areaUsuario.creator_area">Área do Criador</h3>
+
+  <div class="area-grid">
+<a class="area-item" href="/vips.html">
+  <strong data-i18n="areaUsuario.vip_subscribers">Assinantes VIP</strong>
+  <span data-i18n="areaUsuario.vip_subscribers_desc">Acompanhe de perto seus seguidores</span>
+</a>
+
+<a class="area-item" href="/conteudos.html">
+  <strong data-i18n="areaUsuario.contents">Conteúdos</strong>
+  <span data-i18n="areaUsuario.contents_desc">Faça gestão das suas mídias privadas do chat</span>
+</a>
+
+<a class="area-item" href="/allmessage.html">
+  <strong data-i18n="areaUsuario.ppv">PPV</strong>
+  <span data-i18n="areaUsuario.ppv_desc">Envie mensagem em massa para todos assinantes</span>
+</a>
+
+<a class="area-item" href="/ofertas.html">
+  <strong data-i18n="areaUsuario.subscription_offers">Assinatura e Ofertas</strong>
+  <span data-i18n="areaUsuario.subscription_offers_desc">Defina o valor de sua assinatura e crie promoções</span>
+</a>
+
+<a class="area-item" href="/links.html">
+  <strong data-i18n="areaUsuario.links">Links</strong>
+  <span data-i18n="areaUsuario.links_desc">Link do seu perfil para divulgar nas redes sociais</span>
+</a>
+
+<a class="area-item" href="/relatorio.html">
+  <strong data-i18n="areaUsuario.earnings">Ganhos</strong>
+  <span data-i18n="areaUsuario.earnings_desc">Seus ganhos diários, mensais e anuais</span>
+</a>
+
+<a class="area-item" href="/docs/manual.pdf" download="manual.pdf">
+  <strong data-i18n="areaUsuario.user_manual">Manual de Usuário</strong>
+  <span data-i18n="areaUsuario.user_manual_desc">Baixar o guia completo de utilização da plataforma</span>
+</a>
+</div>
+</section>
+
+ </main>
+
+ <div id="footer-container"></div>
+
+
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/areaUsuario.js"></script>
+<script src="/app/js/suporte-widget.js"></script>
+<script src="/js/footer-shared.js"></script>
+
+<script>
+  if (localStorage.getItem("role") !== "cliente") {
+    var _sb = document.getElementById("sp-btn");
+    var _sx = document.getElementById("sp-box");
+    if (_sb) _sb.remove();
+    if (_sx) _sx.remove();
+  }
+</script>
+
+</body>
+</html>

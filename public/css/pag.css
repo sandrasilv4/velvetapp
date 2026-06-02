@@ -1,0 +1,1206 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-primary: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif !important;
+}
+
+body {
+  font-family: 'Poppins', 'Inter', sans-serif !important;
+}
+
+.velvet-modal {
+  position: fixed;
+  inset: 0;
+  z-index: 99999;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow-y: auto;
+  padding: 16px 0;
+}
+
+.hidden {
+  display: none;
+}
+
+.velvet-backdrop {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,.6);
+   z-index: 1; 
+}
+
+.velvet-box {
+  position: relative;
+  background: #fff;
+  text-align: center;
+  width: 92%;
+  max-width: 600px;
+  max-height: 85vh;
+  border-radius: 18px;
+  padding: 20px;
+  z-index: 2;
+  animation: fadeUp .25s ease;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+/* Selo gateway de pagamento */
+.gateway-selo {
+  text-align: center;
+  margin-top: 18px;
+  padding-top: 14px;
+  border-top: 1px solid #eee;
+}
+
+.gateway-selo img {
+  display: inline-block;
+  height: 40px;
+  width: auto;
+  max-width: 200px;
+}
+
+.velvet-close {
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  border: none;
+  background: none;
+  font-size: 26px;
+  cursor: pointer;
+  width: 44px;
+  height: 44px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  border-radius: 50%;
+  -webkit-tap-highlight-color: transparent;
+  color: #7B2CFF;
+}
+
+.velvet-title {
+  text-align: center;
+  color: #7B2CFF;
+  margin-bottom: 16px;
+}
+
+.velvet-tabs {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 16px;
+}
+
+.velvet-tabs .tab {
+  flex: 1;
+  padding: 10px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  background: #f7f7f7;
+  cursor: pointer;
+  font-weight: 600;
+}
+
+.velvet-tabs .tab.active {
+  background: #7B2CFF;
+  color: #fff;
+  border-color: #7B2CFF;
+}
+
+.metodo {
+  text-align: center;
+}
+
+.info {
+  color: #555;
+  margin-bottom: 12px;
+}
+
+.pix-qr {
+  width: 200px;
+  margin: 10px auto;
+  display: block;
+}
+
+#pixCodigo {
+  width: 90%;
+  padding: 10px;
+  margin-top: 8px;
+}
+
+.btn-principal {
+  width: 100%;
+  margin-top: 16px;
+  padding: 12px;
+  border-radius: 12px;
+  border: none;
+  background: #7B2CFF;
+  color: #fff;
+  font-size: 16px;
+  cursor: pointer;
+  margin-top: 20px;
+}
+
+.btn-secundario {
+  margin-top: 10px;
+  background: none;
+  border: 1px solid #7B2CFF;
+  color: #7B2CFF;
+  padding: 10px;
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.pix-status {
+  margin-top: 14px;
+  text-align: center;
+  font-weight: 600;
+}
+
+.pix-loading,
+.pix-aguardando,
+.pix-sucesso {
+  font-size: 16px;
+  color: #ca1818;
+  margin: 10px;
+}
+
+.pix-sucesso {
+  font-size: 16px;
+  color: #188043;
+}
+
+.spinner {
+  width: 28px;
+  height: 28px;
+  margin: 0 auto 6px;
+  border: 3px solid #ddd;
+  border-top-color: #7B2CFF;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+#card-element {
+  padding: 12px;
+  border-radius: 12px;
+  border: 1px solid #ddd;
+  margin-bottom: 14px;
+}
+
+.cartao-status {
+  margin-top: 10px;
+  text-align: center;
+}
+
+.cartao-loading,
+.cartao-sucesso {
+  font-weight: 600;
+  font-size: 16px;
+   margin: 10px;
+}
+
+.cartao-sucesso {
+  font-size: 16px;
+  color: #086b31;
+}
+
+#popupPagamentoVelvet {
+  z-index: 9999999 !important;
+}
+
+
+@media (max-width: 480px) {
+
+  .velvet-box {
+    width: 96%;
+    max-width: 96%;
+    max-height: 90vh;
+    border-radius: 16px;
+    padding: 14px 12px;
+  }
+
+  .pagamento-linha {
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .velvet-title {
+    font-size: 17px;
+    margin-bottom: 8px;
+  }
+
+  .btn-principal {
+    font-size: 15px;
+    padding: 13px;
+    min-height: 44px;
+  }
+
+  .btn-copiar {
+    min-height: 44px;
+    padding: 10px 18px;
+  }
+
+}
+
+
+#popupPagamentoVelvet {
+  pointer-events: auto;
+}
+
+#popupPagamentoVelvet {
+  position: fixed !important;
+  inset: 0 !important;
+  z-index: 9999999 !important;
+}
+
+#popupPagamentoVelvet .velvet-backdrop {
+  z-index: 1 !important;
+  pointer-events: auto !important;
+}
+
+#popupPagamentoVelvet .velvet-box {
+  z-index: 2 !important;
+  pointer-events: auto !important;
+}
+
+/* 🔥 POPUP MAIS COMPACTO E PREMIUM */
+
+.velvet-box {
+  max-width: 380px;
+  padding: 16px;
+  border-radius: 16px;
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.velvet-title {
+  font-size: 18px;         /* menor */
+  margin-bottom: 10px;
+}
+
+.metodo {
+  font-size: 14px;         /* texto geral menor */
+  line-height: 1.4;
+}
+
+.info {
+  font-size: 12px;
+  color: #555;
+  margin-bottom: 8px;
+  text-align: center;
+}
+
+.velvet-tabs .tab {
+  padding: 12px 8px;
+  font-size: 14px;
+  border-radius: 10px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pix-qr,
+#pixQr {
+  display: block;
+  width: 180px;
+  height: 180px;
+  max-width: 70vw;
+  max-height: 70vw;
+  object-fit: contain;
+  margin: 12px auto;
+  border-radius: 8px;
+}
+
+.btn-copiar {
+  background: #fff;
+  color: #7B2CFF;
+  border: 1px solid #7B2CFF;
+  padding: 8px 18px;
+  border-radius: 8px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s;
+  margin-top: 20px;
+}
+
+.btn-copiar:hover {
+  background: #7B2CFF;
+  color: #fff;
+}
+
+.btn-principal {
+  font-size: 15px;
+  padding: 12px;
+  border-radius: 10px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.btn-secundario {
+  font-size: 14px;
+  padding: 10px;
+  min-height: 44px;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.pix-status,
+.cartao-status {
+  font-size: 13px;
+}
+
+.vip-beneficios {
+  font-size: 12px;
+  padding-left: 18px;
+  color: #1E1E26;
+  margin: 10px 0;
+  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif !important;
+}
+
+.vip-beneficios li {
+  margin-bottom: 4px;
+}
+
+/* 🔥 BLOCO DE VALORES VIP */
+
+.vip-valores {
+  margin: 12px 0;
+  font-size: 12px;            /* 🔥 fonte menor */
+  text-align: center;         /* 🔥 centraliza tudo */
+}
+
+.vip-valores .linha {
+  display: flex;
+  justify-content: center;    /* 🔥 centraliza horizontalmente */
+  gap: 8px;
+  margin-bottom: 6px;
+  color: #1E1E26;
+}
+
+.vip-valores .linha span {
+  font-size: 12px;
+}
+
+.vip-valores .desconto {
+  color: #1E1E26;          
+}
+
+.vip-valores .linha.total span {
+  font-size: 18px;
+  font-weight: 600;
+  color: #7B2CFF;
+}
+
+.vip-info {
+  font-size: 12px;
+  line-height: 1.5;
+  color: #777;
+  display: block;
+  margin-top: 10px;
+}
+
+.vip-info strong {
+  font-weight: 600;
+  color: #555;            
+}
+
+
+/* =========================
+   FORM VIP CARTÃO
+   ========================= */
+
+.form-pagamento-vip,
+.form-cartao-vip,
+#formCartaoVip,
+#formCartao {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 12px;
+  text-align: left;
+}
+
+.form-pagamento-vip .linha,
+.form-cartao-vip .linha,
+#formCartaoVip .linha,
+#formCartao .linha {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.form-pagamento-vip .grupo,
+.form-cartao-vip .grupo,
+#formCartaoVip .grupo,
+#formCartao .grupo,
+.form-pagamento-vip .form-group,
+.form-cartao-vip .form-group,
+#formCartaoVip .form-group,
+#formCartao .form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  min-width: 0;
+}
+
+.form-pagamento-vip label,
+.form-cartao-vip label,
+#formCartaoVip label,
+#formCartao label {
+  font-size: 14px;
+  font-weight: 600;
+  color: #7B2CFF;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.form-pagamento-vip input,
+.form-cartao-vip input,
+#formCartaoVip input,
+#formCartao input,
+.form-pagamento-vip select,
+.form-cartao-vip select,
+#formCartaoVip select,
+#formCartao select {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d8d8e2;
+  border-radius: 10px;
+  background: #fafafe;
+  font-size: 16px;
+  color: #7B2CFF;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease, background .2s ease;
+}
+
+.form-pagamento-vip input:focus,
+.form-cartao-vip input:focus,
+#formCartaoVip input:focus,
+#formCartao input:focus,
+.form-pagamento-vip select:focus,
+.form-cartao-vip select:focus,
+#formCartaoVip select:focus,
+#formCartao select:focus,
+#card-element:focus-within {
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.10);
+  background: #fff;
+}
+
+.form-pagamento-vip input::placeholder,
+.form-cartao-vip input::placeholder,
+#formCartaoVip input::placeholder,
+#formCartao input::placeholder {
+  color: #9a9aaa;
+}
+
+#card-element {
+  background: #fafafe;
+  min-height: 44px;
+}
+
+/* bloco de resumo de valores */
+.vip-resumo-cartao,
+.resumo-vip-cartao,
+.total-vip-cartao {
+  background: #f6f2ff;
+  border: 1px solid rgba(123, 44, 255, 0.14);
+  border-radius: 12px;
+  padding: 10px 12px;
+  margin: 10px 0 4px;
+}
+
+.vip-resumo-cartao .linha,
+.resumo-vip-cartao .linha,
+.total-vip-cartao .linha {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  font-size: 12px;
+  color: #4a4a57;
+  margin-bottom: 6px;
+}
+
+.vip-resumo-cartao .linha:last-child,
+.resumo-vip-cartao .linha:last-child,
+.total-vip-cartao .linha:last-child {
+  margin-bottom: 0;
+}
+
+.vip-resumo-cartao .linha.total,
+.resumo-vip-cartao .linha.total,
+.total-vip-cartao .linha.total {
+  padding-top: 8px;
+  margin-top: 6px;
+  border-top: 1px solid rgba(123, 44, 255, 0.12);
+  font-size: 15px;
+  font-weight: 700;
+  color: #7B2CFF;
+}
+
+/* mensagem/status do cartão */
+.cartao-status {
+  min-height: 18px;
+  margin-top: 8px;
+  font-size: 12px;
+}
+
+.cartao-erro {
+  color: #c62828;
+  font-weight: 600;
+}
+
+.cartao-loading {
+  color: #7B2CFF;
+}
+
+.cartao-sucesso {
+  color: #086b31;
+}
+
+/* botão principal mais compacto dentro do modal */
+.velvet-box .btn-principal {
+  min-height: 44px;
+  height: auto;
+  padding: 12px 14px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+/* deixa o modal menor e mais elegante no cartão */
+.velvet-box.modal-cartao-vip,
+.velvet-box.vip-cartao {
+  max-width: 430px;
+}
+
+/* campos que devem ocupar linha inteira */
+.col-span-2,
+.full,
+.full-width {
+  grid-column: 1 / -1;
+}
+
+/* mobile */
+@media (max-width: 640px) {
+  .form-pagamento-vip .linha,
+  .form-cartao-vip .linha,
+  #formCartaoVip .linha,
+  #formCartao .linha {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .velvet-box.modal-cartao-vip,
+  .velvet-box.vip-cartao,
+  .velvet-box {
+    max-width: 95%;
+  }
+
+  .form-pagamento-vip input,
+  .form-cartao-vip input,
+  #formCartaoVip input,
+  #formCartao input,
+  .form-pagamento-vip select,
+  .form-cartao-vip select,
+  #formCartaoVip select,
+  #formCartao select {
+    height: 44px;
+    font-size: 16px;
+  }
+}
+
+.pix-aguardando {
+  margin-top: 30px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff7e8;
+  border: 1px solid #f3d39a;
+  color: #8a5a00;
+  font-size: 14px;
+  text-align: center;
+}
+
+.aviso-pagamento,
+.pix-aguardando p,
+.cartao-loading p {
+  margin-top: 8px;
+  font-size: 13px;
+  line-height: 1.5;
+  color: #6b5a2f;
+}
+
+.aviso-pagamento {
+  margin-bottom: 12px;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #fff8e8;
+  border: 1px solid #efd89a;
+  color: #7a5a00;
+  text-align: center;
+}
+
+/* =========================
+   PREMIUM MAIS COMPACTO
+========================= */
+
+.midia-detalhes,
+.midia-detalhes .metodo {
+  font-size: 12px;
+  line-height: 1.45;
+  color: #555;
+  margin-top: 15px;
+}
+
+.midia-detalhes h3,
+.midia-detalhes strong {
+  font-size: 16px;
+  line-height: 1.35;
+  color: #7a2cff;
+  font-weight: 600;
+}
+
+.midia-detalhes p {
+  margin: 6px 0;
+  font-size: 12px;
+  line-height: 1.45;
+}
+
+.midia-detalhes ul,
+.midia-detalhes ol {
+  margin: 8px 0;
+  padding-left: 18px;
+}
+
+.midia-detalhes li {
+  margin-bottom: 4px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #555;
+}
+
+.midia-detalhes .vip-valores {
+  margin: 10px 0;
+  font-size: 12px;
+}
+
+.midia-detalhes .vip-valores .linha {
+  gap: 6px;
+  margin-bottom: 4px;
+}
+
+.midia-detalhes .vip-valores .linha span {
+  font-size: 12px;
+}
+
+.midia-detalhes .vip-valores .linha.total span {
+  font-size: 14px;
+  font-weight: 700;
+  color: #3b3b46;
+}
+
+.midia-detalhes .vip-info {
+  font-size: 11px;
+  line-height: 1.45;
+  margin-top: 8px;
+  color: #666;
+}
+
+.dados-pagamento-box {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  margin-top: 16px;
+}
+
+.campo-label {
+  display: block;
+  width: 100%;
+  text-align: left;
+  font-size: 13px;
+  font-weight: 600;
+  color: #555;
+  margin: 0;
+}
+
+.campo-input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+}
+
+.campo-input:focus {
+  border-color: #b38cff;
+  box-shadow: 0 0 0 3px rgba(122, 44, 255, 0.08);
+}
+
+.termos-pagamento {
+  width: 100%;
+  max-width: 320px;
+  margin: 8px auto 0;
+  padding: 12px 14px;
+  border-radius: 12px;
+  background: #f8f8f8;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  box-sizing: border-box;
+  text-align: center;
+}
+
+.termos-aviso {
+  margin: 0;
+  font-size: 12px;
+  line-height: 1.45;
+  text-align: center;
+  color: #666;
+}
+
+.termos-aviso a {
+  color: #7a2cff;
+  font-weight: 600;
+  text-decoration: none;
+}
+
+.termos-aviso a:hover {
+  text-decoration: underline;
+}
+
+.termos-check-linha {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+  cursor: pointer;
+  font-size: 13px;
+  color: #444;
+  line-height: 1.5;
+  padding: 4px 0;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.termos-check-linha input[type="checkbox"] {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  margin: 0;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.termos-check-linha span {
+  display: inline-block;
+  text-align: center;
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-width: 110px;
+  height: 42px;
+  padding: 0 16px;
+  border: none;
+  border-radius: 14px;
+  background: #f3ecff;
+  color: #6d28d9;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.btn-voltar:hover {
+  background: #eadcff;
+  transform: translateY(-1px);
+}
+
+.btn-voltar:active {
+  transform: translateY(0);
+}
+
+.btn-voltar:focus {
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.14);
+}
+
+.etapa-pagamento .btn-voltar {
+  margin-bottom: 16px;
+}
+
+/* ── Seleção de moeda ── */
+.selecao-moeda {
+  display: none !important;
+}
+
+.btn-moeda {
+  flex: 1;
+  padding: 8px 12px;
+  border: 2px solid #ddd;
+  border-radius: 10px;
+  background: #f9f9f9;
+  font-size: 0.85rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: border-color 0.2s, background 0.2s, color 0.2s;
+  color: #555;
+}
+
+.btn-moeda.ativo {
+  border-color: #7b2cff;
+  background: #f0e8ff;
+  color: #7b2cff;
+  font-weight: 600;
+}
+
+.btn-moeda:disabled {
+  opacity: 0.4;
+  cursor: not-allowed;
+}
+
+/* ── Campos CPF / Telefone ── */
+#campoCpf,
+#campoTelefone {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+#campoCpf label,
+#campoTelefone label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: #444;
+  padding-left: 2px;
+  margin: 0;
+}
+
+#campoCpf input,
+#campoTelefone input {
+  width: 100%;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d5d5d5;
+  border-radius: 10px;
+  font-size: 16px;
+  box-sizing: border-box;
+  outline: none;
+  background: #fff;
+  color: #1e1e26;
+  display: block;
+}
+
+#campoCpf input:focus,
+#campoTelefone input:focus {
+  border-color: #b38cff;
+  box-shadow: 0 0 0 3px rgba(122, 44, 255, 0.08);
+}
+
+/* ── Bloco de valores (VIP e Mídia) ── */
+.midia-valores {
+  background: #f5f4ff;
+  border: 1px solid #e4e0ff;
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 12px 0;
+}
+
+.midia-valores .linha {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+  padding: 5px 0;
+  color: #4a4a6a;
+  font-size: 0.85rem;
+  border-bottom: 1px solid #ece9ff;
+}
+
+.midia-valores .linha:last-child {
+  border-bottom: none;
+}
+
+.midia-valores .linha span {
+  font-size: 0.85rem;
+}
+
+.midia-valores .desconto span {
+  color: #22c55e;
+}
+
+.midia-valores .linha.taxa span {
+  color: #888;
+}
+
+.midia-valores .linha.total {
+  padding-top: 10px;
+  border-top: 2px solid #d4ccff;
+  border-bottom: none;
+}
+
+.midia-valores .linha.total span {
+  font-size: 1rem;
+  font-weight: 700;
+  color: #7B2CFF;
+}
+
+/* ── Benefícios ── */
+.beneficios-card {
+  background: #f0fdf4;
+  border: 1px solid #bbf7d0;
+  border-radius: 12px;
+  padding: 12px 16px;
+  margin: 10px 0 4px;
+}
+
+.beneficios-titulo {
+  display: block;
+  font-size: 0.72rem;
+  font-weight: 700;
+  color: #16a34a;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  margin-bottom: 8px;
+}
+
+.beneficios-lista {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.beneficios-lista li {
+  font-size: 0.82rem;
+  color: #166534;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* ── Botão voltar modal cartão ── */
+.btn-voltar-modal {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  margin-bottom: 12px;
+}
+
+.btn-voltar-modal img {
+    height: 22px;
+    width: auto;
+    position: absolute;
+    top: 15px;
+}
+
+.btn-voltar-modal:hover img {
+  opacity: 1;
+}
+
+/* ── Form cartão ── */
+.pagamento-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+  text-align: left;
+}
+
+.pagamento-linha {
+  display: flex;
+  gap: 10px;
+}
+
+.pagamento-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  flex: 1;
+  min-width: 0;
+}
+
+.pagamento-campo label {
+  font-size: 0.78rem;
+  font-weight: 600;
+  color: #3b3b46;
+  margin: 0;
+}
+
+.pagamento-campo input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 44px;
+  padding: 0 12px;
+  border: 1px solid #d8d8e2;
+  border-radius: 10px;
+  background: #fafafe;
+  font-size: 16px;
+  color: #1e1e26;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.pagamento-campo input:focus {
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.10);
+  background: #fff;
+}
+
+.pagamento-campo input::placeholder {
+  color: #9a9aaa;
+  font-size: 14px;
+}
+
+/* ── Stripe Elements Form ─────────────────────────────── */
+.stripe-form-grid {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  text-align: left;
+}
+
+.stripe-linha {
+  display: flex;
+  gap: 10px;
+}
+
+.stripe-campo {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  flex: 1;
+  min-width: 0;
+}
+
+.stripe-label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #aaa;
+  letter-spacing: 0.03em;
+  text-transform: uppercase;
+}
+
+.stripe-input {
+  width: 100%;
+  box-sizing: border-box;
+  height: 46px;
+  padding: 0 14px;
+  border: 1.5px solid #2e2e3e;
+  border-radius: 10px;
+  background: #12121c;
+  font-size: 15px;
+  color: #f0f0f0;
+  outline: none;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.stripe-input:focus {
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.18);
+}
+
+.stripe-input::placeholder {
+  color: #555;
+}
+
+.stripe-element-box {
+  height: 46px;
+  padding: 13px 14px;
+  border: 1.5px solid #d8d8e2;
+  border-radius: 10px;
+  background: #fafafe;
+  box-sizing: border-box;
+  transition: border-color .2s ease, box-shadow .2s ease;
+}
+
+.stripe-element-box.StripeElement--focus {
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 3px rgba(123, 44, 255, 0.18);
+}
+
+.stripe-element-box.StripeElement--invalid {
+  border-color: #ff6b6b;
+}
+
+.stripe-error {
+  color: #ff6b6b;
+  font-size: 0.8rem;
+  min-height: 18px;
+}
+
+/* ── Popup confirmação VIP ── */
+.vip-confirmacao-body {
+  font-size: 0.875rem;
+  color: #3a3a5c;
+  line-height: 1.6;
+  margin: 12px 0 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.vip-confirmacao-intro {
+  font-weight: 700;
+  color: #1e1e26;
+  font-size: 0.9rem;
+  margin: 0;
+}
+
+.vip-confirmacao-body p {
+  margin: 0;
+}
+
+.vip-confirmacao-body a {
+  color: #7B2CFF;
+  text-decoration: underline;
+}
+
+.vip-confirmacao-excecao {
+  background: #f0fdf4;
+  border-left: 3px solid #22c55e;
+  border-radius: 6px;
+  padding: 10px 12px;
+  color: #166534;
+  font-size: 0.82rem;
+}
+
+.vip-confirmacao-acoes {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+

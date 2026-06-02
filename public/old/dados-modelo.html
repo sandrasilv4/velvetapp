@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Dados da Conta</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link rel="stylesheet" href="/painel.css" />
+  <link rel="stylesheet" href="/header.css">
+</head>
+
+<body class="role-modelo">
+
+  <div class="container-dados">
+    <h1>Suas Informações</h1>
+    <p class="sub">
+      Estes dados são obrigatórios para segurança da sua conta e garantir seus recebimentos. 
+    </p>
+
+    <form id="formDadosModelo">
+
+      <label>Nome de exibição (perfil)</label>
+      <input type="text" name="nome_exibicao" required />
+
+      <label>Nome completo</label>
+      <input type="text" name="nome_completo" required />
+
+      <label>Data de nascimento</label>
+      <input type="date" name="data_nascimento" required />
+
+      <label>Telefone</label>
+      <input type="text" name="telefone" required />
+
+      <label>Endereço completo</label>
+      <textarea name="endereco" rows="3" required></textarea>
+
+      <label>País</label>
+      <input type="text" name="pais" required />
+
+
+      <label>Instagram</label>
+      <input type="text" name="instagram" placeholder="@seuinstagram" />
+
+      <label>TikTok</label>
+      <input type="text" name="tiktok" placeholder="@seutiktok" />
+
+      <div class="label">
+      ⚠️ Dados bancários serão solicitados futuramente para liberação de ganhos.
+      </div>
+
+      <button type="submit">Salvar</button>
+      <p id="msgStatus" class="status"></p>
+    </form>
+  </div>
+
+  <!-- ===============================
+  LINKS DO MEU PERFIL
+  =============================== -->
+  <div class="container-dados">
+
+   <h2>Links do meu perfil</h2>
+   <p class="sub">
+    Use estes links para divulgar seu perfil.  
+    Eles são gerados automaticamente para você.
+   </p>
+
+   <!-- Instagram -->
+   <label>Instagram</label>
+   <div class="copy-field">
+    <input type="text" id="linkInstagram" readonly />
+    <button type="button" onclick="copiarLink('linkInstagram')">
+      Copiar
+    </button>
+   </div>
+
+   <!-- TikTok -->
+   <label>TikTok</label>
+   <div class="copy-field">
+    <input type="text" id="linkTiktok" readonly />
+    <button type="button" onclick="copiarLink('linkTiktok')">
+      Copiar
+    </button>
+   </div>
+
+   <!-- Direto -->
+   <label>Link de Acesso Direto</label>
+   <div class="copy-field">
+    <input type="text" id="linkDireto" readonly />
+    <button type="button" onclick="copiarLink('linkDireto')">
+      Copiar
+    </button>
+   </div>
+  </div>
+  <hr class="separator">
+  <!-- EXCLUIR CONTA -->
+ <div class="danger-zone">
+  <button class="btn-danger" onclick="abrirConfirmacaoExclusao()">
+    Excluir conta permanentemente
+  </button>
+ </div>
+
+<div id="modalExcluirConta" class="modal hidden">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-box">
+    <h3>Excluir conta permanentemente</h3>
+
+    <p>
+      Esta ação é <strong>irreversível</strong>.<br>
+      Todos os seus dados, conteúdos, mensagens e histórico
+      serão apagados permanentemente.
+    </p>
+
+    <label class="label-danger">
+      Digite sua senha para confirmar
+    </label>
+
+    <input
+      type="password"
+      id="senhaConfirmacao"
+      placeholder="Digite sua senha"
+      class="input-danger"
+    />
+
+    <p id="erroExclusao" class="erro-danger hidden">
+      Senha incorreta.
+    </p>
+
+    <div class="modal-actions">
+      <button class="btn-cancelar" onclick="fecharModalExclusao()">
+        Cancelar
+      </button>
+
+      <button class="btn-confirmar" onclick="confirmarExclusaoConta()">
+        Sim, excluir minha conta
+      </button>
+    </div>
+  </div>
+</div>
+
+
+
+
+ <header class="app-header">
+  <div class="header-inner">
+
+    <img src="assets/velvet.png" class="logo-app" alt="Logo">
+
+    <div class="profile-menu-top">
+      <button id="btnMensagem">
+        <img src="assets/chat.png" alt="Chat">
+        <span id="badgeUnread" class="badge-unread hidden">0</span>
+      </button>
+
+      <button id="menuBtn" class="menu-btn">☰</button>
+      <div id="userMenu" class="menu-superior"></div>
+    </div>
+  </div>
+ </header>
+
+    <footer class="footer">
+  <div class="footer-links">
+    <a href="/terms.html">Termos de Uso</a>
+    <a href="/privacy.html">Política de Privacidade</a>
+    <a href="/policies.html">Política de Utilização</a>
+  </div>
+  <div class="footer-copy">
+    © 2026 Velvet. Todos os direitos reservados.
+  </div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="/header.js"></script>
+<script src="/dados-modelo.js"></script>
+</body>
+</html>

@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus Assinantes</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+   <script src="/i18n.js"></script>
+</head>
+
+<body>
+
+ <div id="header-container"></div>
+  <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="vips.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="vips.titulo">Meus Assinantes VIP</h3>
+
+    <div class="table-wrapper">
+      <table class="table">
+        <thead>
+          <tr>
+            <th data-i18n="vips.col_assinante">Assinante</th>
+            <th data-i18n="vips.col_expira_em">Expira em</th>
+            <th data-i18n="vips.col_assinaturas">Assinaturas</th>
+            <th data-i18n="vips.col_midias">Mídias</th>
+            <th data-i18n="vips.col_total">Total</th>
+          </tr>
+        </thead>
+        <tbody id="listaAssinantes">
+          <tr>
+            <td colspan="5" data-i18n="vips.carregando">Carregando...</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="paginacao" id="paginacaoVIP">
+      <button id="btnAnterior" disabled data-i18n="vips.btn_anterior">← Anterior</button>
+      <span id="paginaAtual">1</span>
+      <button id="btnProximo" data-i18n="vips.btn_proximo">Próxima →</button>
+    </div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script src="/js/header.js"></script>
+<script src="/js/areaUsuario.js"></script>
+<script src="/js/footer-shared.js"></script>
+
+</body>
+</html>

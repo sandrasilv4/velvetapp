@@ -1,0 +1,741 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mídias - Admin</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Inter', sans-serif;
+      background: #0f0f13;
+      color: #e2e2e2;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      overflow: hidden;
+    }
+
+    /* ===== TOOLBAR ===== */
+    .toolbar {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      padding: 12px 16px;
+      background: #1a1a24;
+      border-bottom: 1px solid #2a2a3a;
+      flex-shrink: 0;
+      flex-wrap: wrap;
+    }
+
+    .toolbar select,
+    .toolbar input[type="search"] {
+      background: #0f0f13;
+      border: 1px solid #2a2a3a;
+      border-radius: 6px;
+      color: #e2e2e2;
+      padding: 7px 10px;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .toolbar select:focus,
+    .toolbar input[type="search"]:focus {
+      border-color: #7b2cff;
+    }
+
+    .toolbar select { min-width: 200px; }
+
+    .toolbar input[type="search"] { width: 200px; }
+
+    .toolbar-spacer { flex: 1; }
+
+    .toolbar-info {
+      font-size: 12px;
+      color: #888;
+    }
+
+    .btn-reset {
+      background: transparent;
+      border: 1px solid #2a2a3a;
+      border-radius: 6px;
+      color: #aaa;
+      cursor: pointer;
+      padding: 7px 12px;
+      font-size: 12px;
+    }
+
+    .btn-reset:hover { border-color: #7b2cff; color: #fff; }
+
+    /* ===== LAYOUT ===== */
+    .layout {
+      display: flex;
+      flex: 1;
+      overflow: hidden;
+    }
+
+    /* ===== SIDEBAR DE MODELOS ===== */
+    .sidebar {
+      width: 220px;
+      flex-shrink: 0;
+      background: #14141e;
+      border-right: 1px solid #2a2a3a;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .sidebar-header {
+      padding: 12px 14px;
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      color: #666;
+      border-bottom: 1px solid #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    .modelo-item {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 14px;
+      cursor: pointer;
+      border-bottom: 1px solid #1e1e2a;
+      transition: background 0.15s;
+      font-size: 13px;
+    }
+
+    .modelo-item:hover { background: #1e1e2e; }
+    .modelo-item.active { background: #2a1a4a; border-left: 3px solid #7b2cff; }
+
+    .modelo-item .nome {
+      flex: 1;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+
+    .modelo-item .badge {
+      background: #7b2cff22;
+      color: #9b6cff;
+      border-radius: 10px;
+      padding: 2px 7px;
+      font-size: 11px;
+      flex-shrink: 0;
+      margin-left: 6px;
+    }
+
+    .modelo-item-all {
+      padding: 10px 14px;
+      cursor: pointer;
+      font-size: 13px;
+      font-weight: 600;
+      color: #9b6cff;
+      border-bottom: 1px solid #2a2a3a;
+    }
+
+    .modelo-item-all:hover,
+    .modelo-item-all.active { background: #2a1a4a; }
+
+    /* ===== GRID ÁREA ===== */
+    .grid-area {
+      flex: 1;
+      overflow-y: auto;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .filter-bar {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      background: #14141e;
+      border-bottom: 1px solid #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    .filter-bar select {
+      background: #0f0f13;
+      border: 1px solid #2a2a3a;
+      border-radius: 6px;
+      color: #e2e2e2;
+      padding: 6px 10px;
+      font-size: 12px;
+      outline: none;
+    }
+
+    .filter-bar select:focus { border-color: #7b2cff; }
+
+    .filter-bar-label {
+      font-size: 12px;
+      color: #666;
+    }
+
+    .filter-bar-spacer { flex: 1; }
+
+    .grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+      gap: 10px;
+      padding: 14px;
+      flex: 1;
+    }
+
+    .card {
+      position: relative;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #1a1a24;
+      cursor: pointer;
+      aspect-ratio: 9/16;
+      transition: transform 0.15s, box-shadow 0.15s;
+    }
+
+    .card:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px #0008;
+    }
+
+    .card img,
+    .card video {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .card-overlay {
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      right: 0;
+      padding: 8px;
+      background: linear-gradient(transparent, #000c);
+      font-size: 11px;
+      color: #ddd;
+    }
+
+    .card-type {
+      position: absolute;
+      top: 6px;
+      right: 6px;
+      background: #0008;
+      border-radius: 4px;
+      padding: 2px 6px;
+      font-size: 10px;
+      color: #fff;
+    }
+
+    .card-type.video { background: #7b2cff99; }
+    .card-type.imagem { background: #1a7aff99; }
+
+    .play-icon {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 36px;
+      color: #ffffffcc;
+      pointer-events: none;
+    }
+
+    .card-del {
+      position: absolute;
+      top: 6px;
+      left: 6px;
+      background: #cc000099;
+      border: none;
+      border-radius: 4px;
+      color: #fff;
+      font-size: 14px;
+      line-height: 1;
+      padding: 4px 7px;
+      cursor: pointer;
+      display: none;
+      z-index: 2;
+    }
+
+    .card:hover .card-del { display: block; }
+    .card-del:hover { background: #cc0000; }
+
+    /* ===== PAGINAÇÃO ===== */
+    .pagination {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      padding: 12px;
+      border-top: 1px solid #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    .pagination button {
+      background: #1a1a24;
+      border: 1px solid #2a2a3a;
+      border-radius: 6px;
+      color: #e2e2e2;
+      cursor: pointer;
+      padding: 6px 14px;
+      font-size: 13px;
+    }
+
+    .pagination button:hover:not(:disabled) { background: #2a1a4a; border-color: #7b2cff; }
+    .pagination button:disabled { opacity: 0.4; cursor: default; }
+    .pagination span { font-size: 12px; color: #888; }
+
+    /* ===== ESTADOS ===== */
+    .empty {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      color: #555;
+      gap: 8px;
+      font-size: 14px;
+      padding: 40px;
+    }
+
+    .empty svg { width: 48px; height: 48px; fill: #333; }
+
+    .loading {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex: 1;
+      color: #555;
+      font-size: 14px;
+    }
+
+    .spinner {
+      width: 28px;
+      height: 28px;
+      border: 3px solid #2a2a3a;
+      border-top-color: #7b2cff;
+      border-radius: 50%;
+      animation: spin 0.7s linear infinite;
+      margin-right: 10px;
+    }
+
+    @keyframes spin { to { transform: rotate(360deg); } }
+
+    /* ===== MODAL VIEWER ===== */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      inset: 0;
+      background: #000a;
+      z-index: 1000;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .modal-backdrop.open { display: flex; }
+
+    .modal-box {
+      position: relative;
+      max-width: 90vw;
+      max-height: 90vh;
+      background: #1a1a24;
+      border-radius: 12px;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+
+    .modal-header {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 12px 16px;
+      border-bottom: 1px solid #2a2a3a;
+      flex-shrink: 0;
+    }
+
+    .modal-header h3 { font-size: 14px; font-weight: 600; }
+
+    .modal-meta {
+      font-size: 12px;
+      color: #888;
+      margin-top: 3px;
+    }
+
+    .modal-close {
+      background: none;
+      border: none;
+      color: #aaa;
+      font-size: 22px;
+      cursor: pointer;
+      line-height: 1;
+      padding: 0 4px;
+    }
+
+    .modal-close:hover { color: #fff; }
+
+    .modal-media {
+      flex: 1;
+      overflow: auto;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0f0f13;
+      min-height: 300px;
+    }
+
+    .modal-media img {
+      max-width: 100%;
+      max-height: 80vh;
+      object-fit: contain;
+      display: block;
+    }
+
+    .modal-media iframe {
+      width: 70vw;
+      height: 70vh;
+      border: none;
+    }
+
+    .modal-info {
+      padding: 12px 16px;
+      border-top: 1px solid #2a2a3a;
+      flex-shrink: 0;
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+    }
+
+    .modal-info-item { font-size: 12px; }
+    .modal-info-item span { color: #888; }
+    .modal-info-item strong { color: #e2e2e2; }
+  </style>
+</head>
+<body>
+
+<!-- TOOLBAR GLOBAL -->
+<div class="toolbar">
+  <input type="search" id="searchInput" placeholder="Buscar modelo..." oninput="filtrarModelos()">
+  <div class="toolbar-spacer"></div>
+  <span class="toolbar-info" id="totalInfo">Carregando...</span>
+  <button class="btn-reset" onclick="resetFiltros()">Limpar filtros</button>
+</div>
+
+<!-- LAYOUT -->
+<div class="layout">
+
+  <!-- SIDEBAR MODELOS -->
+  <div class="sidebar" id="sidebar">
+    <div class="sidebar-header">Modelos</div>
+    <div class="modelo-item-all active" data-id="" onclick="selecionarModelo(null, this)">
+      Todos os modelos
+    </div>
+    <div id="modelosList"></div>
+  </div>
+
+  <!-- GRID ÁREA -->
+  <div class="grid-area">
+    <div class="filter-bar">
+      <span class="filter-bar-label">Filtrar:</span>
+      <select id="filtroTipo" onchange="carregarMidias(1)">
+        <option value="">Todos os tipos</option>
+        <option value="imagem">Imagens</option>
+        <option value="video">Vídeos</option>
+      </select>
+      <select id="filtroConteudo" onchange="carregarMidias(1)">
+        <option value="">Todos os conteúdos</option>
+        <option value="venda">Venda</option>
+        <option value="feed">Feed</option>
+        <option value="premium">Premium</option>
+      </select>
+      <div class="filter-bar-spacer"></div>
+      <select id="filtroLimite" onchange="carregarMidias(1)">
+        <option value="24">24 por página</option>
+        <option value="48">48 por página</option>
+        <option value="96">96 por página</option>
+      </select>
+    </div>
+
+    <div id="gridContent" class="grid"></div>
+
+    <div class="pagination" id="pagination" style="display:none;">
+      <button id="btnAnterior" onclick="carregarMidias(paginaAtual - 1)">← Anterior</button>
+      <span id="paginaInfo"></span>
+      <button id="btnProxima" onclick="carregarMidias(paginaAtual + 1)">Próxima →</button>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL VIEWER -->
+<div class="modal-backdrop" id="modalBackdrop" onclick="fecharModal(event)">
+  <div class="modal-box" id="modalBox">
+    <div class="modal-header">
+      <div>
+        <h3 id="modalTitulo">Mídia</h3>
+        <div class="modal-meta" id="modalMeta"></div>
+      </div>
+      <div style="display:flex;align-items:center;gap:10px;">
+        <button id="modalBtnDel" style="background:#cc0000;border:none;border-radius:6px;color:#fff;cursor:pointer;padding:7px 14px;font-size:13px;">🗑 Excluir</button>
+        <button class="modal-close" onclick="fecharModal()">×</button>
+      </div>
+    </div>
+    <div class="modal-media" id="modalMedia"></div>
+    <div class="modal-info" id="modalInfo"></div>
+  </div>
+</div>
+
+<script>
+  let token = '';
+  let modeloSelecionado = null;
+  let paginaAtual = 1;
+  let totalPaginas = 1;
+
+  // Pega token do parent window (admin-dashboard) ou da URL
+  function getToken() {
+    try {
+      const p = window.parent;
+      if (p && p !== window) {
+        const t = p.localStorage.getItem('token_admin') || p.localStorage.getItem('token');
+        if (t) return t;
+      }
+    } catch (_) {}
+    const params = new URLSearchParams(window.location.search);
+    return params.get('t') || localStorage.getItem('token_admin') || localStorage.getItem('token') || '';
+  }
+
+  async function fetchAdmin(path) {
+    const res = await fetch('/admin/dashboard' + path, {
+      headers: { Authorization: 'Bearer ' + token }
+    });
+    if (!res.ok) throw new Error('HTTP ' + res.status);
+    return res.json();
+  }
+
+  async function carregarModelos() {
+    const lista = document.getElementById('modelosList');
+    lista.innerHTML = '<div style="padding:12px;color:#555;font-size:12px;">Carregando...</div>';
+    try {
+      const rows = await fetchAdmin('/midias-admin/modelos');
+      lista.innerHTML = '';
+      rows.forEach(m => {
+        const el = document.createElement('div');
+        el.className = 'modelo-item';
+        el.dataset.id = m.id;
+        el.dataset.nome = (m.nome || m.username || '').toLowerCase();
+        el.innerHTML = `
+          <span class="nome" title="${m.nome}">${m.nome}</span>
+          <span style="color:#666;font-size:10px;flex-shrink:0;margin-left:4px;">#${m.id}</span>
+          <span class="badge">${m.total_midias}</span>
+        `;
+        el.onclick = () => selecionarModelo(m.id, el);
+        lista.appendChild(el);
+      });
+    } catch (e) {
+      lista.innerHTML = '<div style="padding:12px;color:#f55;font-size:12px;">Erro ao carregar modelos</div>';
+    }
+  }
+
+  function filtrarModelos() {
+    const q = document.getElementById('searchInput').value.toLowerCase();
+    document.querySelectorAll('#modelosList .modelo-item').forEach(el => {
+      el.style.display = el.dataset.nome.includes(q) ? '' : 'none';
+    });
+  }
+
+  function selecionarModelo(id, el) {
+    modeloSelecionado = id;
+    document.querySelectorAll('.modelo-item, .modelo-item-all').forEach(e => e.classList.remove('active'));
+    if (el) el.classList.add('active');
+    carregarMidias(1);
+  }
+
+  async function carregarMidias(pagina = 1) {
+    paginaAtual = pagina;
+    const grid = document.getElementById('gridContent');
+    const tipo = document.getElementById('filtroTipo').value;
+    const tipoConteudo = document.getElementById('filtroConteudo').value;
+    const limite = document.getElementById('filtroLimite').value;
+
+    grid.innerHTML = '<div class="loading"><div class="spinner"></div> Carregando mídias...</div>';
+    document.getElementById('pagination').style.display = 'none';
+
+    let qs = `?page=${pagina}&limit=${limite}`;
+    if (modeloSelecionado) qs += `&modelo_id=${modeloSelecionado}`;
+    if (tipo) qs += `&tipo=${tipo}`;
+    if (tipoConteudo) qs += `&tipo_conteudo=${tipoConteudo}`;
+
+    try {
+      const data = await fetchAdmin('/midias-admin' + qs);
+      totalPaginas = data.totalPages || 1;
+
+      document.getElementById('totalInfo').textContent = `${data.total} mídia(s)`;
+
+      if (!data.rows.length) {
+        grid.innerHTML = `
+          <div class="empty">
+            <svg viewBox="0 0 24 24"><path d="M21 19V5c0-1.1-.9-2-2-2H5c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2zM8.5 13.5l2.5 3.01L14.5 12l4.5 6H5l3.5-4.5z"/></svg>
+            Nenhuma mídia encontrada
+          </div>`;
+        return;
+      }
+
+      grid.innerHTML = '';
+      data.rows.forEach(m => {
+        const card = document.createElement('div');
+        card.className = 'card';
+        card.title = `${m.modelo_nome || 'Modelo #' + m.modelo_id} — ${m.tipo_conteudo}`;
+
+        const isVideo = m.tipo === 'video';
+        const thumb = obterThumb(m);
+
+        card.innerHTML = `
+          ${isVideo
+            ? `<img src="${thumb}" alt="thumb" onerror="this.style.display='none'">`
+            : `<img src="${thumb}" alt="mídia" onerror="this.src='/assets/avatar.png'">`
+          }
+          ${isVideo ? '<div class="play-icon">▶</div>' : ''}
+          <button class="card-del" title="Excluir mídia">🗑</button>
+          <span class="card-type ${m.tipo}">${m.tipo}</span>
+          <div class="card-overlay">
+            <div>${m.modelo_nome || '#' + m.modelo_id}</div>
+            <div style="color:#aaa;font-size:10px;">${m.tipo_conteudo}</div>
+          </div>
+        `;
+        card.querySelector('.card-del').addEventListener('click', e => {
+          e.stopPropagation();
+          excluirMidia(m.id, card);
+        });
+        card.onclick = () => abrirViewer(m);
+        grid.appendChild(card);
+      });
+
+      // paginação
+      document.getElementById('paginaInfo').textContent = `${paginaAtual} / ${totalPaginas}`;
+      document.getElementById('btnAnterior').disabled = paginaAtual <= 1;
+      document.getElementById('btnProxima').disabled = paginaAtual >= totalPaginas;
+      document.getElementById('pagination').style.display = 'flex';
+
+    } catch (e) {
+      grid.innerHTML = `<div class="empty">Erro ao carregar mídias: ${e.message}</div>`;
+    }
+  }
+
+  function obterThumb(m) {
+    if (m.thumbnail_url) return m.thumbnail_url;
+    if (m.tipo === 'video') {
+      // Cloudflare Stream thumbnail
+      const match = m.url && m.url.match(/videodelivery\.net\/([^/]+)/);
+      if (match) return `https://videodelivery.net/${match[1]}/thumbnails/thumbnail.jpg`;
+      const match2 = m.url && m.url.match(/iframe\.videodelivery\.net\/([^/?]+)/);
+      if (match2) return `https://videodelivery.net/${match2[1]}/thumbnails/thumbnail.jpg`;
+    }
+    return m.url || '/assets/avatar.png';
+  }
+
+  function abrirViewer(m) {
+    midiaAberta = m;
+    document.getElementById('modalBtnDel').onclick = () => excluirMidia(m.id, null);
+    document.getElementById('modalTitulo').textContent =
+      m.modelo_nome || 'Modelo #' + m.modelo_id;
+
+    document.getElementById('modalMeta').textContent =
+      `Modelo ID: ${m.modelo_id} · ${m.tipo} · ${m.tipo_conteudo} · ${new Date(m.criado_em).toLocaleDateString('pt-BR')}`;
+
+    const media = document.getElementById('modalMedia');
+    media.innerHTML = '';
+
+    if (m.tipo === 'video') {
+      const videoId = extrairVideoId(m.url);
+      if (videoId) {
+        media.innerHTML = `<iframe src="https://iframe.videodelivery.net/${videoId}" allow="autoplay; fullscreen" allowfullscreen></iframe>`;
+      } else {
+        media.innerHTML = `<video src="${m.url}" controls style="max-width:100%;max-height:80vh;"></video>`;
+      }
+    } else {
+      media.innerHTML = `<img src="${m.url}" alt="mídia">`;
+    }
+
+    const info = document.getElementById('modalInfo');
+    info.innerHTML = `
+      <div class="modal-info-item"><span>ID:</span> <strong>#${m.id}</strong></div>
+      <div class="modal-info-item"><span>Modelo:</span> <strong>${m.modelo_nome || m.modelo_username || '#' + m.modelo_id}</strong></div>
+      <div class="modal-info-item"><span>Tipo:</span> <strong>${m.tipo}</strong></div>
+      <div class="modal-info-item"><span>Categoria:</span> <strong>${m.tipo_conteudo}</strong></div>
+      ${m.preco ? `<div class="modal-info-item"><span>Preço:</span> <strong>R$ ${Number(m.preco).toFixed(2)}</strong></div>` : ''}
+      ${m.descricao ? `<div class="modal-info-item" style="flex-basis:100%;"><span>Descrição:</span> <strong>${m.descricao}</strong></div>` : ''}
+      <div class="modal-info-item"><span>Data:</span> <strong>${new Date(m.criado_em).toLocaleString('pt-BR')}</strong></div>
+    `;
+
+    document.getElementById('modalBackdrop').classList.add('open');
+  }
+
+  function extrairVideoId(url) {
+    if (!url) return null;
+    let m = url.match(/iframe\.videodelivery\.net\/([^/?]+)/);
+    if (m) return m[1];
+    m = url.match(/videodelivery\.net\/([^/]+)/);
+    if (m) return m[1];
+    return null;
+  }
+
+  function fecharModal(e) {
+    if (e && e.target !== document.getElementById('modalBackdrop')) return;
+    document.getElementById('modalBackdrop').classList.remove('open');
+    document.getElementById('modalMedia').innerHTML = '';
+    midiaAberta = null;
+  }
+
+  let midiaAberta = null;
+
+  async function excluirMidia(id, cardEl) {
+    if (!confirm('Excluir esta mídia do banco e do Cloudflare?')) return;
+
+    try {
+      const res = await fetch('/admin/dashboard/midias-admin/' + id, {
+        method: 'DELETE',
+        headers: { Authorization: 'Bearer ' + token }
+      });
+      if (!res.ok) throw new Error('HTTP ' + res.status);
+
+      // Remove o card do grid se existir
+      if (cardEl) cardEl.remove();
+
+      // Fecha o modal se for a mídia aberta
+      if (midiaAberta && midiaAberta.id === id) {
+        document.getElementById('modalBackdrop').classList.remove('open');
+        document.getElementById('modalMedia').innerHTML = '';
+        midiaAberta = null;
+      }
+
+      // Atualiza contagem
+      const totalEl = document.getElementById('totalInfo');
+      const atual = parseInt(totalEl.textContent) || 0;
+      if (atual > 0) totalEl.textContent = (atual - 1) + ' mídia(s)';
+
+      // Recarrega sidebar de modelos para atualizar contagens
+      carregarModelos();
+    } catch (e) {
+      alert('Erro ao excluir: ' + e.message);
+    }
+  }
+
+  function resetFiltros() {
+    document.getElementById('filtroTipo').value = '';
+    document.getElementById('filtroConteudo').value = '';
+    document.getElementById('searchInput').value = '';
+    document.querySelectorAll('.modelo-item, .modelo-item-all').forEach(e => e.classList.remove('active'));
+    document.querySelector('.modelo-item-all').classList.add('active');
+    document.querySelectorAll('#modelosList .modelo-item').forEach(e => e.style.display = '');
+    modeloSelecionado = null;
+    carregarMidias(1);
+  }
+
+  // Init
+  token = getToken();
+  carregarModelos();
+  carregarMidias(1);
+</script>
+</body>
+</html>

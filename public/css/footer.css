@@ -1,0 +1,168 @@
+.modelo-footer{
+  position:fixed;
+  bottom:0;
+  left:50%;
+  transform:translateX(-50%);
+
+  width:100%;
+  max-width:1100px;
+  height:70px;
+
+  background:#f1f1f1;
+  border-top:1px solid #eee;
+
+  display:flex;
+  justify-content:space-around;
+  align-items:center;
+
+  z-index:1000;
+}
+
+.footer-btn{
+  background:none;
+  border:none;
+
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+
+  font-size:12px;
+  color:#7B2CFF;
+
+  cursor:pointer;
+}
+
+.footer-btn img{
+  width:24px;
+  height:24px;
+  margin-bottom:4px;
+}
+
+.footer-menu{
+  position:fixed;
+  bottom:80px;
+  left:50%;
+  transform:translateX(-50%);
+  width:260px;
+  background:#f1f1f1;
+  border-radius:10px;
+  box-shadow:0 10px 30px rgba(0,0,0,0.15);
+  align-items: center;
+  padding:10px;
+  justify-content: space-around;
+  display:none;
+  flex-direction:column;
+  z-index:1001;
+}
+
+.footer-menu button{
+  background:none;
+  border:none;
+
+  text-align:left;
+  padding:10px;
+
+  font-size:14px;
+
+  cursor:pointer;
+}
+
+.footer-menu button:hover{
+  background:#f5f5f5;
+}
+
+.hidden{
+  display:none;
+}
+
+.footer-avatar{
+  width:24px;
+  height:24px;
+  border-radius:50%;
+  object-fit:cover;
+  display:block;
+}
+
+.footer-btn img{
+  width:24px;
+  height:24px;
+  margin-bottom:4px;
+}
+
+.footer-avatar{
+  border-radius:50%;
+  object-fit:cover;
+}
+
+/* BARRA FIXA */
+#footerModelo {
+  position: fixed;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  max-width: 1100px;
+  height: 70px;
+  background: #f1f1f1;
+  border-top: 1px solid #eee;
+  display: none; /* JS muda para flex */
+  justify-content: space-around;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* SUBMENU POR CIMA */
+#footerSubMenu {
+  position: fixed;
+  bottom: 80px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 260px;
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.15);
+  padding: 10px;
+  display: none;
+  flex-direction: column;
+  z-index: 1001;
+}
+
+#footerSubMenu button {
+  background: none;
+  border: none;
+  text-align: left;
+  padding: 10px;
+  font-size: 14px;
+  cursor: pointer;
+}
+
+#footerSubMenu button:hover {
+  background: #f5f5f5;
+}
+
+.footer-btn {
+  background: none;
+  border: none;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  color: #7B2CFF;
+  cursor: pointer;
+}
+
+.footer-btn img {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+.footer-avatar {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+  display: block;
+}

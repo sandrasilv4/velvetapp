@@ -1,0 +1,256 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-primary: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  font-family: 'Poppins', 'Inter', sans-serif;
+  background: #f1f1f1;
+  color: #7B2CFF;
+}
+
+.area-card {
+  max-width: 1100px;
+  background: #ffffff;
+  border-radius: 20px;
+  padding: 20px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+  position: relative;
+}
+
+.area-card h3 {
+  font-size: 24px;
+  text-align: center;
+  margin: 10px 0 10px;
+  font-weight: 700;
+  color: #7B2CFF;
+}
+
+.btn-voltar {
+  position:relative;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-voltar img {
+  width: 30px;
+}
+
+.btn-voltar:hover {
+  transform: scale(1.08);
+}
+
+/* ===============================
+   SEPARADORES UNIFICADOS (FORÇA)
+================================ */
+.chat-header {
+  border-bottom: 1px solid #C9C9C9 !important;
+}
+
+.chat-input {
+  border-top: 1px solid #C9C9C9 !important;
+}
+
+#msgInput {
+    flex: 1;
+    height: 36px;
+    padding: 0 14px;
+    border-radius: 14px;
+    background: #fff !important;
+    border: 1px solid #C9C9C9 !important;
+    font-size: 13px;
+    line-height: normal;
+}
+/* ===============================
+   INBOX
+================================ */
+.inbox {
+  display: flex;
+  flex-direction: column;
+  background: #fff;
+}
+
+/* ===============================
+   ITEM DO CHAT
+================================ */
+.chat-item {
+  display: flex;
+  gap: 14px;
+  padding: 10px 10px;
+  background: #fff;
+  border-bottom: 1px solid #C9C9C9;
+  cursor: pointer;
+}
+
+.chat-item:hover {
+  background: #F6F4FF;
+}
+
+/* ===============================
+   AVATAR
+================================ */
+.avatar {
+  width: 52px;
+  height: 52px;
+  border-radius: 50%;
+  overflow: hidden;
+  flex-shrink: 0;
+}
+
+.avatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+/* ===============================
+   CORPO DO CHAT
+================================ */
+.chat-body {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  overflow: hidden;
+}
+
+/* ===============================
+   LINHA SUPERIOR
+================================ */
+.chat-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.chat-name {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1E1E26;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+.chat-time {
+  font-size: 12px;
+  color: #C9C9C9;
+  white-space: nowrap;
+}
+
+/* ===============================
+   LINHA INFERIOR
+================================ */
+.chat-bottom {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-last {
+  flex: 1;
+  font-size: 13px;
+  color: #5a5a64;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+/* ===============================
+   STATUS / BADGES
+================================ */
+.chat-status {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  flex-shrink: 0;
+}
+
+/* ✓ enviado */
+.status-sent {
+  font-size: 14px;
+  color: #C9C9C9;
+  font-weight: 600;
+}
+
+/* ✓✓ lido */
+.status-read {
+  font-size: 14px;
+  color: #7B2CFF;
+  font-weight: 700;
+}
+
+/* Necessita resposta */
+.status-reply {
+  font-size: 11px;
+  font-weight: 600;
+  background: #7B2CFF;
+  color: #fff;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* Não visto */
+.status-unseen {
+  font-size: 11px;
+  font-weight: 600;
+  background: #C9C9C9;
+  color: #1E1E26;
+  padding: 4px 8px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+/* espaço extra para não cobrir a lista */
+.inbox {
+  padding-bottom: 72px;
+}
+
+/* ===============================
+   BOTÃO CARREGAR MAIS
+================================ */
+.load-more-container{
+  display:flex;
+  justify-content:center;
+  padding:20px;
+}
+
+#loadMoreChats{
+  background:#6c3cff;
+  color:white;
+  border:none;
+  padding:10px 20px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.spend-level{
+  margin-left:6px;
+  font-size:14px;
+  color:#7B2CFF;
+  padding:2px 6px;
+  border-radius:6px;
+}
+
+.chat-resumo-curto {
+  display: inline-flex;
+  align-items: center;
+  font-size: 12px;
+  color: #7c3aed;
+  font-weight: 500;
+  margin-left: 4px;
+}
+

@@ -1,0 +1,452 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Meus Dados Pessoais</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/conta.css">
+  <link rel="stylesheet" href="/css/pages.css">
+  <link rel="stylesheet" href="/css/aceite-termos.css">
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+  
+  <div id="header-container"></div>
+
+    <!-- ========================================================== -->
+  <!-- STEP 0 — TERMO DIGITAL DE ACEITE                          -->
+  <!-- Mostrado apenas se a modelo ainda não aceitou os termos   -->
+  <!-- ========================================================== -->
+  <section class="area-card" id="secaoTermos">
+
+        <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="conta.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+    
+    <div class="termos-header">
+      <span class="termos-badge">⚖️ Passo 1 de 3</span>
+      <h3>Conta</h3>
+      <p class="termos-intro">
+        Antes de ativar a tua conta, precisamos que leia e aceite cada uma das seguintes declarações abaixo.
+      </p>
+    </div>
+
+    <!-- Já aceitou — banner de confirmação -->
+    <div id="termosJaAceitos" class="termos-aceitos-banner hidden">
+      <span class="termos-aceitos-icon">✅</span>
+      <div>
+        <strong>Termos aceites</strong>
+        <small id="termosAceitosData"></small>
+      </div>
+    </div>
+
+    <form id="formAceiteTermos" class="form-area">
+      <div class="verificacao-steps">
+        <span class="step ativo">1. Termos</span>
+        <span class="step">2. Dados pessoais</span>
+        <span class="step">3. Contrato</span>
+        <span class="step">4. Documentos</span>
+      </div>
+
+      <!-- 1. Declaração de Maioridade -->
+      <div class="declaracao-card">
+        <div class="declaracao-top">
+          <span class="declaracao-icon">🪪</span>
+          <div>
+            <div class="declaracao-titulo">Declaração de Maioridade</div>
+          </div>
+        </div>
+        <p class="declaracao-texto">
+          Declaro que sou maior de 18 anos e possuo plena capacidade legal para utilizar esta plataforma.
+        </p>
+        <div class="form-group full check-group declaracao-check">
+          <input type="checkbox" id="aceite_maioridade" name="aceite_maioridade" required>
+          <label for="aceite_maioridade">Li e aceito esta declaração</label>
+        </div>
+      </div>
+
+      <!-- 2. Consentimento de Conteúdo -->
+      <div class="declaracao-card">
+        <div class="declaracao-top">
+          <span class="declaracao-icon">📸</span>
+          <div>
+            <div class="declaracao-titulo">Consentimento de Conteúdo</div>
+          </div>
+        </div>
+        <p class="declaracao-texto">
+          Declaro que todo o conteúdo que publico pertence-me ou possui autorização legal de uso,
+          e que tenho o consentimento de todas as pessoas eventualmente representadas nesse conteúdo.
+        </p>
+        <div class="form-group full check-group declaracao-check">
+          <input type="checkbox" id="aceite_conteudo" name="aceite_conteudo" required>
+          <label for="aceite_conteudo">Li e aceito esta declaração</label>
+        </div>
+      </div>
+
+      <!-- 3. Responsabilidade Tributária -->
+      <div class="declaracao-card">
+        <div class="declaracao-top">
+          <span class="declaracao-icon">🧾</span>
+          <div>
+            <div class="declaracao-titulo">Responsabilidade Tributária</div>
+          </div>
+        </div>
+        <p class="declaracao-texto">
+          Declaro ser inteiramente responsável pelos meus próprios tributos, impostos e obrigações fiscais
+          no meu país de residência. A Velvet não é responsável pela declaração ou pagamento dos meus impostos.
+        </p>
+        <div class="form-group full check-group declaracao-check">
+          <input type="checkbox" id="aceite_tributario" name="aceite_tributario" required>
+          <label for="aceite_tributario">Li e aceito esta declaração</label>
+        </div>
+      </div>
+
+      <!-- 4. Relação Independente -->
+      <div class="declaracao-card">
+        <div class="declaracao-top">
+          <span class="declaracao-icon">🤝</span>
+          <div>
+            <div class="declaracao-titulo">Relação Independente</div>
+          </div>
+        </div>
+        <p class="declaracao-texto">
+          Reconheço que actuo como prestadora de serviços independente, sem qualquer vínculo empregatício,
+          societário ou de subordinação com a Velvet. A plataforma é um canal de distribuição de conteúdo.
+        </p>
+        <div class="form-group full check-group declaracao-check">
+          <input type="checkbox" id="aceite_independente" name="aceite_independente" required>
+          <label for="aceite_independente">Li e aceito esta declaração</label>
+        </div>
+      </div>
+
+      <!-- 5. Política Financeira -->
+      <div class="declaracao-card">
+        <div class="declaracao-top">
+          <span class="declaracao-icon">💰</span>
+          <div>
+            <div class="declaracao-titulo">Política Financeira</div>
+          </div>
+        </div>
+        <p class="declaracao-texto">
+          Autorizo a Velvet a intermediar os pagamentos recebidos na plataforma e a reter a comissão acordada
+          antes do repasse dos valores. O valor líquido a receber será sempre apresentado com transparência.
+        </p>
+        <div class="form-group full check-group declaracao-check">
+          <input type="checkbox" id="aceite_financeiro" name="aceite_financeiro" required>
+          <label for="aceite_financeiro">Li e aceito esta declaração</label>
+        </div>
+      </div>
+
+      <input type="hidden" name="versao_termos" value="2026-05">
+        <button type="submit" class="btn-salvar" id="btnAceitarTermos">
+          Aceitar todos os termos e continuar
+        </button>
+        <p id="statusAceiteTermos" class="form-info" style="margin-top:12px; display:none;"></p>
+      </div>
+    </form>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- STEP 1 — DADOS PESSOAIS                                    -->
+  <!-- ========================================================== -->
+  <section class="area-card" id="secaoDadosPessoais">
+
+    <h3 data-i18n="conta.titulo_dados_pessoais">Dados Pessoais</h3>
+
+    <div class="verificacao-steps">
+      <span class="step concluido" id="stepTermosIndicator1">1. Termos</span>
+      <span class="step ativo">2. Dados pessoais</span>
+      <span class="step">3. Contrato</span>
+      <span class="step">4. Documentos</span>
+    </div>
+
+    <!-- Banner de sucesso ao salvar dados pessoais -->
+    <div id="dadosPessoaisSalvosBanner" class="termos-aceitos-banner hidden">
+      <span class="termos-aceitos-icon">✅</span>
+      <div>
+        <strong>Dados pessoais salvos</strong>
+        <small id="dadosPessoaisSalvosData"></small>
+      </div>
+    </div>
+
+    <form id="formDadosPessoais" class="form-area">
+      <span class="form-info" id="infoDadosPessoais" data-i18n="conta.info_confidencial">
+        🔒 Essas informações são confidenciais, usadas apenas para verificação de identidade e processamento de pagamentos.
+      </span>
+
+      <div class="form-grid">
+        <div class="form-group full">
+          <label data-i18n="conta.label_nome">Nome completo*</label>
+          <input type="text" name="nome_completo" placeholder="Nome e Sobrenome" required>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="conta.label_nascimento">Data de nascimento*</label>
+          <input type="date" name="data_nascimento" required>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="conta.label_telefone">Telefone com DDD*</label>
+          <input type="tel" name="telefone" placeholder="(11) 99999-9999" required>
+        </div>
+
+        <div class="form-group full">
+          <label data-i18n="conta.label_endereco">Endereço*</label>
+          <textarea name="endereco" rows="2" placeholder="Rua, número e bairro" required></textarea>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="conta.label_estado">Estado*</label>
+          <input type="text" name="estado" required>
+        </div>
+
+        <div class="form-group">
+          <label data-i18n="conta.label_cidade">Cidade*</label>
+          <input type="text" name="cidade" required>
+        </div>
+
+        <div class="form-group full">
+          <label data-i18n="conta.label_pais">País*</label>
+          <input type="text" name="pais" required>
+        </div>
+
+        <div class="form-group full">
+          <small data-i18n="conta.obrigatorios">*Informações obrigatórias</small>
+        </div>
+      </div>
+
+      <button type="submit" class="btn-salvar" data-i18n="conta.btn_salvar_continuar">Salvar e continuar</button>
+
+      <span class="form-info" id="infoDados" style="margin-top:20px;" data-i18n="conta.info_apos_salvar">
+        ⏳ Após salvar, envie seus documentos na etapa 2 e sua conta entra em processo de verificação.
+      </span>
+    </form>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- STEP 3 — CONTRATO DIGITAL (ZapSign)                       -->
+  <!-- ========================================================== -->
+  <section class="area-card" id="secaoContrato">
+    <h3>Contrato de Parceria Digital</h3>
+
+    <div class="verificacao-steps">
+      <span class="step concluido">1. Termos</span>
+      <span class="step concluido">2. Dados pessoais</span>
+      <span class="step ativo">3. Contrato</span>
+      <span class="step">4. Documentos</span>
+    </div>
+
+    <!-- Estado: já assinado -->
+    <div id="contratoJaAssinado" class="termos-aceitos-banner hidden">
+      <span class="termos-aceitos-icon">✅</span>
+      <div>
+        <strong>Contrato assinado com sucesso</strong>
+        <small id="contratoAssinadoData"></small>
+      </div>
+    </div>
+
+    <!-- Estado: a assinar -->
+    <div id="contratoAAssinar">
+      <p class="form-info" style="margin-bottom:16px;">
+        📋 Lê e assina o Contrato de Parceria Digital com a Velvet antes de enviar os documentos.
+        Podes assinar directamente no ecrã — sem necessidade de impressão.
+      </p>
+
+      <div id="contratoLoadingMsg" style="text-align:center; padding:24px; color:#888;">
+        <div class="spinner" style="margin: 0 auto 12px;"></div>
+        <p>A preparar o contrato...</p>
+      </div>
+
+      <!-- Iframe ZapSign para assinatura -->
+      <div id="contratoIframeWrap" class="hidden" style="border:1px solid #333; border-radius:12px; overflow:hidden; margin-bottom:16px;">
+        <iframe
+          id="iframeContrato"
+          src=""
+          style="width:100%; height:600px; border:none; display:block;"
+          allow="camera; microphone"
+          title="Assinatura do contrato ZapSign">
+        </iframe>
+      </div>
+
+      <div id="contratoAcoesExternas" class="hidden" style="text-align:center; margin-bottom:16px;">
+        <p style="color:#aaa; font-size:14px; margin-bottom:12px;">
+          Preferes assinar noutro dispositivo? Abre o link abaixo:
+        </p>
+        <a id="linkAssinaturaExterno" href="#" target="_blank" class="btn-salvar" style="display:inline-block; text-decoration:none;">
+          🔗 Abrir link de assinatura
+        </a>
+      </div>
+
+      <div id="contratoPollingMsg" class="hidden" style="text-align:center; padding:12px; color:#aaa; font-size:13px;">
+        ⏳ A verificar assinatura...
+      </div>
+
+      <p id="contratoErro" class="form-info" style="color:#e74c3c; display:none;"></p>
+    </div>
+  </section>
+
+  <!-- ========================================================== -->
+  <!-- STEP 4 — DOCUMENTOS                                        -->
+  <!-- ========================================================== -->
+  <section class="area-card" id="secaoDocumentos">
+    <h3 data-i18n="conta.titulo_verificacao">Verificação de Identidade</h3>
+
+    <div class="verificacao-steps">
+      <span class="step concluido">1. Termos</span>
+      <span class="step concluido">2. Dados pessoais</span>
+      <span class="step concluido">3. Contrato</span>
+      <span class="step ativo">4. Documentos</span>
+    </div>
+
+    <!-- Banner de rejeição — só aparece quando status = rejeitado -->
+    <div id="bannerRejeicao" class="banner-rejeicao hidden">
+      <div class="banner-rejeicao-topo">
+        <span class="banner-rejeicao-icon">❌</span>
+        <div>
+          <strong>Verificação não aprovada</strong>
+          <small id="bannerRejeicaoData"></small>
+        </div>
+      </div>
+      <div class="banner-rejeicao-motivo">
+        <span class="banner-rejeicao-label">Motivo:</span>
+        <span id="bannerRejeicaoMotivo"></span>
+      </div>
+      <p class="banner-rejeicao-instrucao">
+        📋 Corrija as informações abaixo e reenvie seus documentos para nova análise.
+      </p>
+    </div>
+
+    <div id="statusContainer" class="form-info" data-i18n="conta.info_documentos">
+      Para proteger você e a plataforma, confirmamos sua identidade com um documento oficial válido.
+    </div>
+    <br>
+    <p class="status-descricao" id="descricaoAnalise" data-i18n="conta.info_prazo_analise">
+      O processo de análise pode levar até 48 horas, dependendo do volume de solicitações.
+    </p>
+
+    <form id="formDocumentos" class="form-area" enctype="multipart/form-data">
+      <div class="form-group full">
+        <label data-i18n="conta.label_tipo_doc">Tipo de documento*</label>
+        <select name="documento_tipo" required>
+          <option value="">Selecione</option>
+          <option value="rg">RG</option>
+          <option value="cnh">CNH</option>
+          <option value="passaporte">Passaporte</option>
+        </select>
+      </div>
+
+      <div class="form-group full">
+        <label data-i18n="conta.label_doc_frente">Documento (frente)*</label>
+        <input type="file" name="doc_frente" accept="image/*,.pdf" required>
+        <small data-i18n="conta.small_foto_nitida">Envie uma foto nítida e legível</small>
+      </div>
+
+      <div class="form-group full">
+        <label data-i18n="conta.label_doc_verso">Documento (verso)</label>
+        <input type="file" name="doc_verso" accept="image/*,.pdf">
+        <small data-i18n="conta.small_verso_obrigatorio">Obrigatório apenas se houver informações no verso</small>
+      </div>
+
+      <div class="form-group full">
+        <label data-i18n="conta.label_selfie">Selfie segurando o documento*</label>
+        <input type="file" name="selfie" accept="image/*" required>
+        <small data-i18n="conta.small_selfie">Mostre claramente seu rosto e o documento. Não utilize óculos escuros ou filtros.</small>
+      </div>
+
+      <div class="form-group full check-group">
+        <input type="checkbox" id="confirmacao_identidade" name="confirmacao_identidade" required>
+        <label for="confirmacao_identidade" data-i18n="conta.aceite_identidade">
+          Declaro, sob minha responsabilidade, que sou a pessoa titular do documento enviado.
+        </label>
+      </div>
+
+      <div class="form-group full check-group">
+        <input type="checkbox" id="aceite_privacidade" name="aceite_privacidade" required>
+        <label for="aceite_privacidade">
+          <span data-i18n="conta.aceite_privacidade_prefix">Declaro que li e concordo com a</span>
+          <a href="/privacy.pdf" target="_blank" rel="noopener noreferrer" data-i18n="conta.link_privacidade">Política de Privacidade</a>.
+        </label>
+      </div>
+
+      <div class="form-group full check-group">
+        <input type="checkbox" id="aceite_termos_criador" name="aceite_termos_criador" required>
+        <label for="aceite_termos_criador">
+          <span data-i18n="conta.aceite_termos_prefix">Declaro que li e concordo com os</span>
+          <a href="/creators_terms.pdf" target="_blank" rel="noopener noreferrer" data-i18n="conta.link_termos_criador">Termos e Condições para Criadores</a>.
+        </label>
+      </div>
+
+      <input type="hidden" name="versao_privacidade" value="2026-04-06">
+      <input type="hidden" name="versao_termos_criador" value="2026-04-06">
+
+      <button type="submit" class="btn-salvar" data-i18n="conta.btn_enviar_docs">Enviar documentos para análise</button>
+    </form>
+  </section>
+
+  <section class="area-card">
+    <div class="danger-zone">
+      <h3 data-i18n="conta.excluir_titulo">Excluir minha Conta</h3>
+      <button class="btn-danger" onclick="abrirConfirmacaoExclusao()" data-i18n="conta.btn_excluir">
+        Excluir conta permanentemente
+      </button>
+    </div>
+  </section>
+
+  <div id="footer-container"></div>
+
+   <!-- Modais -->
+    <div id="modalExcluirConta" class="modal hidden">
+      <div class="modal-overlay"></div>
+      <div class="modal-box">
+        <h3 data-i18n="conta.modal_excluir_titulo">Excluir conta permanentemente</h3>
+        <p data-i18n="conta.modal_excluir_aviso">
+          Esta ação é irreversível. Todos os seus dados, conteúdos, mensagens e histórico serão apagados permanentemente.
+        </p>
+        <label class="label-danger" data-i18n="conta.modal_excluir_label">Digite sua senha para confirmar</label>
+        <input type="password" id="senhaConfirmacao" data-i18n-placeholder="conta.modal_excluir_placeholder" placeholder="Digite sua senha" class="input-danger">
+        <p id="erroExclusao" class="erro-danger hidden" data-i18n="conta.modal_excluir_erro">Senha incorreta.</p>
+        <div class="modal-actions">
+          <button class="btn-cancelar" onclick="fecharModalExclusao()" data-i18n="conta.btn_cancelar">Cancelar</button>
+          <button class="btn-confirmar" onclick="confirmarExclusaoConta()" data-i18n="conta.btn_confirmar_exclusao">
+            Sim, excluir minha conta
+          </button>
+        </div>
+      </div>
+    </div>
+
+  <div id="modalContaCliente" class="modal hidden">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-box modal-box-role">
+    <h3>Não é possível validar seu perfil</h3>
+    <p>Esta conta foi criada no modo <strong>cliente</strong>.</p>
+
+    <p>Contas de cliente são exclusivas para usuários que desejam<strong>conversar</strong> e <strong>acessar o perfil das influenciadoras</strong>.
+      Para esse tipo de conta, <strong>não é necessário enviar documentações</strong>.</p>
+
+    <p>Se você deseja validar a conta e criar conteúdo como criador(a), será necessário criar uma <strong>nova conta</strong> e, no registro,
+      selecionar a opção <strong>“Quero ser criador”</strong>.</p>
+
+  <img src="/assets/criar-conta-criador.png" alt="Opção correta para criar conta de criador" class="popup-print-role">
+
+    <div class="modal-actions">
+      <button type="button" class="btn-cancelar" onclick="fecharModalContaCliente()">Fechar</button>
+      <button type="button" id="btnCriarNovaConta" class="btn-confirmar">Criar nova conta</button>
+    </div>
+  </div>
+</div>
+
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/header.js"></script>
+  <script src="/js/aceite-termos.js"></script>
+  <script src="/js/contrato-assinatura.js"></script>
+  <script src="/js/areaUsuario.js"></script>
+  <script src="/js/verificacaoDocumentos.js"></script>
+  <script src="/js/footer-shared.js"></script>
+
+</body>
+</html>

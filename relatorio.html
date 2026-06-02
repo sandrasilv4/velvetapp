@@ -1,0 +1,27 @@
+<h2>Ganhos</h2>
+
+<div class="total-box">
+  <h1 id="totalGanhos">$0.00</h1>
+  <p>GANHOS TOTAIS ATÉ A DATA</p>
+</div>
+
+<div style="text-align:right">
+  <a href="#" onclick="mostrarMes()">Mês</a> |
+  <a href="#" onclick="mostrarDia()">Dia</a>
+</div>
+
+<div id="chartMes">
+  <canvas id="chartMensal"></canvas>
+</div>
+
+<div id="chartDia" style="display:none">
+  <canvas id="chartDiario"></canvas>
+</div>
+
+<div class="info-box">
+  <p>Validado para o próximo pagamento: <strong id="saldo">$0.00</strong></p>
+  <p>Próximo pagamento: <strong id="proximoPagamento"></strong></p>
+</div>
+<script src="/socket.io/socket.io.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="/relatorio.js"></script>

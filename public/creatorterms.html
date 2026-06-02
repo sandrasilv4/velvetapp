@@ -1,0 +1,1135 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title data-i18n="meta_title">Termos e Condições para Criadores de Conteúdo | Velvet</title>
+
+  <style>
+    :root {
+      --primary: #6f3cff;
+      --primary-dark: #5a2fe0;
+      --text: #1e1b2e;
+      --text-soft: #5e5873;
+      --bg: #f7f7fb;
+      --card: #f1eef4;
+      --line: #ddd8e6;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .language-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+    }
+
+    .language-switcher button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--text);
+      padding: 10px 14px;
+      border-radius: 12px;
+      cursor: pointer;
+      font-family: inherit;
+      font-weight: 600;
+      transition: 0.2s ease;
+    }
+
+    .language-switcher button:hover {
+      border-color: var(--primary);
+      color: var(--primary);
+    }
+
+    .language-switcher button.active {
+      background: var(--primary);
+      color: var(--white);
+      border-color: var(--primary);
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 22px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .intro {
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .toc {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 26px 28px;
+      margin: 28px 0 48px;
+    }
+
+    .toc h2 {
+      margin: 0 0 18px;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 1;
+    }
+
+    .toc li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      color: var(--primary);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 42px 0;
+    }
+
+    section {
+      scroll-margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+
+    .sub-title {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--text);
+      margin: 26px 0 10px;
+      line-height: 1.4;
+      text-transform: uppercase;
+    }
+
+    .item-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 22px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+
+    ul {
+      margin: 10px 0 18px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 1.04rem;
+    }
+
+    .muted {
+      color: var(--text-soft);
+    }
+
+    .contact-box {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-top: 16px;
+    }
+
+    a.inline-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    .last-updated {
+      margin: 0 0 24px;
+      padding: 10px 16px;
+      background: #f3eff5;
+      color: #1e1b2e;
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: none;
+      color: #1E1E26;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #1E1E26;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #C9C9C9;
+      text-decoration: underline;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #1E1E26;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 28px 16px 60px;
+      }
+
+      .page-title {
+        font-size: 1.9rem;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+      }
+
+      .toc {
+        padding: 22px 20px;
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+
+      .language-switcher {
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+    <div class="language-switcher" aria-label="Language selector">
+      <button type="button" data-lang="pt" class="active">PT</button>
+      <button type="button" data-lang="en">EN</button>
+      <button type="button" data-lang="es">ES</button>
+    </div>
+
+    <h1 class="page-title" data-i18n="page_title">Termos e Condições para Criadores</h1>
+
+    <div class="last-updated">
+      <strong data-i18n="last_updated_label">Última atualização:</strong>
+      <span data-i18n="last_updated_date">06/04/2026</span>
+    </div>
+
+    <p class="intro" data-i18n="intro">
+      Este documento estabelece os termos aplicáveis aos Criadores da plataforma Velvet.
+      Ao utilizar a Plataforma como Criador(a), o usuário declara concordância integral com este Contrato.
+    </p>
+
+    <nav class="toc" aria-label="Índice dos Termos e Condições para Criadores">
+      <h2 data-i18n="toc_title">Índice</h2>
+      <ol>
+        <li><a href="#secao-1" data-i18n="toc_1">1. Definições</a></li>
+        <li><a href="#secao-2" data-i18n="toc_2">2. Elegibilidade</a></li>
+        <li><a href="#secao-3" data-i18n="toc_3">3. Natureza da Relação</a></li>
+        <li><a href="#secao-4" data-i18n="toc_4">4. Conta e Segurança</a></li>
+        <li><a href="#secao-5" data-i18n="toc_5">5. Conteúdo</a></li>
+        <li><a href="#secao-6" data-i18n="toc_6">6. Conteúdo Proibido</a></li>
+        <li><a href="#secao-7" data-i18n="toc_7">7. Responsabilidade pelo Conteúdo</a></li>
+        <li><a href="#secao-8" data-i18n="toc_8">8. Licença</a></li>
+        <li><a href="#secao-9" data-i18n="toc_9">9. Monetização</a></li>
+        <li><a href="#secao-10" data-i18n="toc_10">10. Pagamentos</a></li>
+        <li><a href="#secao-11" data-i18n="toc_11">11. Impostos</a></li>
+        <li><a href="#secao-12" data-i18n="toc_12">12. Fraude e Chargeback</a></li>
+        <li><a href="#secao-13" data-i18n="toc_13">13. Moderação</a></li>
+        <li><a href="#secao-14" data-i18n="toc_14">14. Proteção contra Vazamentos</a></li>
+        <li><a href="#secao-15" data-i18n="toc_15">15. Confidencialidade</a></li>
+        <li><a href="#secao-16" data-i18n="toc_16">16. Limitação de Responsabilidade</a></li>
+        <li><a href="#secao-17" data-i18n="toc_17">17. Divulgação Externa e Uso de Links</a></li>
+        <li><a href="#secao-18" data-i18n="toc_18">18. Indenização</a></li>
+        <li><a href="#secao-19" data-i18n="toc_19">19. Política de Marketing e Divulgação</a></li>
+        <li><a href="#secao-20" data-i18n="toc_20">20. Encerramento</a></li>
+        <li><a href="#secao-21" data-i18n="toc_21">21. Alterações</a></li>
+        <li><a href="#secao-22" data-i18n="toc_22">22. Legislação</a></li>
+        <li><a href="#secao-23" data-i18n="toc_23">23. Contato</a></li>
+      </ol>
+    </nav>
+
+    <hr class="divider" />
+
+    <section id="secao-1">
+      <h2 class="section-title" data-i18n="sec_1_title">1. Definições</h2>
+      <ul>
+        <li data-i18n="sec_1_item_1"><strong>Plataforma:</strong> sistema digital Velvet.</li>
+        <li data-i18n="sec_1_item_2"><strong>Criador(a):</strong> usuário que publica e monetiza conteúdo.</li>
+        <li data-i18n="sec_1_item_3"><strong>Usuário/Assinante:</strong> consumidor do conteúdo.</li>
+        <li data-i18n="sec_1_item_4"><strong>Conteúdo:</strong> qualquer material publicado.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-2">
+      <h2 class="section-title" data-i18n="sec_2_title">2. Elegibilidade</h2>
+      <p data-i18n="sec_2_intro">O Criador declara que:</p>
+      <ul>
+        <li data-i18n="sec_2_item_1">Possui mais de 18 anos.</li>
+        <li data-i18n="sec_2_item_2">Tem capacidade legal plena.</li>
+        <li data-i18n="sec_2_item_3">Atua de forma lícita.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-3">
+      <h2 class="section-title" data-i18n="sec_3_title">3. Natureza da Relação</h2>
+      <ul>
+        <li data-i18n="sec_3_item_1">A relação entre a Velvet e o Criador é exclusivamente autônoma.</li>
+        <li data-i18n="sec_3_item_2">Não há vínculo empregatício, societário, representação, parceria ou exclusividade.</li>
+        <li data-i18n="sec_3_item_3">O Criador é o único responsável por suas obrigações fiscais, tributárias, previdenciárias e legais.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-4">
+      <h2 class="section-title" data-i18n="sec_4_title">4. Conta e Segurança</h2>
+      <p data-i18n="sec_4_intro">O Criador é responsável por:</p>
+      <ul>
+        <li data-i18n="sec_4_item_1">Fornecer dados verdadeiros, completos e atualizados.</li>
+        <li data-i18n="sec_4_item_2">Manter a confidencialidade de login, senha e métodos de acesso.</li>
+        <li data-i18n="sec_4_item_3">Todas as atividades realizadas em sua conta.</li>
+        <li data-i18n="sec_4_item_4">Comunicar imediatamente qualquer uso não autorizado ou incidente de segurança.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-5">
+      <h2 class="section-title" data-i18n="sec_5_title">5. Conteúdo</h2>
+      <p data-i18n="sec_5_p1">
+        O Criador poderá publicar conteúdos adultos ou não, de acordo com seu nicho e com as regras da Plataforma.
+      </p>
+      <p data-i18n="sec_5_intro">Ao publicar conteúdo, o Criador declara que:</p>
+      <ul>
+        <li data-i18n="sec_5_item_1">Possui todos os direitos necessários sobre o material publicado.</li>
+        <li data-i18n="sec_5_item_2">Possui autorização válida e comprovável de todos os participantes eventualmente retratados.</li>
+        <li data-i18n="sec_5_item_3">O conteúdo não viola leis, direitos de terceiros, regras da Plataforma ou normas regulatórias aplicáveis.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-6">
+      <h2 class="section-title" data-i18n="sec_6_title">6. Conteúdo Proibido</h2>
+      <p data-i18n="sec_6_intro">É estritamente proibida a publicação de conteúdo que envolva:</p>
+      <ul>
+        <li data-i18n="sec_6_item_1">Menores de 18 anos ou qualquer aparência de menoridade.</li>
+        <li data-i18n="sec_6_item_2">Violência real ou não consensual, exploração, coerção ou abuso.</li>
+        <li data-i18n="sec_6_item_3">Material ilícito, criminoso, fraudulento ou que promova práticas ilegais.</li>
+        <li data-i18n="sec_6_item_4">Discurso de ódio, discriminação, perseguição ou incitação à violência.</li>
+        <li data-i18n="sec_6_item_5">Violação de direitos autorais, imagem, intimidade, privacidade ou quaisquer direitos de terceiros.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-7">
+      <h2 class="section-title" data-i18n="sec_7_title">7. Responsabilidade pelo Conteúdo</h2>
+      <ul>
+        <li data-i18n="sec_7_item_1">Todo o conteúdo publicado é de responsabilidade exclusiva do Criador.</li>
+        <li data-i18n="sec_7_item_2">A Velvet não realiza controle editorial ou aprovação prévia obrigatória do material publicado.</li>
+        <li data-i18n="sec_7_item_3">A eventual moderação, remoção ou bloqueio de conteúdo não transfere à Velvet a autoria, a responsabilidade ou a obrigação de vigilância permanente.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-8">
+      <h2 class="section-title" data-i18n="sec_8_title">8. Licença</h2>
+      <p data-i18n="sec_8_p1">
+        O Criador concede à Velvet uma licença não exclusiva, limitada, revogável e sem transferência de titularidade,
+        apenas na medida necessária para hospedar, reproduzir, processar, distribuir tecnicamente, exibir e disponibilizar
+        o conteúdo dentro das funcionalidades da Plataforma.
+      </p>
+      <p data-i18n="sec_8_p2">
+        Essa licença não implica cessão definitiva de direitos e permanece válida apenas enquanto o conteúdo estiver vinculado
+        às operações legítimas da Plataforma e às obrigações legais aplicáveis.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-9">
+      <h2 class="section-title" data-i18n="sec_9_title">9. Monetização</h2>
+      <p data-i18n="sec_9_intro">O Criador poderá monetizar por meio de funcionalidades disponibilizadas pela Plataforma, incluindo:</p>
+      <ul>
+        <li data-i18n="sec_9_item_1">Assinaturas.</li>
+        <li data-i18n="sec_9_item_2">Conteúdos pagos avulsos.</li>
+        <li data-i18n="sec_9_item_3">Gorjetas e demais formas de interação remunerada, quando disponíveis.</li>
+      </ul>
+      <p data-i18n="sec_9_p2">
+        A Velvet poderá reter percentual, taxas operacionais, tarifas de processamento, encargos de intermediação ou valores relacionados a estornos, chargebacks, fraudes e exigências legais, conforme as regras da Plataforma.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-10">
+      <h2 class="section-title" data-i18n="sec_10_title">10. Pagamentos</h2>
+      <ul>
+        <li data-i18n="sec_10_item_1">Os pagamentos poderão ser processados por terceiros parceiros de pagamento.</li>
+        <li data-i18n="sec_10_item_2">A Velvet poderá reter, revisar, bloquear ou postergar repasses em caso de suspeita de fraude, chargeback, irregularidade cadastral, exigência legal ou violação destes Termos.</li>
+        <li data-i18n="sec_10_item_3">Prazos, limites mínimos, métodos disponíveis e requisitos para saque poderão ser definidos e alterados pela Plataforma.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-11">
+      <h2 class="section-title" data-i18n="sec_11_title">11. Impostos</h2>
+      <p data-i18n="sec_11_p1">
+        O Criador é o único responsável pelo recolhimento de impostos, contribuições, taxas, obrigações acessórias e demais deveres fiscais decorrentes dos valores recebidos por sua atividade na Plataforma.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-12">
+      <h2 class="section-title" data-i18n="sec_12_title">12. Fraude e Chargeback</h2>
+      <ul>
+        <li data-i18n="sec_12_item_1">Valores relacionados a transações suspeitas poderão ser retidos, compensados ou bloqueados.</li>
+        <li data-i18n="sec_12_item_2">A conta do Criador poderá ser suspensa, limitada ou encerrada em caso de fraude, conluio, abuso de sistema ou alto índice de contestação.</li>
+        <li data-i18n="sec_12_item_3">A Velvet poderá descontar prejuízos, custos operacionais, multas, taxas de chargeback e despesas relacionadas à defesa de contestação.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-13">
+      <h2 class="section-title" data-i18n="sec_13_title">13. Moderação</h2>
+      <p data-i18n="sec_13_p1">
+        A Velvet poderá, a seu critério e a qualquer tempo, remover conteúdos, restringir funcionalidades,
+        exigir documentos, suspender contas ou encerrar perfis, com ou sem aviso prévio, quando identificar
+        risco jurídico, violação destes Termos, infração legal, denúncia consistente ou necessidade operacional.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-14">
+      <h2 class="section-title" data-i18n="sec_14_title">14. Proteção contra Vazamentos</h2>
+      <ul>
+        <li data-i18n="sec_14_item_1">A Velvet adota medidas razoáveis de segurança, mas não garante proteção absoluta contra cópia, gravação de tela, redistribuição indevida, pirataria ou vazamento.</li>
+        <li data-i18n="sec_14_item_2">O Criador reconhece que a disponibilização de conteúdo digital envolve risco inerente de exposição indevida por terceiros.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-15">
+      <h2 class="section-title" data-i18n="sec_15_title">15. Confidencialidade</h2>
+      <p data-i18n="sec_15_p1">
+        É vedado ao Criador divulgar informações internas da Plataforma, dados de usuários, informações de pagamento,
+        rotinas operacionais, materiais confidenciais ou qualquer dado protegido por sigilo, salvo quando houver autorização
+        expressa ou obrigação legal.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-16">
+      <h2 class="section-title" data-i18n="sec_16_title">16. Limitação de Responsabilidade</h2>
+      <p data-i18n="sec_16_intro">Na máxima extensão permitida pela legislação aplicável, a Velvet não se responsabiliza por:</p>
+      <ul>
+        <li data-i18n="sec_16_item_1">Perda de receita, lucro cessante ou expectativa de ganhos.</li>
+        <li data-i18n="sec_16_item_2">Decisões comerciais tomadas pelo Criador com base em desempenho, audiência ou monetização.</li>
+        <li data-i18n="sec_16_item_3">Atos de terceiros, incluindo usuários, processadores de pagamento, redes sociais e provedores externos.</li>
+        <li data-i18n="sec_16_item_4">Falhas externas, indisponibilidades temporárias, interrupções de rede, ataques cibernéticos ou eventos fora de seu controle razoável.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-17">
+      <h2 class="section-title" data-i18n="sec_17_title">17. Divulgação Externa e Uso de Links</h2>
+      <ul>
+        <li data-i18n="sec_17_item_1">O Criador é integralmente responsável pela divulgação de seu perfil, nome, marca e links fora da Plataforma.</li>
+        <li data-i18n="sec_17_item_2">A Velvet não possui controle sobre redes sociais, serviços de terceiros, mecanismos de busca ou plataformas externas.</li>
+        <li data-i18n="sec_17_item_3">O Criador reconhece que publicações externas podem violar regras de terceiros, gerar restrições ou resultar em penalidades nessas plataformas.</li>
+      </ul>
+      <p data-i18n="sec_17_intro2">A Velvet não se responsabiliza por:</p>
+      <ul>
+        <li data-i18n="sec_17_item_4">Banimento ou suspensão de contas externas.</li>
+        <li data-i18n="sec_17_item_5">Bloqueios, limitações ou remoções de conteúdo em plataformas de terceiros.</li>
+        <li data-i18n="sec_17_item_6">Perda de seguidores, alcance, reputação ou resultados comerciais externos.</li>
+      </ul>
+      <p data-i18n="sec_17_p3">
+        O uso de links da Velvet em ambientes externos não transfere à Plataforma qualquer responsabilidade sobre estratégias de marketing, conformidade ou consequências em serviços de terceiros.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-18">
+      <h2 class="section-title" data-i18n="sec_18_title">18. Indenização</h2>
+      <p data-i18n="sec_18_intro">O Criador concorda em defender, isentar e indenizar a Velvet, suas afiliadas, administradores, parceiros e colaboradores por quaisquer perdas, danos, responsabilidades, custos e despesas decorrentes de:</p>
+      <ul>
+        <li data-i18n="sec_18_item_1">Violação destes Termos ou da legislação aplicável.</li>
+        <li data-i18n="sec_18_item_2">Uso indevido da Plataforma.</li>
+        <li data-i18n="sec_18_item_3">Conteúdo publicado, distribuído ou comercializado pelo Criador.</li>
+        <li data-i18n="sec_18_item_4">Divulgação externa, publicidade irregular ou violação de direitos de terceiros.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-19">
+      <h2 class="section-title" data-i18n="sec_19_title">19. Política de Marketing e Divulgação</h2>
+      <p data-i18n="sec_19_intro1">O Criador deve:</p>
+      <ul>
+        <li data-i18n="sec_19_item_1">Respeitar as regras, políticas e restrições das plataformas externas utilizadas para divulgação.</li>
+        <li data-i18n="sec_19_item_2">Evitar conteúdo explícito, enganoso, abusivo ou proibido em ambientes que não o permitam.</li>
+        <li data-i18n="sec_19_item_3">Não realizar publicidade fraudulenta, spam, assédio, promessas enganosas ou práticas comerciais abusivas.</li>
+      </ul>
+
+      <p data-i18n="sec_19_intro2">O Criador reconhece que:</p>
+      <ul>
+        <li data-i18n="sec_19_item_4">Cada plataforma externa possui regras próprias e independentes.</li>
+        <li data-i18n="sec_19_item_5">A Velvet não controla, aprova nem garante permissões de divulgação em ambientes de terceiros.</li>
+      </ul>
+
+      <p data-i18n="sec_19_intro3">Recomenda-se:</p>
+      <ul>
+        <li data-i18n="sec_19_item_6">Utilizar linguagem compatível com o ambiente externo utilizado.</li>
+        <li data-i18n="sec_19_item_7">Redirecionar usuários para a Plataforma sem violar regras de terceiros.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-20">
+      <h2 class="section-title" data-i18n="sec_20_title">20. Encerramento</h2>
+      <p data-i18n="sec_20_p1">
+        A Velvet poderá encerrar, suspender ou limitar contas a qualquer momento, especialmente em caso de descumprimento contratual,
+        risco operacional, exigência legal, fraude, abuso ou necessidade de proteção da Plataforma e de seus usuários.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-21">
+      <h2 class="section-title" data-i18n="sec_21_title">21. Alterações</h2>
+      <p data-i18n="sec_21_p1">
+        Este Contrato poderá ser atualizado, modificado ou substituído a qualquer momento.
+        A versão vigente será aquela disponibilizada na Plataforma, com a respectiva data de atualização.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-22">
+      <h2 class="section-title" data-i18n="sec_22_title">22. Legislação</h2>
+      <p data-i18n="sec_22_p1">
+        Este Contrato é regido pela legislação brasileira, sem prejuízo da aplicação de normas obrigatórias de proteção ao consumidor,
+        proteção de dados ou outras disposições legais aplicáveis ao caso concreto.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-23">
+      <h2 class="section-title" data-i18n="sec_23_title">23. Contato</h2>
+      <p>
+        <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a>
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/terms.html" data-i18n="footer_terms">Termos de Uso</a>
+      <a href="/privacy.html" data-i18n="footer_privacy">Política de Privacidade</a>
+      <a href="/policies.html" data-i18n="footer_policies">Política de Utilização</a>
+    </div>
+    <div class="footer-copy" data-i18n="footer_copy">
+      © 2026 Velvet. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        meta_title: "Termos e Condições para Criadores de Conteúdo | Velvet",
+        page_title: "Termos e Condições para Criadores",
+        last_updated_label: "Última atualização:",
+        last_updated_date: "06/04/2026",
+        intro: "Este documento estabelece os termos aplicáveis aos Criadores da plataforma Velvet. Ao utilizar a Plataforma como Criador(a), o usuário declara concordância integral com este Contrato.",
+        toc_title: "Índice",
+        toc_1: "1. Definições",
+        toc_2: "2. Elegibilidade",
+        toc_3: "3. Natureza da Relação",
+        toc_4: "4. Conta e Segurança",
+        toc_5: "5. Conteúdo",
+        toc_6: "6. Conteúdo Proibido",
+        toc_7: "7. Responsabilidade pelo Conteúdo",
+        toc_8: "8. Licença",
+        toc_9: "9. Monetização",
+        toc_10: "10. Pagamentos",
+        toc_11: "11. Impostos",
+        toc_12: "12. Fraude e Chargeback",
+        toc_13: "13. Moderação",
+        toc_14: "14. Proteção contra Vazamentos",
+        toc_15: "15. Confidencialidade",
+        toc_16: "16. Limitação de Responsabilidade",
+        toc_17: "17. Divulgação Externa e Uso de Links",
+        toc_18: "18. Indenização",
+        toc_19: "19. Política de Marketing e Divulgação",
+        toc_20: "20. Encerramento",
+        toc_21: "21. Alterações",
+        toc_22: "22. Legislação",
+        toc_23: "23. Contato",
+
+        sec_1_title: "1. Definições",
+        sec_1_item_1: "<strong>Plataforma:</strong> sistema digital Velvet.",
+        sec_1_item_2: "<strong>Criador(a):</strong> usuário que publica e monetiza conteúdo.",
+        sec_1_item_3: "<strong>Usuário/Assinante:</strong> consumidor do conteúdo.",
+        sec_1_item_4: "<strong>Conteúdo:</strong> qualquer material publicado.",
+
+        sec_2_title: "2. Elegibilidade",
+        sec_2_intro: "O Criador declara que:",
+        sec_2_item_1: "Possui mais de 18 anos.",
+        sec_2_item_2: "Tem capacidade legal plena.",
+        sec_2_item_3: "Atua de forma lícita.",
+
+        sec_3_title: "3. Natureza da Relação",
+        sec_3_item_1: "A relação entre a Velvet e o Criador é exclusivamente autônoma.",
+        sec_3_item_2: "Não há vínculo empregatício, societário, representação, parceria ou exclusividade.",
+        sec_3_item_3: "O Criador é o único responsável por suas obrigações fiscais, tributárias, previdenciárias e legais.",
+
+        sec_4_title: "4. Conta e Segurança",
+        sec_4_intro: "O Criador é responsável por:",
+        sec_4_item_1: "Fornecer dados verdadeiros, completos e atualizados.",
+        sec_4_item_2: "Manter a confidencialidade de login, senha e métodos de acesso.",
+        sec_4_item_3: "Todas as atividades realizadas em sua conta.",
+        sec_4_item_4: "Comunicar imediatamente qualquer uso não autorizado ou incidente de segurança.",
+
+        sec_5_title: "5. Conteúdo",
+        sec_5_p1: "O Criador poderá publicar conteúdos adultos ou não, de acordo com seu nicho e com as regras da Plataforma.",
+        sec_5_intro: "Ao publicar conteúdo, o Criador declara que:",
+        sec_5_item_1: "Possui todos os direitos necessários sobre o material publicado.",
+        sec_5_item_2: "Possui autorização válida e comprovável de todos os participantes eventualmente retratados.",
+        sec_5_item_3: "O conteúdo não viola leis, direitos de terceiros, regras da Plataforma ou normas regulatórias aplicáveis.",
+
+        sec_6_title: "6. Conteúdo Proibido",
+        sec_6_intro: "É estritamente proibida a publicação de conteúdo que envolva:",
+        sec_6_item_1: "Menores de 18 anos ou qualquer aparência de menoridade.",
+        sec_6_item_2: "Violência real ou não consensual, exploração, coerção ou abuso.",
+        sec_6_item_3: "Material ilícito, criminoso, fraudulento ou que promova práticas ilegais.",
+        sec_6_item_4: "Discurso de ódio, discriminação, perseguição ou incitação à violência.",
+        sec_6_item_5: "Violação de direitos autorais, imagem, intimidade, privacidade ou quaisquer direitos de terceiros.",
+
+        sec_7_title: "7. Responsabilidade pelo Conteúdo",
+        sec_7_item_1: "Todo o conteúdo publicado é de responsabilidade exclusiva do Criador.",
+        sec_7_item_2: "A Velvet não realiza controle editorial ou aprovação prévia obrigatória do material publicado.",
+        sec_7_item_3: "A eventual moderação, remoção ou bloqueio de conteúdo não transfere à Velvet a autoria, a responsabilidade ou a obrigação de vigilância permanente.",
+
+        sec_8_title: "8. Licença",
+        sec_8_p1: "O Criador concede à Velvet uma licença não exclusiva, limitada, revogável e sem transferência de titularidade, apenas na medida necessária para hospedar, reproduzir, processar, distribuir tecnicamente, exibir e disponibilizar o conteúdo dentro das funcionalidades da Plataforma.",
+        sec_8_p2: "Essa licença não implica cessão definitiva de direitos e permanece válida apenas enquanto o conteúdo estiver vinculado às operações legítimas da Plataforma e às obrigações legais aplicáveis.",
+
+        sec_9_title: "9. Monetização",
+        sec_9_intro: "O Criador poderá monetizar por meio de funcionalidades disponibilizadas pela Plataforma, incluindo:",
+        sec_9_item_1: "Assinaturas.",
+        sec_9_item_2: "Conteúdos pagos avulsos.",
+        sec_9_item_3: "Gorjetas e demais formas de interação remunerada, quando disponíveis.",
+        sec_9_p2: "A Velvet poderá reter percentual, taxas operacionais, tarifas de processamento, encargos de intermediação ou valores relacionados a estornos, chargebacks, fraudes e exigências legais, conforme as regras da Plataforma.",
+
+        sec_10_title: "10. Pagamentos",
+        sec_10_item_1: "Os pagamentos poderão ser processados por terceiros parceiros de pagamento.",
+        sec_10_item_2: "A Velvet poderá reter, revisar, bloquear ou postergar repasses em caso de suspeita de fraude, chargeback, irregularidade cadastral, exigência legal ou violação destes Termos.",
+        sec_10_item_3: "Prazos, limites mínimos, métodos disponíveis e requisitos para saque poderão ser definidos e alterados pela Plataforma.",
+
+        sec_11_title: "11. Impostos",
+        sec_11_p1: "O Criador é o único responsável pelo recolhimento de impostos, contribuições, taxas, obrigações acessórias e demais deveres fiscais decorrentes dos valores recebidos por sua atividade na Plataforma.",
+
+        sec_12_title: "12. Fraude e Chargeback",
+        sec_12_item_1: "Valores relacionados a transações suspeitas poderão ser retidos, compensados ou bloqueados.",
+        sec_12_item_2: "A conta do Criador poderá ser suspensa, limitada ou encerrada em caso de fraude, conluio, abuso de sistema ou alto índice de contestação.",
+        sec_12_item_3: "A Velvet poderá descontar prejuízos, custos operacionais, multas, taxas de chargeback e despesas relacionadas à defesa de contestação.",
+
+        sec_13_title: "13. Moderação",
+        sec_13_p1: "A Velvet poderá, a seu critério e a qualquer tempo, remover conteúdos, restringir funcionalidades, exigir documentos, suspender contas ou encerrar perfis, com ou sem aviso prévio, quando identificar risco jurídico, violação destes Termos, infração legal, denúncia consistente ou necessidade operacional.",
+
+        sec_14_title: "14. Proteção contra Vazamentos",
+        sec_14_item_1: "A Velvet adota medidas razoáveis de segurança, mas não garante proteção absoluta contra cópia, gravação de tela, redistribuição indevida, pirataria ou vazamento.",
+        sec_14_item_2: "O Criador reconhece que a disponibilização de conteúdo digital envolve risco inerente de exposição indevida por terceiros.",
+
+        sec_15_title: "15. Confidencialidade",
+        sec_15_p1: "É vedado ao Criador divulgar informações internas da Plataforma, dados de usuários, informações de pagamento, rotinas operacionais, materiais confidenciais ou qualquer dado protegido por sigilo, salvo quando houver autorização expressa ou obrigação legal.",
+
+        sec_16_title: "16. Limitação de Responsabilidade",
+        sec_16_intro: "Na máxima extensão permitida pela legislação aplicável, a Velvet não se responsabiliza por:",
+        sec_16_item_1: "Perda de receita, lucro cessante ou expectativa de ganhos.",
+        sec_16_item_2: "Decisões comerciais tomadas pelo Criador com base em desempenho, audiência ou monetização.",
+        sec_16_item_3: "Atos de terceiros, incluindo usuários, processadores de pagamento, redes sociais e provedores externos.",
+        sec_16_item_4: "Falhas externas, indisponibilidades temporárias, interrupções de rede, ataques cibernéticos ou eventos fora de seu controle razoável.",
+
+        sec_17_title: "17. Divulgação Externa e Uso de Links",
+        sec_17_item_1: "O Criador é integralmente responsável pela divulgação de seu perfil, nome, marca e links fora da Plataforma.",
+        sec_17_item_2: "A Velvet não possui controle sobre redes sociais, serviços de terceiros, mecanismos de busca ou plataformas externas.",
+        sec_17_item_3: "O Criador reconhece que publicações externas podem violar regras de terceiros, gerar restrições ou resultar em penalidades nessas plataformas.",
+        sec_17_intro2: "A Velvet não se responsabiliza por:",
+        sec_17_item_4: "Banimento ou suspensão de contas externas.",
+        sec_17_item_5: "Bloqueios, limitações ou remoções de conteúdo em plataformas de terceiros.",
+        sec_17_item_6: "Perda de seguidores, alcance, reputação ou resultados comerciais externos.",
+        sec_17_p3: "O uso de links da Velvet em ambientes externos não transfere à Plataforma qualquer responsabilidade sobre estratégias de marketing, conformidade ou consequências em serviços de terceiros.",
+
+        sec_18_title: "18. Indenização",
+        sec_18_intro: "O Criador concorda em defender, isentar e indenizar a Velvet, suas afiliadas, administradores, parceiros e colaboradores por quaisquer perdas, danos, responsabilidades, custos e despesas decorrentes de:",
+        sec_18_item_1: "Violação destes Termos ou da legislação aplicável.",
+        sec_18_item_2: "Uso indevido da Plataforma.",
+        sec_18_item_3: "Conteúdo publicado, distribuído ou comercializado pelo Criador.",
+        sec_18_item_4: "Divulgação externa, publicidade irregular ou violação de direitos de terceiros.",
+
+        sec_19_title: "19. Política de Marketing e Divulgação",
+        sec_19_intro1: "O Criador deve:",
+        sec_19_item_1: "Respeitar as regras, políticas e restrições das plataformas externas utilizadas para divulgação.",
+        sec_19_item_2: "Evitar conteúdo explícito, enganoso, abusivo ou proibido em ambientes que não o permitam.",
+        sec_19_item_3: "Não realizar publicidade fraudulenta, spam, assédio, promessas enganosas ou práticas comerciais abusivas.",
+        sec_19_intro2: "O Criador reconhece que:",
+        sec_19_item_4: "Cada plataforma externa possui regras próprias e independentes.",
+        sec_19_item_5: "A Velvet não controla, aprova nem garante permissões de divulgação em ambientes de terceiros.",
+        sec_19_intro3: "Recomenda-se:",
+        sec_19_item_6: "Utilizar linguagem compatível com o ambiente externo utilizado.",
+        sec_19_item_7: "Redirecionar usuários para a Plataforma sem violar regras de terceiros.",
+
+        sec_20_title: "20. Encerramento",
+        sec_20_p1: "A Velvet poderá encerrar, suspender ou limitar contas a qualquer momento, especialmente em caso de descumprimento contratual, risco operacional, exigência legal, fraude, abuso ou necessidade de proteção da Plataforma e de seus usuários.",
+
+        sec_21_title: "21. Alterações",
+        sec_21_p1: "Este Contrato poderá ser atualizado, modificado ou substituído a qualquer momento. A versão vigente será aquela disponibilizada na Plataforma, com a respectiva data de atualização.",
+
+        sec_22_title: "22. Legislação",
+        sec_22_p1: "Este Contrato é regido pela legislação brasileira, sem prejuízo da aplicação de normas obrigatórias de proteção ao consumidor, proteção de dados ou outras disposições legais aplicáveis ao caso concreto.",
+
+        sec_23_title: "23. Contato",
+
+        footer_terms: "Termos de Uso",
+        footer_privacy: "Política de Privacidade",
+        footer_policies: "Política de Utilização",
+        footer_copy: "© 2026 Velvet. Todos os direitos reservados."
+      },
+
+      en: {
+        meta_title: "Terms and Conditions for Content Creators | Velvet",
+        page_title: "Terms and Conditions for Creators",
+        last_updated_label: "Last updated:",
+        last_updated_date: "04/06/2026",
+        intro: "This document establishes the terms applicable to Creators on the Velvet platform. By using the Platform as a Creator, the user declares full agreement with this Agreement.",
+        toc_title: "Contents",
+        toc_1: "1. Definitions",
+        toc_2: "2. Eligibility",
+        toc_3: "3. Nature of the Relationship",
+        toc_4: "4. Account and Security",
+        toc_5: "5. Content",
+        toc_6: "6. Prohibited Content",
+        toc_7: "7. Responsibility for Content",
+        toc_8: "8. License",
+        toc_9: "9. Monetization",
+        toc_10: "10. Payments",
+        toc_11: "11. Taxes",
+        toc_12: "12. Fraud and Chargebacks",
+        toc_13: "13. Moderation",
+        toc_14: "14. Leak Protection",
+        toc_15: "15. Confidentiality",
+        toc_16: "16. Limitation of Liability",
+        toc_17: "17. External Promotion and Use of Links",
+        toc_18: "18. Indemnification",
+        toc_19: "19. Marketing and Promotion Policy",
+        toc_20: "20. Termination",
+        toc_21: "21. Amendments",
+        toc_22: "22. Governing Law",
+        toc_23: "23. Contact",
+
+        sec_1_title: "1. Definitions",
+        sec_1_item_1: "<strong>Platform:</strong> Velvet digital platform.",
+        sec_1_item_2: "<strong>Creator:</strong> user who publishes and monetizes content.",
+        sec_1_item_3: "<strong>User/Subscriber:</strong> consumer of the content.",
+        sec_1_item_4: "<strong>Content:</strong> any published material.",
+
+        sec_2_title: "2. Eligibility",
+        sec_2_intro: "The Creator declares that they:",
+        sec_2_item_1: "Are over 18 years of age.",
+        sec_2_item_2: "Have full legal capacity.",
+        sec_2_item_3: "Act lawfully.",
+
+        sec_3_title: "3. Nature of the Relationship",
+        sec_3_item_1: "The relationship between Velvet and the Creator is strictly independent.",
+        sec_3_item_2: "There is no employment, partnership, agency, representation, or exclusivity relationship.",
+        sec_3_item_3: "The Creator is solely responsible for their tax, social security, legal, and regulatory obligations.",
+
+        sec_4_title: "4. Account and Security",
+        sec_4_intro: "The Creator is responsible for:",
+        sec_4_item_1: "Providing accurate, complete, and up-to-date information.",
+        sec_4_item_2: "Maintaining the confidentiality of login credentials, passwords, and access methods.",
+        sec_4_item_3: "All activities carried out through their account.",
+        sec_4_item_4: "Immediately reporting any unauthorized use or security incident.",
+
+        sec_5_title: "5. Content",
+        sec_5_p1: "The Creator may publish adult or non-adult content, according to their niche and the Platform rules.",
+        sec_5_intro: "By publishing content, the Creator declares that they:",
+        sec_5_item_1: "Own or control all necessary rights to the published material.",
+        sec_5_item_2: "Have valid and provable consent from all participants who may appear in the content.",
+        sec_5_item_3: "Do not violate laws, third-party rights, Platform rules, or applicable regulations.",
+
+        sec_6_title: "6. Prohibited Content",
+        sec_6_intro: "It is strictly prohibited to publish content involving:",
+        sec_6_item_1: "Minors under 18 or any depiction suggesting underage appearance.",
+        sec_6_item_2: "Real or non-consensual violence, exploitation, coercion, or abuse.",
+        sec_6_item_3: "Illegal, criminal, fraudulent material or content promoting unlawful conduct.",
+        sec_6_item_4: "Hate speech, discrimination, harassment, or incitement to violence.",
+        sec_6_item_5: "Violation of copyrights, image rights, privacy, intimacy, or any third-party rights.",
+
+        sec_7_title: "7. Responsibility for Content",
+        sec_7_item_1: "All published content is the sole responsibility of the Creator.",
+        sec_7_item_2: "Velvet does not perform mandatory prior editorial review or approval of published materials.",
+        sec_7_item_3: "Any moderation, removal, or blocking of content does not transfer authorship, responsibility, or a permanent monitoring duty to Velvet.",
+
+        sec_8_title: "8. License",
+        sec_8_p1: "The Creator grants Velvet a non-exclusive, limited, revocable license, without transfer of ownership, solely to the extent necessary to host, reproduce, process, technically distribute, display, and make the content available within the Platform’s functionalities.",
+        sec_8_p2: "This license does not constitute a permanent assignment of rights and remains valid only while the content is linked to the legitimate operation of the Platform and applicable legal obligations.",
+
+        sec_9_title: "9. Monetization",
+        sec_9_intro: "The Creator may monetize through Platform features, including:",
+        sec_9_item_1: "Subscriptions.",
+        sec_9_item_2: "One-time paid content.",
+        sec_9_item_3: "Tips and other paid interaction formats, when available.",
+        sec_9_p2: "Velvet may retain percentages, operational fees, processing costs, intermediation charges, or amounts related to refunds, chargebacks, fraud, and legal requirements, in accordance with Platform rules.",
+
+        sec_10_title: "10. Payments",
+        sec_10_item_1: "Payments may be processed by third-party payment partners.",
+        sec_10_item_2: "Velvet may retain, review, block, or delay payouts in cases of suspected fraud, chargebacks, registration irregularities, legal requirements, or violation of these Terms.",
+        sec_10_item_3: "Withdrawal timelines, minimum thresholds, available methods, and payout requirements may be defined and changed by the Platform.",
+
+        sec_11_title: "11. Taxes",
+        sec_11_p1: "The Creator is solely responsible for all taxes, contributions, filing obligations, and other fiscal duties arising from amounts received through activities on the Platform.",
+
+        sec_12_title: "12. Fraud and Chargebacks",
+        sec_12_item_1: "Amounts related to suspicious transactions may be withheld, offset, or blocked.",
+        sec_12_item_2: "The Creator’s account may be suspended, restricted, or terminated in cases of fraud, collusion, system abuse, or high dispute rates.",
+        sec_12_item_3: "Velvet may deduct losses, operational costs, fines, chargeback fees, and expenses related to dispute defense.",
+
+        sec_13_title: "13. Moderation",
+        sec_13_p1: "Velvet may, at its discretion and at any time, remove content, restrict features, request documents, suspend accounts, or terminate profiles, with or without prior notice, when it identifies legal risk, violation of these Terms, legal infringement, credible reports, or operational necessity.",
+
+        sec_14_title: "14. Leak Protection",
+        sec_14_item_1: "Velvet adopts reasonable security measures but does not guarantee absolute protection against copying, screen recording, unauthorized redistribution, piracy, or leaks.",
+        sec_14_item_2: "The Creator acknowledges that making digital content available inherently carries a risk of improper exposure by third parties.",
+
+        sec_15_title: "15. Confidentiality",
+        sec_15_p1: "The Creator may not disclose internal Platform information, user data, payment information, operational routines, confidential materials, or any data protected by confidentiality, unless expressly authorized or legally required.",
+
+        sec_16_title: "16. Limitation of Liability",
+        sec_16_intro: "To the fullest extent permitted by applicable law, Velvet shall not be liable for:",
+        sec_16_item_1: "Loss of revenue, lost profits, or expected earnings.",
+        sec_16_item_2: "Commercial decisions made by the Creator based on performance, audience, or monetization.",
+        sec_16_item_3: "Acts of third parties, including users, payment processors, social networks, and external service providers.",
+        sec_16_item_4: "External failures, temporary outages, network interruptions, cyberattacks, or events beyond its reasonable control.",
+
+        sec_17_title: "17. External Promotion and Use of Links",
+        sec_17_item_1: "The Creator is fully responsible for promoting their profile, name, brand, and links outside the Platform.",
+        sec_17_item_2: "Velvet has no control over social networks, third-party services, search engines, or external platforms.",
+        sec_17_item_3: "The Creator acknowledges that external publications may violate third-party rules, create restrictions, or result in penalties on those platforms.",
+        sec_17_intro2: "Velvet is not responsible for:",
+        sec_17_item_4: "Bans or suspensions of external accounts.",
+        sec_17_item_5: "Blocks, restrictions, or removals of content on third-party platforms.",
+        sec_17_item_6: "Loss of followers, reach, reputation, or external commercial results.",
+        sec_17_p3: "The use of Velvet links in external environments does not transfer to the Platform any responsibility for marketing strategies, compliance, or consequences on third-party services.",
+
+        sec_18_title: "18. Indemnification",
+        sec_18_intro: "The Creator agrees to defend, hold harmless, and indemnify Velvet, its affiliates, administrators, partners, and collaborators from any losses, damages, liabilities, costs, and expenses arising from:",
+        sec_18_item_1: "Violation of these Terms or applicable law.",
+        sec_18_item_2: "Improper use of the Platform.",
+        sec_18_item_3: "Content published, distributed, or commercialized by the Creator.",
+        sec_18_item_4: "External promotion, improper advertising, or violation of third-party rights.",
+
+        sec_19_title: "19. Marketing and Promotion Policy",
+        sec_19_intro1: "The Creator must:",
+        sec_19_item_1: "Comply with the rules, policies, and restrictions of external platforms used for promotion.",
+        sec_19_item_2: "Avoid explicit, misleading, abusive, or prohibited content in environments that do not allow it.",
+        sec_19_item_3: "Not engage in fraudulent advertising, spam, harassment, misleading promises, or abusive commercial practices.",
+        sec_19_intro2: "The Creator acknowledges that:",
+        sec_19_item_4: "Each external platform has its own separate rules.",
+        sec_19_item_5: "Velvet does not control, approve, or guarantee promotional permissions in third-party environments.",
+        sec_19_intro3: "It is recommended to:",
+        sec_19_item_6: "Use language compatible with the external environment being used.",
+        sec_19_item_7: "Redirect users to the Platform without violating third-party rules.",
+
+        sec_20_title: "20. Termination",
+        sec_20_p1: "Velvet may terminate, suspend, or limit accounts at any time, especially in cases of contractual breach, operational risk, legal requirements, fraud, abuse, or the need to protect the Platform and its users.",
+
+        sec_21_title: "21. Amendments",
+        sec_21_p1: "This Agreement may be updated, modified, or replaced at any time. The applicable version shall be the one made available on the Platform with its corresponding update date.",
+
+        sec_22_title: "22. Governing Law",
+        sec_22_p1: "This Agreement shall be governed by Brazilian law, without prejudice to the application of mandatory consumer protection, data protection, or other legal provisions applicable to the specific case.",
+
+        sec_23_title: "23. Contact",
+
+        footer_terms: "Terms of Use",
+        footer_privacy: "Privacy Policy",
+        footer_policies: "Usage Policy",
+        footer_copy: "© 2026 Velvet. All rights reserved."
+      },
+
+      es: {
+        meta_title: "Términos y Condiciones para Creadores de Contenido | Velvet",
+        page_title: "Términos y Condiciones para Creadores",
+        last_updated_label: "Última actualización:",
+        last_updated_date: "06/04/2026",
+        intro: "Este documento establece los términos aplicables a los Creadores de la plataforma Velvet. Al utilizar la Plataforma como Creador(a), el usuario declara su conformidad total con este Contrato.",
+        toc_title: "Índice",
+        toc_1: "1. Definiciones",
+        toc_2: "2. Elegibilidad",
+        toc_3: "3. Naturaleza de la Relación",
+        toc_4: "4. Cuenta y Seguridad",
+        toc_5: "5. Contenido",
+        toc_6: "6. Contenido Prohibido",
+        toc_7: "7. Responsabilidad por el Contenido",
+        toc_8: "8. Licencia",
+        toc_9: "9. Monetización",
+        toc_10: "10. Pagos",
+        toc_11: "11. Impuestos",
+        toc_12: "12. Fraude y Chargeback",
+        toc_13: "13. Moderación",
+        toc_14: "14. Protección contra Filtraciones",
+        toc_15: "15. Confidencialidad",
+        toc_16: "16. Limitación de Responsabilidad",
+        toc_17: "17. Divulgación Externa y Uso de Enlaces",
+        toc_18: "18. Indemnización",
+        toc_19: "19. Política de Marketing y Divulgación",
+        toc_20: "20. Terminación",
+        toc_21: "21. Modificaciones",
+        toc_22: "22. Legislación Aplicable",
+        toc_23: "23. Contacto",
+
+        sec_1_title: "1. Definiciones",
+        sec_1_item_1: "<strong>Plataforma:</strong> sistema digital Velvet.",
+        sec_1_item_2: "<strong>Creador(a):</strong> usuario que publica y monetiza contenido.",
+        sec_1_item_3: "<strong>Usuario/Suscriptor:</strong> consumidor del contenido.",
+        sec_1_item_4: "<strong>Contenido:</strong> cualquier material publicado.",
+
+        sec_2_title: "2. Elegibilidad",
+        sec_2_intro: "El Creador declara que:",
+        sec_2_item_1: "Tiene más de 18 años.",
+        sec_2_item_2: "Cuenta con plena capacidad legal.",
+        sec_2_item_3: "Actúa de manera lícita.",
+
+        sec_3_title: "3. Naturaleza de la Relación",
+        sec_3_item_1: "La relación entre Velvet y el Creador es exclusivamente autónoma.",
+        sec_3_item_2: "No existe vínculo laboral, societario, de representación, asociación ni exclusividad.",
+        sec_3_item_3: "El Creador es el único responsable de sus obligaciones fiscales, tributarias, previsionales y legales.",
+
+        sec_4_title: "4. Cuenta y Seguridad",
+        sec_4_intro: "El Creador es responsable de:",
+        sec_4_item_1: "Proporcionar datos veraces, completos y actualizados.",
+        sec_4_item_2: "Mantener la confidencialidad del acceso, contraseña y métodos de autenticación.",
+        sec_4_item_3: "Todas las actividades realizadas en su cuenta.",
+        sec_4_item_4: "Informar inmediatamente cualquier uso no autorizado o incidente de seguridad.",
+
+        sec_5_title: "5. Contenido",
+        sec_5_p1: "El Creador podrá publicar contenido adulto o no adulto, de acuerdo con su nicho y con las reglas de la Plataforma.",
+        sec_5_intro: "Al publicar contenido, el Creador declara que:",
+        sec_5_item_1: "Posee todos los derechos necesarios sobre el material publicado.",
+        sec_5_item_2: "Cuenta con autorización válida y comprobable de todas las personas que eventualmente aparezcan en el contenido.",
+        sec_5_item_3: "El contenido no infringe leyes, derechos de terceros, reglas de la Plataforma ni normas regulatorias aplicables.",
+
+        sec_6_title: "6. Contenido Prohibido",
+        sec_6_intro: "Está estrictamente prohibida la publicación de contenido que involucre:",
+        sec_6_item_1: "Menores de 18 años o cualquier apariencia de minoría de edad.",
+        sec_6_item_2: "Violencia real o no consentida, explotación, coacción o abuso.",
+        sec_6_item_3: "Material ilícito, criminal, fraudulento o que promueva prácticas ilegales.",
+        sec_6_item_4: "Discurso de odio, discriminación, persecución o incitación a la violencia.",
+        sec_6_item_5: "Violación de derechos de autor, imagen, intimidad, privacidad o cualquier derecho de terceros.",
+
+        sec_7_title: "7. Responsabilidad por el Contenido",
+        sec_7_item_1: "Todo el contenido publicado es de exclusiva responsabilidad del Creador.",
+        sec_7_item_2: "Velvet no realiza control editorial ni aprobación previa obligatoria del material publicado.",
+        sec_7_item_3: "La eventual moderación, eliminación o bloqueo de contenido no transfiere a Velvet la autoría, responsabilidad ni la obligación de supervisión permanente.",
+
+        sec_8_title: "8. Licencia",
+        sec_8_p1: "El Creador concede a Velvet una licencia no exclusiva, limitada y revocable, sin transferencia de titularidad, únicamente en la medida necesaria para alojar, reproducir, procesar, distribuir técnicamente, exhibir y poner a disposición el contenido dentro de las funcionalidades de la Plataforma.",
+        sec_8_p2: "Esta licencia no implica cesión definitiva de derechos y se mantendrá vigente únicamente mientras el contenido esté vinculado a las operaciones legítimas de la Plataforma y a las obligaciones legales aplicables.",
+
+        sec_9_title: "9. Monetización",
+        sec_9_intro: "El Creador podrá monetizar mediante funcionalidades disponibles en la Plataforma, incluyendo:",
+        sec_9_item_1: "Suscripciones.",
+        sec_9_item_2: "Contenido de pago individual.",
+        sec_9_item_3: "Propinas y otras formas de interacción remunerada, cuando estén disponibles.",
+        sec_9_p2: "Velvet podrá retener porcentajes, tasas operativas, costos de procesamiento, cargos de intermediación o valores relacionados con reembolsos, chargebacks, fraudes y exigencias legales, de acuerdo con las reglas de la Plataforma.",
+
+        sec_10_title: "10. Pagos",
+        sec_10_item_1: "Los pagos podrán ser procesados por terceros proveedores de pago.",
+        sec_10_item_2: "Velvet podrá retener, revisar, bloquear o aplazar pagos en caso de sospecha de fraude, chargeback, irregularidad de registro, exigencia legal o incumplimiento de estos Términos.",
+        sec_10_item_3: "Los plazos, montos mínimos, métodos disponibles y requisitos de retiro podrán ser definidos y modificados por la Plataforma.",
+
+        sec_11_title: "11. Impuestos",
+        sec_11_p1: "El Creador es el único responsable del pago de impuestos, contribuciones, obligaciones accesorias y demás deberes fiscales derivados de los valores recibidos por su actividad en la Plataforma.",
+
+        sec_12_title: "12. Fraude y Chargeback",
+        sec_12_item_1: "Los valores relacionados con transacciones sospechosas podrán ser retenidos, compensados o bloqueados.",
+        sec_12_item_2: "La cuenta del Creador podrá ser suspendida, limitada o cerrada en caso de fraude, colusión, abuso del sistema o alto índice de disputas.",
+        sec_12_item_3: "Velvet podrá descontar pérdidas, costos operativos, multas, tasas de chargeback y gastos relacionados con la defensa de disputas.",
+
+        sec_13_title: "13. Moderación",
+        sec_13_p1: "Velvet podrá, a su criterio y en cualquier momento, eliminar contenido, restringir funcionalidades, exigir documentos, suspender cuentas o cerrar perfiles, con o sin aviso previo, cuando identifique riesgo jurídico, incumplimiento de estos Términos, infracción legal, denuncia consistente o necesidad operativa.",
+
+        sec_14_title: "14. Protección contra Filtraciones",
+        sec_14_item_1: "Velvet adopta medidas razonables de seguridad, pero no garantiza protección absoluta contra copias, grabaciones de pantalla, redistribución indebida, piratería o filtraciones.",
+        sec_14_item_2: "El Creador reconoce que la disponibilización de contenido digital implica un riesgo inherente de exposición indebida por terceros.",
+
+        sec_15_title: "15. Confidencialidad",
+        sec_15_p1: "Se prohíbe al Creador divulgar información interna de la Plataforma, datos de usuarios, información de pagos, rutinas operativas, materiales confidenciales o cualquier dato protegido por confidencialidad, salvo autorización expresa u obligación legal.",
+
+        sec_16_title: "16. Limitación de Responsabilidad",
+        sec_16_intro: "En la máxima medida permitida por la legislación aplicable, Velvet no será responsable por:",
+        sec_16_item_1: "Pérdida de ingresos, lucro cesante o expectativa de ganancias.",
+        sec_16_item_2: "Decisiones comerciales tomadas por el Creador con base en desempeño, audiencia o monetización.",
+        sec_16_item_3: "Actos de terceros, incluidos usuarios, procesadores de pago, redes sociales y proveedores externos.",
+        sec_16_item_4: "Fallos externos, indisponibilidades temporales, interrupciones de red, ataques cibernéticos o eventos fuera de su control razonable.",
+
+        sec_17_title: "17. Divulgación Externa y Uso de Enlaces",
+        sec_17_item_1: "El Creador es totalmente responsable de la divulgación de su perfil, nombre, marca y enlaces fuera de la Plataforma.",
+        sec_17_item_2: "Velvet no tiene control sobre redes sociales, servicios de terceros, motores de búsqueda o plataformas externas.",
+        sec_17_item_3: "El Creador reconoce que las publicaciones externas pueden infringir reglas de terceros, generar restricciones o resultar en sanciones en dichas plataformas.",
+        sec_17_intro2: "Velvet no se responsabiliza por:",
+        sec_17_item_4: "Baneo o suspensión de cuentas externas.",
+        sec_17_item_5: "Bloqueos, limitaciones o eliminación de contenido en plataformas de terceros.",
+        sec_17_item_6: "Pérdida de seguidores, alcance, reputación o resultados comerciales externos.",
+        sec_17_p3: "El uso de enlaces de Velvet en entornos externos no transfiere a la Plataforma ninguna responsabilidad sobre estrategias de marketing, cumplimiento o consecuencias en servicios de terceros.",
+
+        sec_18_title: "18. Indemnización",
+        sec_18_intro: "El Creador acepta defender, eximir e indemnizar a Velvet, sus afiliadas, administradores, socios y colaboradores por cualquier pérdida, daño, responsabilidad, costo o gasto derivado de:",
+        sec_18_item_1: "Incumplimiento de estos Términos o de la legislación aplicable.",
+        sec_18_item_2: "Uso indebido de la Plataforma.",
+        sec_18_item_3: "Contenido publicado, distribuido o comercializado por el Creador.",
+        sec_18_item_4: "Divulgación externa, publicidad irregular o vulneración de derechos de terceros.",
+
+        sec_19_title: "19. Política de Marketing y Divulgación",
+        sec_19_intro1: "El Creador debe:",
+        sec_19_item_1: "Respetar las reglas, políticas y restricciones de las plataformas externas utilizadas para su divulgación.",
+        sec_19_item_2: "Evitar contenido explícito, engañoso, abusivo o prohibido en entornos que no lo permitan.",
+        sec_19_item_3: "No realizar publicidad fraudulenta, spam, acoso, promesas engañosas ni prácticas comerciales abusivas.",
+        sec_19_intro2: "El Creador reconoce que:",
+        sec_19_item_4: "Cada plataforma externa posee sus propias reglas independientes.",
+        sec_19_item_5: "Velvet no controla, aprueba ni garantiza permisos de divulgación en entornos de terceros.",
+        sec_19_intro3: "Se recomienda:",
+        sec_19_item_6: "Utilizar un lenguaje compatible con el entorno externo utilizado.",
+        sec_19_item_7: "Redirigir usuarios a la Plataforma sin infringir reglas de terceros.",
+
+        sec_20_title: "20. Terminación",
+        sec_20_p1: "Velvet podrá terminar, suspender o limitar cuentas en cualquier momento, especialmente en caso de incumplimiento contractual, riesgo operativo, exigencia legal, fraude, abuso o necesidad de proteger la Plataforma y a sus usuarios.",
+
+        sec_21_title: "21. Modificaciones",
+        sec_21_p1: "Este Contrato podrá ser actualizado, modificado o sustituido en cualquier momento. La versión vigente será la que esté disponible en la Plataforma con su respectiva fecha de actualización.",
+
+        sec_22_title: "22. Legislación Aplicable",
+        sec_22_p1: "Este Contrato se rige por la legislación brasileña, sin perjuicio de la aplicación de normas obligatorias de protección al consumidor, protección de datos u otras disposiciones legales aplicables al caso concreto.",
+
+        sec_23_title: "23. Contacto",
+
+        footer_terms: "Términos de Uso",
+        footer_privacy: "Política de Privacidad",
+        footer_policies: "Política de Uso",
+        footer_copy: "© 2026 Velvet. Todos los derechos reservados."
+      }
+    };
+
+    function setLanguage(lang) {
+      const selected = translations[lang] ? lang : "pt";
+      localStorage.setItem("siteLanguage", selected);
+
+      document.documentElement.lang =
+        selected === "pt" ? "pt-BR" :
+        selected === "en" ? "en" : "es";
+
+      document.querySelectorAll("[data-i18n]").forEach(el => {
+        const key = el.getAttribute("data-i18n");
+        if (translations[selected][key]) {
+          el.innerHTML = translations[selected][key];
+        }
+      });
+
+      document.title = translations[selected].meta_title;
+
+      document.querySelectorAll(".language-switcher button").forEach(button => {
+        button.classList.toggle("active", button.dataset.lang === selected);
+      });
+    }
+
+    document.querySelectorAll(".language-switcher button").forEach(button => {
+      button.addEventListener("click", () => {
+        setLanguage(button.dataset.lang);
+      });
+    });
+
+    const savedLanguage = localStorage.getItem("siteLanguage") || "pt";
+    setLanguage(savedLanguage);
+  </script>
+</body>
+</html>

@@ -1,0 +1,557 @@
+body {
+  font-family: 'poppins', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #f4f4f8;
+  color: #1E1E26;
+  padding-top: 64px;
+}
+
+.page-title {
+  display: block;
+  margin: 20px auto 30px;
+  text-align: center;
+  font-size: 22px;
+  color: #7B2CFF;
+}
+
+
+/* CONTAINER */
+.container {
+  max-width: 900px;
+  margin: 30px auto;
+  padding: 0 20px;
+}
+
+/* CARDS */
+.cards-row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.cards-row.single {
+  grid-template-columns: 1fr;
+}
+
+.card {
+  background: var(--card-bg);
+  border-radius: 16px;
+  padding: 20px;
+  box-shadow: 0 6px 20px rgba(0,0,0,0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.card span {
+  font-size: 13px;
+  color: var(--text-light);
+}
+
+.card strong {
+  font-size: 18px;
+  font-weight: 700;
+}
+
+/* DESTAQUE */
+.highlight {
+  background: linear-gradient(135deg, var(--primary), #9b6bff);
+  color: #7B2CFF;
+}
+
+.highlight span {
+  color: rgba(255,255,255,0.8);
+}
+
+.highlight strong {
+  font-size: 28px;
+}
+
+/* TOTAL */
+.total {
+  background: var(--primary-soft);
+  border: 1px solid #e0d5ff;
+}
+
+.total strong {
+  color: var(--primary);
+  font-size: 30px;
+}
+
+/* MOBILE */
+@media (max-width: 600px) {
+  .page-title {
+    font-size: 14px;
+  }
+
+  .card strong {
+    font-size: 18px;
+  }
+}
+
+
+/* =========================
+   LINKS ABAIXO DOS CARDS
+========================= */
+.links-abaixo-cards {
+  margin-top: 10px;
+  display: flex;
+  gap: 18px;
+  flex-wrap: wrap;
+  text-align: center;
+}
+
+.link-card {
+  font-size: 13px;
+  color: var(--primary);
+  font-weight: 500;
+  cursor: pointer;
+  text-decoration: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+.link-card:hover {
+  text-decoration: underline;
+}
+
+/* links ainda não disponíveis */
+.link-card.disabled {
+  color: var(--text-light);
+  cursor: default;
+  pointer-events: none;
+  font-size: 16px;
+  text-align: center;
+}
+
+.link-card small {
+  font-size: 11px;
+  opacity: 0.7;
+}
+
+.container {
+  max-width: 900px;
+  margin: 60px auto;      /* ⬅️ mais espaço do topo */
+  padding: 0 24px;        /* ⬅️ mais lateral */
+}
+
+.cards-row {
+  gap: 24px;              /* antes: 16px */
+  margin-bottom: 32px;    /* antes: 20px */
+}
+
+
+.card {
+  padding: 26px;          /* antes: 20px */
+  border-radius: 20px;    /* mais suave */
+  box-shadow: 0 10px 30px rgba(0,0,0,0.08);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 14px 36px rgba(0,0,0,0.12);
+}
+
+
+.page-title {
+  margin: 40px auto 50px;   /* mais espaço em cima e embaixo */
+  letter-spacing: 0.3px;
+}
+
+
+.links-abaixo-cards {
+  margin-top: 30px;
+  justify-content: center;
+  gap: 32px;               /* mais espaçamento */
+}
+
+.link-card {
+  font-size: 15px;
+  padding: 6px 2px;
+}
+
+
+.link-card:hover {
+  color: #5f2edc;
+}
+/* =========================
+   🌸 MODO SOFT – RELATÓRIO
+========================= */
+
+/* fundo mais suave */
+body {
+  background: linear-gradient(
+    180deg,
+    #fbfaff 0%,
+    #f4f2fa 100%
+  );
+}
+
+/* container mais espaçado */
+.container {
+  margin: 70px auto;
+  padding: 0 28px;
+}
+
+/* título mais delicado */
+.page-title {
+  color: #7B2CFF;
+  font-weight: 600;
+  letter-spacing: 0.4px;
+  font-size: 22px;
+}
+
+/* cards soft */
+.card {
+  background: #ffffff;
+  border-radius: 22px;
+  padding: 28px;
+  text-align: center;
+
+  box-shadow:
+    0 8px 24px rgba(123, 63, 228, 0.08),
+    inset 0 0 0 1px rgba(123, 63, 228, 0.05);
+
+  transition: all 0.2s ease;
+}
+
+/* hover suave */
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow:
+    0 12px 32px rgba(123, 63, 228, 0.12),
+    inset 0 0 0 1px rgba(123, 63, 228, 0.08);
+}
+
+/* texto secundário mais leve */
+.card span {
+  color: #333;
+  font-weight: 500;
+}
+
+/* valores com menos agressividade */
+.card strong {
+  color: #7B2CFF;
+  font-weight: 700;
+}
+
+/* cards de destaque (hoje) */
+.highlight {
+  background: linear-gradient(
+    135deg,
+    #cabcf3,
+    #b79cff
+  );
+  box-shadow:
+    0 10px 28px rgba(143, 107, 255, 0.35);
+}
+
+/* total soft */
+.total {
+  background: #fff;
+  border: none;
+}
+
+.total strong {
+  color: #7B2CFF;
+}
+
+.card.total.mes-atual {
+  background: linear-gradient(135deg, #b79cff, #cabcf3);
+}
+
+.card.total.mes-anterior {
+  background: linear-gradient(135deg, #b79cff, #cabcf3);
+}
+
+.tabs {
+  display: flex;
+  gap: 8px;
+  margin: 16px 0 20px;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+  padding-bottom: 4px;
+  scrollbar-width: none;
+}
+
+.tabs::-webkit-scrollbar {
+  display: none;
+}
+
+.tab,
+.tab-btn {
+  flex: 0 0 auto;
+  background: #f2f2f8;
+  border: none;
+  padding: 10px 18px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 13px;
+  cursor: pointer;
+  color: #555;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.tab.active,
+.tab-btn.active {
+  background: #7B2CFF;
+  color: #fff;
+}
+
+.tab-content {
+  display: none;
+  margin-top: 20px;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+#lista {
+  max-width: 720px;
+  margin: 0 auto 40px;
+  padding: 0 16px;
+}
+
+/* ===============================
+   CARD TRANSAÇÃO
+================================ */
+.transacao {
+  background: #ffffff;
+  border-radius: 14px;
+  padding: 18px 20px;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+  color: #333;
+  text-align: start;
+}
+
+.transacao:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.08);
+}
+
+/* ===============================
+   LINHAS
+================================ */
+.linha {
+  font-size: 14px;
+  margin-bottom: 6px;
+  display: flex;
+  gap: 6px;
+  flex-wrap: wrap;
+}
+
+.linha strong {
+  font-weight: 600;
+}
+
+/* ===============================
+   CABEÇALHO DA TRANSAÇÃO
+================================ */
+.transacao .linha:first-child {
+  font-size: 15px;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+/* ===============================
+   STATUS
+================================ */
+.transacao .linha strong {
+  text-transform: capitalize;
+}
+
+.transacao .linha:last-child {
+  margin-bottom: 0;
+}
+
+/* ===============================
+   RESPONSIVO
+================================ */
+@media (max-width: 480px) {
+  h1 {
+    font-size: 22px;
+  }
+
+  .transacao {
+    padding: 16px;
+  }
+
+  .linha {
+    font-size: 13px;
+  }
+}
+
+#paginacaoTransacoes {
+  display: grid;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 20px;
+}
+
+#paginacaoTransacoes .pagina {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #eee;
+}
+
+#paginacaoTransacoes .pagina.ativa {
+  background: #7b2cff;
+  color: #fff;
+  font-weight: 600;
+}
+
+
+#tab-dados-bancarios form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+#tab-dados-bancarios label {
+  font-size: 13px;
+  margin-top: 10px;
+  flex-direction: row-reverse;
+  display:block;
+
+}
+
+#tab-dados-bancarios input,
+#tab-dados-bancarios select,
+#tab-dados-bancarios textarea {
+  width: 100%;
+  padding: 10px;
+  margin-top: 6px;
+  border-radius: 10px;
+  border: 1px solid #ddd;
+  box-sizing: border-box;
+}
+.status-box {
+  margin-bottom: 16px;
+  padding: 14px 16px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.status-pendente {
+  background: #fff7e6;
+  color: #9a6b00;
+}
+
+.status-aprovado {
+  background: #e9f9ef;
+  color: #1f7a3f;
+}
+
+/* ===============================
+   BOTÃO VOLTAR
+================================ */
+.btn-voltar {
+  position:relative;
+  border: none;
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  background: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.btn-voltar img {
+  width: 30px;
+}
+
+.btn-voltar:hover {
+  transform: scale(1.08);
+}
+
+.separador,
+.separator {
+  border: none;
+  height: 1px;
+  background: linear-gradient(to right, transparent, #7B2CFF, transparent);
+  margin: 24px 0;
+}
+
+/* ===============================
+   LISTA DE CARDS (coluna única)
+================================ */
+.cards-lista {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-bottom: 4px;
+}
+
+/* container da página */
+.area-card {
+  max-width: 520px;
+  margin: 0 auto;
+  padding: 16px 16px 40px;
+}
+
+/* ===============================
+   TABS MOBILE
+================================ */
+@media (max-width: 600px) {
+  .tab,
+  .tab-btn {
+    font-size: 12px;
+    padding: 9px 14px;
+  }
+
+  .area-card {
+    padding: 12px 12px 40px;
+  }
+
+  .card {
+    padding: 18px 16px;
+    border-radius: 16px;
+  }
+
+  .card span {
+    font-size: 12px;
+  }
+
+  .card strong {
+    font-size: 20px;
+  }
+}
+
+#paginacaoTransacoes{
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  gap:12px;
+  margin-top:25px;
+}
+
+.pag-btn{
+  border:none;
+  background:#7B2CFF;
+  color:#fff;
+  padding:6px 12px;
+  border-radius:8px;
+  cursor:pointer;
+}
+
+.pag-btn:disabled{
+  opacity:0.5;
+  cursor:not-allowed;
+}
+
+.pag-info{
+  font-weight:600;
+  color:#7B2CFF;
+}
+

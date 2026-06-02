@@ -1,0 +1,1132 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Políticas de Utilização | Velvet</title>
+  <style>
+    :root {
+      --primary: #6f3cff;
+      --primary-dark: #5a2fe0;
+      --text: #1e1b2e;
+      --text-soft: #5e5873;
+      --bg: #f7f7fb;
+      --card: #f1eef4;
+      --line: #ddd8e6;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+ .topbar {
+  display: flex;
+  justify-content: flex-end;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.language-switcher {
+  display: flex;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+
+.lang-btn {
+  min-width: 52px;
+  padding: 10px 16px;
+  border: 1px solid #cfc8dd;
+  background: #f3eff5;
+  color: #1e1b2e;
+  border-radius: 14px;
+  font-family: 'Poppins', Arial, Helvetica, sans-serif;
+  font-size: 0.95rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.lang-btn:hover {
+  border-color: var(--primary);
+  color: var(--primary);
+}
+
+.lang-btn.active {
+  border-color: var(--primary);
+  color: var(--primary);
+  background: #f7f3ff;
+}
+
+@media (max-width: 768px) {
+  .topbar {
+    justify-content: center;
+  }
+
+  .language-switcher {
+    justify-content: center;
+  }
+}
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 22px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .intro {
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .toc {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 26px 28px;
+      margin: 28px 0 48px;
+    }
+
+    .toc h2 {
+      margin: 0 0 18px;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 1;
+    }
+
+    .toc li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      color: var(--primary);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 42px 0;
+    }
+
+    section {
+      scroll-margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+
+    .item-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 22px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+
+    ul {
+      margin: 10px 0 18px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 1.04rem;
+    }
+
+    a.inline-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    .last-updated {
+      margin: 0 0 24px;
+      padding: 10px 16px;
+      background: #f3eff5;
+      color: #1e1b2e;
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: none;
+      color: #1E1E26;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #1E1E26;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #C9C9C9;
+      text-decoration: underline;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #1E1E26;
+    }
+
+    @media (max-width: 768px) {
+      .container {
+        padding: 28px 16px 60px;
+      }
+
+      .topbar {
+        justify-content: center;
+      }
+
+      .page-title {
+        font-size: 1.9rem;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+      }
+
+      .toc {
+        padding: 22px 20px;
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <main class="container">
+
+<div class="topbar">
+  <div class="language-switcher" aria-label="Selecionar idioma">
+    <button type="button" class="lang-btn" data-lang="pt">PT</button>
+    <button type="button" class="lang-btn" data-lang="en">EN</button>
+    <button type="button" class="lang-btn" data-lang="es">ESP</button>
+  </div>
+</div>
+
+    <h1 class="page-title" data-i18n="pageTitle">Políticas de Utilização</h1>
+
+    <div class="last-updated">
+      <strong data-i18n="lastUpdatedLabel">Última atualização:</strong>
+      <span data-i18n="lastUpdatedDate">06/04/2026</span>
+    </div>
+
+    <p class="intro" data-i18n="intro">
+      Este documento reúne as políticas que regulam o uso da plataforma Velvet, sendo parte integrante
+      dos Termos de Uso. Ao acessar ou utilizar a Plataforma, o usuário declara que leu, compreendeu
+      e concorda integralmente com estas Políticas.
+    </p>
+
+    <nav class="toc" aria-label="Índice das Políticas de Utilização">
+      <h2 data-i18n="tocTitle">Índice</h2>
+      <ol>
+        <li><a href="#secao-1" data-i18n="toc.0">1. Política de Verificação de Idade e Identidade (KYC)</a></li>
+        <li><a href="#secao-2" data-i18n="toc.1">2. Política de Pagamentos, Assinaturas, Diamantes e Reembolsos</a></li>
+        <li><a href="#secao-3" data-i18n="toc.2">3. Política de Conteúdo</a></li>
+        <li><a href="#secao-4" data-i18n="toc.3">4. Política de Conduta e Uso da Plataforma</a></li>
+        <li><a href="#secao-5" data-i18n="toc.4">5. Política de Propriedade Intelectual</a></li>
+        <li><a href="#secao-6" data-i18n="toc.5">6. Política de Moderação e Sanções</a></li>
+        <li><a href="#secao-7" data-i18n="toc.6">7. Contato</a></li>
+        <li><a href="#secao-8" data-i18n="toc.7">8. Disposições Finais</a></li>
+      </ol>
+    </nav>
+
+    <hr class="divider" />
+
+    <section id="secao-1">
+      <h2 class="section-title" data-i18n="sections.s1.title">1. Política de Verificação de Idade e Identidade (KYC)</h2>
+
+      <h3 class="item-title" data-i18n="sections.s1.i1">1.1 Objetivo</h3>
+      <p data-i18n="sections.s1.p1">A Velvet realiza verificação de identidade para:</p>
+      <ul>
+        <li data-i18n="sections.s1.l1">Garantir acesso exclusivo a maiores de 18 anos;</li>
+        <li data-i18n="sections.s1.l2">Cumprir obrigações legais;</li>
+        <li data-i18n="sections.s1.l3">Prevenir fraude e uso indevido;</li>
+        <li data-i18n="sections.s1.l4">Proteger usuários e criadoras.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s1.i2">1.2 Obrigatoriedade</h3>
+      <p><strong data-i18n="sections.s1.p2strong">Criadoras (Modelos):</strong></p>
+      <p data-i18n="sections.s1.p2">Verificação obrigatória antes da publicação de qualquer conteúdo.</p>
+
+      <p><strong data-i18n="sections.s1.p3strong">Usuários (Assinantes):</strong></p>
+      <p data-i18n="sections.s1.p3">
+        A Velvet poderá exigir verificação a qualquer momento, especialmente em casos de:
+      </p>
+      <ul>
+        <li data-i18n="sections.s1.l5">Suspeita de fraude;</li>
+        <li data-i18n="sections.s1.l6">Chargeback;</li>
+        <li data-i18n="sections.s1.l7">Atividade irregular;</li>
+        <li data-i18n="sections.s1.l8">Exigência legal.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s1.i3">1.3 Documentos Aceitos</h3>
+      <ul>
+        <li data-i18n="sections.s1.l9">Documento oficial com foto (RG, CNH ou Passaporte);</li>
+        <li data-i18n="sections.s1.l10">Selfie ou vídeo com o documento;</li>
+        <li data-i18n="sections.s1.l11">Informações adicionais, quando necessário.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s1.i4">1.4 Segurança</h3>
+      <p data-i18n="sections.s1.p4">
+        Os dados serão tratados conforme a Política de Privacidade, com acesso restrito
+        e medidas de proteção adequadas.
+      </p>
+
+      <h3 class="item-title" data-i18n="sections.s1.i5">1.5 Penalidades</h3>
+      <p data-i18n="sections.s1.p5">O descumprimento poderá resultar em:</p>
+      <ul>
+        <li data-i18n="sections.s1.l12">Suspensão ou encerramento da conta;</li>
+        <li data-i18n="sections.s1.l13">Remoção de conteúdo;</li>
+        <li data-i18n="sections.s1.l14">Comunicação às autoridades.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-2">
+      <h2 class="section-title" data-i18n="sections.s2.title">2. Política de Pagamentos, Assinaturas, Diamantes e Reembolsos</h2>
+
+      <h3 class="item-title" data-i18n="sections.s2.i1">2.1 Disposições Gerais</h3>
+      <ul>
+        <li data-i18n="sections.s2.l1">Pagamentos são processados por terceiros;</li>
+        <li data-i18n="sections.s2.l2">A Velvet não armazena dados completos de cartão;</li>
+        <li data-i18n="sections.s2.l3">O usuário é responsável pelas informações fornecidas.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i2">2.2 Assinaturas</h3>
+      <ul>
+        <li data-i18n="sections.s2.l4">
+          Concedem acesso ao perfil da criadora, incluindo conteúdo do feed e interação via chat,
+          conforme definido pela criadora;
+        </li>
+        <li data-i18n="sections.s2.l5">
+          O conteúdo do feed é de responsabilidade exclusiva da criadora, podendo variar conforme seu
+          nicho, estilo e proposta, podendo incluir conteúdo adulto ou não, exclusivo ou não exclusivo;
+        </li>
+        <li data-i18n="sections.s2.l6">A Velvet não garante frequência, tipo ou padrão de conteúdo;</li>
+        <li data-i18n="sections.s2.l7">
+          As assinaturas não incluem conteúdos pagos adicionais, salvo quando expressamente indicado.
+        </li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i3">2.3 Diamantes (Moeda Virtual)</h3>
+      <ul>
+        <li data-i18n="sections.s2.l8">Uso exclusivo dentro da Plataforma;</li>
+        <li data-i18n="sections.s2.l9">Não possuem valor monetário fora da Velvet;</li>
+        <li data-i18n="sections.s2.l10">Não são transferíveis nem resgatáveis;</li>
+        <li data-i18n="sections.s2.l11">Não são reembolsáveis, salvo obrigação legal.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i4">2.4 Conteúdos Pagos (Premium ou Pay-Per-View no Chat)</h3>
+      <ul>
+        <li data-i18n="sections.s2.l12">Conteúdos pagos são liberados mediante pagamento adicional;</li>
+        <li data-i18n="sections.s2.l13">Após o desbloqueio, o conteúdo é considerado entregue e consumido;</li>
+        <li data-i18n="sections.s2.l14">Não há reembolso por insatisfação subjetiva;</li>
+        <li data-i18n="sections.s2.l15">
+          O conteúdo é de responsabilidade exclusiva da criadora, podendo variar conforme seu nicho
+          e proposta, podendo incluir conteúdo adulto ou não, exclusivo ou não exclusivo;
+        </li>
+        <li data-i18n="sections.s2.l16">
+          A Velvet não garante expectativa ou resultado em relação ao conteúdo adquirido.
+        </li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i5">2.5 Chargebacks</h3>
+      <ul>
+        <li data-i18n="sections.s2.l17">Chargebacks indevidos poderão resultar em suspensão ou encerramento da conta;</li>
+        <li data-i18n="sections.s2.l18">A Velvet poderá apresentar evidências às operadoras;</li>
+        <li data-i18n="sections.s2.l19">O usuário poderá ser responsabilizado por fraude.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i6">2.6 Prevenção à Fraude</h3>
+      <p data-i18n="sections.s2.p1">A Plataforma utiliza sistemas automatizados para:</p>
+      <ul>
+        <li data-i18n="sections.s2.l20">Detectar atividades suspeitas;</li>
+        <li data-i18n="sections.s2.l21">Reduzir riscos financeiros;</li>
+        <li data-i18n="sections.s2.l22">Proteger transações.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s2.i7">2.7 Política de Reembolso</h3>
+      <ul>
+        <li data-i18n="sections.s2.l23">
+          Assinaturas, Diamantes e conteúdos pagos não são reembolsáveis, exceto quando exigido por lei
+          ou nos casos previstos abaixo;
+        </li>
+        <li data-i18n="sections.s2.l24">
+          O usuário é informado previamente sobre as condições da compra e deve concordar com os Termos
+          antes de concluir a transação;
+        </li>
+        <li data-i18n="sections.s2.l25">O reembolso poderá ocorrer exclusivamente em casos de:</li>
+      </ul>
+      <ul>
+        <li data-i18n="sections.s2.l26">Cobrança em duplicidade;</li>
+        <li data-i18n="sections.s2.l27">Erro técnico comprovado;</li>
+        <li data-i18n="sections.s2.l28">Falha no sistema;</li>
+        <li data-i18n="sections.s2.l29">Não disponibilização do serviço após pagamento.</li>
+      </ul>
+      <p data-i18n="sections.s2.p2">
+        A Velvet poderá solicitar comprovação para análise.
+      </p>
+
+      <h3 class="item-title" data-i18n="sections.s2.i8">2.8 Direito de Arrependimento</h3>
+      <ul>
+        <li data-i18n="sections.s2.l30">
+          O usuário reconhece que os serviços e conteúdos digitais da Plataforma são disponibilizados
+          de forma imediata após a confirmação do pagamento;
+        </li>
+        <li data-i18n="sections.s2.l31">
+          Ao concluir a compra, o usuário declara ciência e concordância com a execução imediata do serviço;
+        </li>
+        <li data-i18n="sections.s2.l32">
+          Dessa forma, o usuário concorda que o direito de arrependimento previsto no artigo 49 do
+          Código de Defesa do Consumidor poderá não ser aplicável;
+        </li>
+        <li data-i18n="sections.s2.l33">O usuário será previamente informado sobre:</li>
+      </ul>
+      <ul>
+        <li data-i18n="sections.s2.l34">liberação imediata do conteúdo;</li>
+        <li data-i18n="sections.s2.l35">natureza digital do serviço;</li>
+        <li data-i18n="sections.s2.l36">possível perda do direito de arrependimento.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-3">
+      <h2 class="section-title" data-i18n="sections.s3.title">3. Política de Conteúdo</h2>
+
+      <h3 class="item-title" data-i18n="sections.s3.i1">3.1 Conteúdo Permitido</h3>
+      <p data-i18n="sections.s3.p1">A Velvet é uma plataforma social que permite a publicação de:</p>
+      <ul>
+        <li data-i18n="sections.s3.l1">Conteúdo adulto consensual entre maiores de 18 anos;</li>
+        <li data-i18n="sections.s3.l2">Nudez e erotismo;</li>
+        <li data-i18n="sections.s3.l3">Conteúdos não adultos (lifestyle, entretenimento, educação, etc.);</li>
+        <li data-i18n="sections.s3.l4">Conteúdos personalizados;</li>
+        <li data-i18n="sections.s3.l5">Conteúdos em diversos formatos (foto, vídeo, áudio, chat).</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s3.i2">3.2 Conteúdo Proibido</h3>
+      <p data-i18n="sections.s3.p2">É proibido:</p>
+      <ul>
+        <li data-i18n="sections.s3.l6">Conteúdo envolvendo menores;</li>
+        <li data-i18n="sections.s3.l7">Conteúdo com aparência infantil;</li>
+        <li data-i18n="sections.s3.l8">Violência não consensual;</li>
+        <li data-i18n="sections.s3.l9">Exploração sexual ou crimes;</li>
+        <li data-i18n="sections.s3.l10">Discurso de ódio;</li>
+        <li data-i18n="sections.s3.l11">Violação de direitos autorais ou de imagem.</li>
+      </ul>
+
+      <h3 class="item-title" data-i18n="sections.s3.i3">3.3 Consentimento</h3>
+      <p data-i18n="sections.s3.p3">
+        Todos os participantes devem ter consentimento expresso. A Velvet poderá exigir comprovação
+        a qualquer momento.
+      </p>
+
+      <h3 class="item-title" data-i18n="sections.s3.i4">3.4 Responsabilidade</h3>
+      <p data-i18n="sections.s3.p4">
+        O conteúdo é de responsabilidade exclusiva do usuário que o publicou.
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-4">
+      <h2 class="section-title" data-i18n="sections.s4.title">4. Política de Conduta e Uso da Plataforma</h2>
+      <p data-i18n="sections.s4.p1">O usuário compromete-se a:</p>
+      <ul>
+        <li data-i18n="sections.s4.l1">Utilizar a Plataforma de forma legal;</li>
+        <li data-i18n="sections.s4.l2">Não praticar fraude;</li>
+        <li data-i18n="sections.s4.l3">Não compartilhar conteúdos fora da Plataforma sem autorização;</li>
+        <li data-i18n="sections.s4.l4">Não violar sistemas de segurança.</li>
+      </ul>
+
+      <p data-i18n="sections.s4.p2">É proibido:</p>
+      <ul>
+        <li data-i18n="sections.s4.l5">Uso de bots;</li>
+        <li data-i18n="sections.s4.l6">Engenharia reversa;</li>
+        <li data-i18n="sections.s4.l7">Tentativas de invasão.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-5">
+      <h2 class="section-title" data-i18n="sections.s5.title">5. Política de Propriedade Intelectual</h2>
+      <ul>
+        <li data-i18n="sections.s5.l1">O usuário mantém direitos sobre seu conteúdo;</li>
+        <li data-i18n="sections.s5.l2">Ao publicar, concede licença de uso à Velvet dentro da Plataforma;</li>
+        <li data-i18n="sections.s5.l3">É proibida a reprodução ou distribuição sem autorização.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-6">
+      <h2 class="section-title" data-i18n="sections.s6.title">6. Política de Moderação e Sanções</h2>
+      <p data-i18n="sections.s6.p1">A Velvet poderá:</p>
+      <ul>
+        <li data-i18n="sections.s6.l1">Remover conteúdos;</li>
+        <li data-i18n="sections.s6.l2">Suspender contas;</li>
+        <li data-i18n="sections.s6.l3">Encerrar contas;</li>
+        <li data-i18n="sections.s6.l4">Restringir funcionalidades.</li>
+      </ul>
+      <p data-i18n="sections.s6.p2">
+        Sem aviso prévio, quando necessário.
+      </p>
+
+      <h3 class="item-title" data-i18n="sections.s6.i1">6.1 Cooperação com Autoridades</h3>
+      <p data-i18n="sections.s6.p3">A Velvet poderá cooperar com autoridades em casos de:</p>
+      <ul>
+        <li data-i18n="sections.s6.l5">Atividades ilegais;</li>
+        <li data-i18n="sections.s6.l6">Fraudes;</li>
+        <li data-i18n="sections.s6.l7">Crimes digitais.</li>
+      </ul>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-7">
+      <h2 class="section-title" data-i18n="sections.s7.title">7. Contato</h2>
+      <p>
+        <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a>
+      </p>
+    </section>
+
+    <hr class="divider" />
+
+    <section id="secao-8">
+      <h2 class="section-title" data-i18n="sections.s8.title">8. Disposições Finais</h2>
+      <p data-i18n="sections.s8.p1">
+        Estas Políticas devem ser interpretadas em conjunto com os Termos de Uso
+        e a Política de Privacidade.
+      </p>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/terms.html" data-i18n="footer.terms">Termos de Uso</a>
+      <a href="/privacy.html" data-i18n="footer.privacy">Política de Privacidade</a>
+      <a href="/policies.html" data-i18n="footer.policies">Política de Utilização</a>
+    </div>
+    <div class="footer-copy" data-i18n="footer.copy">
+      © 2026 Velvet. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script>
+    const i18n = {
+      pt: {
+        metaTitle: "Políticas de Utilização | Velvet",
+        pageTitle: "Políticas de Utilização",
+        lastUpdatedLabel: "Última atualização:",
+        lastUpdatedDate: "06/04/2026",
+        intro: "Este documento reúne as políticas que regulam o uso da plataforma Velvet, sendo parte integrante dos Termos de Uso. Ao acessar ou utilizar a Plataforma, o usuário declara que leu, compreendeu e concorda integralmente com estas Políticas.",
+        tocTitle: "Índice",
+        toc: [
+          "1. Política de Verificação de Idade e Identidade (KYC)",
+          "2. Política de Pagamentos, Assinaturas, Diamantes e Reembolsos",
+          "3. Política de Conteúdo",
+          "4. Política de Conduta e Uso da Plataforma",
+          "5. Política de Propriedade Intelectual",
+          "6. Política de Moderação e Sanções",
+          "7. Contato",
+          "8. Disposições Finais"
+        ],
+        sections: {
+          s1: {
+            title: "1. Política de Verificação de Idade e Identidade (KYC)",
+            i1: "1.1 Objetivo",
+            p1: "A Velvet realiza verificação de identidade para:",
+            l1: "Garantir acesso exclusivo a maiores de 18 anos;",
+            l2: "Cumprir obrigações legais;",
+            l3: "Prevenir fraude e uso indevido;",
+            l4: "Proteger usuários e criadoras.",
+            i2: "1.2 Obrigatoriedade",
+            p2strong: "Criadoras (Modelos):",
+            p2: "Verificação obrigatória antes da publicação de qualquer conteúdo.",
+            p3strong: "Usuários (Assinantes):",
+            p3: "A Velvet poderá exigir verificação a qualquer momento, especialmente em casos de:",
+            l5: "Suspeita de fraude;",
+            l6: "Chargeback;",
+            l7: "Atividade irregular;",
+            l8: "Exigência legal.",
+            i3: "1.3 Documentos Aceitos",
+            l9: "Documento oficial com foto (RG, CNH ou Passaporte);",
+            l10: "Selfie ou vídeo com o documento;",
+            l11: "Informações adicionais, quando necessário.",
+            i4: "1.4 Segurança",
+            p4: "Os dados serão tratados conforme a Política de Privacidade, com acesso restrito e medidas de proteção adequadas.",
+            i5: "1.5 Penalidades",
+            p5: "O descumprimento poderá resultar em:",
+            l12: "Suspensão ou encerramento da conta;",
+            l13: "Remoção de conteúdo;",
+            l14: "Comunicação às autoridades."
+          },
+          s2: {
+            title: "2. Política de Pagamentos, Assinaturas, Diamantes e Reembolsos",
+            i1: "2.1 Disposições Gerais",
+            l1: "Pagamentos são processados por terceiros;",
+            l2: "A Velvet não armazena dados completos de cartão;",
+            l3: "O usuário é responsável pelas informações fornecidas.",
+            i2: "2.2 Assinaturas",
+            l4: "Concedem acesso ao perfil da criadora, incluindo conteúdo do feed e interação via chat, conforme definido pela criadora;",
+            l5: "O conteúdo do feed é de responsabilidade exclusiva da criadora, podendo variar conforme seu nicho, estilo e proposta, podendo incluir conteúdo adulto ou não, exclusivo ou não exclusivo;",
+            l6: "A Velvet não garante frequência, tipo ou padrão de conteúdo;",
+            l7: "As assinaturas não incluem conteúdos pagos adicionais, salvo quando expressamente indicado.",
+            i3: "2.3 Diamantes (Moeda Virtual)",
+            l8: "Uso exclusivo dentro da Plataforma;",
+            l9: "Não possuem valor monetário fora da Velvet;",
+            l10: "Não são transferíveis nem resgatáveis;",
+            l11: "Não são reembolsáveis, salvo obrigação legal.",
+            i4: "2.4 Conteúdos Pagos (Premium ou Pay-Per-View no Chat)",
+            l12: "Conteúdos pagos são liberados mediante pagamento adicional;",
+            l13: "Após o desbloqueio, o conteúdo é considerado entregue e consumido;",
+            l14: "Não há reembolso por insatisfação subjetiva;",
+            l15: "O conteúdo é de responsabilidade exclusiva da criadora, podendo variar conforme seu nicho e proposta, podendo incluir conteúdo adulto ou não, exclusivo ou não exclusivo;",
+            l16: "A Velvet não garante expectativa ou resultado em relação ao conteúdo adquirido.",
+            i5: "2.5 Chargebacks",
+            l17: "Chargebacks indevidos poderão resultar em suspensão ou encerramento da conta;",
+            l18: "A Velvet poderá apresentar evidências às operadoras;",
+            l19: "O usuário poderá ser responsabilizado por fraude.",
+            i6: "2.6 Prevenção à Fraude",
+            p1: "A Plataforma utiliza sistemas automatizados para:",
+            l20: "Detectar atividades suspeitas;",
+            l21: "Reduzir riscos financeiros;",
+            l22: "Proteger transações.",
+            i7: "2.7 Política de Reembolso",
+            l23: "Assinaturas, Diamantes e conteúdos pagos não são reembolsáveis, exceto quando exigido por lei ou nos casos previstos abaixo;",
+            l24: "O usuário é informado previamente sobre as condições da compra e deve concordar com os Termos antes de concluir a transação;",
+            l25: "O reembolso poderá ocorrer exclusivamente em casos de:",
+            l26: "Cobrança em duplicidade;",
+            l27: "Erro técnico comprovado;",
+            l28: "Falha no sistema;",
+            l29: "Não disponibilização do serviço após pagamento.",
+            p2: "A Velvet poderá solicitar comprovação para análise.",
+            i8: "2.8 Direito de Arrependimento",
+            l30: "O usuário reconhece que os serviços e conteúdos digitais da Plataforma são disponibilizados de forma imediata após a confirmação do pagamento;",
+            l31: "Ao concluir a compra, o usuário declara ciência e concordância com a execução imediata do serviço;",
+            l32: "Dessa forma, o usuário concorda que o direito de arrependimento previsto no artigo 49 do Código de Defesa do Consumidor poderá não ser aplicável;",
+            l33: "O usuário será previamente informado sobre:",
+            l34: "liberação imediata do conteúdo;",
+            l35: "natureza digital do serviço;",
+            l36: "possível perda do direito de arrependimento."
+          },
+          s3: {
+            title: "3. Política de Conteúdo",
+            i1: "3.1 Conteúdo Permitido",
+            p1: "A Velvet é uma plataforma social que permite a publicação de:",
+            l1: "Conteúdo adulto consensual entre maiores de 18 anos;",
+            l2: "Nudez e erotismo;",
+            l3: "Conteúdos não adultos (lifestyle, entretenimento, educação, etc.);",
+            l4: "Conteúdos personalizados;",
+            l5: "Conteúdos em diversos formatos (foto, vídeo, áudio, chat).",
+            i2: "3.2 Conteúdo Proibido",
+            p2: "É proibido:",
+            l6: "Conteúdo envolvendo menores;",
+            l7: "Conteúdo com aparência infantil;",
+            l8: "Violência não consensual;",
+            l9: "Exploração sexual ou crimes;",
+            l10: "Discurso de ódio;",
+            l11: "Violação de direitos autorais ou de imagem.",
+            i3: "3.3 Consentimento",
+            p3: "Todos os participantes devem ter consentimento expresso. A Velvet poderá exigir comprovação a qualquer momento.",
+            i4: "3.4 Responsabilidade",
+            p4: "O conteúdo é de responsabilidade exclusiva do usuário que o publicou."
+          },
+          s4: {
+            title: "4. Política de Conduta e Uso da Plataforma",
+            p1: "O usuário compromete-se a:",
+            l1: "Utilizar a Plataforma de forma legal;",
+            l2: "Não praticar fraude;",
+            l3: "Não compartilhar conteúdos fora da Plataforma sem autorização;",
+            l4: "Não violar sistemas de segurança.",
+            p2: "É proibido:",
+            l5: "Uso de bots;",
+            l6: "Engenharia reversa;",
+            l7: "Tentativas de invasão."
+          },
+          s5: {
+            title: "5. Política de Propriedade Intelectual",
+            l1: "O usuário mantém direitos sobre seu conteúdo;",
+            l2: "Ao publicar, concede licença de uso à Velvet dentro da Plataforma;",
+            l3: "É proibida a reprodução ou distribuição sem autorização."
+          },
+          s6: {
+            title: "6. Política de Moderação e Sanções",
+            p1: "A Velvet poderá:",
+            l1: "Remover conteúdos;",
+            l2: "Suspender contas;",
+            l3: "Encerrar contas;",
+            l4: "Restringir funcionalidades.",
+            p2: "Sem aviso prévio, quando necessário.",
+            i1: "6.1 Cooperação com Autoridades",
+            p3: "A Velvet poderá cooperar com autoridades em casos de:",
+            l5: "Atividades ilegais;",
+            l6: "Fraudes;",
+            l7: "Crimes digitais."
+          },
+          s7: {
+            title: "7. Contato"
+          },
+          s8: {
+            title: "8. Disposições Finais",
+            p1: "Estas Políticas devem ser interpretadas em conjunto com os Termos de Uso e a Política de Privacidade."
+          }
+        },
+        footer: {
+          terms: "Termos de Uso",
+          privacy: "Política de Privacidade",
+          policies: "Política de Utilização",
+          copy: "© 2026 Velvet. Todos os direitos reservados."
+        }
+      },
+
+      en: {
+        metaTitle: "Usage Policies | Velvet",
+        pageTitle: "Usage Policies",
+        lastUpdatedLabel: "Last updated:",
+        lastUpdatedDate: "04/06/2026",
+        intro: "This document sets out the policies governing the use of the Velvet platform and forms an integral part of the Terms of Use. By accessing or using the Platform, the user declares that they have read, understood, and fully agree to these Policies.",
+        tocTitle: "Contents",
+        toc: [
+          "1. Age and Identity Verification Policy (KYC)",
+          "2. Payments, Subscriptions, Diamonds, and Refunds Policy",
+          "3. Content Policy",
+          "4. Conduct and Platform Use Policy",
+          "5. Intellectual Property Policy",
+          "6. Moderation and Sanctions Policy",
+          "7. Contact",
+          "8. Final Provisions"
+        ],
+        sections: {
+          s1: {
+            title: "1. Age and Identity Verification Policy (KYC)",
+            i1: "1.1 Purpose",
+            p1: "Velvet carries out identity verification in order to:",
+            l1: "Ensure access is restricted to individuals over 18 years of age;",
+            l2: "Comply with legal obligations;",
+            l3: "Prevent fraud and misuse;",
+            l4: "Protect users and creators.",
+            i2: "1.2 Requirement",
+            p2strong: "Creators (Models):",
+            p2: "Verification is mandatory before publishing any content.",
+            p3strong: "Users (Subscribers):",
+            p3: "Velvet may require verification at any time, especially in cases of:",
+            l5: "Suspected fraud;",
+            l6: "Chargeback;",
+            l7: "Irregular activity;",
+            l8: "Legal requirement.",
+            i3: "1.3 Accepted Documents",
+            l9: "Official photo ID (ID card, driver's license, or passport);",
+            l10: "Selfie or video with the document;",
+            l11: "Additional information, when necessary.",
+            i4: "1.4 Security",
+            p4: "Data will be processed in accordance with the Privacy Policy, with restricted access and appropriate protection measures.",
+            i5: "1.5 Penalties",
+            p5: "Failure to comply may result in:",
+            l12: "Suspension or termination of the account;",
+            l13: "Removal of content;",
+            l14: "Reporting to the authorities."
+          },
+          s2: {
+            title: "2. Payments, Subscriptions, Diamonds, and Refunds Policy",
+            i1: "2.1 General Provisions",
+            l1: "Payments are processed by third parties;",
+            l2: "Velvet does not store full card data;",
+            l3: "The user is responsible for the information provided.",
+            i2: "2.2 Subscriptions",
+            l4: "Subscriptions grant access to the creator's profile, including feed content and chat interaction, as defined by the creator;",
+            l5: "Feed content is the sole responsibility of the creator and may vary according to their niche, style, and proposal, and may include adult or non-adult content, exclusive or non-exclusive;",
+            l6: "Velvet does not guarantee frequency, type, or standard of content;",
+            l7: "Subscriptions do not include additional paid content unless expressly stated.",
+            i3: "2.3 Diamonds (Virtual Currency)",
+            l8: "Exclusive use within the Platform;",
+            l9: "They have no monetary value outside Velvet;",
+            l10: "They are non-transferable and non-redeemable;",
+            l11: "They are non-refundable, except where legally required.",
+            i4: "2.4 Paid Content (Premium or Pay-Per-View in Chat)",
+            l12: "Paid content is unlocked upon additional payment;",
+            l13: "After unlocking, the content is considered delivered and consumed;",
+            l14: "There is no refund for subjective dissatisfaction;",
+            l15: "The content is the sole responsibility of the creator and may vary according to their niche and proposal, and may include adult or non-adult content, exclusive or non-exclusive;",
+            l16: "Velvet does not guarantee expectations or outcomes regarding the acquired content.",
+            i5: "2.5 Chargebacks",
+            l17: "Improper chargebacks may result in suspension or termination of the account;",
+            l18: "Velvet may present evidence to payment operators;",
+            l19: "The user may be held liable for fraud.",
+            i6: "2.6 Fraud Prevention",
+            p1: "The Platform uses automated systems to:",
+            l20: "Detect suspicious activities;",
+            l21: "Reduce financial risks;",
+            l22: "Protect transactions.",
+            i7: "2.7 Refund Policy",
+            l23: "Subscriptions, Diamonds, and paid content are non-refundable, except where required by law or in the cases provided below;",
+            l24: "The user is informed in advance about the purchase conditions and must agree to the Terms before completing the transaction;",
+            l25: "Refunds may occur exclusively in the following cases:",
+            l26: "Duplicate charge;",
+            l27: "Proven technical error;",
+            l28: "System failure;",
+            l29: "Service not made available after payment.",
+            p2: "Velvet may request proof for analysis.",
+            i8: "2.8 Right of Withdrawal",
+            l30: "The user acknowledges that the services and digital content of the Platform are made available immediately after payment confirmation;",
+            l31: "By completing the purchase, the user declares awareness of and agreement with the immediate execution of the service;",
+            l32: "Accordingly, the user agrees that the right of withdrawal may not apply, to the extent permitted by applicable law, when immediate execution of digital content or services has begun;",
+            l33: "The user will be informed in advance about:",
+            l34: "immediate release of the content;",
+            l35: "the digital nature of the service;",
+            l36: "possible loss of the right of withdrawal, where legally applicable."
+          },
+          s3: {
+            title: "3. Content Policy",
+            i1: "3.1 Permitted Content",
+            p1: "Velvet is a social platform that allows the publication of:",
+            l1: "Consensual adult content involving individuals over 18 years of age;",
+            l2: "Nudity and erotic content;",
+            l3: "Non-adult content (lifestyle, entertainment, education, etc.);",
+            l4: "Personalized content;",
+            l5: "Content in various formats (photo, video, audio, chat).",
+            i2: "3.2 Prohibited Content",
+            p2: "The following is prohibited:",
+            l6: "Content involving minors;",
+            l7: "Content with childlike appearance;",
+            l8: "Non-consensual violence;",
+            l9: "Sexual exploitation or crimes;",
+            l10: "Hate speech;",
+            l11: "Violation of copyright or image rights.",
+            i3: "3.3 Consent",
+            p3: "All participants must provide express consent. Velvet may require proof at any time.",
+            i4: "3.4 Responsibility",
+            p4: "The content is the sole responsibility of the user who published it."
+          },
+          s4: {
+            title: "4. Conduct and Platform Use Policy",
+            p1: "The user undertakes to:",
+            l1: "Use the Platform lawfully;",
+            l2: "Not commit fraud;",
+            l3: "Not share content outside the Platform without authorization;",
+            l4: "Not violate security systems.",
+            p2: "The following is prohibited:",
+            l5: "Use of bots;",
+            l6: "Reverse engineering;",
+            l7: "Attempts to invade or compromise systems."
+          },
+          s5: {
+            title: "5. Intellectual Property Policy",
+            l1: "The user retains rights over their content;",
+            l2: "By publishing, the user grants Velvet a license to use the content within the Platform;",
+            l3: "Reproduction or distribution without authorization is prohibited."
+          },
+          s6: {
+            title: "6. Moderation and Sanctions Policy",
+            p1: "Velvet may:",
+            l1: "Remove content;",
+            l2: "Suspend accounts;",
+            l3: "Terminate accounts;",
+            l4: "Restrict features.",
+            p2: "Without prior notice, when necessary.",
+            i1: "6.1 Cooperation with Authorities",
+            p3: "Velvet may cooperate with authorities in cases of:",
+            l5: "Illegal activities;",
+            l6: "Fraud;",
+            l7: "Cybercrimes."
+          },
+          s7: {
+            title: "7. Contact"
+          },
+          s8: {
+            title: "8. Final Provisions",
+            p1: "These Policies must be interpreted together with the Terms of Use and the Privacy Policy."
+          }
+        },
+        footer: {
+          terms: "Terms of Use",
+          privacy: "Privacy Policy",
+          policies: "Usage Policies",
+          copy: "© 2026 Velvet. All rights reserved."
+        }
+      },
+
+      es: {
+        metaTitle: "Políticas de Uso | Velvet",
+        pageTitle: "Políticas de Uso",
+        lastUpdatedLabel: "Última actualización:",
+        lastUpdatedDate: "06/04/2026",
+        intro: "Este documento reúne las políticas que regulan el uso de la plataforma Velvet y forma parte integrante de los Términos de Uso. Al acceder o utilizar la Plataforma, el usuario declara que ha leído, comprendido y acepta íntegramente estas Políticas.",
+        tocTitle: "Índice",
+        toc: [
+          "1. Política de Verificación de Edad e Identidad (KYC)",
+          "2. Política de Pagos, Suscripciones, Diamantes y Reembolsos",
+          "3. Política de Contenido",
+          "4. Política de Conducta y Uso de la Plataforma",
+          "5. Política de Propiedad Intelectual",
+          "6. Política de Moderación y Sanciones",
+          "7. Contacto",
+          "8. Disposiciones Finales"
+        ],
+        sections: {
+          s1: {
+            title: "1. Política de Verificación de Edad e Identidad (KYC)",
+            i1: "1.1 Objetivo",
+            p1: "Velvet realiza verificación de identidad para:",
+            l1: "Garantizar acceso exclusivo a mayores de 18 años;",
+            l2: "Cumplir obligaciones legales;",
+            l3: "Prevenir fraude y uso indebido;",
+            l4: "Proteger a usuarios y creadoras.",
+            i2: "1.2 Obligatoriedad",
+            p2strong: "Creadoras (Modelos):",
+            p2: "La verificación es obligatoria antes de publicar cualquier contenido.",
+            p3strong: "Usuarios (Suscriptores):",
+            p3: "Velvet podrá exigir verificación en cualquier momento, especialmente en casos de:",
+            l5: "Sospecha de fraude;",
+            l6: "Chargeback;",
+            l7: "Actividad irregular;",
+            l8: "Exigencia legal.",
+            i3: "1.3 Documentos Aceptados",
+            l9: "Documento oficial con foto (cédula, licencia de conducir o pasaporte);",
+            l10: "Selfie o video con el documento;",
+            l11: "Información adicional, cuando sea necesario.",
+            i4: "1.4 Seguridad",
+            p4: "Los datos serán tratados conforme a la Política de Privacidad, con acceso restringido y medidas adecuadas de protección.",
+            i5: "1.5 Penalidades",
+            p5: "El incumplimiento podrá dar lugar a:",
+            l12: "Suspensión o cierre de la cuenta;",
+            l13: "Eliminación de contenido;",
+            l14: "Comunicación a las autoridades."
+          },
+          s2: {
+            title: "2. Política de Pagos, Suscripciones, Diamantes y Reembolsos",
+            i1: "2.1 Disposiciones Generales",
+            l1: "Los pagos son procesados por terceros;",
+            l2: "Velvet no almacena datos completos de tarjeta;",
+            l3: "El usuario es responsable de la información proporcionada.",
+            i2: "2.2 Suscripciones",
+            l4: "Otorgan acceso al perfil de la creadora, incluyendo contenido del feed e interacción por chat, según lo definido por la creadora;",
+            l5: "El contenido del feed es responsabilidad exclusiva de la creadora y puede variar según su nicho, estilo y propuesta, pudiendo incluir contenido adulto o no adulto, exclusivo o no exclusivo;",
+            l6: "Velvet no garantiza frecuencia, tipo ni estándar de contenido;",
+            l7: "Las suscripciones no incluyen contenidos pagos adicionales, salvo indicación expresa.",
+            i3: "2.3 Diamantes (Moneda Virtual)",
+            l8: "Uso exclusivo dentro de la Plataforma;",
+            l9: "No tienen valor monetario fuera de Velvet;",
+            l10: "No son transferibles ni canjeables;",
+            l11: "No son reembolsables, salvo obligación legal.",
+            i4: "2.4 Contenidos Pagos (Premium o Pay-Per-View en el Chat)",
+            l12: "Los contenidos pagos se liberan mediante pago adicional;",
+            l13: "Después del desbloqueo, el contenido se considera entregado y consumido;",
+            l14: "No hay reembolso por insatisfacción subjetiva;",
+            l15: "El contenido es responsabilidad exclusiva de la creadora y puede variar según su nicho y propuesta, pudiendo incluir contenido adulto o no adulto, exclusivo o no exclusivo;",
+            l16: "Velvet no garantiza expectativas ni resultados respecto del contenido adquirido.",
+            i5: "2.5 Chargebacks",
+            l17: "Los chargebacks indebidos podrán resultar en suspensión o cierre de la cuenta;",
+            l18: "Velvet podrá presentar evidencias a los operadores de pago;",
+            l19: "El usuario podrá ser responsabilizado por fraude.",
+            i6: "2.6 Prevención de Fraude",
+            p1: "La Plataforma utiliza sistemas automatizados para:",
+            l20: "Detectar actividades sospechosas;",
+            l21: "Reducir riesgos financieros;",
+            l22: "Proteger transacciones.",
+            i7: "2.7 Política de Reembolso",
+            l23: "Las suscripciones, Diamantes y contenidos pagos no son reembolsables, salvo cuando la ley lo exija o en los casos previstos a continuación;",
+            l24: "El usuario es informado previamente sobre las condiciones de la compra y debe aceptar los Términos antes de completar la transacción;",
+            l25: "El reembolso podrá ocurrir exclusivamente en los siguientes casos:",
+            l26: "Cobro duplicado;",
+            l27: "Error técnico comprobado;",
+            l28: "Falla del sistema;",
+            l29: "No disponibilidad del servicio después del pago.",
+            p2: "Velvet podrá solicitar comprobación para su análisis.",
+            i8: "2.8 Derecho de Desistimiento",
+            l30: "El usuario reconoce que los servicios y contenidos digitales de la Plataforma se ponen a disposición de forma inmediata tras la confirmación del pago;",
+            l31: "Al completar la compra, el usuario declara conocer y aceptar la ejecución inmediata del servicio;",
+            l32: "En consecuencia, el usuario acepta que el derecho de desistimiento podrá no ser aplicable, en la medida permitida por la legislación aplicable, cuando haya comenzado la ejecución inmediata de contenidos o servicios digitales;",
+            l33: "El usuario será informado previamente sobre:",
+            l34: "liberación inmediata del contenido;",
+            l35: "naturaleza digital del servicio;",
+            l36: "posible pérdida del derecho de desistimiento, cuando sea legalmente aplicable."
+          },
+          s3: {
+            title: "3. Política de Contenido",
+            i1: "3.1 Contenido Permitido",
+            p1: "Velvet es una plataforma social que permite la publicación de:",
+            l1: "Contenido adulto consensuado entre mayores de 18 años;",
+            l2: "Desnudez y erotismo;",
+            l3: "Contenidos no adultos (lifestyle, entretenimiento, educación, etc.);",
+            l4: "Contenidos personalizados;",
+            l5: "Contenidos en diversos formatos (foto, video, audio, chat).",
+            i2: "3.2 Contenido Prohibido",
+            p2: "Está prohibido:",
+            l6: "Contenido que involucre menores;",
+            l7: "Contenido con apariencia infantil;",
+            l8: "Violencia no consentida;",
+            l9: "Explotación sexual o delitos;",
+            l10: "Discurso de odio;",
+            l11: "Violación de derechos de autor o de imagen.",
+            i3: "3.3 Consentimiento",
+            p3: "Todos los participantes deben contar con consentimiento expreso. Velvet podrá exigir prueba en cualquier momento.",
+            i4: "3.4 Responsabilidad",
+            p4: "El contenido es responsabilidad exclusiva del usuario que lo publicó."
+          },
+          s4: {
+            title: "4. Política de Conducta y Uso de la Plataforma",
+            p1: "El usuario se compromete a:",
+            l1: "Utilizar la Plataforma de forma legal;",
+            l2: "No cometer fraude;",
+            l3: "No compartir contenidos fuera de la Plataforma sin autorización;",
+            l4: "No vulnerar sistemas de seguridad.",
+            p2: "Está prohibido:",
+            l5: "Uso de bots;",
+            l6: "Ingeniería inversa;",
+            l7: "Intentos de intrusión."
+          },
+          s5: {
+            title: "5. Política de Propiedad Intelectual",
+            l1: "El usuario mantiene los derechos sobre su contenido;",
+            l2: "Al publicar, concede a Velvet una licencia de uso dentro de la Plataforma;",
+            l3: "Está prohibida la reproducción o distribución sin autorización."
+          },
+          s6: {
+            title: "6. Política de Moderación y Sanciones",
+            p1: "Velvet podrá:",
+            l1: "Eliminar contenidos;",
+            l2: "Suspender cuentas;",
+            l3: "Cerrar cuentas;",
+            l4: "Restringir funcionalidades.",
+            p2: "Sin previo aviso, cuando sea necesario.",
+            i1: "6.1 Cooperación con Autoridades",
+            p3: "Velvet podrá cooperar con autoridades en casos de:",
+            l5: "Actividades ilegales;",
+            l6: "Fraudes;",
+            l7: "Delitos digitales."
+          },
+          s7: {
+            title: "7. Contacto"
+          },
+          s8: {
+            title: "8. Disposiciones Finales",
+            p1: "Estas Políticas deben interpretarse conjuntamente con los Términos de Uso y la Política de Privacidad."
+          }
+        },
+        footer: {
+          terms: "Términos de Uso",
+          privacy: "Política de Privacidad",
+          policies: "Políticas de Uso",
+          copy: "© 2026 Velvet. Todos los derechos reservados."
+        }
+      }
+    };
+
+   function getNestedValue(obj, path) {
+  return path.split(".").reduce((acc, part) => {
+    if (acc === undefined || acc === null) return undefined;
+    if (Array.isArray(acc)) return acc[Number(part)];
+    return acc[part];
+  }, obj);
+}
+
+function updateLanguageButtons(lang) {
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.classList.toggle("active", btn.dataset.lang === lang);
+  });
+}
+
+function setLanguage(lang) {
+  const dict = i18n[lang] || i18n.pt;
+
+  document.documentElement.lang =
+    lang === "pt" ? "pt-BR" :
+    lang === "en" ? "en" :
+    "es";
+
+  document.title = dict.metaTitle;
+
+  document.querySelectorAll("[data-i18n]").forEach((el) => {
+    const key = el.getAttribute("data-i18n");
+    const value = getNestedValue(dict, key);
+
+    if (typeof value !== "undefined") {
+      el.textContent = value;
+    }
+  });
+
+  localStorage.setItem("velvet_language", lang);
+  updateLanguageButtons(lang);
+}
+
+document.addEventListener("DOMContentLoaded", () => {
+  const savedLang = localStorage.getItem("velvet_language") || "pt";
+
+  setLanguage(savedLang);
+
+  document.querySelectorAll(".lang-btn").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      setLanguage(btn.dataset.lang);
+    });
+  });
+});
+
+  </script>
+</body>
+</html>

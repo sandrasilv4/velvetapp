@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Mensagem para Assinantes</title>
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/allmessage.css">
+  <link rel="stylesheet" href="/css/pages.css">
+
+  <script src="/i18n.js"></script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+
+  <section class="area-card">
+
+    <button type="button" class="btn-voltar" onclick="history.back()" data-i18n-title="allmessage.voltar">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+    <h3 data-i18n="allmessage.titulo">Envio de Mensagens — PPV</h3>
+    <p class="page-subtitle" data-i18n="allmessage.subtitulo">Envio de mensagem a todos os assinantes</p>
+
+    <div class="form-group">
+      <label for="modeloSelect" data-i18n="allmessage.label_modelo">Modelo</label>
+      <select id="modeloSelect"></select>
+    </div>
+
+    <div class="form-group">
+      <label for="mensagem" data-i18n="allmessage.label_mensagem">Mensagem</label>
+      <textarea id="mensagem" rows="4"></textarea>
+    </div>
+
+    <div class="form-group">
+      <label data-i18n="allmessage.label_conteudos">Conteúdos da modelo</label>
+      <button type="button" class="btn-principal" id="btnAbrirConteudos" data-i18n="allmessage.btn_selecionar_midias">
+        Selecionar mídias
+      </button>
+      <div id="conteudosSelecionados" class="preview"></div>
+    </div>
+
+    <div class="form-group">
+      <label for="preco" data-i18n="allmessage.label_preco">Preço (€)</label>
+      <input type="number" id="preco" min="1" step="0.01" />
+    </div>
+
+    <div class="actions">
+      <button id="btnEnviar" class="btn" data-i18n="allmessage.btn_enviar_todos">
+        Enviar para todos
+      </button>
+    </div>
+
+  </section>
+
+  <div id="footer-container"></div>
+
+    <!-- Modais -->
+  <div id="popupConteudos" class="modal hidden">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box modal-scroll">
+      <h3 data-i18n="allmessage.modal_conteudos_titulo">Selecionar conteúdos</h3>
+
+      <div id="contadorSelecionados" class="contador-midias" data-i18n="allmessage.contador_selecionados">
+        Selecionadas: 0
+      </div>
+
+      <div id="conteudosGrid" class="conteudos-grid"></div>
+
+      <div class="modal-actions">
+        <button class="btn" id="btnConfirmarConteudos" data-i18n="allmessage.btn_utilizar_selecionados">
+          Utilizar selecionados
+        </button>
+
+        <button class="btn secondary" id="btnFecharConteudos" data-i18n="allmessage.btn_cancelar">
+          Cancelar
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <div id="popupEnvioPPV" class="modal hidden">
+    <div class="modal-backdrop"></div>
+
+    <div class="modal-box" style="max-width: 420px;">
+      <h3 data-i18n="allmessage.modal_envio_titulo">Enviando PPV</h3>
+
+      <div id="statusEnvioTexto" class="contador-midias" data-i18n="allmessage.status_preparando">
+        Preparando envio...
+      </div>
+
+      <div class="barra-progresso">
+        <div id="barraProgressoFill" class="barra-progresso-fill"></div>
+      </div>
+
+      <div id="statusEnvioPercentual" class="contador-midias">
+        0%
+      </div>
+    </div>
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/js/allmessage.js"></script>
+  <script src="/js/header.js" defer></script>
+  <script src="/js/footer-shared.js"></script>
+</body>
+</html>

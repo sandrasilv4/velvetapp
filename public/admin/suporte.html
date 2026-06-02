@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Suporte – Admin</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { background: #f4f4f8; color: #222; font-family: sans-serif; display: flex; height: 100vh; }
+
+    /* LISTA */
+    #lista {
+      width: 280px; min-width: 220px; border-right: 1px solid #e0e0e0;
+      display: flex; flex-direction: column; overflow: hidden; background: #fff;
+    }
+    #lista-header {
+      padding: 16px; background: #7b2cff; border-bottom: 1px solid #6a20e8;
+      font-weight: 600; font-size: 15px; color: #fff;
+      display: flex; align-items: center; gap: 8px;
+    }
+    #lista-header span.dot { width: 8px; height: 8px; border-radius: 50%; background: #4caf50; }
+    #filtros { display: flex; gap: 0; border-bottom: 1px solid #eee; background: #fff; }
+    .filtro-btn {
+      flex: 1; padding: 8px; background: none; border: none;
+      color: #888; cursor: pointer; font-size: 12px; border-bottom: 2px solid transparent;
+    }
+    .filtro-btn.ativo { color: #7b2cff; border-bottom-color: #7b2cff; }
+    #conversas-lista { flex: 1; overflow-y: auto; background: #fff; }
+    .conv-item {
+      padding: 14px 16px; border-bottom: 1px solid #f0f0f0; cursor: pointer;
+      transition: background .15s;
+    }
+    .conv-item:hover { background: #f8f4ff; }
+    .conv-item.ativo { background: #f0e8ff; border-left: 3px solid #7b2cff; }
+    .conv-nome { font-size: 13px; font-weight: 600; display: flex; justify-content: space-between; color: #222; }
+    .conv-preview { font-size: 11px; color: #888; margin-top: 4px; white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+    .conv-hora { font-size: 10px; color: #aaa; }
+    .badge-nao-lida {
+      background: #7b2cff; color: #fff; border-radius: 50%;
+      width: 16px; height: 16px; font-size: 10px;
+      display: inline-flex; align-items: center; justify-content: center;
+    }
+    .status-tag {
+      font-size: 10px; padding: 1px 6px; border-radius: 10px; font-weight: 600;
+    }
+    .status-aberta    { background: #e8f5e9; color: #388e3c; }
+    .status-respondida{ background: #e3f2fd; color: #1976d2; }
+    .status-fechada   { background: #f5f5f5; color: #999; }
+
+    /* CHAT */
+    #chat { flex: 1; display: flex; flex-direction: column; background: #f4f4f8; }
+    #chat-vazio {
+      flex: 1; display: flex; align-items: center; justify-content: center;
+      color: #aaa; font-size: 15px;
+    }
+    #chat-header {
+      padding: 14px 20px; background: #fff; border-bottom: 1px solid #e0e0e0;
+      display: none; align-items: center; justify-content: space-between;
+    }
+    #chat-header-info { display: flex; flex-direction: column; }
+    #chat-header-nome { font-weight: 600; font-size: 15px; color: #222; }
+    #chat-header-sub  { font-size: 11px; color: #888; margin-top: 2px; }
+    #chat-header-acoes { display: flex; gap: 8px; }
+    .btn-acao {
+      padding: 6px 14px; border-radius: 8px; border: none;
+      cursor: pointer; font-size: 12px; font-weight: 600;
+    }
+    .btn-fechar  { background: #f0f0f0; color: #555; }
+    .btn-fechar:hover { background: #e0e0e0; }
+    #msgs {
+      flex: 1; overflow-y: auto; padding: 20px;
+      display: flex; flex-direction: column; gap: 10px;
+    }
+    #msgs::-webkit-scrollbar { width: 4px; }
+    #msgs::-webkit-scrollbar-thumb { background: #ccc; border-radius: 4px; }
+    .msg {
+      max-width: 72%; padding: 10px 14px; border-radius: 12px;
+      font-size: 13px; line-height: 1.5; word-break: break-word;
+    }
+    .msg.cliente { background: #fff; color: #222; align-self: flex-start; border-bottom-left-radius: 4px; box-shadow: 0 1px 4px rgba(0,0,0,.08); }
+    .msg.admin   { background: #7b2cff; color: #fff; align-self: flex-end; border-bottom-right-radius: 4px; }
+    .msg-hora { font-size: 10px; opacity: .6; margin-top: 4px; }
+    .msg.admin .msg-hora { text-align: right; }
+    #resposta-area {
+      display: none; gap: 10px; padding: 14px 20px;
+      border-top: 1px solid #e0e0e0; align-items: flex-end; background: #fff;
+    }
+    #resposta-input {
+      flex: 1; background: #f6f6f6; border: 1px solid #ddd; border-radius: 10px;
+      color: #222; padding: 10px 14px; font-size: 13px; outline: none;
+      resize: none; max-height: 120px;
+    }
+    #resposta-input:focus { border-color: #7b2cff; }
+    #btn-enviar {
+      background: #7b2cff; border: none; border-radius: 10px;
+      color: #fff; padding: 10px 20px; cursor: pointer;
+      font-size: 14px; font-weight: 600; white-space: nowrap;
+    }
+    #btn-enviar:disabled { opacity: .5; cursor: default; }
+  </style>
+</head>
+<body>
+
+
+<!-- LISTA DE CONVERSAS -->
+<div id="lista">
+  <div id="lista-header">
+    <span class="dot"></span> Suporte ao Cliente
+  </div>
+  <div id="filtros">
+    <button class="filtro-btn ativo" data-status="todas">Todas</button>
+    <button class="filtro-btn" data-status="aberta">Abertas</button>
+    <button class="filtro-btn" data-status="respondida">Respondidas</button>
+    <button class="filtro-btn" data-status="fechada">Fechadas</button>
+  </div>
+  <div id="conversas-lista"></div>
+</div>
+
+<!-- CHAT -->
+<div id="chat">
+  <div id="chat-vazio">Selecione uma conversa</div>
+  <div id="chat-header">
+    <div id="chat-header-info">
+      <span id="chat-header-nome"></span>
+      <span id="chat-header-sub"></span>
+    </div>
+    <div id="chat-header-acoes">
+      <button class="btn-acao btn-fechar" id="btn-fechar-conv">Fechar conversa</button>
+    </div>
+  </div>
+  <div id="msgs"></div>
+  <div id="resposta-area">
+    <textarea id="resposta-input" rows="2" placeholder="Responder…" maxlength="1000"></textarea>
+    <button id="btn-enviar">Enviar</button>
+  </div>
+</div>
+
+<script src="/socket.io/socket.io.js"></script>
+<script>
+  const token = (function() {
+    try {
+      return new URLSearchParams(window.location.search).get("t")
+        || (window.parent !== window ? window.parent.localStorage.getItem("token_admin") : null)
+        || localStorage.getItem("token_admin")
+        || localStorage.getItem("token")
+        || "";
+    } catch(e) { return ""; }
+  })();
+
+  let conversaAtiva = null;
+  let filtroAtual = "todas";
+  let socket = null;
+  let todasConversas = [];
+
+
+  // ─── LISTA ────────────────────────────────────────────────────────────────
+  async function carregarLista() {
+    try {
+      const r = await fetch("/api/suporte/admin/conversas", {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      todasConversas = await r.json();
+      renderLista();
+    } catch (e) { console.error(e); }
+  }
+
+  function renderLista() {
+    const lista = document.getElementById("conversas-lista");
+    const filtradas = filtroAtual === "todas"
+      ? todasConversas
+      : todasConversas.filter(c => c.status === filtroAtual);
+
+    lista.innerHTML = filtradas.length
+      ? filtradas.map(c => `
+        <div class="conv-item ${conversaAtiva === c.id ? 'ativo' : ''}" onclick="abrirConversa(${c.id})">
+          <div class="conv-nome">
+            <span>${escHtml(c.nome_visitante || `#${c.id}`)}</span>
+            <span class="status-tag status-${c.status}">${c.status}</span>
+          </div>
+          <div class="conv-preview">${escHtml(c.ultima_mensagem || '—')}</div>
+          <div style="display:flex;justify-content:space-between;margin-top:4px">
+            <span class="conv-hora">${formatarData(c.updated_at)}</span>
+            ${c.nao_lidas > 0 ? `<span class="badge-nao-lida">${c.nao_lidas}</span>` : ''}
+          </div>
+        </div>`).join("")
+      : `<div style="padding:20px;color:#555;font-size:13px;text-align:center">Nenhuma conversa</div>`;
+  }
+
+  // ─── ABRIR CONVERSA ───────────────────────────────────────────────────────
+  async function abrirConversa(id) {
+    conversaAtiva = id;
+    renderLista();
+
+    const conv = todasConversas.find(c => c.id === id);
+    document.getElementById("chat-vazio").style.display = "none";
+    document.getElementById("chat-header").style.display = "flex";
+    document.getElementById("resposta-area").style.display =
+      conv?.status === "fechada" ? "none" : "flex";
+
+    document.getElementById("chat-header-nome").textContent =
+      conv?.nome_visitante || `Conversa #${id}`;
+    document.getElementById("chat-header-sub").textContent =
+      conv?.email_visitante || "";
+
+    try {
+      const r = await fetch(`/api/suporte/admin/conversa/${id}/mensagens`, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
+      const msgs = await r.json();
+      const el = document.getElementById("msgs");
+      el.innerHTML = "";
+      msgs.forEach(adicionarMsg);
+      el.scrollTop = el.scrollHeight;
+    } catch (e) { console.error(e); }
+
+    if (socket) {
+      socket.emit("suporte:admin_entrar_conversa", { conversa_id: id });
+    }
+  }
+
+  function adicionarMsg(msg) {
+    const el = document.getElementById("msgs");
+    const div = document.createElement("div");
+    div.className = `msg ${msg.remetente}`;
+    const hora = new Date(msg.criado_em).toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+    div.innerHTML = `${escHtml(msg.texto)}<div class="msg-hora">${hora}</div>`;
+    el.appendChild(div);
+    el.scrollTop = el.scrollHeight;
+  }
+
+  // ─── RESPONDER ────────────────────────────────────────────────────────────
+  async function responder() {
+    const input = document.getElementById("resposta-input");
+    const texto = input.value.trim();
+    if (!texto || !conversaAtiva) return;
+
+    const btn = document.getElementById("btn-enviar");
+    btn.disabled = true;
+    input.value = "";
+
+    try {
+      const r = await fetch(`/api/suporte/admin/conversa/${conversaAtiva}/responder`, {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: `Bearer ${token}`
+        },
+        body: JSON.stringify({ texto })
+      });
+      const msg = await r.json();
+      adicionarMsg(msg);
+      carregarLista();
+    } catch (e) { console.error(e); }
+
+    btn.disabled = false;
+    input.focus();
+  }
+
+  document.getElementById("btn-enviar").addEventListener("click", responder);
+  document.getElementById("resposta-input").addEventListener("keydown", e => {
+    if (e.key === "Enter" && !e.shiftKey) { e.preventDefault(); responder(); }
+  });
+
+  // ─── FECHAR CONVERSA ──────────────────────────────────────────────────────
+  document.getElementById("btn-fechar-conv").addEventListener("click", async () => {
+    if (!conversaAtiva || !confirm("Fechar esta conversa?")) return;
+    await fetch(`/api/suporte/admin/conversa/${conversaAtiva}/fechar`, {
+      method: "PATCH", headers: { Authorization: `Bearer ${token}` }
+    });
+    document.getElementById("resposta-area").style.display = "none";
+    carregarLista();
+  });
+
+  // ─── FILTROS ──────────────────────────────────────────────────────────────
+  document.querySelectorAll(".filtro-btn").forEach(btn => {
+    btn.addEventListener("click", () => {
+      document.querySelectorAll(".filtro-btn").forEach(b => b.classList.remove("ativo"));
+      btn.classList.add("ativo");
+      filtroAtual = btn.dataset.status;
+      renderLista();
+    });
+  });
+
+  // ─── UTILS ────────────────────────────────────────────────────────────────
+  function escHtml(t) {
+    return String(t).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;");
+  }
+  function formatarData(d) {
+    const dt = new Date(d);
+    const hoje = new Date();
+    if (dt.toDateString() === hoje.toDateString()) {
+      return dt.toLocaleTimeString("pt-BR", { hour: "2-digit", minute: "2-digit" });
+    }
+    return dt.toLocaleDateString("pt-BR", { day: "2-digit", month: "2-digit" });
+  }
+
+  // ─── INIT ─────────────────────────────────────────────────────────────────
+  function iniciarApp() {
+    if (window.io) {
+      socket = io({ auth: { token }, transports: ["websocket"] });
+      socket.on("connect", () => socket.emit("suporte:admin_entrar"));
+      socket.on("suporte:nova_mensagem", ({ conversa_id, mensagem }) => {
+        carregarLista();
+        if (conversaAtiva === conversa_id) adicionarMsg(mensagem);
+      });
+    }
+    carregarLista();
+    setInterval(carregarLista, 15000);
+  }
+
+  iniciarApp();
+</script>
+</body>
+</html>

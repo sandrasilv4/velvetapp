@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8" />
+  <title>Velvet • Relatórios</title>
+
+  <link rel="stylesheet" href="admin-relatorios.css">
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<div class="container">
+
+  <header>
+    <h1>Relatórios Gerais</h1>
+
+    <div class="filters">
+      <label>
+        Mês:
+        <input type="month" id="filtroMes">
+      </label>
+      <a href="/admin/suporte.html" style="
+        display:inline-flex; align-items:center; gap:6px;
+        background:#7b2cff; color:#fff; border-radius:8px;
+        padding:8px 16px; font-size:13px; font-weight:600;
+        text-decoration:none; white-space:nowrap;
+      ">💬 Suporte</a>
+    </div>
+  </header>
+
+  <section class="cards">
+    <div class="card">
+      <span>Hoje</span>
+      <strong id="hojeTotal">€0,00</strong>
+    </div>
+
+    <div class="card">
+      <span>Mês</span>
+      <strong id="mesTotal">€0,00</strong>
+    </div>
+
+    <div class="card">
+      <span>Ano</span>
+      <strong id="anoTotal">€0,00</strong>
+    </div>
+  </section>
+
+  <section class="chart-box">
+    <h2>Faturamento diário (últimos 30 dias)</h2>
+    <canvas id="grafico30dias"></canvas>
+  </section>
+
+  <section class="modelo-relatorio">
+  <h2>Relatório por Modelo</h2>
+
+  <select id="selectModelo"></select>
+
+  <div class="cards">
+    <div class="card"><span>Hoje</span><strong id="modeloHoje">R$ 0,00</strong></div>
+    <div class="card"><span>Mês</span><strong id="modeloMes">R$ 0,00</strong></div>
+    <div class="card"><span>Ano</span><strong id="modeloAno">R$ 0,00</strong></div>
+  </div>
+
+  <div class="cards secondary">
+    <div class="card"><span>Ganhos Velvet (Mês)</span><strong id="velvetMes">R$ 0,00</strong></div>
+    <div class="card"><span>Assinantes no mês</span><strong id="assinantesMes">0</strong></div>
+    <div class="card"><span>Assinantes atuais</span><strong id="assinantesAtuais">0</strong></div>
+  </div>
+</section>
+
+
+</div>
+
+<script src="admin-relatorios.js"></script>
+</body>
+</html>

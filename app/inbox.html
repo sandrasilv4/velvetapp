@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+  <meta charset="UTF-8">
+   <title>Conversas</title>
+  <link rel="stylesheet" href="/app/css/inbox.css">
+    <link rel="stylesheet" href="./area.css">
+</head>
+
+<body>
+ <div id="header-container"></div>
+
+ <section class="area-card">
+    <button type="button" class="btn-voltar" onclick="history.back()">
+      <img src="/assets/voltar.png" alt="Voltar">
+    </button>
+
+   <h3>Conversas</h3>
+
+  <div class="content">
+    <main id="inbox" class="inbox"></main>
+      <!-- ITEM DO CHAT -->
+      <!--
+      Estados esperados (JS controla classes/labels):
+
+      1) Cliente recebeu mensagem:
+         <span class="status status-sent">✓</span>
+
+      2) Cliente leu e não respondeu:
+         <span class="status status-read">✓✓</span>
+
+      3) Modelo entrou no chat, leu e não respondeu:
+         <span class="status status-reply">Necessita de resposta</span>
+
+      4) Modelo ainda não visualizou:
+         <span class="status status-unseen">Não visto</span>
+      -->
+
+      <!-- EXEMPLO ESTRUTURAL -->
+      <!--
+      <div class="chat-item">
+        <div class="avatar">
+          <img src="avatar.jpg" />
+        </div>
+
+        <div class="chat-body">
+          <div class="chat-top">
+            <span class="chat-name">Cliente</span>
+            <span class="chat-time">14:32</span>
+          </div>
+
+          <div class="chat-bottom">
+            <span class="chat-last">Última mensagem aqui…</span>
+
+            <div class="chat-status">
+              <span class="status status-read">✓✓</span>
+            </div>
+          </div>
+        </div>
+      </div>
+      -->
+    </main>
+
+  </div>
+
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app/js/inbox.js"></script>
+  <script src="./header.js"></script>
+</body>
+</html>

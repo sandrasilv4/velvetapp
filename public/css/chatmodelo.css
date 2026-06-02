@@ -1,0 +1,616 @@
+
+
+/* =========================
+   PÁGINA PRINCIPAL
+========================= */
+.pagina-chat {
+  height: 100%;
+  padding: 16px;
+  display: flex;
+  flex-direction: column;
+}
+
+.pagina-chat > h2 {
+  margin: 0 0 16px;
+  flex-shrink: 0;
+}
+
+h2 #modeloNome {
+  color: #7B2CFF;
+}
+
+#clienteNome {
+  color: #7B2CFF; /* roxo Velvet */
+  font-weight: 700;
+}
+
+/* =========================
+   LAYOUT GERAL
+========================= */
+
+.chat-layout {
+  flex: 1;
+  display: flex;
+  gap: 20px;
+  min-height: 0;
+}
+
+/* =========================
+   PAINEL PADRÃO
+========================= */
+
+.painel {
+  background: #fff;
+  border-radius: 18px;
+  border: 1px solid #9E6BFF;
+  box-shadow: 0 6px 20px rgba(93,36,190,0.15);
+}
+
+/* =========================
+   LISTA DE CLIENTES (MODELO)
+========================= */
+
+.lista-clientes {
+  width: 220px;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+
+  height: 100%;
+  min-height: 0;
+}
+
+.lista-clientes h4 {
+  margin: 0 0 12px;
+}
+
+#listaClientes {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+
+  flex: 1;            /* 🔑 ocupa o espaço restante */
+  min-height: 0;      /* 🔑 obrigatório em flex */
+  overflow-y: auto;   /* 🔥 scroll interno */
+}
+
+
+#listaClientes li {
+  padding: 8px 10px;
+  margin-bottom: 6px;
+  background: #9E6BFF ;
+  color: #fff;
+  border-radius: 12px;
+  cursor: pointer;
+  font-size: 12px;
+  transition: 0.2s;
+}
+
+#listaClientes li:hover {
+  background:#7B2CFF;
+}
+
+/* =========================
+   ÁREA DO CHAT
+========================= */
+
+.chat-area {
+  flex: 1;
+  padding: 14px;
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+}
+
+/* HEADER DO CHAT */
+.chat-header {
+  padding-bottom: 8px;
+  margin-bottom: 8px;
+  border-bottom: 1px solid #9E6BFF;
+  flex-shrink: 0;
+}
+
+/* ITEM NORMAL */
+.chat-item {
+  padding: 10px 14px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-bottom: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-direction: column;
+  gap: 4px;
+}
+
+/* 🔔 BADGE BASE */
+.chat-item .badge {
+  background: linear-gradient(135deg, #FF4ECD, #FF2E93);
+  align-self: flex-start;
+  white-space: nowrap;
+  color: #fff;
+  font-size: 10px;
+  padding: 2px 8px;
+  border-radius: 12px;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(255, 46, 147, 0.45);
+}
+
+/* 🆕 NOVO VIP */
+.chat-item[data-status="novo"] .badge {
+  background: linear-gradient(135deg, #00E676, #00C853);
+  box-shadow: 0 2px 8px rgba(0, 200, 83, 0.45);
+}
+
+/* 👀 NÃO VISTO */
+.chat-item[data-status="nao-visto"] .badge {
+  background: linear-gradient(135deg, #FF9100, #FF6D00);
+  box-shadow: 0 2px 8px rgba(255, 109, 0, 0.45);
+}
+
+/* 🕒 POR RESPONDER */
+.chat-item[data-status="por-responder"] .badge {
+  background: linear-gradient(135deg, #f04033, #f0c8c8);
+}
+
+.chat-item[data-status="novo"] .badge {
+  background: linear-gradient(135deg, #00E676, #00C853);
+  color: #fff;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(0,200,83,.45);
+}
+
+.chat-item[data-status="nao-visto"] .badge {
+  background: linear-gradient(135deg, #FF9100, #FF6D00);
+}
+
+
+.chat-item.novo {
+  background: rgba(0, 200, 83, 0.08);
+}
+
+.chat-item[data-status="visto"] .badge {
+  color: #fff;
+  font-weight: bold;
+}
+
+.chat-item .tempo {
+  opacity: 0.8;
+  font-size: 11px;
+}
+
+.chat-item[data-status="novo"] .tempo {
+  opacity: 0.6;
+  font-style: italic;
+}
+
+
+/* BOTÃO 📦 */
+#btnEnviarConteudo {
+  width: 40px;
+  height: 40px;
+  min-width: 80px;
+
+  border-radius: 12px;          /* 🔥 NÃO oval */
+  padding: 0;
+
+  background: linear-gradient(135deg, #7b2cff, #9E6BFF);
+  color: #fff;
+  font-size: 14px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 12px rgba(123,44,255,0.35);
+}
+
+/* BOTÃO ENVIAR */
+#sendBtn {
+  height: 40px;
+  width: 40px;
+  padding: 0 18px;
+  border-radius: 14px;          /* 🔥 igual input */
+  border: none;
+
+  background: linear-gradient(135deg, #7b2cff, #9E6BFF);
+  color: #fff;
+
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+/* =========================
+   OVERLAY
+========================= */
+
+#popupConteudos.hidden {
+  display: none;
+}
+/* GRID DE CONTEÚDOS NO POPUP */
+.preview-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 🔥 4 por linha */
+  row-gap: 16px;
+  padding: 12px 4px;
+}
+
+/* ITEM */
+.preview-item {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 1 / 1;      /* quadrado */
+  border-radius: 12px;
+  overflow: hidden;
+  cursor: pointer;
+  border: 2px solid transparent;
+  background: #fff;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.08);
+}
+
+.preview-item img,
+.preview-item video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;              /* visual bonito */
+  object-position: center top;    /* 🔥 preserva rosto */
+}
+.preview-item img {
+  object-position: 50% 15%;
+}
+
+
+/* SELECIONADO */
+.preview-item.selected {
+  border-color: #7B2CFF;
+  box-shadow: 0 0 0 2px rgba(123,44,255,0.25);
+}
+
+.preview-item.selected::after {
+  content: "✓";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 20px;
+  height: 20px;
+  background: #7B2CFF;
+  color: #fff;
+  font-size: 16px;
+  font-weight: bold;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+
+
+.preview-box {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  max-width: 90vw;
+  max-height: 90vh;
+  background: #fff;
+  border-radius: 14px;
+  padding: 10px;
+}
+
+.preview-box img,
+.preview-box video {
+  max-width: 100%;
+  max-height: 80vh;
+}
+
+.preview-close {
+  position: absolute;
+  top: 8px;
+  right: 12px;
+  font-size: 22px;
+  cursor: pointer;
+  z-index: 2;
+}
+
+.preview-box video {
+  pointer-events: auto;
+}
+
+.preview-close {
+  pointer-events: auto;
+}
+
+
+/* CONTAINER DE SCROLL DO POPUP */
+.preview-scroll {
+  flex: 1;
+  max-height: 300px;
+  overflow-y: auto;
+  padding-right: 6px;
+}
+
+
+/* =========================
+   PREÇO
+========================= */
+.popup-preco {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.popup-preco label {
+  font-size: 14px;
+  font-weight: 500;
+}
+
+.popup-preco input {
+  width: 120px;
+  height: 34px;
+  padding: 0 10px;
+
+  border-radius: 10px;
+  border: 1px solid #9E6BFF;
+  font-size: 16px;
+}
+
+.linha-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.tempo {
+  font-size: 12px;
+  color: #fff;
+}
+.chat-conteudo {
+  border-radius: 14px;
+  overflow: hidden;
+
+  /* 🔥 limita tamanho da bolha */
+  max-width: 220px;
+
+  /* 🔥 CORREÇÃO DEFINITIVA */
+  display: flex;
+  flex-direction: column;
+}
+
+/* garante que tudo fique um embaixo do outro */
+.chat-conteudo > * {
+  width: 100%;
+}
+
+
+/* imagem / vídeo */
+.chat-conteudo img,
+.chat-conteudo video {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* estados */
+
+.chat-conteudo.nao-visto {
+  filter: none !important;
+  opacity: 1 !important;
+  box-shadow: 0 0 0 5px rgba(233, 238, 236, 0.8) !important;
+}
+
+/* info abaixo da mídia */
+.conteudo-info {
+  padding: 8px 6px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  color: #7B2CFF;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 500;
+}
+
+/* texto */
+.status-bloqueado {
+  opacity: 0.9;
+}
+
+/* preço */
+.valor-conteudo,
+.preco-bloqueado {
+  font-size: 14px;
+  font-weight: 700;
+  color: #7B2CFF;
+}
+
+
+.chat-topo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.chat-identidade {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.chat-avatar {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #7B2CFF;
+}
+
+/* ===============================
+   CONTEÚDO NÃO HERDA BALÃO DE TEXTO
+=============================== */
+
+.msg:has(.chat-conteudo) {
+  background: none !important;
+  padding: 0 !important;
+  border-radius: 0 !important;
+  max-width: unset !important;
+}
+
+.msg:has(.chat-conteudo) {
+  align-self: flex-end; 
+}
+/* =====================================================
+   🔥 OVERRIDE FINAL – GRID QUADRADO VELVET (FORÇADO)
+===================================================== */
+
+/* força card correto */
+.chat-conteudo.premium {
+  width: auto !important;
+  height: auto !important;
+  max-width: 200px;
+
+  padding: 10px;
+  border-radius: 18px;
+  overflow: hidden;
+}
+
+/* grid ocupa tudo */
+.chat-conteudo.premium[data-qtd="1"]{
+  max-width:200px;
+}
+
+.chat-conteudo.premium .pacote-grid {
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 6px;
+  width: 100%;
+  height: auto;
+}
+
+/* 5+ mídias → 4 por linha */
+.chat-conteudo.premium[data-qtd="5"] .pacote-grid,
+.chat-conteudo.premium[data-qtd="6"] .pacote-grid,
+.chat-conteudo.premium[data-qtd="7"] .pacote-grid,
+.chat-conteudo.premium[data-qtd="8"] .pacote-grid,
+.chat-conteudo.premium[data-qtd="9"] .pacote-grid,
+.chat-conteudo.premium[data-qtd="10"] .pacote-grid {
+  grid-template-columns: repeat(3, 1fr);
+}
+
+/* 🔥 FORÇA QUADRADO (mata círculo) */
+.chat-conteudo.premium .midia-item {
+  width: 100% !important;
+  aspect-ratio: 1 / 1 !important;
+
+  border-radius: 14px !important; /* arredondado, NÃO círculo */
+  overflow: hidden;
+
+  background: #e0e0e0;
+}
+
+/* mídia preenche tudo */
+.chat-conteudo.premium .midia-item img,
+.chat-conteudo.premium .midia-item video {
+  width: 100% !important;
+  height: 100% !important;
+  object-fit: cover !important;
+  display: block;
+}
+/* =========================================
+   🔥 MODELO NUNCA VÊ CONTEÚDO BLOQUEADO
+========================================= */
+
+body.role-modelo .chat-conteudo,
+body.role-modelo .chat-conteudo * {
+  filter: none !important;
+  opacity: 1 !important;
+  pointer-events: auto !important;
+}
+
+
+/* ===============================
+   🔥 FIX ALINHAMENTO LISTA CLIENTES
+=============================== */
+
+#listaClientes li,
+.chat-item {
+  text-align: left;          /* ❗ força alinhamento à esquerda */
+  align-items: stretch;     /* ❗ remove centralização vertical */
+}
+
+/* linha nome + tempo */
+.chat-item .linha-topo {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  text-align: left;          /* ❗ garante esquerda */
+}
+
+/* nome sempre à esquerda */
+.chat-item .nome {
+  text-align: left;
+}
+
+/* tempo sempre à direita */
+.chat-item .tempo {
+  text-align: right;
+  margin-left: auto;
+}
+
+/* badge nunca centralizado */
+.chat-item .badge {
+  align-self: flex-start;    /* ❗ fica à esquerda */
+  margin-top: 4px;
+}
+
+/* =========================================
+   🔥 FIX FINAL SCROLL – NÃO COMER HEADER
+========================================= */
+
+html, body {
+  height: 100% !important;
+  overflow: hidden !important; /* impede scroll do body */
+}
+
+.chat-topo {
+  position: fixed !important;
+  top: calc(64px + env(safe-area-inset-top, 0px));
+  left: 0;
+  right: 0;
+  height: 64px;
+}
+
+@media (max-width: 480px) {
+  .chat-topo {
+    top: calc(56px + env(safe-area-inset-top, 0px));
+  }
+}
+
+.chat-conteudo + .msg-meta{
+  background:#9E6BFF;
+  color:#fff;
+  margin-left:auto;
+   display:inline-flex;
+  align-items:center;
+  gap:4px;
+
+  font-size:10px;
+  padding:2px 6px;
+
+  border-radius:8px;
+   margin-top:4px;
+  width:fit-content;
+}
+
+.chat-conteudo + .msg-meta{
+  flex-direction:row;
+  white-space:nowrap;
+}
+  
+
+
+

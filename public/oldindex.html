@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8" />
+  <title>Velvet</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style_app.css">
+<link rel="icon" href="/favicon.ico" sizes="any">
+<link rel="icon" type="image/png" sizes="32x32" href="/favicon-32x32.png">
+<link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png">
+<link rel="apple-touch-icon" href="/apple-touch-icon.png">
+
+<link rel="manifest" href="/manifest.json">
+<meta name="theme-color" content="#7B2CFF">
+</head>
+
+<body>
+
+<div class="page-wrapper">
+  <div class="landing">
+
+    <!-- CAPA -->
+    <div class="landing-cover">
+      <img src="assets/cap.png" alt="Capa Velvet">
+    </div>
+    <!-- LOGIN -->
+    <div class="landing-login">
+
+      <img src="assets/velvet.png" class="logo" alt="Velvet">
+
+      <div class="login-box">
+        <button class="btn btn-Login" onclick="selectRole()">
+          Faça seu Login
+        </button>
+
+        <button class="btn btn-cadastro" onclick="startRegister()">
+          Cadastre-se
+        </button>
+
+      <div class="footer-links">
+        <a href="contato.html">Contato</a>
+        <a href="#" onclick="openLegalModal(event, '/terms.html')">Termos de Uso</a>
+        <a href="#" onclick="openLegalModal(event, '/policies.html')">Políticas de Utilização</a>
+        <a href="#" onclick="openLegalModal(event, '/privacy.html')">Políticas de Privacidade</a>
+      </div>
+
+      <div class="footer-linksC">
+        <a href="#" onclick="startRegister()">Criar conta</a>
+      </div>
+
+    </div> <!-- landing-login -->
+
+  </div> <!-- landing -->
+</div> <!-- page-wrapper -->
+
+<!-- LOGIN / REGISTER MODAL -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeLoginModal()"></div>
+
+  <div class="modal-box">
+    <h2 id="modalTitle">Entrar</h2>
+
+    <input id="loginEmail" type="email" placeholder="Email">
+    <input id="loginSenha" type="password" placeholder="Senha">
+
+    <select id="registerRole" class="hidden">
+      <option value="">Escolha o tipo de conta</option>
+      <option value="cliente">Quero ser Membro</option>
+      <option value="modelo">Quero criar Conteúdo</option>
+    </select>
+
+    <button id="modalSubmit" class="btn btn-primary">
+      Entrar
+    </button>
+
+    <p class="modal-switch">
+      Não tem conta?
+      <span onclick="startRegister()">Criar conta</span>
+    </p>
+
+    <p class="modal-switch hidden" id="switchToLogin">
+      Já tem conta?
+      <span onclick="switchToLogin()">Entrar</span>
+    </p>
+
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+  </div>
+</div>
+
+<!-- MODAL LEGAL -->
+<div id="legalModal" class="legal-modal hidden">
+  <div class="legal-overlay" onclick="closeLegalModal()"></div>
+  <div class="legal-box">
+    <button class="legal-close" onclick="closeLegalModal()">×</button>
+    <iframe id="modalFrame"></iframe>
+  </div>
+</div>
+
+<!-- AGE GATE +18 -->
+<div id="ageModal" class="modal hidden">
+  <div class="modal-overlay"></div>
+
+  <div class="modal-box">
+    <h2>Plataforma exclusiva para maiores de 18 anos</h2>
+
+    <p>
+      Ao continuar, você declara que possui <strong>18 anos ou mais</strong>
+      e concorda com os Termos e Políticas da Velvet disponíveis para consulta em nossa pagina inicial.
+    </p>
+
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn btn-primary" onclick="confirmAge(true)">
+        Sou maior de 18
+      </button>
+
+      <button class="btn btn-secondary" onclick="confirmAge(false)">
+        Sou menor
+      </button>
+    </div>
+  </div>
+</div>
+
+<!-- tracking origem -->
+<script>
+  const params = new URLSearchParams(window.location.search);
+
+  const ref = params.get("ref");
+  const src = params.get("src");
+
+  if (ref) localStorage.setItem("ref_modelo", ref);
+  if (src) localStorage.setItem("origem_trafego", src);
+
+  if (ref || src) {
+    fetch("/api/track-acesso", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ref, src })
+    });
+  }
+</script>
+
+<script>
+if ("serviceWorker" in navigator) {
+  navigator.serviceWorker.register("/sw.js")
+    .then(() => console.log("✅ Service Worker registrado"))
+    .catch(err => console.error("❌ SW erro:", err));
+}
+</script>
+
+
+<!-- SCRIPT -->
+  <script src="/app.js"></script>
+<script src="script_app.js" defer></script>
+</body>
+</html>

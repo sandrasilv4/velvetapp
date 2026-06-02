@@ -1,0 +1,693 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+:root {
+  --font-primary: "Poppins", system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", Roboto, Arial, sans-serif;
+}
+
+.cards {
+  position: relative;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+.cards img {
+  width: 100%;
+  height: 100%;
+  aspect-ratio: 4 / 5; 
+  object-fit: cover;
+  display: block;
+}
+
+.only-modelo {
+  display: none;
+}
+/* ===============================
+   📸 BOTÃO CÂMERA
+=============================== */
+.btn-camera {
+  position: absolute;
+  background: rgba(0, 0, 0, 0.55);
+  color: #fff;
+  border: none;
+  border-radius: 50%;
+  cursor: pointer;
+  width: 36px;
+  height: 36px;
+  font-size: 18px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn-camera:hover {
+  background: rgba(0, 0, 0, 0.75);
+}
+
+/* 📸 CÂMERA NA CAPA */
+.perfil-capa {
+  position: relative;
+}
+
+.btn-camera.capa {
+  bottom: 12px;
+  right: 12px;
+}
+
+/* 📸 CÂMERA NO AVATAR */
+.perfil-avatar {
+  position: relative;
+}
+
+.btn-camera.avatar {
+  bottom: 4px;
+  right: 4px;
+  width: 30px;
+  height: 30px;
+  font-size: 16px;
+}
+
+/* =========================
+   CARD PRINCIPAL
+========================= */
+.area-card {
+  background: #fff;
+  margin: 16px;
+  border-radius: 16px;
+  padding: 16px;
+}
+
+.area-info {
+  display: flex;
+  flex-direction: column;
+}
+
+/* SALDOS */
+.area-saldos {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  margin-top: 16px;
+}
+
+.saldo-box {
+  background: #F6F4FF;
+  border-radius: 12px;
+  padding: 12px;
+}
+
+.saldo-titulo {
+  font-size: 20px;
+  color: #6A6A75;
+}
+
+.saldo-valor {
+  display: block;
+  font-size: 24px;
+  margin-top: 4px;
+  color: #1E1E26;
+}
+
+/* GRID DE OPÇÕES */
+.area-grid {
+  margin: 20px;
+  border-radius: 16px;
+  padding: 14px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+}
+
+.area-item {
+  background: #fff;
+  border-radius: 14px;
+  padding: 14px;
+  text-decoration: none;
+  color: #1E1E26;
+  border: 1px solid #E6E6EA;
+}
+
+.area-item strong {
+  display: block;
+  font-size: 26px;
+  color: #7B2CFF;
+}
+
+.area-item span {
+  font-size: 22px;
+  color: #6A6A75;
+
+}
+
+/* DESTAQUE (novo / importante) */
+.area-item.destaque {
+  border: 2px solid #7B2CFF;
+}
+
+/* SAIR */
+.area-item.sair strong {
+  color: #C62828 !Important;
+  border-color: #F1DADA;
+}
+
+.footer {
+  margin-top: 60px;
+  padding: 20px;
+  background: transparent;
+  text-align: center;
+  font-size: 12px;
+}
+
+.footer-links {
+  margin-bottom: 10px;
+}
+
+.footer-links a {
+  color: #1E1E26;
+  margin: 0 10px;
+  text-decoration: none;
+}
+
+.footer-links a:hover {
+  color: #1E1E26;
+  text-decoration: underline;
+}
+
+.footer-copy {
+  font-size: 12px;
+  color: #1E1E26;
+}
+
+.container-dados .label {
+  margin-top: 10px;
+  font-size: 13px;          /* 🔥 pequeno igual labels */
+  color: #1E1E26;
+  opacity: 0.75;            /* mais discreto */
+  line-height: 1.4;
+}
+
+.form-info {
+  display: block;
+  font-size: 20px;
+  margin-bottom: 12px;
+  color: #6A6A75;
+}
+
+.form-area {
+  margin: 16px;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 12px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+}
+
+.form-group.full {
+  grid-column: 1 / -1;
+}
+
+.form-group label {
+  font-size: 18px;
+  margin-bottom: 4px;
+  color: #1E1E26;
+}
+
+.form-group input,
+.form-group textarea {
+  padding: 10px 12px;
+  border-radius: 10px;
+  border: 1px solid #C9C9C9;
+  font-size: 16px;
+  font-family: inherit;
+}
+
+.btn-salvar {
+  margin-top: 16px;
+  width: 50%;
+  border-radius: 14px;
+  border: none;
+  background: #7B2CFF;
+  color: #fff;
+  font-weight: 600;
+  cursor: pointer;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+/* ===============================
+ DANGER ZONE
+=============================== */
+
+.danger-zone {
+  margin-top: 40px;
+  text-align: center;
+}
+
+.btn-danger {
+  background: none;
+  color: #d93025;
+  border: 1.5px solid #d93025;
+  padding: 12px 20px;
+  border-radius: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all .2s ease;
+}
+
+.btn-danger:hover {
+  background: #d93025;
+  color: #fff;
+}
+
+/* ===============================
+ MODAL EXCLUIR CONTA
+=============================== */
+
+.modal {
+  position: fixed;
+  inset: 0;
+  z-index: 9999;
+}
+
+.modal.hidden {
+  display: none;
+}
+
+.modal-overlay {
+  position: absolute;
+  inset: 0;
+  background: rgba(0,0,0,0.55);
+}
+
+.modal-box {
+  position: relative;
+  max-width: 420px;
+  margin: 15vh auto;
+  background: #fff;
+  padding: 24px;
+  border-radius: 16px;
+  text-align: center;
+}
+
+.modal-box h3 {
+  color: #d93025;
+  margin-bottom: 12px;
+}
+
+.modal-box p {
+  font-size: 14px;
+  color: #333;
+  line-height: 1.5;
+}
+
+.modal-actions {
+  display: flex;
+  gap: 12px;
+  margin-top: 20px;
+}
+
+.btn-cancelar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #eee;
+  cursor: pointer;
+}
+
+.btn-confirmar {
+  flex: 1;
+  padding: 10px;
+  border-radius: 10px;
+  border: none;
+  background: #d93025;
+  color: #fff;
+  cursor: pointer;
+}
+
+/* ===============================
+ CONFIRMAÇÃO POR SENHA
+=============================== */
+
+.label-danger {
+  display: block;
+  margin-top: 16px;
+  margin-bottom: 6px;
+  font-size: 14px;
+  font-weight: 500;
+  color: #d93025;
+}
+
+.input-danger {
+  display: block;
+  width: 100%;
+  max-width: 320px;      /* 🔑 limita largura */
+  margin: 0 auto;        /* 🔑 centraliza */
+  padding: 8px 12px;
+  border-radius: 10px;
+  border: 1.5px solid #d93025;
+  font-size: 13px;
+}
+
+.input-danger:focus {
+  outline: none;
+  box-shadow: 0 0 0 2px rgba(217,48,37,.25);
+}
+
+.erro-danger {
+  margin-top: 8px;
+  font-size: 13px;
+  color: #d93025;
+}
+
+.hidden {
+  display: none;
+}
+
+/* ============================================
+   SEPARADOR
+============================================ */
+.separator {
+    border: none;
+    border-top: 1px solid #aaa8a8;
+    margin: 30px 0;
+}
+
+/* =========================
+   CAMPOS COM BOTÃO COPIAR
+========================= */
+
+.copy-field input {
+  flex: 1;
+  padding: 14px 16px;   
+  height: 48px;         
+  font-size: 14px;
+}
+
+.copy-field button {
+  padding: 0 14px;
+  border-radius: 10px;
+  border: none;
+  background: #F1EDFF;
+  color: #7B2CFF;
+  font-weight: 600;
+  cursor: pointer;
+}
+
+.btn-voltar {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: #7B2CFF;
+  font-size: 15px;
+  padding: 6px 0;
+}
+
+.btn-voltar img {
+  width: 18px;
+  height: 18px;
+}
+
+.area-banner {
+  margin: 20px;
+  border-radius: 16px;
+  overflow: hidden;
+}
+
+.area-banner img {
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+
+/* ===============================
+   VERIFICAÇÃO – ETAPAS
+=============================== */
+
+.verificacao-steps {
+  display: flex;
+  gap: 12px;
+  margin: 16px 0 24px;
+  flex-wrap: wrap;
+}
+
+.verificacao-steps .step {
+  font-size: 0.85rem;
+  padding: 6px 12px;
+  border-radius: 999px;
+  background: #f1f1f5;
+  color: #666;
+  font-weight: 500;
+}
+
+/* etapa atual */
+.verificacao-steps .step.ativo {
+  background: #7b2cff;
+  color: #fff;
+}
+
+/* etapa concluída */
+.verificacao-steps .step.concluido {
+  background: #e7ddff;
+  color: #5b21b6;
+}
+
+/* ===============================
+   STATUS DE VERIFICAÇÃO
+=============================== */
+
+.status-verificacao {
+  border-radius: 12px;
+  padding: 14px 16px;
+  margin: 16px 0 24px;
+  font-size: 0.9rem;
+}
+
+.status-verificacao strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.status-texto {
+  font-weight: 600;
+}
+
+/* descrição */
+.status-descricao {
+  margin-top: 6px;
+  color: #444;
+  line-height: 1.4;
+}
+
+.status-em-analise {
+  background: #fff7e6;
+  border: 1px solid #ffe1a3;
+}
+
+.status-em-analise .status-texto {
+  color: #b45309;
+}
+
+.status-aprovado {
+  background: #ecfdf3;
+  border: 1px solid #bbf7d0;
+}
+
+.status-aprovado .status-texto {
+  color: #047857;
+}
+
+.status-recusado {
+  background: #fff1f2;
+  border: 1px solid #fecdd3;
+}
+
+.status-recusado .status-texto {
+  color: #be123c;
+}
+
+.status-motivo {
+  margin-top: 6px;
+  font-size: 0.85rem;
+  color: #7f1d1d;
+}
+
+.status-bloqueado {
+  background: #f4f4f5;
+  border: 1px solid #d4d4d8;
+}
+
+.status-bloqueado .status-texto {
+  color: #18181b;
+}
+
+
+/* ============================================
+   PERFIL – CAPA + AVATAR
+============================================ */
+
+.perfil-capa {
+  width: 100%;
+  height: 160px;
+  border-radius: 16px;
+  overflow: hidden;
+  margin-bottom: 48px;
+}
+
+.perfil-capa img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.perfil-avatar {
+  position: relative;
+  width: 96px;
+  height: 96px;
+  margin: -64px auto 8px;
+  border-radius: 50%;
+  background: #fff;
+  padding: 4px;
+}
+
+.perfil-avatar img {
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 2px solid #fff;
+}
+
+/* ============================================
+   NOME + VIP
+============================================ */
+
+.perfil-nome {
+  text-align: center;
+  font-size: 22px;
+  font-weight: 600;
+  margin-top: 8px;
+  color: #1E1E26;
+}
+
+.area-assinantes {
+  text-align: center;
+  margin-top: 4px;
+  font-size: 14px;
+  color: #6A6A75;
+}
+
+.area-assinantes span {
+  font-weight: 600;
+  color: #7B2CFF;
+}
+
+/* ============================================
+   ÁREA SECTION PADRÃO
+============================================ */
+
+.area-section {
+  margin: 20px 16px;
+}
+
+.area-titulo {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: #1E1E26;
+}
+
+/* ============================================
+   LINKS / ITENS
+============================================ */
+
+.area-item {
+  display: block;
+  transition: transform .15s ease, box-shadow .15s ease;
+}
+
+.area-item:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+}
+
+/* sair */
+.area-item.sair {
+  border-color: #F1DADA;
+  background: #FFF5F5;
+}
+
+.area-item.sair:hover {
+  box-shadow: 0 6px 18px rgba(214,48,49,0.15);
+}
+
+/* ============================================
+   GRID – CRIADOR
+============================================ */
+
+.area-grid {
+  background: transparent;
+  margin: 0;
+  padding: 0;
+}
+
+/* ============================================
+   RESPONSIVO – DESKTOP
+============================================ */
+
+@media (min-width: 768px) {
+  .area-card {
+    max-width: 720px;
+    margin: 24px auto;
+  }
+
+  .area-section {
+    max-width: 720px;
+    margin: 24px auto;
+  }
+
+  .area-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .area-item strong {
+    font-size: 18px;
+  }
+
+  .area-item span {
+    font-size: 14px;
+  }
+
+  .perfil-capa {
+    height: 220px;
+  }
+
+  .perfil-avatar {
+    width: 112px;
+    height: 112px;
+    margin-top: -72px;
+  }
+}
+
+
+
+
+
+
+
+
+
+

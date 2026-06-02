@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Política de Privacidade | Velvet</title>
+  <style>
+    :root {
+      --primary: #6f3cff;
+      --primary-dark: #5a2fe0;
+      --text: #1e1b2e;
+      --text-soft: #5e5873;
+      --bg: #f7f7fb;
+      --card: #f1eef4;
+      --line: #ddd8e6;
+      --white: #ffffff;
+    }
+
+    * {
+      box-sizing: border-box;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      margin: 0;
+      background: var(--bg);
+      color: var(--text);
+      font-family: 'Poppins', Arial, Helvetica, sans-serif;
+      line-height: 1.8;
+    }
+
+    .lang-switcher {
+      display: flex;
+      justify-content: flex-end;
+      gap: 10px;
+      max-width: 980px;
+      margin: 20px auto 0;
+      padding: 0 20px;
+    }
+
+    .lang-switcher button {
+      border: 1px solid var(--line);
+      background: var(--white);
+      color: var(--text);
+      border-radius: 10px;
+      padding: 8px 14px;
+      font-family: 'Poppins', Arial, sans-serif;
+      font-weight: 600;
+      cursor: pointer;
+      transition: 0.2s ease;
+    }
+
+    .lang-switcher button:hover,
+    .lang-switcher button.active {
+      background: var(--card);
+      color: var(--primary);
+      border-color: var(--primary);
+    }
+
+    .container {
+      max-width: 980px;
+      margin: 0 auto;
+      padding: 40px 20px 80px;
+    }
+
+    .page-title {
+      font-size: 2.2rem;
+      font-weight: 800;
+      color: var(--primary);
+      margin: 0 0 22px;
+      line-height: 1.2;
+      text-align: center;
+    }
+
+    .intro {
+      font-size: 1.08rem;
+      color: var(--text);
+      margin-bottom: 28px;
+    }
+
+    .toc {
+      background: var(--card);
+      border-radius: 18px;
+      padding: 26px 28px;
+      margin: 28px 0 48px;
+    }
+
+    .toc h2 {
+      margin: 0 0 18px;
+      font-size: 1.5rem;
+      color: var(--text);
+    }
+
+    .toc ol {
+      margin: 0;
+      padding-left: 22px;
+      columns: 1;
+    }
+
+    .toc li {
+      margin-bottom: 10px;
+      color: var(--text);
+    }
+
+    .toc a {
+      color: var(--text);
+      text-decoration: none;
+      transition: 0.2s ease;
+    }
+
+    .toc a:hover {
+      color: var(--primary);
+    }
+
+    .divider {
+      border: none;
+      border-top: 1px solid var(--line);
+      margin: 42px 0;
+    }
+
+    section {
+      scroll-margin-top: 30px;
+    }
+
+    .section-title {
+      font-size: 2rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin: 0 0 20px;
+      line-height: 1.25;
+    }
+
+    .item-title {
+      font-size: 1.12rem;
+      font-weight: 700;
+      color: var(--text);
+      margin: 22px 0 8px;
+    }
+
+    p {
+      margin: 0 0 14px;
+      color: var(--text);
+      font-size: 1.06rem;
+    }
+
+    ul {
+      margin: 10px 0 18px 0;
+      padding-left: 22px;
+    }
+
+    li {
+      margin-bottom: 6px;
+      font-size: 1.04rem;
+    }
+
+    .contact-box {
+      background: var(--card);
+      border-radius: 16px;
+      padding: 20px 22px;
+      margin-top: 16px;
+    }
+
+    a.inline-link {
+      color: var(--primary);
+      text-decoration: none;
+      font-weight: 600;
+    }
+
+    a.inline-link:hover {
+      text-decoration: underline;
+    }
+
+    .last-updated {
+      margin: 0 0 24px;
+      padding: 10px 16px;
+      background: #f3eff5;
+      color: #1e1b2e;
+      border-radius: 12px;
+      font-size: 1rem;
+      line-height: 1.5;
+      text-align: center;
+    }
+
+    .footer {
+      margin-top: 60px;
+      padding: 20px;
+      background: none;
+      color: #1E1E26;
+      text-align: center;
+      font-size: 14px;
+    }
+
+    .footer-links {
+      margin-bottom: 10px;
+    }
+
+    .footer-links a {
+      color: #1E1E26;
+      margin: 0 10px;
+      text-decoration: none;
+    }
+
+    .footer-links a:hover {
+      color: #C9C9C9;
+      text-decoration: underline;
+    }
+
+    .footer-copy {
+      font-size: 12px;
+      color: #1E1E26;
+    }
+
+    @media (max-width: 768px) {
+      .lang-switcher {
+        justify-content: center;
+        padding: 0 16px;
+      }
+
+      .container {
+        padding: 28px 16px 60px;
+      }
+
+      .page-title {
+        font-size: 1.9rem;
+      }
+
+      .section-title {
+        font-size: 1.65rem;
+      }
+
+      .toc {
+        padding: 22px 20px;
+      }
+
+      p, li {
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="lang-switcher">
+    <button type="button" data-lang="pt">PT</button>
+    <button type="button" data-lang="en">EN</button>
+    <button type="button" data-lang="es">ESP</button>
+  </div>
+
+  <main class="container">
+    <h1 class="page-title" id="pageTitle"></h1>
+
+    <div class="last-updated">
+      <strong id="lastUpdatedLabel"></strong> <span id="lastUpdatedDate"></span>
+    </div>
+
+    <p class="intro" id="introText"></p>
+
+    <nav class="toc" id="toc" aria-label="">
+      <h2 id="tocTitle"></h2>
+      <ol id="tocList"></ol>
+    </nav>
+
+    <div id="sectionsContainer"></div>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/terms.html" id="footerTerms"></a>
+      <a href="/privacy.html" id="footerPrivacy"></a>
+      <a href="/policies.html" id="footerPolicies"></a>
+    </div>
+    <div class="footer-copy" id="footerCopy"></div>
+  </footer>
+
+  <script>
+    const translations = {
+      pt: {
+        htmlLang: "pt-BR",
+        title: "Política de Privacidade | Velvet",
+        pageTitle: "Política de Privacidade – Velvet",
+        lastUpdatedLabel: "Última atualização:",
+        lastUpdatedDate: "06/04/2026",
+        introText: "Esta Política de Privacidade descreve como a Velvet Entertainment coleta, utiliza, armazena, compartilha e protege os dados pessoais dos usuários da Plataforma.",
+        tocAriaLabel: "Índice da Política de Privacidade",
+        tocTitle: "Índice",
+        tocItems: [
+          "1. Introdução",
+          "2. Identificação do Controlador",
+          "3. Quem Pode Utilizar a Plataforma",
+          "4. Dados Coletados",
+          "5. Finalidade do Tratamento",
+          "6. Bases Legais",
+          "7. Decisões Automatizadas e Análise de Perfil",
+          "8. Compartilhamento de Dados",
+          "9. Transferência Internacional de Dados",
+          "10. Retenção dos Dados",
+          "11. Direitos dos Titulares",
+          "12. Segurança da Informação",
+          "13. Incidentes de Segurança",
+          "14. Cookies e Tecnologias Semelhantes",
+          "15. Verificação de Identidade (KYC)",
+          "16. Conteúdo Adulto e Responsabilidade",
+          "17. Governança e Proteção de Dados",
+          "18. Alterações",
+          "19. Contato",
+          "20. Disposições Finais"
+        ],
+        sections: [
+          {
+            id: "secao-1",
+            title: "1. Introdução",
+            content: `
+              <p>A presente Política de Privacidade descreve como a <strong>Velvet Entertainment</strong> coleta, utiliza, armazena, compartilha e protege os dados pessoais dos usuários da Plataforma.</p>
+              <p>Esta Política está em conformidade com:</p>
+              <ul>
+                <li>Lei Geral de Proteção de Dados (LGPD – Lei nº 13.709/2018);</li>
+                <li>Regulamento Geral de Proteção de Dados da União Europeia (GDPR – EU 2016/679);</li>
+                <li>Normas aplicáveis sobre cookies e comunicações eletrônicas.</li>
+              </ul>
+              <p>Ao utilizar a Plataforma, o usuário declara que leu, compreendeu e concorda com esta Política.</p>
+            `
+          },
+          {
+            id: "secao-2",
+            title: "2. Identificação do Controlador",
+            content: `
+              <p><strong>Velvet Entertainment Ltda</strong></p>
+              <p><strong>CNPJ:</strong> 66.615.892/0001-43</p>
+              <p><strong>Endereço:</strong> R Cel José Eusébio, 95 casa 13 – Higienópolis – São Paulo – SP – CEP 01.239-030</p>
+              <p><strong>E-mail:</strong> <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+              <p>O Encarregado de Proteção de Dados (DPO) pode ser contatado pelos canais acima.</p>
+            `
+          },
+          {
+            id: "secao-3",
+            title: "3. Quem Pode Utilizar a Plataforma",
+            content: `
+              <p>A Velvet é destinada exclusivamente a maiores de 18 anos.</p>
+              <p>Caso seja identificado cadastro de menor, a conta será removida e os dados excluídos, conforme a legislação aplicável.</p>
+            `
+          },
+          {
+            id: "secao-4",
+            title: "4. Dados Coletados",
+            content: `
+              <h3 class="item-title">4.1 Dados fornecidos pelo usuário</h3>
+              <ul>
+                <li>Nome ou nome artístico;</li>
+                <li>E-mail;</li>
+                <li>Data de nascimento;</li>
+                <li>Dados de pagamento;</li>
+                <li>Documentos de verificação (KYC);</li>
+                <li>Conteúdos, mensagens e interações.</li>
+              </ul>
+
+              <h3 class="item-title">4.2 Dados coletados automaticamente</h3>
+              <ul>
+                <li>Endereço IP;</li>
+                <li>Localização aproximada;</li>
+                <li>Tipo de dispositivo, navegador e sistema operacional;</li>
+                <li>Logs de acesso e uso;</li>
+                <li>Cookies e identificadores técnicos.</li>
+              </ul>
+
+              <h3 class="item-title">4.3 Dados de terceiros</h3>
+              <ul>
+                <li>Provedores de pagamento;</li>
+                <li>Serviços antifraude e verificação de identidade.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-5",
+            title: "5. Finalidade do Tratamento",
+            content: `
+              <p>Os dados são utilizados para:</p>
+              <ul>
+                <li>Criação e gestão de contas;</li>
+                <li>Verificação de identidade e idade;</li>
+                <li>Processamento de pagamentos e assinaturas;</li>
+                <li>Funcionamento da plataforma (chat, conteúdo, interações);</li>
+                <li>Prevenção de fraudes, abusos e atividades ilegais;</li>
+                <li>Cumprimento de obrigações legais;</li>
+                <li>Comunicação com usuários;</li>
+                <li>Personalização e melhoria da experiência.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-6",
+            title: "6. Bases Legais",
+            content: `
+              <p>O tratamento é realizado com base em:</p>
+              <ul>
+                <li>Execução de contrato;</li>
+                <li>Consentimento;</li>
+                <li>Cumprimento de obrigação legal;</li>
+                <li>Legítimo interesse.</li>
+              </ul>
+              <p>Quando aplicável, a Velvet realiza avaliação de balanceamento para garantir que seus interesses não prejudiquem os direitos dos usuários.</p>
+            `
+          },
+          {
+            id: "secao-7",
+            title: "7. Decisões Automatizadas e Análise de Perfil",
+            content: `
+              <p>A Plataforma pode utilizar sistemas automatizados para:</p>
+              <ul>
+                <li>Detecção de fraude;</li>
+                <li>Análise de comportamento;</li>
+                <li>Segurança da conta.</li>
+              </ul>
+              <p>O usuário poderá solicitar revisão humana dessas decisões e obter informações sobre os critérios utilizados.</p>
+            `
+          },
+          {
+            id: "secao-8",
+            title: "8. Compartilhamento de Dados",
+            content: `
+              <p>Os dados poderão ser compartilhados com:</p>
+              <ul>
+                <li>Processadores de pagamento;</li>
+                <li>Prestadores de serviços tecnológicos (cloud, segurança);</li>
+                <li>Serviços antifraude e compliance;</li>
+                <li>Autoridades públicas, quando exigido por lei.</li>
+              </ul>
+              <p>A Velvet não comercializa dados pessoais.</p>
+            `
+          },
+          {
+            id: "secao-9",
+            title: "9. Transferência Internacional de Dados",
+            content: `
+              <p>Os dados podem ser armazenados ou processados fora do Brasil ou da União Europeia.</p>
+              <p>Nesses casos, a Velvet adota medidas como:</p>
+              <ul>
+                <li>Cláusulas contratuais padrão (SCCs);</li>
+                <li>Avaliações de impacto (TIA);</li>
+                <li>Medidas de segurança adicionais.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-10",
+            title: "10. Retenção dos Dados",
+            content: `
+              <p>Os dados serão armazenados pelo tempo necessário para:</p>
+              <ul>
+                <li>Execução do contrato;</li>
+                <li>Cumprimento de obrigações legais;</li>
+                <li>Prevenção de fraudes;</li>
+                <li>Exercício de direitos em processos judiciais.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-11",
+            title: "11. Direitos dos Titulares",
+            content: `
+              <p>O usuário poderá, a qualquer momento:</p>
+              <ul>
+                <li>Confirmar a existência de tratamento;</li>
+                <li>Acessar seus dados;</li>
+                <li>Corrigir dados incompletos ou incorretos;</li>
+                <li>Solicitar exclusão de dados;</li>
+                <li>Revogar consentimento;</li>
+                <li>Solicitar portabilidade;</li>
+                <li>Opor-se ao tratamento;</li>
+                <li>Solicitar revisão de decisões automatizadas.</li>
+              </ul>
+              <p>Solicitações: <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-12",
+            title: "12. Segurança da Informação",
+            content: `
+              <p>A Velvet adota medidas técnicas e organizacionais como:</p>
+              <ul>
+                <li>Criptografia;</li>
+                <li>Controle de acesso;</li>
+                <li>Monitoramento contínuo;</li>
+                <li>Sistemas antifraude.</li>
+              </ul>
+              <p>Apesar disso, nenhum sistema é totalmente seguro.</p>
+            `
+          },
+          {
+            id: "secao-13",
+            title: "13. Incidentes de Segurança",
+            content: `
+              <p>Em caso de violação de dados pessoais:</p>
+              <ul>
+                <li>Autoridades competentes poderão ser notificadas em até 72 horas, quando aplicável;</li>
+                <li>Usuários serão informados quando houver risco relevante;</li>
+                <li>Medidas corretivas serão adotadas imediatamente.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-14",
+            title: "14. Cookies e Tecnologias Semelhantes",
+            content: `
+              <h3 class="item-title">Tipos de cookies</h3>
+              <ul>
+                <li>Essenciais (necessários para funcionamento);</li>
+                <li>Desempenho (análise de uso);</li>
+                <li>Funcionais (preferências);</li>
+                <li>Marketing (personalização).</li>
+              </ul>
+
+              <h3 class="item-title">Consentimento</h3>
+              <p>O uso de cookies não essenciais depende de consentimento prévio, obtido por meio de banner de preferências.</p>
+              <p>O usuário pode:</p>
+              <ul>
+                <li>Aceitar ou recusar categorias de cookies;</li>
+                <li>Alterar preferências a qualquer momento.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-15",
+            title: "15. Verificação de Identidade (KYC)",
+            content: `
+              <p>Para segurança e cumprimento legal, a Velvet poderá solicitar:</p>
+              <ul>
+                <li>Documentos de identificação;</li>
+                <li>Verificação de idade;</li>
+                <li>Validação de dados financeiros.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-16",
+            title: "16. Conteúdo Adulto e Responsabilidade",
+            content: `
+              <p>A Plataforma pode conter conteúdo adulto.</p>
+              <p>A Velvet atua como intermediadora e não se responsabiliza por conteúdos gerados por usuários.</p>
+              <p>Recomenda-se o uso consciente e práticas seguras de navegação.</p>
+            `
+          },
+          {
+            id: "secao-17",
+            title: "17. Governança e Proteção de Dados",
+            content: `
+              <p>A Velvet adota práticas de governança, incluindo:</p>
+              <ul>
+                <li>Registro de operações de tratamento;</li>
+                <li>Avaliações de impacto quando aplicável;</li>
+                <li>Políticas internas de segurança;</li>
+                <li>Treinamento de equipe.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-18",
+            title: "18. Alterações",
+            content: `
+              <p>Esta Política poderá ser atualizada a qualquer momento.</p>
+              <p>O uso contínuo da Plataforma implica aceitação das alterações.</p>
+            `
+          },
+          {
+            id: "secao-19",
+            title: "19. Contato",
+            content: `
+              <p>Para dúvidas ou solicitações:</p>
+              <p><a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-20",
+            title: "20. Disposições Finais",
+            content: `
+              <p>Esta Política deve ser interpretada em conjunto com os Termos de Uso e conforme a legislação aplicável.</p>
+            `
+          }
+        ],
+        footerTerms: "Termos de Uso",
+        footerPrivacy: "Política de Privacidade",
+        footerPolicies: "Política de Utilização",
+        footerCopy: "© 2026 Velvet. Todos os direitos reservados."
+      },
+
+      en: {
+        htmlLang: "en",
+        title: "Privacy Policy | Velvet",
+        pageTitle: "Privacy Policy – Velvet",
+        lastUpdatedLabel: "Last updated:",
+        lastUpdatedDate: "04/06/2026",
+        introText: "This Privacy Policy describes how Velvet Entertainment collects, uses, stores, shares, and protects the personal data of Platform users.",
+        tocAriaLabel: "Privacy Policy table of contents",
+        tocTitle: "Contents",
+        tocItems: [
+          "1. Introduction",
+          "2. Controller Identification",
+          "3. Who May Use the Platform",
+          "4. Data Collected",
+          "5. Purpose of Processing",
+          "6. Legal Bases",
+          "7. Automated Decisions and Profiling",
+          "8. Data Sharing",
+          "9. International Data Transfers",
+          "10. Data Retention",
+          "11. Data Subject Rights",
+          "12. Information Security",
+          "13. Security Incidents",
+          "14. Cookies and Similar Technologies",
+          "15. Identity Verification (KYC)",
+          "16. Adult Content and Responsibility",
+          "17. Governance and Data Protection",
+          "18. Changes",
+          "19. Contact",
+          "20. Final Provisions"
+        ],
+        sections: [
+          {
+            id: "secao-1",
+            title: "1. Introduction",
+            content: `
+              <p>This Privacy Policy describes how <strong>Velvet Entertainment</strong> collects, uses, stores, shares, and protects the personal data of Platform users.</p>
+              <p>This Policy complies with:</p>
+              <ul>
+                <li>Brazilian General Data Protection Law (LGPD – Law No. 13,709/2018);</li>
+                <li>European Union General Data Protection Regulation (GDPR – EU 2016/679);</li>
+                <li>Applicable rules on cookies and electronic communications.</li>
+              </ul>
+              <p>By using the Platform, the user declares that they have read, understood, and agree to this Policy.</p>
+            `
+          },
+          {
+            id: "secao-2",
+            title: "2. Controller Identification",
+            content: `
+              <p><strong>Velvet Entertainment Ltda</strong></p>
+              <p><strong>CNPJ:</strong> 66.615.892/0001-43</p>
+              <p><strong>Address:</strong> R Cel José Eusébio, 95 casa 13 – Higienópolis – São Paulo – SP – CEP 01.239-030</p>
+              <p><strong>Email:</strong> <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+              <p>The Data Protection Officer (DPO) may be contacted through the channels above.</p>
+            `
+          },
+          {
+            id: "secao-3",
+            title: "3. Who May Use the Platform",
+            content: `
+              <p>Velvet is intended exclusively for persons over 18 years old.</p>
+              <p>If a minor’s registration is identified, the account will be removed and the data deleted, in accordance with applicable law.</p>
+            `
+          },
+          {
+            id: "secao-4",
+            title: "4. Data Collected",
+            content: `
+              <h3 class="item-title">4.1 Data provided by the user</h3>
+              <ul>
+                <li>Name or stage name;</li>
+                <li>Email;</li>
+                <li>Date of birth;</li>
+                <li>Payment data;</li>
+                <li>Verification documents (KYC);</li>
+                <li>Content, messages, and interactions.</li>
+              </ul>
+
+              <h3 class="item-title">4.2 Data collected automatically</h3>
+              <ul>
+                <li>IP address;</li>
+                <li>Approximate location;</li>
+                <li>Device type, browser, and operating system;</li>
+                <li>Access and usage logs;</li>
+                <li>Cookies and technical identifiers.</li>
+              </ul>
+
+              <h3 class="item-title">4.3 Third-party data</h3>
+              <ul>
+                <li>Payment providers;</li>
+                <li>Anti-fraud and identity verification services.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-5",
+            title: "5. Purpose of Processing",
+            content: `
+              <p>Data is used for:</p>
+              <ul>
+                <li>Account creation and management;</li>
+                <li>Identity and age verification;</li>
+                <li>Processing payments and subscriptions;</li>
+                <li>Platform operation (chat, content, interactions);</li>
+                <li>Prevention of fraud, abuse, and illegal activities;</li>
+                <li>Compliance with legal obligations;</li>
+                <li>Communication with users;</li>
+                <li>Personalization and improvement of the user experience.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-6",
+            title: "6. Legal Bases",
+            content: `
+              <p>Processing is carried out based on:</p>
+              <ul>
+                <li>Performance of a contract;</li>
+                <li>Consent;</li>
+                <li>Compliance with legal obligation;</li>
+                <li>Legitimate interest.</li>
+              </ul>
+              <p>When applicable, Velvet performs a balancing assessment to ensure that its interests do not override users’ rights.</p>
+            `
+          },
+          {
+            id: "secao-7",
+            title: "7. Automated Decisions and Profiling",
+            content: `
+              <p>The Platform may use automated systems for:</p>
+              <ul>
+                <li>Fraud detection;</li>
+                <li>Behavior analysis;</li>
+                <li>Account security.</li>
+              </ul>
+              <p>The user may request human review of such decisions and obtain information about the criteria used.</p>
+            `
+          },
+          {
+            id: "secao-8",
+            title: "8. Data Sharing",
+            content: `
+              <p>Data may be shared with:</p>
+              <ul>
+                <li>Payment processors;</li>
+                <li>Technology service providers (cloud, security);</li>
+                <li>Anti-fraud and compliance services;</li>
+                <li>Public authorities, when required by law.</li>
+              </ul>
+              <p>Velvet does not sell personal data.</p>
+            `
+          },
+          {
+            id: "secao-9",
+            title: "9. International Data Transfers",
+            content: `
+              <p>Data may be stored or processed outside Brazil or the European Union.</p>
+              <p>In such cases, Velvet adopts measures such as:</p>
+              <ul>
+                <li>Standard contractual clauses (SCCs);</li>
+                <li>Transfer impact assessments (TIAs);</li>
+                <li>Additional security measures.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-10",
+            title: "10. Data Retention",
+            content: `
+              <p>Data will be stored for as long as necessary for:</p>
+              <ul>
+                <li>Performance of the contract;</li>
+                <li>Compliance with legal obligations;</li>
+                <li>Fraud prevention;</li>
+                <li>Exercise of rights in legal proceedings.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-11",
+            title: "11. Data Subject Rights",
+            content: `
+              <p>The user may, at any time:</p>
+              <ul>
+                <li>Confirm the existence of processing;</li>
+                <li>Access their data;</li>
+                <li>Correct incomplete or inaccurate data;</li>
+                <li>Request deletion of data;</li>
+                <li>Withdraw consent;</li>
+                <li>Request portability;</li>
+                <li>Object to processing;</li>
+                <li>Request review of automated decisions.</li>
+              </ul>
+              <p>Requests: <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-12",
+            title: "12. Information Security",
+            content: `
+              <p>Velvet adopts technical and organizational measures such as:</p>
+              <ul>
+                <li>Encryption;</li>
+                <li>Access control;</li>
+                <li>Continuous monitoring;</li>
+                <li>Anti-fraud systems.</li>
+              </ul>
+              <p>Even so, no system is completely secure.</p>
+            `
+          },
+          {
+            id: "secao-13",
+            title: "13. Security Incidents",
+            content: `
+              <p>In the event of a personal data breach:</p>
+              <ul>
+                <li>Competent authorities may be notified within 72 hours, when applicable;</li>
+                <li>Users will be informed when there is relevant risk;</li>
+                <li>Corrective measures will be adopted immediately.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-14",
+            title: "14. Cookies and Similar Technologies",
+            content: `
+              <h3 class="item-title">Types of cookies</h3>
+              <ul>
+                <li>Essential (necessary for operation);</li>
+                <li>Performance (usage analysis);</li>
+                <li>Functional (preferences);</li>
+                <li>Marketing (personalization).</li>
+              </ul>
+
+              <h3 class="item-title">Consent</h3>
+              <p>The use of non-essential cookies depends on prior consent, obtained through a preferences banner.</p>
+              <p>The user may:</p>
+              <ul>
+                <li>Accept or reject cookie categories;</li>
+                <li>Change preferences at any time.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-15",
+            title: "15. Identity Verification (KYC)",
+            content: `
+              <p>For security and legal compliance, Velvet may request:</p>
+              <ul>
+                <li>Identification documents;</li>
+                <li>Age verification;</li>
+                <li>Validation of financial information.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-16",
+            title: "16. Adult Content and Responsibility",
+            content: `
+              <p>The Platform may contain adult content.</p>
+              <p>Velvet acts as an intermediary and is not responsible for content generated by users.</p>
+              <p>Conscious use and safe browsing practices are recommended.</p>
+            `
+          },
+          {
+            id: "secao-17",
+            title: "17. Governance and Data Protection",
+            content: `
+              <p>Velvet adopts governance practices, including:</p>
+              <ul>
+                <li>Records of processing operations;</li>
+                <li>Impact assessments where applicable;</li>
+                <li>Internal security policies;</li>
+                <li>Team training.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-18",
+            title: "18. Changes",
+            content: `
+              <p>This Policy may be updated at any time.</p>
+              <p>Continued use of the Platform implies acceptance of the changes.</p>
+            `
+          },
+          {
+            id: "secao-19",
+            title: "19. Contact",
+            content: `
+              <p>For questions or requests:</p>
+              <p><a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-20",
+            title: "20. Final Provisions",
+            content: `
+              <p>This Policy shall be interpreted together with the Terms of Use and in accordance with applicable law.</p>
+            `
+          }
+        ],
+        footerTerms: "Terms of Use",
+        footerPrivacy: "Privacy Policy",
+        footerPolicies: "Usage Policy",
+        footerCopy: "© 2026 Velvet. All rights reserved."
+      },
+
+      es: {
+        htmlLang: "es",
+        title: "Política de Privacidad | Velvet",
+        pageTitle: "Política de Privacidad – Velvet",
+        lastUpdatedLabel: "Última actualización:",
+        lastUpdatedDate: "06/04/2026",
+        introText: "Esta Política de Privacidad describe cómo Velvet Entertainment recopila, utiliza, almacena, comparte y protege los datos personales de los usuarios de la Plataforma.",
+        tocAriaLabel: "Índice de la Política de Privacidad",
+        tocTitle: "Índice",
+        tocItems: [
+          "1. Introducción",
+          "2. Identificación del Responsable del Tratamiento",
+          "3. Quién Puede Utilizar la Plataforma",
+          "4. Datos Recopilados",
+          "5. Finalidad del Tratamiento",
+          "6. Bases Legales",
+          "7. Decisiones Automatizadas y Elaboración de Perfiles",
+          "8. Compartición de Datos",
+          "9. Transferencia Internacional de Datos",
+          "10. Conservación de los Datos",
+          "11. Derechos de los Titulares",
+          "12. Seguridad de la Información",
+          "13. Incidentes de Seguridad",
+          "14. Cookies y Tecnologías Similares",
+          "15. Verificación de Identidad (KYC)",
+          "16. Contenido Adulto y Responsabilidad",
+          "17. Gobernanza y Protección de Datos",
+          "18. Cambios",
+          "19. Contacto",
+          "20. Disposiciones Finales"
+        ],
+        sections: [
+          {
+            id: "secao-1",
+            title: "1. Introducción",
+            content: `
+              <p>La presente Política de Privacidad describe cómo <strong>Velvet Entertainment</strong> recopila, utiliza, almacena, comparte y protege los datos personales de los usuarios de la Plataforma.</p>
+              <p>Esta Política cumple con:</p>
+              <ul>
+                <li>Ley General de Protección de Datos de Brasil (LGPD – Ley nº 13.709/2018);</li>
+                <li>Reglamento General de Protección de Datos de la Unión Europea (GDPR – UE 2016/679);</li>
+                <li>Normas aplicables sobre cookies y comunicaciones electrónicas.</li>
+              </ul>
+              <p>Al utilizar la Plataforma, el usuario declara que ha leído, comprendido y acepta esta Política.</p>
+            `
+          },
+          {
+            id: "secao-2",
+            title: "2. Identificación del Responsable del Tratamiento",
+            content: `
+              <p><strong>Velvet Entertainment Ltda</strong></p>
+              <p><strong>CNPJ:</strong> 66.615.892/0001-43</p>
+              <p><strong>Dirección:</strong> R Cel José Eusébio, 95 casa 13 – Higienópolis – São Paulo – SP – CEP 01.239-030</p>
+              <p><strong>Correo electrónico:</strong> <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+              <p>El Encargado de Protección de Datos (DPO) puede ser contactado a través de los canales anteriores.</p>
+            `
+          },
+          {
+            id: "secao-3",
+            title: "3. Quién Puede Utilizar la Plataforma",
+            content: `
+              <p>Velvet está destinada exclusivamente a mayores de 18 años.</p>
+              <p>Si se identifica el registro de un menor de edad, la cuenta será eliminada y los datos serán borrados, de conformidad con la legislación aplicable.</p>
+            `
+          },
+          {
+            id: "secao-4",
+            title: "4. Datos Recopilados",
+            content: `
+              <h3 class="item-title">4.1 Datos proporcionados por el usuario</h3>
+              <ul>
+                <li>Nombre o nombre artístico;</li>
+                <li>Correo electrónico;</li>
+                <li>Fecha de nacimiento;</li>
+                <li>Datos de pago;</li>
+                <li>Documentos de verificación (KYC);</li>
+                <li>Contenido, mensajes e interacciones.</li>
+              </ul>
+
+              <h3 class="item-title">4.2 Datos recopilados automáticamente</h3>
+              <ul>
+                <li>Dirección IP;</li>
+                <li>Ubicación aproximada;</li>
+                <li>Tipo de dispositivo, navegador y sistema operativo;</li>
+                <li>Registros de acceso y uso;</li>
+                <li>Cookies e identificadores técnicos.</li>
+              </ul>
+
+              <h3 class="item-title">4.3 Datos de terceros</h3>
+              <ul>
+                <li>Proveedores de pago;</li>
+                <li>Servicios antifraude y verificación de identidad.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-5",
+            title: "5. Finalidad del Tratamiento",
+            content: `
+              <p>Los datos se utilizan para:</p>
+              <ul>
+                <li>Creación y gestión de cuentas;</li>
+                <li>Verificación de identidad y edad;</li>
+                <li>Procesamiento de pagos y suscripciones;</li>
+                <li>Funcionamiento de la plataforma (chat, contenido, interacciones);</li>
+                <li>Prevención de fraudes, abusos y actividades ilegales;</li>
+                <li>Cumplimiento de obligaciones legales;</li>
+                <li>Comunicación con los usuarios;</li>
+                <li>Personalización y mejora de la experiencia.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-6",
+            title: "6. Bases Legales",
+            content: `
+              <p>El tratamiento se realiza con base en:</p>
+              <ul>
+                <li>Ejecución de contrato;</li>
+                <li>Consentimiento;</li>
+                <li>Cumplimiento de obligación legal;</li>
+                <li>Interés legítimo.</li>
+              </ul>
+              <p>Cuando corresponda, Velvet realiza una evaluación de balance para garantizar que sus intereses no perjudiquen los derechos de los usuarios.</p>
+            `
+          },
+          {
+            id: "secao-7",
+            title: "7. Decisiones Automatizadas y Elaboración de Perfiles",
+            content: `
+              <p>La Plataforma puede utilizar sistemas automatizados para:</p>
+              <ul>
+                <li>Detección de fraude;</li>
+                <li>Análisis de comportamiento;</li>
+                <li>Seguridad de la cuenta.</li>
+              </ul>
+              <p>El usuario podrá solicitar revisión humana de estas decisiones y obtener información sobre los criterios utilizados.</p>
+            `
+          },
+          {
+            id: "secao-8",
+            title: "8. Compartición de Datos",
+            content: `
+              <p>Los datos podrán ser compartidos con:</p>
+              <ul>
+                <li>Procesadores de pago;</li>
+                <li>Prestadores de servicios tecnológicos (cloud, seguridad);</li>
+                <li>Servicios antifraude y compliance;</li>
+                <li>Autoridades públicas, cuando la ley lo exija.</li>
+              </ul>
+              <p>Velvet no comercializa datos personales.</p>
+            `
+          },
+          {
+            id: "secao-9",
+            title: "9. Transferencia Internacional de Datos",
+            content: `
+              <p>Los datos pueden ser almacenados o procesados fuera de Brasil o de la Unión Europea.</p>
+              <p>En esos casos, Velvet adopta medidas como:</p>
+              <ul>
+                <li>Cláusulas contractuales tipo (SCCs);</li>
+                <li>Evaluaciones de impacto de transferencia (TIA);</li>
+                <li>Medidas de seguridad adicionales.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-10",
+            title: "10. Conservación de los Datos",
+            content: `
+              <p>Los datos serán almacenados durante el tiempo necesario para:</p>
+              <ul>
+                <li>Ejecución del contrato;</li>
+                <li>Cumplimiento de obligaciones legales;</li>
+                <li>Prevención de fraudes;</li>
+                <li>Ejercicio de derechos en procesos judiciales.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-11",
+            title: "11. Derechos de los Titulares",
+            content: `
+              <p>El usuario podrá, en cualquier momento:</p>
+              <ul>
+                <li>Confirmar la existencia del tratamiento;</li>
+                <li>Acceder a sus datos;</li>
+                <li>Corregir datos incompletos o incorrectos;</li>
+                <li>Solicitar la eliminación de datos;</li>
+                <li>Revocar el consentimiento;</li>
+                <li>Solicitar portabilidad;</li>
+                <li>Oponerse al tratamiento;</li>
+                <li>Solicitar revisión de decisiones automatizadas.</li>
+              </ul>
+              <p>Solicitudes: <a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-12",
+            title: "12. Seguridad de la Información",
+            content: `
+              <p>Velvet adopta medidas técnicas y organizativas como:</p>
+              <ul>
+                <li>Encriptación;</li>
+                <li>Control de acceso;</li>
+                <li>Monitoreo continuo;</li>
+                <li>Sistemas antifraude.</li>
+              </ul>
+              <p>Aun así, ningún sistema es totalmente seguro.</p>
+            `
+          },
+          {
+            id: "secao-13",
+            title: "13. Incidentes de Seguridad",
+            content: `
+              <p>En caso de violación de datos personales:</p>
+              <ul>
+                <li>Las autoridades competentes podrán ser notificadas en un plazo de hasta 72 horas, cuando corresponda;</li>
+                <li>Los usuarios serán informados cuando exista riesgo relevante;</li>
+                <li>Se adoptarán medidas correctivas de inmediato.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-14",
+            title: "14. Cookies y Tecnologías Similares",
+            content: `
+              <h3 class="item-title">Tipos de cookies</h3>
+              <ul>
+                <li>Esenciales (necesarias para el funcionamiento);</li>
+                <li>Rendimiento (análisis de uso);</li>
+                <li>Funcionales (preferencias);</li>
+                <li>Marketing (personalización).</li>
+              </ul>
+
+              <h3 class="item-title">Consentimiento</h3>
+              <p>El uso de cookies no esenciales depende de consentimiento previo, obtenido mediante un banner de preferencias.</p>
+              <p>El usuario puede:</p>
+              <ul>
+                <li>Aceptar o rechazar categorías de cookies;</li>
+                <li>Cambiar preferencias en cualquier momento.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-15",
+            title: "15. Verificación de Identidad (KYC)",
+            content: `
+              <p>Por seguridad y cumplimiento legal, Velvet podrá solicitar:</p>
+              <ul>
+                <li>Documentos de identificación;</li>
+                <li>Verificación de edad;</li>
+                <li>Validación de datos financieros.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-16",
+            title: "16. Contenido Adulto y Responsabilidad",
+            content: `
+              <p>La Plataforma puede contener contenido adulto.</p>
+              <p>Velvet actúa como intermediaria y no se responsabiliza por contenidos generados por usuarios.</p>
+              <p>Se recomienda un uso consciente y prácticas seguras de navegación.</p>
+            `
+          },
+          {
+            id: "secao-17",
+            title: "17. Gobernanza y Protección de Datos",
+            content: `
+              <p>Velvet adopta prácticas de gobernanza, incluyendo:</p>
+              <ul>
+                <li>Registro de operaciones de tratamiento;</li>
+                <li>Evaluaciones de impacto cuando corresponda;</li>
+                <li>Políticas internas de seguridad;</li>
+                <li>Capacitación del equipo.</li>
+              </ul>
+            `
+          },
+          {
+            id: "secao-18",
+            title: "18. Cambios",
+            content: `
+              <p>Esta Política podrá ser actualizada en cualquier momento.</p>
+              <p>El uso continuo de la Plataforma implica aceptación de los cambios.</p>
+            `
+          },
+          {
+            id: "secao-19",
+            title: "19. Contacto",
+            content: `
+              <p>Para dudas o solicitudes:</p>
+              <p><a class="inline-link" href="mailto:contato@velvet.lat">contato@velvet.lat</a></p>
+            `
+          },
+          {
+            id: "secao-20",
+            title: "20. Disposiciones Finales",
+            content: `
+              <p>Esta Política debe interpretarse conjuntamente con los Términos de Uso y conforme a la legislación aplicable.</p>
+            `
+          }
+        ],
+        footerTerms: "Términos de Uso",
+        footerPrivacy: "Política de Privacidad",
+        footerPolicies: "Política de Utilización",
+        footerCopy: "© 2026 Velvet. Todos los derechos reservados."
+      }
+    };
+
+    function renderPage(lang) {
+      const t = translations[lang] || translations.pt;
+
+      document.documentElement.lang = t.htmlLang;
+      document.title = t.title;
+
+      document.getElementById("pageTitle").textContent = t.pageTitle;
+      document.getElementById("lastUpdatedLabel").textContent = t.lastUpdatedLabel;
+      document.getElementById("lastUpdatedDate").textContent = t.lastUpdatedDate;
+      document.getElementById("introText").textContent = t.introText;
+
+      const toc = document.getElementById("toc");
+      const tocTitle = document.getElementById("tocTitle");
+      const tocList = document.getElementById("tocList");
+      toc.setAttribute("aria-label", t.tocAriaLabel);
+      tocTitle.textContent = t.tocTitle;
+      tocList.innerHTML = "";
+
+      t.tocItems.forEach((item, index) => {
+        const li = document.createElement("li");
+        li.innerHTML = `<a href="#secao-${index + 1}">${item}</a>`;
+        tocList.appendChild(li);
+      });
+
+      const sectionsContainer = document.getElementById("sectionsContainer");
+      sectionsContainer.innerHTML = "";
+
+      t.sections.forEach((section, index) => {
+        const sectionEl = document.createElement("section");
+        sectionEl.id = section.id;
+        sectionEl.innerHTML = `
+          <h2 class="section-title">${section.title}</h2>
+          ${section.content}
+        `;
+        sectionsContainer.appendChild(sectionEl);
+
+        if (index < t.sections.length - 1) {
+          const hr = document.createElement("hr");
+          hr.className = "divider";
+          sectionsContainer.appendChild(hr);
+        }
+      });
+
+      document.getElementById("footerTerms").textContent = t.footerTerms;
+      document.getElementById("footerPrivacy").textContent = t.footerPrivacy;
+      document.getElementById("footerPolicies").textContent = t.footerPolicies;
+      document.getElementById("footerCopy").textContent = t.footerCopy;
+
+      document.querySelectorAll("[data-lang]").forEach(btn => {
+        btn.classList.toggle("active", btn.dataset.lang === lang);
+      });
+
+      localStorage.setItem("velvet_lang", lang);
+    }
+
+    document.querySelectorAll("[data-lang]").forEach(button => {
+      button.addEventListener("click", () => {
+        renderPage(button.dataset.lang);
+      });
+    });
+
+    const savedLang = localStorage.getItem("velvet_lang") || "pt";
+    renderPage(savedLang);
+  </script>
+</body>
+</html>

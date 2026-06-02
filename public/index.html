@@ -1,0 +1,283 @@
+<!DOCTYPE html>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="preload" as="image" href="assets/cap.webp" fetchpriority="high">
+  <meta name="theme-color" content="#111111">
+
+  <title>Velvet — Conecta com os teus criadores favoritos</title>
+  <meta name="description" content="Velvet é uma plataforma social para criadores partilharem as suas mídias com os seus fãs.">
+  <meta name="robots" content="index, follow">
+
+  <!-- OPEN GRAPH -->
+  <meta property="og:title" content="Velvet — Plataforma Social para Criadores">
+  <meta property="og:description" content="Conecta-te com os teus criadores favoritos e acede às mídias do criador.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://www.velvet.lat">
+  <meta property="og:image" content="https://www.velvet.lat/assets/og-cover.png">
+
+  <!-- TWITTER CARD -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Velvet — Plataforma Social para Criadores">
+  <meta name="twitter:description" content="Conecta-te com os teus criadores favoritos.">
+
+<style>
+*{box-sizing:border-box;font-family:-apple-system,sans-serif}
+body{margin:0;background:#f6f7fb}
+.page-wrapper{min-height:100vh;display:flex;justify-content:center;align-items:center}
+.landing{width:100%;max-width:1400px;display:flex;flex-direction:row-reverse;align-items:stretch;height:clamp(400px,562px,100vh)}
+.landing-cover{flex:1;overflow:hidden;border-radius:24px 0 0 24px}
+.landing-cover img{width:100%;height:100%;object-fit:cover;display:block}
+.landing-login{width:420px;flex-shrink:0;background:#dbcafa;padding:40px;display:flex;flex-direction:column;justify-content:space-between;margin-right:60px;border-radius:24px;text-align:center;align-items:center}
+.logo{width:250px; margin:40px;}
+.btn{width:100%;padding:14px 18px;border-radius:12px;color:#7B2CFF;border:none;font-size:16px;font-weight:500;display:flex;justify-content:center;align-items:center;cursor:pointer;margin-bottom:16px;background:#fff}
+.hidden{display:none;pointer-events:none}
+
+</style>
+
+  <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
+  <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
+
+  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
+  <link rel="manifest" href="/manifest.json">
+
+  <script src="/i18n.js"></script>
+
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Velvet",
+  "description": "Plataforma social para criadores de conteúdo",
+  "applicationCategory": "SocialNetworkingApplication",
+  "url": "https://www.velvet.lat"
+}
+</script>
+
+</head>
+
+<body>
+
+<div class="page-wrapper">
+  <main class="landing">
+
+    <!-- CAPA -->
+    <div class="landing-cover">
+      <img src="/assets/cap.webp" alt="Velvet" fetchpriority="high" width="696" height="562">
+  
+    <!-- COMO FUNCIONA -->
+      <div class="how-section">
+        <p class="how-title" data-i18n="index.howItWorks">Como funciona</p>
+        <div class="how-steps">
+          <div class="how-step">
+            <div class="how-icon">👤</div>
+            <span data-i18n="index.stepCreateAccount">Cria a tua conta</span>
+          </div>
+          <div class="how-step">
+            <div class="how-icon">🔍</div>
+            <span data-i18n="index.stepDiscover">Descobre criadores</span>
+          </div>
+          <div class="how-step">
+            <div class="how-icon">💬</div>
+            <span data-i18n="index.stepConnect">Conecta e interage</span>
+          </div>
+          <div class="how-step">
+            <div class="how-icon">⭐</div>
+            <span data-i18n="index.stepMedia">Acede às mídias do criador</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- LOGIN -->
+    <div class="landing-login">
+
+      <!-- SELETOR DE LÍNGUAS -->
+      <div class="language-switcher">
+        <select id="languageSwitcher" aria-label="Selecionar idioma">
+          <option value="pt">Português</option>
+          <option value="en">English</option>
+          <option value="es">Español</option>
+        </select>
+      </div>
+
+      <img src="assets/velvet.webp" class="logo" alt="Velvet" width="250" height="75">
+
+      <div class="login-box">
+        <button class="btn btn-Login" onclick="selectRole()" data-i18n="index.enter">ENTRAR</button>
+        <button class="btn btn-cadastro" onclick="startRegister()" data-i18n="index.createAccount">Criar Conta</button>
+      </div>
+
+      <div class="footer-linksC">
+        <a href="#" onclick="openForgot(); return false;" data-i18n="index.forgotPassword">Esqueci minha senha</a><br>
+      </div>
+
+      <div class="footer-links">
+        <a href="/about.html" target="_blank" rel="noopener noreferrer" data-i18n="index.footerAbout">Sobre Nós</a>
+        <a href="/contato.html" target="_blank" rel="noopener noreferrer" data-i18n="index.contact">Contato</a>
+        <a href="/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="index.termsOfUse">Termos de Uso</a>
+        <a href="/policies.html" target="_blank" rel="noopener noreferrer" data-i18n="index.usagePolicies">Políticas de Utilização</a>
+        <a href="/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="index.privacyPolicies">Políticas de Privacidade</a>
+      </div>
+
+
+    </div>
+  </main>
+</div>
+
+<!-- MODAL ESQUECI SENHA -->
+<div id="forgotModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeForgotModal()"></div>
+  <div class="modal-box velvet">
+    <h2 id="forgotTitle" data-i18n="index.forgotTitle">Recuperar senha</h2>
+    <div id="forgotStepEmail">
+      <input id="forgotEmail" type="email" placeholder="Seu email cadastrado" data-i18n-placeholder="index.registeredEmailPlaceholder"/>
+      <button class="btn btn-primary" onclick="sendResetCode()" data-i18n="index.sendCode">Enviar código</button>
+      <p id="forgotSpamHint" class="modal-switch hidden" data-i18n="index.spamHint">
+        Se não encontrar o email, verifique o lixo eletrônico ou spam.
+      </p>
+      <p class="modal-switch">
+        <span data-i18n="index.rememberedPassword">Lembrou da senha?</span>
+        <span onclick="closeForgotModal()" data-i18n="index.backToLogin">Voltar ao login</span>
+      </p>
+    </div>
+    <div id="forgotStepCode" class="hidden">
+      <input id="forgotCode" type="text" placeholder="Código de 6 dígitos" data-i18n-placeholder="index.codePlaceholder"/>
+      <input id="forgotNewPassword" type="password" placeholder="Nova senha" data-i18n-placeholder="index.newPasswordPlaceholder"/>
+      <input id="forgotConfirmPassword" type="password" placeholder="Confirmar nova senha" data-i18n-placeholder="index.confirmNewPasswordPlaceholder"/>
+      <button class="btn btn-primary" onclick="confirmReset()" data-i18n="index.changePassword">Alterar senha</button>
+    </div>
+    <button class="modal-close" onclick="closeForgotModal()">✕</button>
+  </div>
+</div>
+
+<!-- MODAL LEGAL -->
+<div id="legalModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeLegalModal()"></div>
+  <div class="modal-box">
+    <button class="legal-close" onclick="closeLegalModal()">×</button>
+    <iframe id="modalFrame"></iframe>
+  </div>
+</div>
+
+<!-- LOGIN / REGISTER MODAL -->
+<div id="loginModal" class="modal hidden">
+  <div class="modal-overlay" onclick="closeLoginModal()"></div>
+  <div class="modal-box">
+    <h2 id="modalTitle" data-i18n="index.loginTitle">Entrar</h2>
+
+    <!-- Email (sempre visível) -->
+    <label for="loginEmail" data-i18n="index.email">Email</label>
+    <input id="loginEmail" type="email" placeholder="Email" autocomplete="email" data-i18n-placeholder="index.emailPlaceholder">
+
+    <!-- Etapa 2: verificação OTP -->
+    <div class="field hidden" id="fieldOtp">
+      <p id="otpInfo" style="font-size:13px;color:#7a6a9a;margin:0 0 10px;line-height:1.5;"></p>
+      <label for="registerOtp">Código de verificação</label>
+      <input id="registerOtp" type="text" inputmode="numeric" pattern="[0-9]*" maxlength="6"
+             placeholder="000000" autocomplete="one-time-code"
+             style="letter-spacing:8px;font-size:22px;text-align:center;font-weight:700;">
+      <p id="otpReenviar" style="font-size:12px;color:#9b87b8;margin-top:8px;text-align:right;display:none;">
+        Não recebeu? <span onclick="enviarOTP()" style="color:#7B2CFF;cursor:pointer;font-weight:600;">Reenviar código</span>
+      </p>
+    </div>
+
+    <!-- Senha (login + etapa 3 registo) -->
+    <div id="fieldSenhaComum" class="field">
+      <label for="loginSenha" data-i18n="index.password">Senha</label>
+      <input id="loginSenha" type="password" placeholder="Senha" autocomplete="current-password" data-i18n-placeholder="index.passwordPlaceholder">
+    </div>
+
+    <!-- Campos apenas na etapa 3 do registo -->
+    <div class="field hidden" id="fieldSenha">
+      <label for="registerSenhaConfirm" data-i18n="index.repeatPassword">Repita a sua senha</label>
+      <input id="registerSenhaConfirm" type="password" autocomplete="new-password" data-i18n-placeholder="index.registerRepeatPasswordPlaceholder">
+    </div>
+
+    <div class="field hidden" id="fieldNome">
+      <label for="registerNome" data-i18n="index.fullName">Nome Completo</label>
+      <input id="registerNome" type="text" autocomplete="name" data-i18n-placeholder="index.fullNamePlaceholder">
+    </div>
+
+    <div class="field hidden" id="fieldNascimento">
+      <label for="registerNascimento" data-i18n="index.birthDate">Data de Nascimento</label>
+      <input id="registerNascimento" type="date">
+    </div>
+
+    <div class="field hidden" id="fieldPerfil">
+      <label for="registerRole" data-i18n="index.accountType">Tipo de conta</label>
+      <select id="registerRole">
+        <option value="cliente" data-i18n="index.wantMember">Quero ser membro</option>
+        <option value="modelo" data-i18n="index.wantCreator">Quero ser criador</option>
+      </select>
+    </div>
+
+    <!-- Erro inline -->
+    <div id="modalError" style="display:none;background:#fff0f0;border:1px solid #ffb3b3;border-radius:8px;padding:10px 14px;font-size:13px;color:#c0392b;margin-bottom:4px;"></div>
+
+    <!-- Confirmação de idade + termos (etapa 3) -->
+    <div id="registerLegal" class="hidden" style="margin-top:8px;margin-bottom:4px;">
+      <label style="display:flex;align-items:flex-start;gap:10px;cursor:pointer;">
+        <input type="checkbox" id="registerAgeConfirm"
+               style="width:18px;height:18px;min-width:18px;margin-top:2px;accent-color:#7B2CFF;cursor:pointer;">
+        <span style="font-size:12px;color:#666;line-height:1.6;">
+          Confirmo que tenho mais de <strong style="color:#333;">18 anos</strong> e concordo com os
+          <a href="/terms.html" target="_blank" style="color:#7B2CFF;font-weight:600;white-space:nowrap;">Termos e Condições de Uso</a>.
+        </span>
+      </label>
+    </div>
+
+    <button id="modalSubmit" class="btn btn-primary" data-i18n="index.loginAction">Entrar</button>
+
+    <p class="modal-switch hidden" id="switchToLogin">
+      <span data-i18n="index.alreadyHaveAccount">Já tem conta?</span>
+      <span onclick="switchToLogin()" data-i18n="index.loginAction">Entrar</span>
+    </p>
+    <p class="modal-switch hidden" id="switchToRegister">
+      <span data-i18n="index.noAccount">Não tem conta?</span>
+      <span onclick="startRegister()" data-i18n="index.registerAction">Criar conta</span>
+    </p>
+
+    <button class="modal-close" onclick="closeLoginModal()">✕</button>
+  </div>
+</div>
+
+<div id="ageModal" class="modal hidden">
+  <div class="modal-overlay" onclick="confirmAge(false)"></div>
+  <div class="modal-box" id="ageModalBox"></div>
+</div>
+
+<script>
+  document.getElementById("ageModalBox").innerHTML = `
+    <h2 data-i18n="index.ageGateTitle">Confirmar idade</h2>
+    <p data-i18n="index.ageGateText" style="margin-top:10px;">Esta plataforma é destinada a utilizadores com idade legal no seu país de residência. Confirmas que tens essa idade?</p>
+    <div style="display:flex; gap:12px; margin-top:20px;">
+      <button class="btn btn-primary" onclick="confirmAge(true)" data-i18n="index.ageGateConfirm">Sim, confirmo</button>
+      <button class="btn btn-secondary" onclick="confirmAge(false)" data-i18n="index.ageGateDeny">Não</button>
+    </div>
+  `;
+</script>
+
+<script>
+  const params = new URLSearchParams(window.location.search);
+  const ref = params.get("ref");
+  const src = params.get("src");
+
+  if (ref) localStorage.setItem("ref_modelo", ref);
+  if (src) localStorage.setItem("origem_trafego", src);
+
+  if (ref || src) {
+    fetch("/api/track-acesso", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ ref, src, page: "index" })
+    }).catch(() => {});
+  }
+</script>
+
+<script src="/js/script.js" defer></script>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="pt">
+
+<head>
+  <meta charset="UTF-8">
+  <title>Fale Conosco</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="/css/header.css">
+  <link rel="stylesheet" href="/css/area.css">
+  <link rel="stylesheet" href="/css/contato.css">
+
+<script src="/i18n.js"></script>
+</head>
+
+<body>
+  <div id="header-container"></div>
+
+  <main>
+    <section class="area-card">
+      <button type="button" class="btn-voltar" onclick="history.back()">
+        <img src="/assets/voltar.png" alt="Voltar" data-i18n-alt="contato.back">
+      </button>
+
+      <h2 data-i18n="contato.contact_title">Fale Conosco</h2>
+
+      <p class="subtitle" data-i18n="contato.contact_subtitle">
+        Tem alguma dúvida, sugestão ou precisa de ajuda?
+        Preencha o formulário abaixo, e entraremos em contato o mais breve possível, ou se preferir envie um email para contato@velvet.lat
+      </p>
+
+      <form id="contatoForm" class="form">
+
+        <div class="field">
+          <label data-i18n="contato.name">Nome</label>
+          <input
+            type="text"
+            name="nome"
+            placeholder="Seu nome"
+            data-i18n-placeholder="contato.your_name"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label data-i18n="contato.email">Email</label>
+          <input
+            type="email"
+            name="email"
+            placeholder="seu@email.com"
+            data-i18n-placeholder="contato.your_email"
+            required
+          />
+        </div>
+
+        <div class="field">
+          <label data-i18n="contato.subject">Assunto</label>
+          <select name="assunto" required>
+            <option value="" data-i18n="contato.select">Selecione</option>
+            <option value="duvida" data-i18n="contato.question">Dúvida</option>
+            <option value="suporte" data-i18n="contato.support">Suporte</option>
+            <option value="pagamento" data-i18n="contato.payments">Pagamentos</option>
+            <option value="sugestao" data-i18n="contato.suggestion">Sugestão</option>
+            <option value="outro" data-i18n="contato.other">Outro</option>
+          </select>
+        </div>
+
+        <div class="field">
+          <label data-i18n="contato.message">Mensagem</label>
+          <textarea
+            name="mensagem"
+            rows="5"
+            placeholder="Escreva sua mensagem aqui..."
+            data-i18n-placeholder="contato.write_your_message_here"
+            required
+          ></textarea>
+        </div>
+
+        <button type="submit" class="btn" data-i18n="contato.send_message">
+          Enviar mensagem
+        </button>
+
+        <p id="status" class="status"></p>
+
+        <p class="subtitle" data-i18n="contato.average_response_time">
+          Tempo médio de resposta: 24-48 horas úteis. Agradecemos seu contato!
+        </p>
+      </form>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="footer-links">
+      <a href="/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="contato.terms_of_use">
+        Termos de Uso
+      </a>
+      <a href="/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="contato.privacy_policy">
+        Política de Privacidade
+      </a>
+      <a href="/policies.html" target="_blank" rel="noopener noreferrer" data-i18n="contato.usage_policy">
+        Política de Utilização
+      </a>
+    </div>
+    <div class="footer-copy" data-i18n="contato.footer_copy">
+      © 2026 Velvet. Todos os direitos reservados.
+    </div>
+  </footer>
+
+  <script src="/js/header.js"></script>
+  <script src="/js/contato.js"></script>
+  <script src="/socket.io/socket.io.js"></script>
+  <script src="/app/js/suporte-widget.js"></script>
+</body>
+</html>

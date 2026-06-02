@@ -1,0 +1,73 @@
+:root {
+  --purple: #7B2CFF;
+  --purple-light: #9E6BFF;
+  --bg: #1E1E26;
+  --card: #262633;
+  --text: #E1E1E1;
+  --muted: #C9C9C9;
+}
+
+* {
+  box-sizing: border-box;
+  font-family: Inter, sans-serif;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+}
+
+.container {
+  max-width: 1200px;
+  margin: auto;
+  padding: 24px;
+}
+
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+h1 {
+  margin: 0;
+}
+
+.filters input {
+  background: var(--card);
+  border: 1px solid #333;
+  color: var(--text);
+  padding: 6px 10px;
+  border-radius: 8px;
+}
+
+.cards {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin: 24px 0;
+}
+
+.card {
+  background: linear-gradient(135deg, var(--purple), var(--purple-light));
+  border-radius: 16px;
+  padding: 20px;
+}
+
+.card span {
+  font-size: 14px;
+  color: #eee;
+}
+
+.card strong {
+  display: block;
+  font-size: 28px;
+  margin-top: 6px;
+}
+
+.chart-box {
+  background: var(--card);
+  border-radius: 16px;
+  padding: 20px;
+}

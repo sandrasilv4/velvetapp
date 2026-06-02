@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "263534922838",
+    "project_id": "velvet-app-30ec3",
+    "storage_bucket": "velvet-app-30ec3.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:263534922838:android:8fae0f675ba66090c9fff7",
+        "android_client_info": {
+          "package_name": "velvet.app"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDQti0XcTgw7Xo_ZnIZcFOib6gAfjY3jHY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
