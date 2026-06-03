@@ -2,32 +2,34 @@ console.log("SERVIDOR INICIADO - O SENHOR EH MEU PASTOR E NADA ME FALTARA!");
 
 require("dotenv").config();
 
-const http    = require("http");
-const path    = require("path");
+const http = require("http");
+const path = require("path");
 const { Server } = require("socket.io");
-const express    = require("express");
-const cors       = require("cors");
-const helmet     = require("helmet");
+const express = require("express");
+const cors = require("cors");
+const helmet = require("helmet");
 const compression = require("compression");
-
 const ffmpeg = require("fluent-ffmpeg");
-const ffmpegPath = require("ffmpeg-static");
+const ffmpegPath = require("ffmpeg-static"); 
 ffmpeg.setFfmpegPath(ffmpegPath);
 
 const JWT_SECRET = process.env.JWT_SECRET;
 if (!JWT_SECRET) console.error("JWT_SECRET não configurado!");
 
 // ── Módulos da aplicação ──────────────────────────────────────────────────────
-const { setupSocket }      = require("./socket");
-const { registerWebhooks } = require("./routes/webhooks");
-const { router: servercontentRouter, calcularValores } = require("./servercontent");
-const auth       = require("./middleware/auth");
-const authAdmin  = require("./middleware/authAdmin");
-const authCliente = require("./middleware/authCliente");
-const db         = require("./db");
+const { setupSocket }         = require("./socket");
+const { registerWebhooks }    = require("./routes/webhooks");
+const { calcularValores }     = require("./utils/calcularValores");
+const auth                    = require("./middleware/auth");
+const authAdmin               = require("./middleware/authAdmin");
+const authCliente             = require("./middleware/authCliente");
+const db                      = require("./db");
 const { uploadB2, supabaseStorage }  = require("./config/storage");
 const { uploadAvatarLimiter }        = require("./config/rateLimiters");
 const { stripe }                     = require("./config/services");
+
+// Carregar cron jobs
+require("./cron/chargeback");
 
 const {
   authRouter,
@@ -42,6 +44,10 @@ const {
   verificacaoRouter,
   notificacoesRouter,
   miscRouter,
+  financeiroRouter,
+  agenciaRouter,
+  allmessageRouter,
+  adminExtraRouter,
   adminDashboardRouter,
   agencyDashboardRouter,
   adminEmailRouter,
@@ -113,8 +119,7 @@ app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 app.use(compression());
 
-// ── Conteúdo servercontent ────────────────────────────────────────────────────
-app.use("/api", servercontentRouter);
+// ── calcularValores disponível nos webhooks ───────────────────────────────────
 app.set("calcularValores", calcularValores);
 
 // ── Arquivos estáticos ────────────────────────────────────────────────────────
@@ -152,7 +157,17 @@ app.post("/uploadAvatar", auth, uploadAvatarLimiter, uploadB2.single("avatar"), 
     } else if (req.user.role === "cliente") {
       const r = await db.query("SELECT id FROM clientes WHERE user_id=$1", [userId]);
       if (!r.rowCount) return res.status(404).json({ error: "Cliente não encontrado" });
-      await db.query("UPDATE clientes_dados SET avatar=$1, atualizado_em=NOW() WHERE cliente_id=$2", [publicUrl, r.rows[0].id]);
+      const cid = r.rows[0].id;
+      const upd = await db.query(
+        `UPDATE clientes_dados SET avatar=$2, atualizado_em=NOW() WHERE cliente_id=$1 RETURNING id`,
+        [cid, publicUrl]
+      );
+      if (upd.rowCount === 0) {
+        await db.query(
+          `INSERT INTO clientes_dados (cliente_id, avatar, atualizado_em) VALUES ($1, $2, NOW())`,
+          [cid, publicUrl]
+        );
+      }
     } else {
       return res.status(403).json({ error: "Role inválida" });
     }
@@ -178,7 +193,17 @@ app.post("/uploadCapa", auth, uploadAvatarLimiter, uploadB2.single("capa"), asyn
     } else if (req.user.role === "cliente") {
       const r = await db.query("SELECT id FROM clientes WHERE user_id=$1", [userId]);
       if (!r.rowCount) return res.status(404).json({ error: "Cliente não encontrado" });
-      await db.query("UPDATE clientes_dados SET capa=$1, atualizado_em=NOW() WHERE cliente_id=$2", [publicUrl, r.rows[0].id]);
+      const cid = r.rows[0].id;
+      const upd = await db.query(
+        `UPDATE clientes_dados SET capa=$2, atualizado_em=NOW() WHERE cliente_id=$1 RETURNING id`,
+        [cid, publicUrl]
+      );
+      if (upd.rowCount === 0) {
+        await db.query(
+          `INSERT INTO clientes_dados (cliente_id, capa, atualizado_em) VALUES ($1, $2, NOW())`,
+          [cid, publicUrl]
+        );
+      }
     } else {
       return res.status(403).json({ error: "Role inválida" });
     }
@@ -284,6 +309,18 @@ app.use("/agency/dashboard", agencyDashboardRouter);
 app.use("/api/admin/email", auth, authAdmin, adminEmailRouter);
 app.use("/api/suporte", suporteRouter);
 app.use("/api/inbox", inboxRouter);
+
+// Financeiro (transações, dados bancários, financeiro modelo)
+app.use("/api", financeiroRouter);
+
+// Agência
+app.use("/api/agencia", agenciaRouter);
+
+// Allmessage / PPV
+app.use("/api/allmessage", allmessageRouter);
+
+// Admin extra (login admin, histórico bancário, agências)
+app.use("/api/admin", adminExtraRouter);
 
 // Misc (health, push public-key, stripe pk, app state, contato)
 app.use("/api", miscRouter);

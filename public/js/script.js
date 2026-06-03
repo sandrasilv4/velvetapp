@@ -1,13 +1,13 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", async () => {
-    try {
-      await navigator.serviceWorker.register("/service-worker.js");
-      console.log("Service worker registrado");
-    } catch (err) {
-      console.error("Erro ao registrar service worker:", err);
-    }
-  });
-}
+// if ("serviceWorker" in navigator) {
+//   window.addEventListener("load", async () => {
+//     try {
+//       await navigator.serviceWorker.register("/service-worker.js");
+//       console.log("Service worker registrado");
+//     } catch (err) {
+//       console.error("Erro ao registrar service worker:", err);
+//     }
+//   });
+// }
 
 window.token = localStorage.getItem("token");
 

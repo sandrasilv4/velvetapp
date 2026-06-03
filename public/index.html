@@ -38,11 +38,11 @@ body{margin:0;background:#f6f7fb}
   <link rel="preload" href="/css/style.css" as="style" onload="this.onload=null;this.rel='stylesheet'">
   <noscript><link rel="stylesheet" href="/css/style.css"></noscript>
 
-  <link rel="icon" href="/assets/favicon.ico" sizes="any">
+  <!-- <link rel="icon" href="/assets/favicon.ico" sizes="any">
   <link rel="icon" type="image/png" sizes="32x32" href="/assets/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="16x16" href="/assets/favicon-16x16.png">
-  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png">
-  <link rel="manifest" href="/manifest.json">
+  <link rel="apple-touch-icon" href="/assets/apple-touch-icon.png"> -->
+  <!-- <link rel="manifest" href="/manifest.json"> -->
 
   <script src="/i18n.js"></script>
 
@@ -170,8 +170,10 @@ body{margin:0;background:#f6f7fb}
     <h2 id="modalTitle" data-i18n="index.loginTitle">Entrar</h2>
 
     <!-- Email (sempre visível) -->
-    <label for="loginEmail" data-i18n="index.email">Email</label>
-    <input id="loginEmail" type="email" placeholder="Email" autocomplete="email" data-i18n-placeholder="index.emailPlaceholder">
+    <div class="field">
+      <label for="loginEmail" data-i18n="index.email">Email</label>
+      <input id="loginEmail" type="email" placeholder="Email" autocomplete="email" data-i18n-placeholder="index.emailPlaceholder">
+    </div>
 
     <!-- Etapa 2: verificação OTP -->
     <div class="field hidden" id="fieldOtp">

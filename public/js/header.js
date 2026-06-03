@@ -1,15 +1,3 @@
-if ("serviceWorker" in navigator) {
-  window.addEventListener("load", async () => {
-    try {
-      const reg = await navigator.serviceWorker.register("/service-worker.js", {
-        scope: "/"
-      });
-      console.log("Service worker registrado:", reg.scope);
-    } catch (err) {
-      console.error("Erro ao registrar service worker:", err);
-    }
-  });
-}
 
 // ===============================
 // SOCKET GLOBAL
@@ -68,7 +56,7 @@ async function initUsuario() {
 
     const user = await res.json();
 
-    // 🔑 SEMPRE atualiza
+    // SEMPRE atualiza
     localStorage.setItem("role", user.role);
     localStorage.setItem("nome", user.nome);
 
@@ -96,7 +84,6 @@ async function initUsuario() {
     }
   }
 }
-
 
 // =========================================================
 // BADGE GLOBAL DE MENSAGENS NÃO LIDAS
@@ -289,7 +276,7 @@ document.addEventListener("DOMContentLoaded", async () => {
   await initUsuario();
   await carregarHeader();
 
-  await carregarVapidPublicKey();
+  // await carregarVapidPublicKey();
 
   atualizarUnreadClienteHeader();
   atualizarUnreadModeloHeader();
@@ -350,6 +337,7 @@ document.addEventListener("click", (e) => {
   window.location.href = `/perfil.html?id=${modeloId}`;
 
 });
+
 // =========================================================
 document.addEventListener("click", async (e) => {
   const btnNotif = e.target.closest("#btnNotificacoes");
@@ -640,44 +628,44 @@ async function desativarNotificacoes() {
   }
 }
 
-async function carregarVapidPublicKey() {
-  try {
-    const jaExiste =
-      window.VAPID_PUBLIC_KEY ||
-      localStorage.getItem("VAPID_PUBLIC_KEY") ||
-      localStorage.getItem("vapid_public_key");
+// async function carregarVapidPublicKey() {
+//   try {
+//     const jaExiste =
+//       window.VAPID_PUBLIC_KEY ||
+//       localStorage.getItem("VAPID_PUBLIC_KEY") ||
+//       localStorage.getItem("vapid_public_key");
 
-    if (jaExiste) {
-      window.VAPID_PUBLIC_KEY = jaExiste;
-      return jaExiste;
-    }
+//     if (jaExiste) {
+//       window.VAPID_PUBLIC_KEY = jaExiste;
+//       return jaExiste;
+//     }
 
-    const res = await fetch("/api/push/public-key", {
-      method: "GET",
-      headers: { Accept: "application/json" }
-    });
+//     const res = await fetch("/api/push/public-key", {
+//       method: "GET",
+//       headers: { Accept: "application/json" }
+//     });
 
-    if (!res.ok) {
-      const texto = await res.text().catch(() => "");
-      console.error("Erro ao buscar VAPID public key:", res.status, texto);
-      return null;
-    }
+//     if (!res.ok) {
+//       const texto = await res.text().catch(() => "");
+//       console.error("Erro ao buscar VAPID public key:", res.status, texto);
+//       return null;
+//     }
 
-    const data = await res.json();
-    const publicKey = data?.publicKey || null;
+//     const data = await res.json();
+//     const publicKey = data?.publicKey || null;
 
-    if (!publicKey) {
-      console.error("Resposta sem publicKey:", data);
-      return null;
-    }
+//     if (!publicKey) {
+//       console.error("Resposta sem publicKey:", data);
+//       return null;
+//     }
 
-    window.VAPID_PUBLIC_KEY = publicKey;
-    localStorage.setItem("VAPID_PUBLIC_KEY", publicKey);
-    localStorage.setItem("vapid_public_key", publicKey);
+//     window.VAPID_PUBLIC_KEY = publicKey;
+//     localStorage.setItem("VAPID_PUBLIC_KEY", publicKey);
+//     localStorage.setItem("vapid_public_key", publicKey);
 
-    return publicKey;
-  } catch (err) {
-    console.error("Erro ao carregar VAPID public key:", err);
-    return null;
-  }
-}
+//     return publicKey;
+//   } catch (err) {
+//     console.error("Erro ao carregar VAPID public key:", err);
+//     return null;
+//   }
+// }

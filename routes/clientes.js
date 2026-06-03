@@ -4,20 +4,69 @@ const db = require("../db");
 const authCliente = require("../middleware/authCliente");
 const auth = require("../middleware/auth");
 
+// Helper: upsert sem depender de UNIQUE constraint
+async function upsertClienteDados(cliente_id, campos) {
+  const keys   = Object.keys(campos);
+  const values = Object.values(campos);
+
+  if (keys.length === 0) {
+    // Apenas confirma que o registo existe
+    const upd = await db.query(
+      `UPDATE clientes_dados SET atualizado_em=NOW() WHERE cliente_id=$1 RETURNING id`,
+      [cliente_id]
+    );
+    if (upd.rowCount === 0) {
+      await db.query(
+        `INSERT INTO clientes_dados (cliente_id, atualizado_em) VALUES ($1, NOW())`,
+        [cliente_id]
+      );
+    }
+    return;
+  }
+
+  const setClauses = keys.map((k, i) => `${k}=$${i + 2}`).join(", ");
+  const upd = await db.query(
+    `UPDATE clientes_dados SET ${setClauses}, atualizado_em=NOW() WHERE cliente_id=$1 RETURNING id`,
+    [cliente_id, ...values]
+  );
+
+  if (upd.rowCount === 0) {
+    const cols    = ["cliente_id", ...keys, "atualizado_em"].join(", ");
+    const params  = ["$1", ...keys.map((_, i) => `$${i + 2}`), "NOW()"].join(", ");
+    await db.query(
+      `INSERT INTO clientes_dados (${cols}) VALUES (${params})`,
+      [cliente_id, ...values]
+    );
+  }
+}
+
 // GET /api/cliente/me
 router.get("/me", authCliente, async (req, res) => {
   try {
     const result = await db.query(
-      `SELECT c.id AS cliente_id, c.user_id, c.nome, cd.username, cd.avatar, cd.capa, cd.instagram, cd.tiktok, cd.local, cd.bio
-       FROM clientes c LEFT JOIN clientes_dados cd ON cd.cliente_id = c.id AND cd.ativo = true
-       WHERE c.id = $1 AND c.ativo = true`,
+      `SELECT c.id AS cliente_id, c.user_id, c.nome,
+              cd.username, cd.nome_completo, cd.data_nascimento,
+              cd.avatar, cd.capa
+       FROM clientes c
+       LEFT JOIN clientes_dados cd ON cd.cliente_id = c.id
+       WHERE c.id = $1 AND c.ativo = true LIMIT 1`,
       [req.cliente_id]
     );
     if (!result.rows.length) return res.status(404).json({ error: "Cliente não encontrado" });
     res.json(result.rows[0]);
   } catch (err) {
-    console.error("Erro /api/cliente/me:", err);
-    res.status(500).json({ error: "Erro interno" });
+    // Fallback sem JOIN caso clientes_dados tenha colunas diferentes
+    try {
+      const r = await db.query(
+        `SELECT id AS cliente_id, user_id, nome FROM clientes WHERE id=$1 AND ativo=true`,
+        [req.cliente_id]
+      );
+      if (!r.rows.length) return res.status(404).json({ error: "Cliente não encontrado" });
+      res.json(r.rows[0]);
+    } catch (e) {
+      console.error("Erro /api/cliente/me:", e);
+      res.status(500).json({ error: "Erro interno" });
+    }
   }
 });
 
@@ -38,59 +87,36 @@ router.get("/modelos", authCliente, async (req, res) => {
   }
 });
 
-// POST /api/cliente/dados
+// POST /api/cliente/dados  — salva os campos que existem na tabela
 router.post("/dados", authCliente, async (req, res) => {
   try {
-    const { username, nome_completo, data_nascimento, pais, nome_exibicao, instagram, tiktok, local, bio, avatar, avatar_thumb, capa } = req.body;
-    const clienteRes = await db.query(
-      `SELECT id FROM clientes WHERE id = $1 AND ativo = true LIMIT 1`, [req.cliente_id]
-    );
-    if (clienteRes.rowCount === 0) return res.status(404).json({ error: "Cliente não encontrado ou desativado" });
+    const { username, nome_completo, data_nascimento } = req.body;
 
-    await db.query(
-      `INSERT INTO clientes_dados (cliente_id, username, nome_completo, data_nascimento, pais, nome_exibicao, instagram, tiktok, local, bio, avatar, avatar_thumb, capa, ativo, criado_em, atualizado_em)
-       VALUES ($1,$2,$3,$4,$5,$6,$7,$8,$9,$10,$11,$12,$13,true,NOW(),NOW())
-       ON CONFLICT (cliente_id) DO UPDATE SET
-         username=EXCLUDED.username, nome_completo=EXCLUDED.nome_completo,
-         data_nascimento=EXCLUDED.data_nascimento, pais=EXCLUDED.pais,
-         nome_exibicao=EXCLUDED.nome_exibicao, instagram=EXCLUDED.instagram,
-         tiktok=EXCLUDED.tiktok, local=EXCLUDED.local, bio=EXCLUDED.bio,
-         avatar=EXCLUDED.avatar, avatar_thumb=EXCLUDED.avatar_thumb, capa=EXCLUDED.capa,
-         ativo=true, desativado_em=NULL, atualizado_em=NOW()`,
-      [req.cliente_id, username||null, nome_completo||null, data_nascimento||null, pais||null,
-       nome_exibicao||null, instagram||null, tiktok||null, local||null, bio||null,
-       avatar||null, avatar_thumb||null, capa||null]
-    );
+    const campos = {};
+    if (username        != null) campos.username         = username || null;
+    if (nome_completo   != null) campos.nome_completo    = nome_completo || null;
+    if (data_nascimento != null) campos.data_nascimento  = data_nascimento || null;
+
+    await upsertClienteDados(req.cliente_id, campos);
     return res.json({ success: true });
   } catch (err) {
     console.error("Erro salvar dados cliente:", err);
-    return res.status(500).json({ error: "Erro interno" });
+    return res.status(500).json({ error: "Erro interno: " + err.message });
   }
 });
 
 // PUT /api/cliente/dados
 router.put("/dados", authCliente, async (req, res) => {
   try {
-    const { username, instagram, tiktok, local, bio } = req.body;
+    const { username } = req.body;
     if (!username || typeof username !== "string") {
       return res.status(400).json({ error: "Username obrigatório." });
     }
-    await db.query(
-      `INSERT INTO clientes_dados (cliente_id, username, instagram, tiktok, local, bio, criado_em, atualizado_em)
-       VALUES ($1,$2,$3,$4,$5,$6,NOW(),NOW())
-       ON CONFLICT (cliente_id) DO UPDATE SET
-         username=COALESCE(EXCLUDED.username,clientes_dados.username),
-         instagram=COALESCE(EXCLUDED.instagram,clientes_dados.instagram),
-         tiktok=COALESCE(EXCLUDED.tiktok,clientes_dados.tiktok),
-         local=COALESCE(EXCLUDED.local,clientes_dados.local),
-         bio=COALESCE(EXCLUDED.bio,clientes_dados.bio),
-         atualizado_em=NOW()`,
-      [req.cliente_id, username.trim(), instagram||null, tiktok||null, local||null, bio||null]
-    );
+    await upsertClienteDados(req.cliente_id, { username: username.trim() });
     res.json({ success: true });
   } catch (err) {
     console.error("Erro atualizar dados cliente:", err);
-    res.status(500).json({ error: "Erro interno." });
+    res.status(500).json({ error: "Erro interno: " + err.message });
   }
 });
 

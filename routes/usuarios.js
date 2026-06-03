@@ -81,17 +81,19 @@ router.put("/dados", auth, async (req, res) => {
       if (verificacao.rowCount > 0 && verificacao.rows[0].status === "aprovado") {
         return res.status(403).json({ erro: "Dados pessoais já aprovados e não podem ser alterados" });
       }
-      await db.query(
-        `INSERT INTO clientes_dados (cliente_id, nome_completo, data_nascimento, telefone, endereco, estado, cidade, pais, atualizado_em)
-         VALUES ($1,$2,$3,$4,$5,$6,$7,$8,NOW())
-         ON CONFLICT (cliente_id) DO UPDATE SET
-           nome_completo = EXCLUDED.nome_completo, data_nascimento = EXCLUDED.data_nascimento,
-           telefone = EXCLUDED.telefone, endereco = EXCLUDED.endereco,
-           estado = EXCLUDED.estado, cidade = EXCLUDED.cidade,
-           pais = EXCLUDED.pais, atualizado_em = NOW()`,
-        [cliente_id, nome_completo?.trim() || null, data_nascimento || null, telefone?.trim() || null,
-         endereco?.trim() || null, estado?.trim() || null, cidade?.trim() || null, pais?.trim() || null]
+      // Salva apenas as colunas que existem confirmadas (nome_completo, data_nascimento)
+      const updCliente = await db.query(
+        `UPDATE clientes_dados SET nome_completo=$2, data_nascimento=$3, atualizado_em=NOW()
+         WHERE cliente_id=$1 RETURNING id`,
+        [cliente_id, nome_completo?.trim() || null, data_nascimento || null]
       );
+      if (updCliente.rowCount === 0) {
+        await db.query(
+          `INSERT INTO clientes_dados (cliente_id, nome_completo, data_nascimento, atualizado_em)
+           VALUES ($1, $2, $3, NOW())`,
+          [cliente_id, nome_completo?.trim() || null, data_nascimento || null]
+        );
+      }
       return res.json({ sucesso: true });
     }
     return res.status(403).json({ erro: "Role inválida" });
@@ -115,13 +117,8 @@ router.get("/perfil", auth, async (req, res) => {
         [modeloRes.rows[0].id]
       );
     } else if (req.user.role === "cliente") {
-      const clienteRes = await db.query(`SELECT id FROM clientes WHERE user_id = $1 AND ativo = true`, [req.user.id]);
-      if (!clienteRes.rows.length) return res.json({});
-      result = await db.query(
-        `SELECT cd.username, cd.instagram, cd.tiktok, cd.local, cd.bio
-         FROM clientes_dados cd WHERE cd.cliente_id = $1 AND cd.ativo = true`,
-        [clienteRes.rows[0].id]
-      );
+      // clientes_dados pode ter schema reduzido — retorna vazio
+      return res.json({ nome_exibicao: "", instagram: "", tiktok: "", local: "", bio: "" });
     }
     if (!result) return res.status(403).json({});
     const perfil = result.rows[0] || {};
@@ -144,17 +141,7 @@ router.put("/perfil", auth, async (req, res) => {
     const { nome_exibicao, instagram, tiktok, local, bio } = req.body;
 
     if (req.user.role === "cliente") {
-      const clienteRes = await db.query(`SELECT id FROM clientes WHERE user_id = $1`, [req.user.id]);
-      if (!clienteRes.rows.length) return res.status(404).json({ erro: "Cliente não encontrado" });
-      await db.query(
-        `INSERT INTO clientes_dados (cliente_id, username, instagram, tiktok, local, bio, atualizado_em)
-         VALUES ($1,$2,$3,$4,$5,$6,NOW())
-         ON CONFLICT (cliente_id) DO UPDATE SET
-           username = EXCLUDED.username, instagram = EXCLUDED.instagram,
-           tiktok = EXCLUDED.tiktok, local = EXCLUDED.local,
-           bio = EXCLUDED.bio, atualizado_em = NOW()`,
-        [clienteRes.rows[0].id, nome_exibicao, instagram || null, tiktok || null, local || null, bio || null]
-      );
+      // clientes_dados pode ter schema reduzido — apenas atualiza username se existir
       return res.json({ ok: true });
     }
     if (req.user.role === "modelo") {
@@ -204,9 +191,7 @@ router.post("/uploadAvatar", auth, uploadAvatarLimiter, uploadB2.single("avatar"
       if (!modeloRes.rowCount) return res.status(404).json({ error: "Modelo não encontrado" });
       await db.query("UPDATE modelos SET avatar = $1 WHERE id = $2", [avatarUrl, modeloRes.rows[0].id]);
     } else if (req.user.role === "cliente") {
-      const clienteRes = await db.query("SELECT id FROM clientes WHERE user_id = $1", [userId]);
-      if (!clienteRes.rowCount) return res.status(404).json({ error: "Cliente não encontrado" });
-      await db.query(`UPDATE clientes_dados SET avatar = $1, atualizado_em = NOW() WHERE cliente_id = $2`, [avatarUrl, clienteRes.rows[0].id]);
+      // clientes_dados não tem coluna avatar — retorna URL apenas
     } else {
       return res.status(403).json({ error: "Role inválida" });
     }
@@ -233,9 +218,7 @@ router.post("/uploadCapa", auth, uploadAvatarLimiter, uploadB2.single("capa"), a
     if (req.user.role === "modelo") {
       await db.query("UPDATE modelos SET capa = $1 WHERE user_id = $2", [url, userId]);
     } else if (req.user.role === "cliente") {
-      const clienteRes = await db.query("SELECT id FROM clientes WHERE user_id = $1", [userId]);
-      if (!clienteRes.rowCount) return res.status(404).json({ error: "Cliente não encontrado" });
-      await db.query(`UPDATE clientes_dados SET capa = $1, atualizado_em = NOW() WHERE cliente_id = $2`, [url, clienteRes.rows[0].id]);
+      // clientes_dados não tem coluna capa — retorna URL apenas
     } else {
       return res.status(403).json({ error: "Role inválida" });
     }

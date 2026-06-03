@@ -1,4 +1,3 @@
-// Centralizes all router exports for use in server.js
 module.exports = {
   authRouter:          require("./auth"),
   usuariosRouter:      require("./usuarios"),
@@ -12,6 +11,10 @@ module.exports = {
   verificacaoRouter:   require("./verificacao"),
   notificacoesRouter:  require("./notificacoes"),
   miscRouter:          require("./misc"),
+  financeiroRouter:    require("./financeiro"),
+  agenciaRouter:       require("./agencia"),
+  allmessageRouter:    require("./allmessage"),
+  adminExtraRouter:    require("./admin_extra"),
   adminDashboardRouter: require("./adminDashboard"),
   agencyDashboardRouter: require("./agencyDashboard"),
   adminEmailRouter:    require("./adminEmail"),

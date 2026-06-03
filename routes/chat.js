@@ -62,7 +62,7 @@ router.get("/modelo", authModelo, async (req, res) => {
     const offset = Math.max(Number(req.query.offset) || 0, 0);
 
     const { rows } = await db.query(
-      `SELECT c.id AS cliente_id, c.nome, cd.username, cd.avatar AS avatar,
+      `SELECT c.id AS cliente_id, c.nome, NULL AS username, NULL AS avatar,
               COALESCE(cnm.resumo_curto,'') AS resumo_curto,
               msg.text AS ultima_mensagem, msg.created_at AS ultima_mensagem_em,
               msg.sender AS ultimo_sender,
@@ -74,7 +74,6 @@ router.get("/modelo", authModelo, async (req, res) => {
               CASE WHEN msg.sender='modelo' AND COALESCE(msg.visto,false)=true THEN true ELSE false END AS cliente_visualizou
        FROM vip_subscriptions v
        JOIN clientes c ON c.id = v.cliente_id
-       LEFT JOIN clientes_dados cd ON cd.cliente_id = c.id
        LEFT JOIN cliente_notas_modelo cnm ON cnm.cliente_id=c.id AND cnm.modelo_id=$1
        LEFT JOIN LATERAL (
          SELECT text, created_at, visto, lida, sender FROM messages
@@ -105,9 +104,8 @@ router.get("/cliente/:cliente_id", authModelo, async (req, res) => {
   }
   try {
     const result = await db.query(
-      `SELECT c.id AS cliente_id, c.nome, c.last_seen, cd.username, cd.avatar
-       FROM clientes c LEFT JOIN clientes_dados cd ON cd.cliente_id = c.id
-       WHERE c.id = $1 AND c.ativo = true LIMIT 1`,
+      `SELECT c.id AS cliente_id, c.nome, c.last_seen, NULL AS username, NULL AS avatar
+       FROM clientes c WHERE c.id = $1 AND c.ativo = true LIMIT 1`,
       [cliente_id]
     );
     if (!result.rows.length) return res.status(404).json({ error: "Cliente não encontrado" });

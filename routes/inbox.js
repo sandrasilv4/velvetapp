@@ -15,7 +15,7 @@ router.get("/inbox", auth, async (req, res) => {
       SELECT DISTINCT ON (c.id)
         c.id AS cliente_id,
         c.nome,
-        cd.avatar,
+        NULL AS avatar,
         m.text        AS ultima_mensagem,
         m.created_at AS ultima_hora,
         (
